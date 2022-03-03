@@ -1,8 +1,10 @@
-<!-- //!STARTERCONF Remove this file, this is used as the starter changelog -->
+# Changelog
 
-# ts-nextjs-tailwind-starter changelog
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-This changelog is manually generated and not accurate with the package.json, only to show the changes since the last release.
+### 0.1.2 (2022-03-03)
+
+### 0.1.1 (2022-03-03)
 
 ## 0.5.3 - 2022-02-27
 
@@ -396,4 +398,3 @@ Snippets: `reg`
 ```
 
 You should also use [Better Comments](https://marketplace.visualstudio.com/items?itemName=aaron-bond.better-comments) extension.
-
