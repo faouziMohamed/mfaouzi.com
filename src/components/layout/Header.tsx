@@ -36,7 +36,7 @@ export default function Header() {
           </Box>
         </Stack>
       </Stack>
-      <Box className='absolute inset-0 -top-1 -z-10 w-full bg-red-50 '>
+      <Box className='absolute inset-0 -top-1 -z-10 w-full'>
         <Image
           src='/icons/header-blob.svg'
           alt='Header background blob'

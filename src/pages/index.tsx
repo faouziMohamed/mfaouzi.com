@@ -7,6 +7,7 @@ import DownArrowIcon from '@/components/home/DownArrowIcon';
 import IntroSection from '@/components/home/IntroSection';
 import SectionTitleWithBlob from '@/components/home/SectionTitleWithBlob';
 import SocialsSection from '@/components/home/SocialsSection';
+import SVGBlob from '@/components/home/SVGBlob';
 import SpaceMan from '@/components/images/SpaceMan';
 import Layout from '@/components/layout/Layout';
 // import ArrowLink from '@/components/links/ArrowLink';
@@ -16,8 +17,6 @@ import Seo from '@/components/Seo';
 import type { DevDataTypes } from '@/@types/data';
 
 import ProjectsBlob from '~/icons/projects-blob.svg';
-
-import SVGBlob from '../components/home/SVGBlob';
 
 const data = devData as DevDataTypes;
 

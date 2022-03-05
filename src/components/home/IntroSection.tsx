@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 import LayerIntro from '@/components/home/LayerIntro';
 
-import { DevDataTypes } from '@/@types/data';
+import type { DevDataTypes } from '@/@types/data';
 
 import devPicture from '~/images/faouzi-mhd.jpeg';
 
@@ -29,6 +29,9 @@ export default function IntroSection({
           <Image
             src={devPicture}
             alt='Header background blob'
+            layout='responsive'
+            width='208'
+            height='208'
             className='h-full w-full animate-wiggle-slower rounded-full object-cover'
           />
         </Box>
