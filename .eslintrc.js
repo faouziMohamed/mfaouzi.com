@@ -1,44 +1,83 @@
 module.exports = {
-  env: {
-    browser: true,
-    es2021: true,
-    node: true,
+  env: { browser: true, es2021: true, node: true },
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    project: ['./tsconfig.json'],
+    ecmaVersion: 2021,
+    tsconfigRootDir: __dirname,
   },
-  plugins: ['@typescript-eslint', 'simple-import-sort', 'unused-imports'],
+  plugins: [
+    'prettier',
+    '@typescript-eslint',
+    'simple-import-sort',
+    'promise',
+    'unicorn',
+    'unused-imports',
+    'import',
+  ],
   extends: [
     'eslint:recommended',
+    'airbnb',
+    'airbnb-typescript',
     'next',
     'next/core-web-vitals',
     'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/recommended-requiring-type-checking',
+    'next/core-web-vitals',
+    'plugin:promise/recommended',
+    'plugin:prettier/recommended',
     'prettier',
   ],
   rules: {
-    'no-unused-vars': 'off',
+    // 'no-unused-vars': 'off',
     'no-console': 'warn',
-    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    'no-alert': 'error',
+    'no-empty': 'error',
+    'no-implicit-coercion': 'error',
+    'no-underscore-dangle': 'off',
+    'no-var': 'warn',
+    'no-void': 'off',
+    'no-empty-function': 'warn',
+    'no-confusing-arrow': ['error', { allowParens: true }],
+    'no-mixed-operators': 'error',
+    'no-plusplus': ['warn', { allowForLoopAfterthoughts: true }],
+    'no-param-reassign': ['error', { props: false }],
 
-    'react/display-name': 'off',
-    'react/jsx-curly-brace-presence': [
-      'warn',
-      { props: 'never', children: 'never' },
+    'prettier/prettier': [
+      'error',
+      { singleQuote: true, semi: true, jsxSingleQuote: true },
+      { usePrettierrc: true },
     ],
 
-    //#region  //*=========== Unused Import ===========
-    '@typescript-eslint/no-unused-vars': 'off',
-    'unused-imports/no-unused-imports': 'warn',
-    'unused-imports/no-unused-vars': [
-      'warn',
+    'lines-between-class-members': [
+      'error',
+      'always',
+      { exceptAfterSingleLine: true },
+    ],
+
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/no-non-null-assertion': 'off',
+    '@typescript-eslint/no-shadow': 'error',
+    '@typescript-eslint/no-use-before-define': [
+      'error',
       {
-        vars: 'all',
-        varsIgnorePattern: '^_',
-        args: 'after-used',
-        argsIgnorePattern: '^_',
+        functions: false,
+        classes: true,
+        variables: true,
+        typedefs: true,
       },
     ],
-    //#endregion  //*======== Unused Import ===========
 
-    //#region  //*=========== Import Sort ===========
-    'simple-import-sort/exports': 'warn',
+    'promise/catch-or-return': 'error',
+
+    // #region  //*=========== Import Sort ===========
+    'sort-imports': 'off',
+    'import/first': 'error',
+    'import/newline-after-import': 'error',
+    'import/no-duplicates': 'error',
+    'import/order': 'off',
+    'import/prefer-default-export': 'off',
+    'simple-import-sort/exports': 'error',
     'simple-import-sort/imports': [
       'warn',
       {
@@ -57,6 +96,7 @@ module.exports = {
           ['^@/store'],
           // Other imports
           ['^@/'],
+          ['^~/'],
           // relative paths up until 3 level
           [
             '^\\./?$',
@@ -74,8 +114,43 @@ module.exports = {
         ],
       },
     ],
-    //#endregion  //*======== Import Sort ===========
+    // #endregion  //*======== Import Sort ===========
+
+    'react-hooks/exhaustive-deps': 'warn',
+    'react/function-component-definition': 'off',
+    'react/display-name': 'warn',
+    'react/no-unstable-nested-components': 'off',
+    'react/require-default-props': 'off',
+    'react/jsx-curly-brace-presence': [
+      'warn',
+      { props: 'never', children: 'never' },
+    ],
+    'jsx-a11y/no-noninteractive-tabindex': [
+      'error',
+      { tags: ['div'], roles: ['tabpanel'] },
+    ],
+
+    // #region  //*=========== Unused Import ===========
+    // '@typescript-eslint/no-unused-vars': 'off',
+    // 'unused-imports/no-unused-imports': 'warn',
+    // 'unused-imports/no-unused-vars': [
+    //   'warn',
+    //   {
+    //     vars: 'all',
+    //     varsIgnorePattern: '^_',
+    //     args: 'after-used',
+    //     argsIgnorePattern: '^_',
+    //   },
+    // ],
+    // #endregion  //*======== Unused Import ===========
   },
+  ignorePatterns: [
+    'node_modules/',
+    '*.config.js',
+    '.eslintrc.js',
+    '.prettierrc.js',
+    'next-env.d.ts',
+  ],
   globals: {
     React: true,
     JSX: true,
