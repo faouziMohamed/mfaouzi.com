@@ -1,24 +1,27 @@
-import * as React from 'react';
+/* eslint-disable react/jsx-props-no-spreading */
+import { ComponentProps, ElementType } from 'react';
 
 import clsxm from '@/lib/clsxm';
 
 import UnderlineLink from '@/components/links/UnderlineLink';
 import { UnstyledLinkProps } from '@/components/links/UnstyledLink';
 
-type ArrowLinkProps<C extends React.ElementType> = {
+type ArrowLinkProps<C extends ElementType> = {
   as?: C;
+  className?: string;
   direction?: 'left' | 'right';
 } & UnstyledLinkProps &
-  React.ComponentProps<C>;
+  ComponentProps<C>;
 
-export default function ArrowLink<C extends React.ElementType>({
+export default function ArrowLink<C extends ElementType>({
   children,
-  className,
+  className = '',
   direction = 'right',
-  as,
+  as: linkAlias,
   ...rest
 }: ArrowLinkProps<C>) {
-  const Component = as || UnderlineLink;
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  const Component = linkAlias || UnderlineLink;
 
   return (
     <Component
@@ -26,7 +29,8 @@ export default function ArrowLink<C extends React.ElementType>({
       className={clsxm(
         'group gap-[0.25em]',
         direction === 'left' && 'flex-row-reverse',
-        className
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+        className,
       )}
     >
       <span>{children}</span>
@@ -40,7 +44,7 @@ export default function ArrowLink<C extends React.ElementType>({
           'relative',
           'transition-transform duration-200',
           direction === 'right' ? 'motion-safe:-translate-x-1' : 'rotate-180',
-          'group-hover:translate-x-0'
+          'group-hover:translate-x-0',
         )}
       >
         <path
@@ -55,7 +59,7 @@ export default function ArrowLink<C extends React.ElementType>({
           className={clsxm(
             'origin-left transition-all duration-200',
             'opacity-0 motion-safe:-translate-x-1',
-            'group-hover:translate-x-0 group-hover:opacity-100'
+            'group-hover:translate-x-0 group-hover:opacity-100',
           )}
         />
       </svg>

@@ -1,31 +1,51 @@
-import * as React from 'react';
+import { Box, IconButton, Stack, Typography } from '@mui/material';
+import Image from 'next/image';
+import { MdMenu, MdNightlightRound } from 'react-icons/md';
 
 import UnstyledLink from '@/components/links/UnstyledLink';
 
-const links = [
-  { href: '/', label: 'Route 1' },
-  { href: '/', label: 'Route 2' },
-];
+import HeaderLineBlob from '~/icons/header-line-blob.svg';
 
 export default function Header() {
   return (
-    <header className='sticky top-0 z-50 bg-white'>
-      <div className='layout flex h-14 items-center justify-between'>
-        <UnstyledLink href='/' className='font-bold hover:text-gray-600'>
-          Home
+    <nav className='relative flex w-full flex-col'>
+      <Stack direction='row' className='items-center justify-between p-2 py-0 '>
+        <UnstyledLink
+          href='/'
+          className='text-#000000 relative flex w-fit flex-col gap-1'
+        >
+          <Typography
+            variant='h1'
+            className='font-primary text-[1.17rem] font-bold'
+          >
+            Faouzi Mohamed
+          </Typography>
+          <Box className='absolute inset-0 top-[90%]'>
+            <HeaderLineBlob className='absolute h-4 w-full object-cover' />
+          </Box>
         </UnstyledLink>
-        <nav>
-          <ul className='flex items-center justify-between space-x-4'>
-            {links.map(({ href, label }) => (
-              <li key={`${href}${label}`}>
-                <UnstyledLink href={href} className='hover:text-gray-600'>
-                  {label}
-                </UnstyledLink>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </div>
-    </header>
+
+        <Stack className='w-fit '>
+          <Box className='flex w-full items-center justify-center '>
+            <IconButton size='small' className='text-[#001344]'>
+              <MdNightlightRound fontSize='1.5rem' />
+            </IconButton>
+            <IconButton size='medium' className='text-[#001344]'>
+              <MdMenu fontSize='1.6rem' />
+            </IconButton>
+          </Box>
+        </Stack>
+      </Stack>
+      <Box className='absolute inset-0 -top-1 -z-10 w-full bg-red-50 '>
+        <Image
+          src='/icons/header-blob.svg'
+          alt='Header background blob'
+          width='100'
+          height='31'
+          className='w-full object-cover'
+          layout='responsive'
+        />
+      </Box>
+    </nav>
   );
 }

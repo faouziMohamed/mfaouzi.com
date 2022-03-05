@@ -1,6 +1,19 @@
-import * as React from 'react';
+import { Box } from '@mui/material';
+import { ReactNode } from 'react';
 
-export default function Layout({ children }: { children: React.ReactNode }) {
-  // Put Header or Footer Here
-  return <>{children}</>;
+import Header from './Header';
+
+export default function Layout({
+  children,
+  className = '',
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
+  return (
+    <Box className={`w-full ${className}`}>
+      <Header />
+      {children}
+    </Box>
+  );
 }

@@ -1,6 +1,7 @@
+/* eslint-disable react/jsx-no-bind */
 // !STARTERCONF You can delete this page
 import clsx from 'clsx';
-import * as React from 'react';
+import { useState } from 'react';
 
 import Button from '@/components/buttons/Button';
 import Layout from '@/components/layout/Layout';
@@ -12,12 +13,38 @@ import UnstyledLink from '@/components/links/UnstyledLink';
 import NextImage from '@/components/NextImage';
 import Seo from '@/components/Seo';
 import Skeleton from '@/components/Skeleton';
+// #region colorlist
+const colorList = [
+  'rose',
+  'pink',
+  'fuchsia',
+  'purple',
+  'violet',
+  'indigo',
+  'blue',
+  'sky',
+  'cyan',
+  'teal',
+  'emerald',
+  'green',
+  'lime',
+  'yellow',
+  'amber',
+  'orange',
+  'red',
+  'slate',
+  'gray',
+  'zinc',
+  'neutral',
+  'stone',
+] as const;
+// #endregion colorlist
 
 type Color = typeof colorList[number];
 
 export default function ComponentsPage() {
-  const [mode, setMode] = React.useState<'dark' | 'light'>('light');
-  const [color, setColor] = React.useState<Color>('sky');
+  const [mode, setMode] = useState<'dark' | 'light'>('light');
+  const [color, setColor] = useState<Color>('sky');
   function toggleMode() {
     return mode === 'dark' ? setMode('light') : setMode('dark');
   }
@@ -38,7 +65,7 @@ export default function ComponentsPage() {
           <div
             className={clsx(
               'layout min-h-screen py-20',
-              mode === 'dark' ? 'text-white' : 'text-black'
+              mode === 'dark' ? 'text-white' : 'text-black',
             )}
           >
             <h1>Built-in Components</h1>
@@ -73,7 +100,7 @@ export default function ComponentsPage() {
                       mode === 'dark'
                         ? 'border border-gray-600 bg-dark'
                         : 'border-gray-300 bg-white',
-                      'focus:border-primary-400 focus:outline-none focus:ring focus:ring-primary-400'
+                      'focus:border-primary-400 focus:outline-none focus:ring focus:ring-primary-400',
                     )}
                     onChange={(e) => setColor(e.target.value as Color)}
                   >
@@ -318,28 +345,3 @@ export default function ComponentsPage() {
     </Layout>
   );
 }
-
-const colorList = [
-  'rose',
-  'pink',
-  'fuchsia',
-  'purple',
-  'violet',
-  'indigo',
-  'blue',
-  'sky',
-  'cyan',
-  'teal',
-  'emerald',
-  'green',
-  'lime',
-  'yellow',
-  'amber',
-  'orange',
-  'red',
-  'slate',
-  'gray',
-  'zinc',
-  'neutral',
-  'stone',
-] as const;

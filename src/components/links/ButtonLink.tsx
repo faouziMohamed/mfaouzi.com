@@ -1,4 +1,5 @@
-import * as React from 'react';
+/* eslint-disable react/jsx-props-no-spreading */
+import { forwardRef } from 'react';
 
 import clsxm from '@/lib/clsxm';
 
@@ -19,10 +20,10 @@ type ButtonLinkProps = {
   variant?: keyof typeof ButtonVariant;
 } & UnstyledLinkProps;
 
-const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
+const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
   (
     { children, className, variant = 'primary', isDarkBg = false, ...rest },
-    ref
+    ref,
   ) => {
     return (
       <UnstyledLink
@@ -33,7 +34,7 @@ const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
           'focus:outline-none focus-visible:ring focus-visible:ring-primary-500',
           'shadow-sm',
           'transition-colors duration-75',
-          //#region  //*=========== Variants ===========
+          // #region  //*=========== Variants ===========
           [
             variant === 'primary' && [
               'bg-primary-500 text-white',
@@ -68,15 +69,16 @@ const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
               'hover:bg-gray-800 active:bg-gray-700 disabled:bg-gray-700',
             ],
           ],
-          //#endregion  //*======== Variants ===========
+          // #endregion  //*======== Variants ===========
           'disabled:cursor-not-allowed',
-          className
+          className,
         )}
       >
         {children}
       </UnstyledLink>
     );
-  }
+  },
 );
 
+ButtonLink.displayName = 'ButtonLink';
 export default ButtonLink;

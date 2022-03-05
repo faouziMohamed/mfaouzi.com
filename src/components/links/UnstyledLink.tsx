@@ -1,17 +1,18 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import Link, { LinkProps } from 'next/link';
-import * as React from 'react';
+import { ComponentPropsWithRef, forwardRef, ReactNode } from 'react';
 
 import clsxm from '@/lib/clsxm';
 
 export type UnstyledLinkProps = {
   href: string;
-  children: React.ReactNode;
+  children: ReactNode;
   openNewTab?: boolean;
   className?: string;
   nextLinkProps?: Omit<LinkProps, 'href'>;
-} & React.ComponentPropsWithRef<'a'>;
+} & ComponentPropsWithRef<'a'>;
 
-const UnstyledLink = React.forwardRef<HTMLAnchorElement, UnstyledLinkProps>(
+const UnstyledLink = forwardRef<HTMLAnchorElement, UnstyledLinkProps>(
   ({ children, href, openNewTab, className, nextLinkProps, ...rest }, ref) => {
     const isNewTab =
       openNewTab !== undefined
@@ -40,7 +41,9 @@ const UnstyledLink = React.forwardRef<HTMLAnchorElement, UnstyledLinkProps>(
         {children}
       </a>
     );
-  }
+  },
 );
+
+UnstyledLink.displayName = 'UnstyledLink';
 
 export default UnstyledLink;

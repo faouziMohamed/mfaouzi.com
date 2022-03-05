@@ -29,7 +29,7 @@
 }
 
 @layer base {
-  /* inter var - latin */
+  /* inter var-latin */
   @font-face {
     font-family: 'Inter';
     font-style: normal;
@@ -114,5 +114,13 @@
   .animated-underline:hover,
   .animated-underline:focus-visible {
     background-size: 0 2px, 100% 2px;
+  }
+
+  .avatar-shadow {
+    filter: drop-shadow(0px 4.1801px 4.1801px rgba(2, 77, 19, 0.25));
+  }
+
+  .avatar-border {
+    @apply border-[0.522513px] border-solid border-[#96C19A];
   }
 }
