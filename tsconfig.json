@@ -21,7 +21,7 @@
     },
     "incremental": true
   },
-  "include": ["custom-next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["custom-next-env.d.ts", "jest.setup.js", "**/*.ts", "**/*.tsx"],
   "exclude": ["next-env.d.ts", "node_modules"],
   "moduleResolution": ["node_modules", ".next", "node"]
 }

@@ -34,6 +34,11 @@ module.exports = {
         },
         dark: '#000f30',
       },
+      backgroundImage: {
+        'form-gradient':
+          'linear-gradient(225.31deg, rgba(143, 245, 215, 0.6) 20.08%, #C4FFF4 53.18%, rgba(111, 229, 255, 0.83) 93.64%)',
+        app: 'linear-gradient(185.24deg, rgba(248, 255, 251, 0.81) 56.38%, rgba(217, 253, 255, 0.17) 81.74%)',
+      },
       keyframes: keyFrames(),
       animation: {
         flicker: 'flicker 3s linear infinite',

@@ -1,4 +1,5 @@
 import { createHash } from 'crypto';
+import { Octokit } from 'octokit';
 
 export const emailRegex =
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -76,4 +77,12 @@ export const generateUniqueId = (str: string, size = 8): IHash => {
 export const generateKTId = (str: string, size = -8) => {
   const { fullId, id } = generateUniqueId(str, size);
   return { id: `KT${id}`, fullId };
+};
+
+export const connectionToGithub = async (auth: string) => {
+  const octokit = new Octokit({ auth });
+  const {
+    data: { login: owner },
+  } = await octokit.rest.users.getAuthenticated();
+  return { octokit, owner };
 };

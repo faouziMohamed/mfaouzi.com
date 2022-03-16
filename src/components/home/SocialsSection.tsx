@@ -18,9 +18,19 @@ const socialIcons: { [key: string]: SVGImageData } = {
   twitter: TwitterIcon,
 };
 
-export default function SocialsSection({ data }: { data: DevDataTypes }) {
+interface SocialSectionProps {
+  data: DevDataTypes;
+  className?: string;
+}
+
+export default function SocialsSection({
+  data,
+  className = '',
+}: SocialSectionProps) {
   return (
-    <Section className='relative flex flex-col items-center justify-center gap-6'>
+    <Section
+      className={`relative flex flex-col items-center justify-center gap-6 ${className}`}
+    >
       <LayerIntro message='Find me on socials' BlobComponent={SocialBlob} />
       <Box className='flex gap-4'>
         {data.socials.map(({ username, social }) => (

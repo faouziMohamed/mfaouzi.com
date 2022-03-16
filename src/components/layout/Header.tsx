@@ -40,6 +40,7 @@ export default function Header() {
         <Image
           src='/icons/header-blob.svg'
           alt='Header background blob'
+          priority
           width='100'
           height='31'
           className='w-full object-cover'

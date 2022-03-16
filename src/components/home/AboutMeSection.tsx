@@ -7,9 +7,15 @@ import AboutMeBlob from '~/icons/about-me-blob.svg';
 import SectionTitleWithBlob from './SectionTitleWithBlob';
 import SVGBlob from './SVGBlob';
 
-export default function AboutMeSection() {
+interface AboutMeSectionProps {
+  className?: string;
+}
+
+export default function AboutMeSection({
+  className = '',
+}: AboutMeSectionProps) {
   return (
-    <Section className='flex w-full flex-col items-center gap-4'>
+    <Section className={`flex w-full flex-col items-center gap-4 ${className}`}>
       <SectionTitleWithBlob
         title='About Me'
         BlobComponent={() => (

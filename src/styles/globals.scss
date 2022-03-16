@@ -124,3 +124,7 @@
     @apply border-[0.522513px] border-solid border-[#96C19A];
   }
 }
+
+:is(input[type], textarea):focus {
+  box-shadow: none;
+}

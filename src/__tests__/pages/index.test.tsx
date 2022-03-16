@@ -7,6 +7,7 @@ import IntroSection from '@/components/home/IntroSection';
 import Layout from '@/components/layout/Layout';
 
 import HomePage from '@/pages';
+import { connectionToGithub } from '@/utils/utils';
 
 describe('Index Page', () => {
   it('renders The Layout', async () => {
@@ -22,11 +23,20 @@ describe('Index Page', () => {
     const { container } = render(<IntroSection data={devData} />);
     expect(container.firstChild?.hasChildNodes()).toBeTruthy();
   });
-});
 
-describe('Index Page', () => {
-  it('renders index page', async () => {
+  test('render the home page', async () => {
     const { container } = render(<HomePage />);
     expect(container.firstChild?.hasChildNodes()).toBeTruthy();
+  });
+});
+
+describe.only('Fetch Repository data from the Github API', () => {
+  test("Connection to github REST API using octokit's client", async () => {
+    jest.setTimeout(30000);
+    const githubUsername = 'faouzimohamed';
+    expect(process.env.GITHUB_TOKEN).toBeTruthy();
+    // @ts-expect-error: process.env.GITHUB_TOKEN is be undefined
+    const connected = await connectionToGithub(process.env.GITHUB_TOKEN);
+    expect(connected.owner?.toLowerCase()).toBe(githubUsername.toLowerCase());
   });
 });
