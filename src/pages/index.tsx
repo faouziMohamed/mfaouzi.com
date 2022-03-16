@@ -4,6 +4,7 @@ import devData from '@/data/dev-data.json';
 import projects from '@/data/projects.json';
 
 import AboutMeSection from '@/components/home/AboutMeSection';
+import ContactSection from '@/components/home/ContactSection';
 import DownArrowIcon from '@/components/home/DownArrowIcon';
 import IntroSection from '@/components/home/IntroSection';
 import ProjectsSection from '@/components/home/ProjectsSection';
@@ -14,7 +15,6 @@ import Layout from '@/components/layout/Layout';
 import Seo from '@/components/Seo';
 
 import type { DevDataTypes } from '@/@types/data';
-import ContactSection from '@/pages/ContactSection';
 import { connectionToGithub } from '@/utils/utils';
 
 const data = devData as DevDataTypes;

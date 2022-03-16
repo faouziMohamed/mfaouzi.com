@@ -1,7 +1,7 @@
 import { Box, InputLabel, TextField } from '@mui/material';
 import type { FieldError, UseFormRegisterReturn } from 'react-hook-form';
 
-export function FormTextField(props: FormTextFieldProps) {
+export default function FormTextField(props: FormTextFieldProps) {
   const { register, type = 'text', name, label, placeholder } = props;
   return (
     <Box className='flex flex-col gap-1 '>

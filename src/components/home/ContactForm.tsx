@@ -1,9 +1,9 @@
 import { Box, Button } from '@mui/material';
 import { useForm } from 'react-hook-form';
 
-import { emailRegex } from '@/utils/utils';
+import FormTextField, { FormValues } from '@/components/home/FormTextField';
 
-import { FormTextField, FormValues } from './FormTextField';
+import { emailRegex } from '@/utils/utils';
 
 interface InputFieldProps {
   className?: string;
