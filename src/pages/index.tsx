@@ -93,8 +93,8 @@ export interface ProjectData {
   fullName: string;
   url: string;
   homepage: string;
-  stargazers_count: number;
-  forks_count: number;
+  stargazersCount: number;
+  forksCount: number;
   description: string;
   languages: { [key: string]: number };
 }
