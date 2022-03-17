@@ -28,7 +28,7 @@ export default function HomePage(/* { projects }: { projects: repoTypes[] } */) 
     and more. My personal website.`;
 
   return (
-    <Layout className='flex flex-col gap-4 p-0 pb-8'>
+    <Layout className='flex flex-col gap-4 p-0'>
       <Seo templateTitle='Home' />
       <SpaceMan />
       <Main component='main' className='flex flex-col gap-4 '>

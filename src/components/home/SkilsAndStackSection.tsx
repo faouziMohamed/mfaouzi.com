@@ -9,7 +9,7 @@ import DockerIcon from '~/icons/docker.svg';
 import FigmaIcon from '~/icons/figma.svg';
 import GitIcon from '~/icons/git.svg';
 import JsIcon from '~/icons/javascript.svg';
-import MaterialUiIcon from '~/icons/materialUi.svg';
+import MaterialUiIcon from '~/icons/material-ui.svg';
 import MongoDbIcon from '~/icons/mongodb.svg';
 import MysqlIcon from '~/icons/mysql.svg';
 import NextJsIcon from '~/icons/nextjs.svg';
