@@ -6,6 +6,8 @@ import { useRouter } from 'next/router';
 
 import { openGraph } from '@/lib/helper';
 
+import theme from '@/themes/theme';
+
 const favicons: Array<Favicons> = [
   {
     rel: 'apple-touch-icon',
@@ -82,13 +84,11 @@ const favicons: Array<Favicons> = [
   },
 ];
 
-// !STARTERCONF Change these default meta
 const defaultMeta = {
-  title: 'Next.js + Tailwind CSS + TypeScript Starter',
-  siteName: 'Next.js + Tailwind CSS + TypeScript Starter',
+  title: 'Faouzi Mohamed',
+  siteName: "Faouzi Mohamed's Portfolio",
   description:
-    'A starter for Next.js, Tailwind CSS, and TypeScript with Absolute Import, Seo, Link component, pre-configured with Husky',
-  /** Without additional '/' on the end, e.g. https://theodorusclarence.com */
+    'My personal Portfolio where I present myself, my skills, some projects etc. ',
   url: process.env.NEXT_PUBLIC_SITE_URL,
   type: 'website',
   robots: 'follow, index',
@@ -116,8 +116,9 @@ export default function Seo(props: SeoProps) {
   meta.image = openGraph({
     description: meta.description,
     siteName: props.templateTitle ? meta.siteName : meta.title,
-    templateTitle: props.templateTitle,
-    logo: '/favicon/ms-icon-144x144.png',
+    // templateTitle: props.templateTitle,
+    logo: 'https://avatars.githubusercontent.com/u/57812398?&v=4',
+    theme: 'light',
   });
 
   return (
@@ -135,7 +136,7 @@ export default function Seo(props: SeoProps) {
       <meta name='image' property='og:image' content={meta.image} />
       {/* Twitter */}
       <meta name='twitter:card' content='summary_large_image' />
-      <meta name='twitter:site' content='@th_clarence' />
+      <meta name='twitter:site' content='@fz_faouzi' />
       <meta name='twitter:title' content={meta.title} />
       <meta name='twitter:description' content={meta.description} />
       <meta name='twitter:image' content={meta.image} />
@@ -150,7 +151,7 @@ export default function Seo(props: SeoProps) {
           <meta
             name='author'
             property='article:author'
-            content='Theodorus Clarence'
+            content='Faouzi Mohamed'
           />
         </>
       )}
@@ -164,7 +165,7 @@ export default function Seo(props: SeoProps) {
         name='msapplication-TileImage'
         content='/favicon/ms-icon-144x144.png'
       />
-      <meta name='theme-color' content='#ffffff' />
+      <meta name='theme-color' content={theme.palette.primary.main} />
     </Head>
   );
 }

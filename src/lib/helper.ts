@@ -3,16 +3,14 @@ type OpenGraphType = {
   description: string;
   templateTitle?: string;
   logo?: string;
+  theme?: string;
 };
-// !STARTERCONF This OG is generated from https://github.com/theodorusclarence/og
-// Please clone them and self-host if your site is going to be visited by many people.
-// Then change the url and the default logo.
 export function openGraph({
   siteName,
   templateTitle,
   description,
-  // !STARTERCONF Or, you can use my server with your own logo.
-  logo = 'https://og.thcl.dev/images/logo.jpg',
+  theme = 'light',
+  logo = 'https://avatars.githubusercontent.com/u/57812398?s=800&v=4',
 }: OpenGraphType): string {
   const ogLogo = encodeURIComponent(logo);
   const ogSiteName = encodeURIComponent(siteName.trim());
@@ -21,7 +19,9 @@ export function openGraph({
     : undefined;
   const ogDesc = encodeURIComponent(description.trim());
 
-  return `https://og.thcl.dev/api/general?siteName=${ogSiteName}&description=${ogDesc}&logo=${ogLogo}${
-    ogTemplateTitle ? `&templateTitle=${ogTemplateTitle}` : ''
+  return `https://fz-og.vercel.app/api/general?siteName=${ogSiteName}&description=${ogDesc}&logo=${ogLogo}${
+    ogTemplateTitle ? `&templateTitle=${ogTemplateTitle}&theme=${theme}` : ''
   }`;
 }
+
+// https://og.thcl.dev/api/general?description=My%20personal%20Portfolio%20where%20I%20present%20myself%2C%20my%20skills%2C%20some%20projects%20etc.%20&logo=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F57812398%3Fs%3D800%26v%3D4&siteName=Faouzi%20Mohamed%27s%20Portfolio&templateTitle=Faouzi%20Mohamed&theme=light

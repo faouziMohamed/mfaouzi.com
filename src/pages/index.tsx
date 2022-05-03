@@ -21,7 +21,7 @@ const data = devData as DevDataTypes;
 export default function HomePage() {
   return (
     <Layout className='flex flex-col gap-4 p-0'>
-      <Seo templateTitle='Home' title={title} />
+      <Seo templateTitle='Home' title='Faouzi Mohamed' />
       <SpaceMan />
       <Main component='main' className='flex flex-col gap-4 '>
         <IntroSection data={data} className=' px-6' />
