@@ -4,7 +4,7 @@ import SectionTitleWithBlob from '@/components/home/SectionTitleWithBlob';
 import SVGBlob from '@/components/home/SVGBlob';
 import ArrowLink from '@/components/links/ArrowLink';
 
-import { IProjectDataType } from '@/@types/data';
+import type { IProjectDataType } from '@/@types/data';
 
 import ProjectsBlob from '~/icons/projects-blob.svg';
 

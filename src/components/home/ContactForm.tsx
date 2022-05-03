@@ -21,8 +21,6 @@ export default function ContactForm(props: InputFieldProps) {
     // eslint-disable-next-line no-console
     console.log(data);
   };
-  // eslint-disable-next-line no-console
-  console.log(errors);
 
   return (
     <Box

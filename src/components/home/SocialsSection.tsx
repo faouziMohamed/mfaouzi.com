@@ -33,15 +33,18 @@ export default function SocialsSection({
     >
       <LayerIntro message='Find me on socials' BlobComponent={SocialBlob} />
       <Box className='flex gap-4'>
-        {data.socials.map(({ username, social }) => (
-          <SocialIconLink
-            key={social}
-            // @ts-expect-error: key is not a string
-            // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-            href={`${data.profileLinks[social]}/${username}`}
-            IconComponent={socialIcons[social]}
-          />
-        ))}
+        {Object.keys(data.socials).map(
+          (key) =>
+            socialIcons[key] && (
+              <SocialIconLink
+                key={key}
+                // @ts-expect-error: key is not a string
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+                href={data.socials[key].url}
+                IconComponent={socialIcons[key]}
+              />
+            ),
+        )}
       </Box>
     </Section>
   );
@@ -54,6 +57,7 @@ function SocialBlob() {
     </Box>
   );
 }
+
 function SocialIconLink({
   IconComponent,
   href,

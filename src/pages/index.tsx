@@ -14,7 +14,7 @@ import SpaceMan from '@/components/images/SpaceMan';
 import Layout from '@/components/layout/Layout';
 import Seo from '@/components/Seo';
 
-import type { DevDataTypes } from '@/@types/data';
+import type { DevDataTypes, IProjectDataType } from '@/@types/data';
 
 const data = devData as DevDataTypes;
 
@@ -28,7 +28,10 @@ export default function HomePage() {
         <SocialsSection data={data} className=' px-6' />
         <DownArrowIcon className='text-5xl' />
         <AboutMeSection className='px-6' />
-        <ProjectsSection projects={projects} className='px-6' />
+        <ProjectsSection
+          projects={projects as IProjectDataType[]}
+          className='px-6'
+        />
         <SkilsAndStackSection className='px-6' />
         <ContactSection className='px-6' />
       </Main>

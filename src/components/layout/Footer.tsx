@@ -1,6 +1,8 @@
 import { Box, Box as FooterSection, Stack, Typography } from '@mui/material';
 
-import { SVGImageData } from '@/@types/data';
+import devData from '@/data/dev-data.json';
+
+import { DevDataTypes, SVGImageData } from '@/@types/data';
 
 import Facebook from '~/icons/facebook.svg';
 import Github from '~/icons/github.svg';
@@ -12,18 +14,47 @@ import NextJs from '~/icons/nextjs.svg';
 import Twitter from '~/icons/twitter.svg';
 import TYpescript from '~/icons/typescript.svg';
 
+import UnstyledLink from '../links/UnstyledLink';
+
+const socialData: DevDataTypes = devData;
 const usedTech: readonly { name: string; Icon: SVGImageData }[] = [
   { name: 'NextJs', Icon: NextJs },
   { name: 'TYpescript', Icon: TYpescript },
   { name: 'Materialui', Icon: Materialui },
   { name: 'MongoDb', Icon: MongoDb },
 ];
-const SocialsStack: readonly { name: string; Icon: SVGImageData }[] = [
-  { name: 'Linkedin', Icon: Linkedin },
-  { name: 'Github', Icon: Github },
-  { name: 'Twitter', Icon: Twitter },
-  { name: 'Instagram', Icon: Instagram },
-  { name: 'Facebook', Icon: Facebook },
+interface ISocialStacks {
+  name: string;
+  Icon: SVGImageData;
+  link: string;
+}
+
+const SocialsStack: readonly ISocialStacks[] = [
+  {
+    name: 'Linkedin',
+    Icon: Linkedin,
+    link: socialData.socials.linkedin.url,
+  },
+  {
+    name: 'Github',
+    Icon: Github,
+    link: socialData.socials.github.url,
+  },
+  {
+    name: 'Twitter',
+    Icon: Twitter,
+    link: socialData.socials.twitter.url,
+  },
+  {
+    name: 'Instagram',
+    Icon: Instagram,
+    link: socialData.socials.instagram.url,
+  },
+  {
+    name: 'Facebook',
+    Icon: Facebook,
+    link: socialData.socials.facebook.url,
+  },
 ];
 
 export default function Footer() {
@@ -50,8 +81,10 @@ export default function Footer() {
           </Stack>
         </Stack>
         <Stack className='flex-row gap-4'>
-          {SocialsStack.map(({ Icon, name }) => (
-            <Icon key={name} className='h-5 w-5' />
+          {SocialsStack.map(({ Icon, name, link }) => (
+            <UnstyledLink key={name} href={link}>
+              <Icon className='h-5 w-5' />
+            </UnstyledLink>
           ))}
         </Stack>
       </Stack>
