@@ -1,5 +1,23 @@
 {
-  "name": "ts-nextjs-tailwind-starter",
+  "name": "fz-portfolio",
+  "author": {
+    "name": "Faouzi Mohamed",
+    "email": "57812398+faouziMohamed@users.noreply.github.com",
+    "url": "https://fz-portfolio.vercel.com"
+  },
+  "bugs": {
+    "url": "https://github.com/faouziMohamed/fz-portfolio/issues"
+  },
+  "homepage": "https://github.com/faouziMohamed/fz-portfolio#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/faouziMohamed/fz-portfolio.git"
+  },
+  "keywords": [
+    "portfolio",
+    "faouziMohamed",
+    "personal"
+  ],
   "version": "0.1.3",
   "private": true,
   "scripts": {
