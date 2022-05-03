@@ -1,21 +1,32 @@
+export type SVGImageData = React.FC<React.SVGProps<SVGSVGElement>>;
+
 export interface DevDataTypes {
   avatar: string;
   fullName: string;
-  profileLinks: ProfileLinks;
   skils: string[];
-  socials: Social[];
+  socials: Socials;
 }
 
-export interface ProfileLinks {
-  facebook: string;
-  github: string;
-  linkedin: string;
-  twitter: string;
+export interface Socials {
+  facebook: Social;
+  github: Social;
+  linkedin: Social;
+  twitter: Social;
+  instagram: Social;
 }
 
 export interface Social {
-  social: string;
+  url: string;
   username: string;
 }
 
-export type SVGImageData = React.FC<React.SVGProps<SVGSVGElement>>;
+export interface IProjectDataType {
+  description: string;
+  forks: number;
+  image: string;
+  languages: string[];
+  liveUrl: string;
+  repoUrl: string;
+  stars: number;
+  title: string;
+}

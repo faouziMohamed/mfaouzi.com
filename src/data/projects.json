@@ -1,30 +1,135 @@
 [
   {
-    "name": "social-share ",
-    "url": "https://github.com/faouziMohamed/social-share"
+    "description": "My personal website, showing my projects, skills, resume andmore. My personal website, showing my projects, skills, resume and more.",
+    "forks": 0,
+    "image": "",
+    "languages": [
+      "html",
+      "css",
+      "js",
+      "reactJs",
+      "NextJs",
+      "MongoDB",
+      "Typescript",
+      "Python"
+    ],
+    "liveUrl": "",
+    "repoUrl": "https://github.com/faouziMohamed/social-share",
+    "stars": 0,
+    "title": "social-share"
   },
   {
-    "name": "cra-forms",
-    "url": "https://github.com/faouziMohamed/cra-forms"
+    "description": "Regular stuff",
+    "forks": 0,
+    "image": "",
+    "languages": [
+      "html",
+      "css",
+      "js",
+      "reactJs",
+      "NextJs",
+      "MongoDB",
+      "Typescript",
+      "Python"
+    ],
+    "liveUrl": "",
+    "repoUrl": "https://github.com/faouziMohamed/cra-forms",
+    "stars": 0,
+    "title": "cra-forms"
   },
   {
-    "name": "acem-vote",
-    "url": "https://github.com/faouziMohamed/acem-vote"
+    "description": "My personal website, showing my projects, skills, resume andmore. My personal website, showing my projects, skills, resume and more.",
+    "forks": 0,
+    "image": "",
+    "languages": [
+      "html",
+      "css",
+      "js",
+      "reactJs",
+      "NextJs",
+      "MongoDB",
+      "Typescript",
+      "Python"
+    ],
+    "liveUrl": "",
+    "repoUrl": "https://github.com/faouziMohamed/acem-vote",
+    "stars": 0,
+    "title": "acem-vote"
   },
   {
-    "name": "cra",
-    "url": "https://github.com/faouziMohamed/cra"
+    "description": "My personal website, showing my projects, skills, resume andmore. My personal website, showing my projects, skills, resume and more.",
+    "forks": 0,
+    "image": "",
+    "languages": [
+      "html",
+      "css",
+      "js",
+      "reactJs",
+      "NextJs",
+      "MongoDB",
+      "Typescript",
+      "Python"
+    ],
+    "liveUrl": "",
+    "repoUrl": "https://github.com/faouziMohamed/cra",
+    "stars": 0,
+    "title": "cra"
   },
   {
-    "name": "fz-nmt",
-    "url": "https://github.com/faouziMohamed/fz-nmt"
+    "description": "My personal website, showing my projects, skills, resume andmore. My personal website, showing my projects, skills, resume and more.",
+    "forks": 0,
+    "image": "",
+    "languages": [
+      "html",
+      "css",
+      "js",
+      "reactJs",
+      "NextJs",
+      "MongoDB",
+      "Typescript",
+      "Python"
+    ],
+    "liveUrl": "",
+    "repoUrl": "https://github.com/faouziMohamed/fz-nmt",
+    "stars": 0,
+    "title": "fz-nmt"
   },
   {
-    "name": "covid-data",
-    "url": "https://github.com/faouziMohamed/covid-data"
+    "description": "My personal website, showing my projects, skills, resume andmore. My personal website, showing my projects, skills, resume and more.",
+    "forks": 0,
+    "image": "",
+    "languages": [
+      "html",
+      "css",
+      "js",
+      "reactJs",
+      "NextJs",
+      "MongoDB",
+      "Typescript",
+      "Python"
+    ],
+    "liveUrl": "",
+    "repoUrl": "https://github.com/faouziMohamed/covid-data",
+    "stars": 0,
+    "title": "covid-data"
   },
   {
-    "name": "fzNavigator",
-    "url": "https://github.com/faouziMohamed/fzNavigator"
+    "description": "My personal website, showing my projects, skills, resume andmore. My personal website, showing my projects, skills, resume and more.",
+    "forks": 0,
+    "image": "",
+    "languages": [
+      "html",
+      "css",
+      "js",
+      "reactJs",
+      "NextJs",
+      "MongoDB",
+      "Typescript",
+      "Python"
+    ],
+    "liveUrl": "",
+    "repoUrl": "https://github.com/faouziMohamed/fzNavigator",
+    "stars": 0,
+    "title": "fzNavigator"
   }
 ]

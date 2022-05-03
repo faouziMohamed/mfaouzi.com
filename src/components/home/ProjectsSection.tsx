@@ -4,16 +4,21 @@ import SectionTitleWithBlob from '@/components/home/SectionTitleWithBlob';
 import SVGBlob from '@/components/home/SVGBlob';
 import ArrowLink from '@/components/links/ArrowLink';
 
+import { IProjectDataType } from '@/@types/data';
+
 import ProjectsBlob from '~/icons/projects-blob.svg';
 
-import type { ProjectDataProps } from './ProjectCard';
 import ProjectCard from './ProjectCard';
 
+interface IProjectProps {
+  className?: string;
+  projects: IProjectDataType[];
+}
+
 export default function ProjectSection({
-  title,
-  description,
   className = '',
-}: ProjectDataProps & { className?: string }) {
+  projects,
+}: IProjectProps) {
   return (
     <Section className={`flex w-full flex-col items-center gap-4 ${className}`}>
       <SectionTitleWithBlob
@@ -23,10 +28,19 @@ export default function ProjectSection({
         )}
       />
       <ProjectCardStack className='flex flex-row flex-wrap justify-center gap-4'>
-        <ProjectCard title={title} description={description} />
-        <ProjectCard title={title} description={description} />
-        <ProjectCard title={title} description={description} />
-        <ProjectCard title={title} description={description} />
+        {projects.map((project) => (
+          <ProjectCard
+            key={project.title}
+            title={project.title}
+            description={project.description}
+            repoUrl={project.repoUrl}
+            liveUrl={project.liveUrl}
+            forks={project.forks}
+            languages={project.languages}
+            stars={project.stars}
+            image={project.image}
+          />
+        ))}
       </ProjectCardStack>
       <Box className='flex w-full justify-end'>
         <ArrowLink
