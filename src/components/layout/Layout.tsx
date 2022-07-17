@@ -20,7 +20,7 @@ interface LayoutProps {
 export default function Layout({ children, className = '' }: LayoutProps) {
   const isBuilding = process.env.NEXT_PUBLIC_ISBUILDING === 'true';
   return (
-    <MainContainer className='z-10 flex w-full flex-col gap-1 bg-app p-0'>
+    <MainContainer className='z-10 flex w-full flex-col bg-app p-0'>
       {isBuilding && <UnderConstructionBanner />}
       <SiteContent className={`p-0 ${className}`}>
         <Header />
