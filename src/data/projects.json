@@ -16,7 +16,8 @@
     "languages": ["JavaScript", "NextJs", "MongoDB", "NextJs", "scss"],
     "liveUrl": "https://data-translate.vercel.app/",
     "repoUrl": "https://github.com/faouziMohamed/data-translate",
-    "stars": 0
+    "stars": 0,
+    "title": "data-translate"
   },
   {
     "description": "A Social Network like web app, with a design based on Facebook and other social networks",

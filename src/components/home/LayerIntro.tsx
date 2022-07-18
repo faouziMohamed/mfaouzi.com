@@ -4,13 +4,15 @@ import { FC } from 'react';
 export default function LayerIntro({
   message,
   BlobComponent,
+  showLines = true,
 }: {
   message: string;
   BlobComponent?: FC;
+  showLines?: boolean;
 }) {
   return (
     <div className='flex w-full items-center justify-center gap-3'>
-      <BlockLine />
+      <BlockLine showLines={showLines} />
       <Box className='flex flex-col'>
         <Typography
           variant='subtitle1'
@@ -21,12 +23,14 @@ export default function LayerIntro({
         </Typography>
         {BlobComponent && <BlobComponent />}
       </Box>
-      <BlockLine />
+      <BlockLine showLines={showLines} />
     </div>
   );
 }
-function BlockLine() {
-  return (
+function BlockLine({ showLines = true }: { showLines?: boolean }) {
+  return showLines ? (
     <div className='flex grow basis-20 border-b border-slate-300 md:grow-[.1] md:basis-40 ' />
+  ) : (
+    <div />
   );
 }

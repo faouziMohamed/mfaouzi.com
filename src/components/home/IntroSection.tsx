@@ -1,4 +1,4 @@
-import { Box, Stack, Typography } from '@mui/material';
+import { Box, Stack, Typography, useMediaQuery } from '@mui/material';
 import Image from 'next/image';
 
 import LayerIntro from '@/components/home/LayerIntro';
@@ -11,19 +11,18 @@ type IntroSectionProps = {
   data: DevDataTypes;
   className?: string;
 };
-
 export default function IntroSection({
   data,
   className = '',
 }: IntroSectionProps) {
+  const matches = useMediaQuery('(min-width:768px)'); // md
   return (
     <Box component='section' className={`flex flex-col gap-6 ${className}`}>
-      <LayerIntro message='Hi There!' />
       <Stack className='items-center'>
         <Box
           className={`
              avatar-shadow avatar-border relative h-[13rem] w-[13rem]
-              animate-bounce-low items-center justify-center gap-2 rounded-full 
+             animate-bounce-low items-center justify-center gap-2 rounded-full 
             `}
         >
           <Image
@@ -35,7 +34,8 @@ export default function IntroSection({
             className='h-full w-full animate-wiggle-slower rounded-full object-cover'
           />
         </Box>
-        <Stack className='items-center text-center'>
+        <Stack className='w-full items-center text-center'>
+          <LayerIntro message='Hi There!' showLines={!matches} />
           <Typography
             variant='h2'
             className='font-primary text-[1.88rem] font-[700] leading-snug'
