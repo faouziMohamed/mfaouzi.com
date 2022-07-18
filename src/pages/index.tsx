@@ -1,4 +1,4 @@
-import { Box, Container as Main } from '@mui/material';
+import { Box, Container as Main, useMediaQuery } from '@mui/material';
 
 import devData from '@/data/dev-data.json';
 import projects from '@/data/projects.json';
@@ -57,14 +57,17 @@ export interface ProjectData {
   languages: { [key: string]: number };
 }
 function SpaceMans() {
+  const media = useMediaQuery('(min-width: 768px)');
   return (
     <>
-      <Box className=' top-0 animate-wiggle md:absolute md:opacity-50'>
+      <Box className=' top-0 animate-wiggle-slower md:absolute md:opacity-50'>
         <SpaceMan />
       </Box>
-      <Box className='right-0 bottom-0 hidden animate-wiggle md:absolute md:block'>
-        <SpaceMan />
-      </Box>
+      {media && (
+        <Box className='right-0 bottom-0 animate-wiggle-slower md:absolute md:block'>
+          <SpaceMan />
+        </Box>
+      )}
     </>
   );
 }

@@ -31,7 +31,7 @@ export default function IntroSection({
             layout='responsive'
             width='208'
             height='208'
-            className='h-full w-full animate-wiggle-slower rounded-full object-cover'
+            className='h-full w-full rounded-full object-cover'
           />
         </Box>
         <Stack className='w-full items-center text-center'>

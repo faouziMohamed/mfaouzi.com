@@ -53,7 +53,7 @@ export default function Header() {
       <Stack direction='row' className='items-center justify-between px-2 '>
         <UnstyledLink
           href='/'
-          className='text-#000000 relative flex w-fit flex-col gap-1'
+          className='text-#000000 relative flex w-fit flex-col gap-1 pl-2'
         >
           <Typography
             variant='h1'
@@ -61,7 +61,7 @@ export default function Header() {
           >
             Faouzi Mohamed
           </Typography>
-          <Box className='absolute inset-0 top-[90%]'>
+          <Box className='absolute inset-0 top-[90%] pl-2'>
             <HeaderLineBlob className='absolute h-4 w-full object-cover' />
           </Box>
         </UnstyledLink>
