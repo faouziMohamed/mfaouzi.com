@@ -16,6 +16,7 @@ export default function ContactSection(props: ContactSectionProps) {
   const { className = '' } = props;
   return (
     <Section
+      id='contacts'
       className={`relative flex flex-col items-center gap-4 ${className}`}
     >
       <SectionTitleWithBlob

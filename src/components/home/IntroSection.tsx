@@ -1,4 +1,10 @@
-import { Box, Stack, Typography, useMediaQuery } from '@mui/material';
+import {
+  Box,
+  Box as Intro,
+  Stack,
+  Typography,
+  useMediaQuery,
+} from '@mui/material';
 import Image from 'next/image';
 
 import LayerIntro from '@/components/home/LayerIntro';
@@ -17,7 +23,11 @@ export default function IntroSection({
 }: IntroSectionProps) {
   const matches = useMediaQuery('(min-width:768px)'); // md
   return (
-    <Box component='section' className={`flex flex-col gap-6 ${className}`}>
+    <Intro
+      id='about'
+      component='section'
+      className={`flex flex-col gap-6 ${className}`}
+    >
       <Stack className='items-center'>
         <Box
           className={`
@@ -51,6 +61,6 @@ export default function IntroSection({
           </Typography>
         </Stack>
       </Stack>
-    </Box>
+    </Intro>
   );
 }

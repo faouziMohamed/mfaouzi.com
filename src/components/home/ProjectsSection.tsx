@@ -20,7 +20,10 @@ export default function ProjectSection({
   projects,
 }: IProjectProps) {
   return (
-    <Section className={`flex w-full flex-col items-center gap-4 ${className}`}>
+    <Section
+      id='projects'
+      className={`flex w-full flex-col items-center gap-4 ${className}`}
+    >
       <SectionTitleWithBlob
         title='Projects'
         BlobComponent={() => (

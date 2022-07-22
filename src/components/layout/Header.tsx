@@ -11,10 +11,15 @@ import { useState } from 'react';
 import { GoMarkGithub } from 'react-icons/go';
 import {
   MdClose,
+  MdDoneAll,
   MdExpandLess,
   MdExpandMore,
+  MdHome,
+  MdMarkunreadMailbox,
   MdMenu,
   MdNightlightRound,
+  MdPermContactCalendar,
+  MdPersonPin,
   MdWbSunny,
 } from 'react-icons/md';
 
@@ -25,35 +30,44 @@ import HeaderLineBlob from '~/icons/header-line-blob.svg';
 const navLinks = [
   {
     name: 'Home',
-    href: '/',
+    href: '/#',
+    Icon: MdHome,
   },
   {
     name: 'About',
-    href: '/about',
+    href: '/#about',
+    Icon: MdPersonPin,
   },
   {
     name: 'Projects',
-    href: '/projects',
+    href: '/#projects',
+    Icon: MdMarkunreadMailbox,
   },
   {
     name: 'Contacts',
-    href: '/contacts',
+    href: '/#contacts',
+    Icon: MdPermContactCalendar,
   },
 ];
 const otherLinks = [
   {
+    name: 'Skills',
+    href: '/#skills',
+    Icon: MdDoneAll,
+  },
+  {
     name: 'Github',
     href: 'https://github.com/faouziMohamed',
-    Icon: <GoMarkGithub />,
+    Icon: GoMarkGithub,
   },
 ];
 export default function Header() {
-  const isSmallScreen = useMediaQuery('(min-width: 640px)'); // sm
+  const isMediumSmallScreen = useMediaQuery('(min-width: 693px)'); // sm
 
   return (
     <nav className='relative flex w-full flex-col'>
       <Stack className='flex w-full flex-row items-center justify-between gap-1.5'>
-        {isSmallScreen && (
+        {isMediumSmallScreen && (
           <UnstyledLink href='/'>
             <SiteLogo />
           </UnstyledLink>
@@ -79,16 +93,16 @@ function NavigationMenu() {
   const handleToggleTheme = () => setIsDarkMode((prev) => !prev);
   const [menuOpened, setMenuOpened] = useState<boolean>(false);
   const handleToogleMenu = () => setMenuOpened((prev) => !prev);
-  const isSmallScreen = useMediaQuery('(min-width: 640px)'); // sm
+  const isMediumSmallScreen = useMediaQuery('(min-width: 693px)'); // sm
   return (
-    <Box className='absolute inset-0 z-30 h-fit w-full select-none bg-primary-50 p-0 sm:relative sm:flex sm:w-fit sm:grow sm:flex-row-reverse sm:justify-start sm:bg-transparent'>
+    <Box className='absolute inset-0 z-30 h-fit w-full select-none bg-primary-50 p-0 msm:relative msm:flex msm:w-fit msm:grow msm:flex-row-reverse msm:justify-start msm:bg-transparent'>
       <Box
         component='div'
-        className='flex w-full items-center justify-between bg-primary-200 py-1 px-2 sm:w-fit sm:justify-end sm:bg-transparent'
+        className='flex w-full items-center justify-between bg-primary-200 py-1 px-2 msm:w-fit msm:justify-end msm:bg-transparent'
       >
         <IconButton
           size='medium'
-          className='text-[#001344] sm:hidden'
+          className='text-[#001344] msm:hidden'
           onClick={handleToogleMenu}
           tabIndex={0}
           onKeyDown={(e) => {
@@ -99,12 +113,12 @@ function NavigationMenu() {
           }}
         >
           {menuOpened ? (
-            <MdClose fontSize='2rem' className='sm:text-sm' />
+            <MdClose fontSize='2rem' className='msm:text-sm' />
           ) : (
-            <MdMenu fontSize='2rem' className='sm:text-sm' />
+            <MdMenu fontSize='2rem' className='msm:text-sm' />
           )}
         </IconButton>
-        {!isSmallScreen && (
+        {!isMediumSmallScreen && (
           <UnstyledLink href='/'>
             <SiteLogo />
           </UnstyledLink>
@@ -123,7 +137,7 @@ function NavigationMenu() {
       </Box>
       {/* Navigation menu */}
       <NavigationLinks
-        isSmallScreen={isSmallScreen}
+        isMediumSmallScreen={isMediumSmallScreen}
         isMenuOpened={menuOpened}
         setMenuOpened={setMenuOpened}
       />
@@ -132,11 +146,11 @@ function NavigationMenu() {
 }
 
 function NavigationLinks({
-  isSmallScreen,
+  isMediumSmallScreen,
   isMenuOpened,
   setMenuOpened,
 }: {
-  isSmallScreen: boolean;
+  isMediumSmallScreen: boolean;
   isMenuOpened: boolean;
   setMenuOpened: (prev: boolean) => void;
 }) {
@@ -146,18 +160,19 @@ function NavigationLinks({
 
   return (
     <Box
-      className={`flex-col items-start sm:flex-row ${
-        (!isSmallScreen && (isMenuOpened ? 'flex' : 'hidden')) || 'flex'
+      className={`flex-col items-start msm:flex-row ${
+        (!isMediumSmallScreen && (isMenuOpened ? 'flex' : 'hidden')) || 'flex'
       }`}
     >
-      {navLinks.map((link) => (
-        <Box className='m-0 w-full' key={link.name}>
+      {navLinks.map(({ name, href, Icon }) => (
+        <Box className='m-0 w-full' key={name}>
           <UnstyledLink
-            href={link.href}
+            href={href}
             tabIndex={0}
-            className='block w-full border-b border-slate-300 p-2 py-4 px-4 font-primary text-[1rem] font-[700] hover:bg-primary-100 focus:bg-primary-100 sm:border-none'
+            className='flex w-full items-center justify-start gap-1 border-b border-slate-300 p-2 py-4 px-2 font-primary text-[1rem] font-[700] hover:bg-primary-100 focus:bg-primary-100 msm:border-none'
           >
-            {link.name}
+            <Icon />
+            <span>{name}</span>
           </UnstyledLink>
         </Box>
       ))}
@@ -169,7 +184,7 @@ function NavigationLinks({
       >
         <Stack
           className={`relative flex w-full cursor-pointer items-start 
-            gap-0 border-b border-slate-300 hover:bg-primary-100 focus:bg-primary-100 sm:border-none `}
+            gap-0 border-b border-slate-300 hover:bg-primary-100 focus:bg-primary-100 msm:border-none `}
           spacing={0}
           tabIndex={0}
           onKeyUp={(e) => {
@@ -185,8 +200,8 @@ function NavigationLinks({
           }}
         >
           <Box
-            className={`flex items-center justify-center gap-2 
-              px-4 py-4 font-primary text-[1rem] font-[700] `}
+            className={`flex items-center justify-center gap-1 
+              px-2 py-4 font-primary text-[1rem] font-[700] `}
           >
             <p>Others</p>
             {subMenuOpened ? (
@@ -197,13 +212,14 @@ function NavigationLinks({
           </Box>
           {subMenuOpened && (
             <Box className='absolute top-[calc(100%+1px)] z-10 m-0 flex w-full flex-col gap-1.5 border bg-primary-100 p-0'>
-              {otherLinks.map((link) => (
+              {otherLinks.map(({ name, href, Icon }) => (
                 <UnstyledLink
-                  key={link.name}
-                  href={link.href}
-                  className=' p-2 font-primary text-[.88rem] font-[700] hover:bg-primary-200'
+                  key={name}
+                  href={href}
+                  className='flex items-center gap-2 p-2 font-primary text-[.88rem] font-[700] hover:bg-primary-200'
                 >
-                  {link.name}
+                  <Icon />
+                  <span>{name}</span>
                 </UnstyledLink>
               ))}
             </Box>
@@ -216,7 +232,7 @@ function NavigationLinks({
 
 function SiteLogo() {
   return (
-    <Box className=' text-#000000 relative flex w-fit flex-col gap-1 pl-2'>
+    <Box className=' text-#000000 relative flex w-fit grow flex-col gap-1 pl-2'>
       <Typography
         variant='h1'
         className='font-primary text-[1.17rem] font-bold'

@@ -15,6 +15,9 @@ module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
+      screens: {
+        msm: '693px',
+      },
       fontFamily: {
         primary: ['Ubuntu', 'Roboto', 'Inter', ...fontFamily.sans],
       },

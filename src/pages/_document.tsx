@@ -11,7 +11,7 @@ import createEmotionCache from '@/utils/createEmotionCache';
 class MyDocument extends Document {
   render() {
     return (
-      <Html lang='en'>
+      <Html lang='en' className='scroll-smooth'>
         <Head>
           <meta name='theme-color' content={theme.palette.primary.main} />
           <link
