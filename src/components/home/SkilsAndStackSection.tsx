@@ -5,6 +5,7 @@ import SVGBlob from '@/components/home/SVGBlob';
 
 import { SVGImageData } from '@/@types/data';
 
+import CsharpIcon from '~/icons/csharp.svg';
 import DockerIcon from '~/icons/docker.svg';
 import FigmaIcon from '~/icons/figma.svg';
 import GitIcon from '~/icons/git.svg';
@@ -20,23 +21,20 @@ import TailwindCssIcon from '~/icons/tailwindcss.svg';
 import TypescriptIcon from '~/icons/typescript.svg';
 
 // #region SkillsArray
-const skillsTools: { name: string; icon: SVGImageData }[] = [
-  { name: 'Javascript', icon: JsIcon },
-  { name: 'Git', icon: GitIcon },
-  { name: 'Node.js', icon: NodeJsIcon },
-  { name: 'React.js', icon: ReactJsIcon },
-  { name: 'Typescript', icon: TypescriptIcon },
-  { name: 'Next.js', icon: NextJsIcon },
-  { name: 'MongoDB', icon: MongoDbIcon },
-  { name: 'MySQL', icon: MysqlIcon },
-  {
-    name: 'Material-UI',
-    // eslint-disable-next-line react/jsx-props-no-spreading
-    icon: ({ ...props }) => <MaterialUiIcon {...props} fill='#007fff' />,
-  },
-  { name: 'Tailwind CSS', icon: TailwindCssIcon },
-  { name: 'Figma', icon: FigmaIcon },
-  { name: 'Docker', icon: DockerIcon },
+const skillsTools: { name: string; Icon: SVGImageData }[] = [
+  { name: 'Javascript', Icon: JsIcon },
+  { name: 'Git', Icon: GitIcon },
+  { name: 'Node.js', Icon: NodeJsIcon },
+  { name: 'React.js', Icon: ReactJsIcon },
+  { name: 'Typescript', Icon: TypescriptIcon },
+  { name: 'C Sharp', Icon: CsharpIcon },
+  { name: 'Next.js', Icon: NextJsIcon },
+  { name: 'MongoDB', Icon: MongoDbIcon },
+  { name: 'MySQL', Icon: MysqlIcon },
+  { name: 'Material-UI', Icon: MaterialUiIcon },
+  { name: 'Tailwind CSS', Icon: TailwindCssIcon },
+  { name: 'Figma', Icon: FigmaIcon },
+  { name: 'Docker', Icon: DockerIcon },
 ];
 interface SkillsSectionProps {
   className?: string;
@@ -76,7 +74,7 @@ export default function SkilsAndStackSection({
               key={s.name}
               className='flex flex-col items-center justify-center gap-1'
             >
-              <s.icon className='h-20 w-auto self-center' />
+              <s.Icon className='h-20 w-auto self-center' />
               <Typography variant='body2' className='font-[Roboto] font-bold'>
                 {s.name}
               </Typography>

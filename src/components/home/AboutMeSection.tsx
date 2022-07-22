@@ -40,7 +40,8 @@ export default function AboutMeSection({
           View resume
         </ButtonLink>
         <ButtonLink
-          href='/resume/download'
+          href='/documents/resume-dev.pdf'
+          download
           className='text-center'
           variant='ghost'
         >

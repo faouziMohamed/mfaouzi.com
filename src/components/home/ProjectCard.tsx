@@ -46,6 +46,49 @@ export default function ProjectCard(props: IProjectDataType) {
   );
 }
 
+function CardFront(props: IProjectDataType & { onClick: () => void }) {
+  const { title, description, image } = props;
+  const { forks = 0, stars = 0 } = props;
+  const { onClick } = props;
+  return (
+    <Box className='p-0'>
+      <CardActionArea className='flex flex-col' onClick={onClick}>
+        <CardMedia
+          component='img'
+          height='140'
+          image={image || '/icons/office-1.svg'}
+          alt='green iguana'
+        />
+        <CardContent className='w-full'>
+          <Typography
+            gutterBottom
+            variant='h5'
+            className='font-primary text-base font-bold'
+            component='div'
+          >
+            {title}
+          </Typography>
+          <Box className='h-[5rem] '>
+            <Typography
+              variant='body2'
+              color='text.secondary'
+              className='w-full line-clamp-4'
+            >
+              {description}
+            </Typography>
+          </Box>
+        </CardContent>
+      </CardActionArea>
+      <Box className='flex items-end justify-between px-4 pb-1'>
+        <CardActions className=''>
+          <Button onClick={onClick}>More Details</Button>
+        </CardActions>
+        <RepoStats forks={forks} stars={stars} />
+      </Box>
+    </Box>
+  );
+}
+
 export function CardBack(props: IProjectDataType) {
   const { title, description, languages = ['No tech used'] } = props;
   const { forks = 0, stars = 0 } = props;
@@ -91,49 +134,6 @@ export function CardBack(props: IProjectDataType) {
         </Box>
       </CardBody>
     </Card>
-  );
-}
-
-function CardFront(props: IProjectDataType & { onClick: () => void }) {
-  const { title, description, image } = props;
-  const { forks = 0, stars = 0 } = props;
-  const { onClick } = props;
-  return (
-    <Box className='p-0'>
-      <CardActionArea className='flex flex-col' onClick={onClick}>
-        <CardMedia
-          component='img'
-          height='140'
-          image={image || '/icons/office-1.svg'}
-          alt='green iguana'
-        />
-        <CardContent className='w-full'>
-          <Typography
-            gutterBottom
-            variant='h5'
-            className='font-primary text-base font-bold'
-            component='div'
-          >
-            {title}
-          </Typography>
-          <Box className='h-[5rem] '>
-            <Typography
-              variant='body2'
-              color='text.secondary'
-              className='w-full line-clamp-4'
-            >
-              {description}
-            </Typography>
-          </Box>
-        </CardContent>
-      </CardActionArea>
-      <Box className='flex items-end justify-between px-4 pb-1'>
-        <CardActions className=''>
-          <Button onClick={onClick}>More Details</Button>
-        </CardActions>
-        <RepoStats forks={forks} stars={stars} />
-      </Box>
-    </Box>
   );
 }
 

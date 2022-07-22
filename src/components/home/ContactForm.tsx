@@ -25,7 +25,7 @@ export default function ContactForm(props: InputFieldProps) {
   return (
     <Box
       component='form'
-      className={`flex w-full flex-col gap-4 rounded-xl bg-form-gradient p-4 ${className}`} // eslint-disable-next-line @typescript-eslint/no-misused-promises
+      className={`flex w-full max-w-[50rem] flex-col gap-4 rounded-xl bg-form-gradient p-4 ${className}`} // eslint-disable-next-line @typescript-eslint/no-misused-promises
       onSubmit={handleSubmit(onSubmit)}
     >
       <FormTextField

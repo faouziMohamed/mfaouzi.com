@@ -22,7 +22,7 @@ export default function HomePage() {
   return (
     <Layout className='flex flex-col gap-4 p-0'>
       <Seo templateTitle='Home' title='Faouzi Mohamed' />
-      <Main component='main' className='flex flex-col gap-4 '>
+      <Main component='main' className='flex max-w-none flex-col gap-4 '>
         <Box className='relative flex w-full basis-6 flex-col md:grow md:pt-24'>
           <SpaceMans />
           <Box className='z-10 flex flex-col justify-center gap-2 md:flex-row md:items-center'>

@@ -65,7 +65,7 @@ export default function Header() {
   const isMediumSmallScreen = useMediaQuery('(min-width: 693px)'); // sm
 
   return (
-    <nav className='relative flex w-full flex-col'>
+    <nav className='relative flex w-full flex-col px-4'>
       <Stack className='flex w-full flex-row items-center justify-between gap-1.5'>
         {isMediumSmallScreen && (
           <UnstyledLink href='/'>
