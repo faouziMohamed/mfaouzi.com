@@ -29,10 +29,9 @@ export default function AboutMeSection({
         </Typography>
         <Typography variant='body1' className='font-[300]'>
           I&apos;m interested in the intersection of technology and design, and
-          I Love Javascript technologies also I am a DevOps enthusiast. I love
-          to learn new things. I have a background in computer science and
-          mathematics and I am currently pursuing a Master degree in computer
-          science.
+          I Love Javascript technologies. I love to learn new things. I have a
+          background in computer science and mathematics and I am currently
+          pursuing a Master degree in computer science.
         </Typography>
       </Box>
       <Box className='flex w-full items-center justify-center gap-4'>
@@ -43,8 +42,7 @@ export default function AboutMeSection({
           href='/documents/resume-dev.pdf'
           download
           className='text-center'
-          variant='ghost'
-        >
+          variant='ghost'>
           Download resume
         </ButtonLink>
       </Box>
