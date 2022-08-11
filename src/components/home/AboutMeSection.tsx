@@ -42,7 +42,8 @@ export default function AboutMeSection({
           href='/documents/resume-dev.pdf'
           download
           className='text-center'
-          variant='ghost'>
+          variant='ghost'
+        >
           Download resume
         </ButtonLink>
       </Box>
