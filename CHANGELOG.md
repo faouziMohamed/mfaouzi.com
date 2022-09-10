@@ -2,6 +2,36 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.1.4 (2022-09-10)
+
+
+### Features
+
+* **& fix:** add og metada and update projects data in json file, fix social icon errors ([ac94c1b](https://github.com/faouziMohamed/fz-portfolio/commit/ac94c1bf61b437c423b8b90db29fcaeb3553c3a6))
+* add contact form for small screen layout and info banner ([b2c7fb7](https://github.com/faouziMohamed/fz-portfolio/commit/b2c7fb7fabbf9860d865589086df43326411f0f9))
+* add footer ([6f92d24](https://github.com/faouziMohamed/fz-portfolio/commit/6f92d248e3235e9afd5cb7cd88ec16e0b82fdf38))
+* add home page title ([f4c7fe0](https://github.com/faouziMohamed/fz-portfolio/commit/f4c7fe0e8cdab44ba23af87ede10af2dc315e67f))
+* add new skill, update contact form ([26ad61d](https://github.com/faouziMohamed/fz-portfolio/commit/26ad61d6a7c554ccea8ede2729e06cabb4b523e8))
+* add og metada and update projects data in json file ([8c73815](https://github.com/faouziMohamed/fz-portfolio/commit/8c73815fcd2c3f11504b7ec4c7ab0fbd1b967934))
+* add project modal, remove hard coded data in  code ([c6af5f3](https://github.com/faouziMohamed/fz-portfolio/commit/c6af5f3a611501be1162950a89bffb78069deaa3))
+* add responsive header ([8a68171](https://github.com/faouziMohamed/fz-portfolio/commit/8a6817100af6a72190b7f02513c544ddadf81eb5))
+* add some section ofthe  home page ([6ba0fd7](https://github.com/faouziMohamed/fz-portfolio/commit/6ba0fd7987de9fe990931ee6c72ec35c678637b3))
+* **configuration:** configure projects files and packages ([9598a4b](https://github.com/faouziMohamed/fz-portfolio/commit/9598a4b4688e966500dfdeb836642ceb444a908d))
+* fix responsivness of navbar, add icons to the nvbar ([730f38d](https://github.com/faouziMohamed/fz-portfolio/commit/730f38d643b7850d337433986d07da8ddeb1b705))
+* make the navbar fully responsive ([7adfb53](https://github.com/faouziMohamed/fz-portfolio/commit/7adfb53e798f6a5d681eb9b0779d42cca17f1b60))
+
+
+### Bug Fixes
+
+* fix ProjectData interface type ([b12b47e](https://github.com/faouziMohamed/fz-portfolio/commit/b12b47e50dae4905aa5fcb0cf686cbc9e70dfcfb))
+* fix typescript eslint parser version not supported ([5e0093c](https://github.com/faouziMohamed/fz-portfolio/commit/5e0093c9c297f69d5a7a06abc629ce38a8f6d8b6))
+* fix typescript eslint parser version not supported ([47ba2e0](https://github.com/faouziMohamed/fz-portfolio/commit/47ba2e0250c4eb84246df70b899c27bb97f11c3c))
+* fix unable to locate package ([eadab31](https://github.com/faouziMohamed/fz-portfolio/commit/eadab3191333d32c2672d5964bfb455e397ced0d))
+* **refactor:** moved non page tsx file to the it reserved folder ([66da745](https://github.com/faouziMohamed/fz-portfolio/commit/66da7458a5382b2f3ad0e775720ebb927ad2e6ee))
+* svg fix component props ([053f8c7](https://github.com/faouziMohamed/fz-portfolio/commit/053f8c74b349c230b13f4cc00cb8d3fd336676cd))
+* update intro section next/image props ([5106440](https://github.com/faouziMohamed/fz-portfolio/commit/510644044d01a7d1922e03a060e3cbfcd793b92f))
+* **workaround tests:** add mock for next/image ([3e9c719](https://github.com/faouziMohamed/fz-portfolio/commit/3e9c719b75bad4dfb675286fda11c42fcc42c96c))
+
 ### [0.1.3](https://github.com/faouziMohamed/fz-resume/compare/v0.1.2...v0.1.3) (2022-03-03)
 
 ### 0.1.2 (2022-03-03)
