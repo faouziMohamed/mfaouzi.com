@@ -22,7 +22,7 @@ export default function AboutMeSection({
           <SVGBlob Blob={AboutMeBlob} twHeight='h-7' twBottom='-bottom-3' />
         )}
       />
-      <Box className='flex flex-col gap-4 text-justify   leading-6 text-black'>
+      <Box className='flex flex-col gap-4 text-justify leading-6 text-black'>
         <Typography variant='body1' className='font-[300] '>
           I am a software engineer/MERN Stack developer with a passion for
           building software that solves problems.
