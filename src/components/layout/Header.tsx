@@ -6,8 +6,7 @@ import {
   Typography,
   useMediaQuery,
 } from '@mui/material';
-import Image from 'next/image';
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { GoMarkGithub } from 'react-icons/go';
 import {
   MdClose,
@@ -23,7 +22,10 @@ import {
   MdWbSunny,
 } from 'react-icons/md';
 
-import UnstyledLink from '@/components/links/UnstyledLink';
+import UnStyledLink from '@/components/links/UnStyledLink';
+import NextImage from '@/components/NextImage';
+
+import { useNextTheme } from '@/themes/themeContext';
 
 import HeaderLineBlob from '~/icons/header-line-blob.svg';
 
@@ -62,78 +64,55 @@ const otherLinks = [
   },
 ];
 export default function Header() {
+  const { theme: themeName } = useNextTheme();
+  const [mounted, setMounted] = useState(false);
   const isMediumSmallScreen = useMediaQuery('(min-width: 693px)'); // sm
-
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return null;
   return (
     <nav className='relative flex w-full flex-col px-4'>
       <Stack className='flex w-full flex-row items-center justify-between gap-1.5'>
         {isMediumSmallScreen && (
-          <UnstyledLink href='/'>
+          <UnStyledLink href='/'>
             <SiteLogo />
-          </UnstyledLink>
+          </UnStyledLink>
         )}
         <NavigationMenu />
       </Stack>
-      <Box className='absolute inset-0 -top-1 -z-10 w-full'>
-        <Image
-          src='/icons/header-blob.svg'
+      <Box className='xl:-top-22 absolute inset-0 -top-1 -z-10 w-full sm:-top-12 md:-top-16 lg:-top-[7rem] 2xl:-top-[8rem]'>
+        <NextImage
+          src={`/icons/header-blob-${themeName}.svg`}
           alt='Header background blob'
           priority
           width='100'
           height='31'
-          className='w-full object-cover'
+          className='-sm:top-6 relative w-full  object-cover'
           layout='responsive'
         />
       </Box>
     </nav>
   );
 }
+
 function NavigationMenu() {
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
-  const handleToggleTheme = () => setIsDarkMode((prev) => !prev);
   const [menuOpened, setMenuOpened] = useState<boolean>(false);
-  const handleToogleMenu = () => setMenuOpened((prev) => !prev);
   const isMediumSmallScreen = useMediaQuery('(min-width: 693px)'); // sm
   return (
-    <Box className='absolute inset-0 z-30 h-fit w-full select-none bg-primary-50 p-0 msm:relative msm:flex msm:w-fit msm:grow msm:flex-row-reverse msm:justify-start msm:bg-transparent'>
+    <Box className='absolute inset-0 z-30 h-fit w-full select-none bg-primary-300 bg-opacity-50 p-0 dark:bg-dark-400 dark:bg-opacity-70  msm:relative msm:flex msm:w-fit msm:grow msm:flex-row-reverse msm:justify-start msm:bg-transparent msm:dark:bg-transparent'>
       <Box
         component='div'
-        className='flex w-full items-center justify-between bg-primary-200 py-1 px-2 msm:w-fit msm:justify-end msm:bg-transparent'
+        className='flex w-full items-center justify-between bg-cyan-200 py-1 px-2 dark:bg-dark-400 msm:w-fit msm:justify-end msm:bg-transparent msm:dark:bg-transparent'
       >
-        <IconButton
-          size='medium'
-          className='text-[#001344] msm:hidden'
-          onClick={handleToogleMenu}
-          tabIndex={0}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter') handleToogleMenu();
-          }}
-          onKeyUp={(e) => {
-            if (e.key === 'Escape') setMenuOpened(false);
-          }}
-        >
-          {menuOpened ? (
-            <MdClose fontSize='2rem' className='msm:text-sm' />
-          ) : (
-            <MdMenu fontSize='2rem' className='msm:text-sm' />
-          )}
-        </IconButton>
+        <ToggleMenuButton
+          setMenuOpened={setMenuOpened}
+          menuOpened={menuOpened}
+        />
         {!isMediumSmallScreen && (
-          <UnstyledLink href='/'>
+          <UnStyledLink href='/'>
             <SiteLogo />
-          </UnstyledLink>
+          </UnStyledLink>
         )}
-        <IconButton size='small' onClick={handleToggleTheme}>
-          {isDarkMode ? (
-            <MdWbSunny fontSize='1.9rem' className='text-white' tabIndex={0} />
-          ) : (
-            <MdNightlightRound
-              className='text-[#001344]'
-              fontSize='1.9rem'
-              tabIndex={0}
-            />
-          )}
-        </IconButton>
+        <ToggleThemeButton />
       </Box>
       {/* Navigation menu */}
       <NavigationLinks
@@ -142,6 +121,57 @@ function NavigationMenu() {
         setMenuOpened={setMenuOpened}
       />
     </Box>
+  );
+}
+
+function ToggleThemeButton() {
+  const { theme: themeName, updateTheme } = useNextTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return null;
+  return (
+    <IconButton
+      size='small'
+      className='text-gray-800 dark:text-yellow-300 sm:text-cyan-800'
+      onClick={updateTheme}
+    >
+      {themeName === 'dark' ? (
+        <MdWbSunny fontSize='1.9rem' tabIndex={0} />
+      ) : (
+        <MdNightlightRound fontSize='1.9rem' tabIndex={0} />
+      )}
+    </IconButton>
+  );
+}
+
+function ToggleMenuButton(props: {
+  setMenuOpened: (opened: boolean) => void;
+  menuOpened: boolean;
+}) {
+  const { menuOpened, setMenuOpened } = props;
+  const handleToggleMenu = useCallback(() => {
+    setMenuOpened(!menuOpened);
+  }, [menuOpened, setMenuOpened]);
+
+  return (
+    <IconButton
+      size='medium'
+      className='text-[#001344] dark:text-gray-100 msm:hidden'
+      tabIndex={0}
+      onClick={handleToggleMenu}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter') handleToggleMenu();
+      }}
+      onKeyUp={(e) => {
+        if (e.key === 'Escape') setMenuOpened(false);
+      }}
+    >
+      {menuOpened ? (
+        <MdClose fontSize='2rem' className='msm:text-sm' />
+      ) : (
+        <MdMenu fontSize='2rem' className='msm:text-sm' />
+      )}
+    </IconButton>
   );
 }
 
@@ -154,9 +184,9 @@ function NavigationLinks({
   isMenuOpened: boolean;
   setMenuOpened: (prev: boolean) => void;
 }) {
-  const [subMenuOpened, setSubMenuopened] = useState<boolean>(false);
-  const handleClick = () => setSubMenuopened((prev) => !prev);
-  const handleClickAway = () => setSubMenuopened(false);
+  const [subMenuOpened, setSubMenuOpened] = useState<boolean>(false);
+  const handleClick = () => setSubMenuOpened((prev) => !prev);
+  const handleClickAway = () => setSubMenuOpened(false);
 
   return (
     <Box
@@ -166,14 +196,14 @@ function NavigationLinks({
     >
       {navLinks.map(({ name, href, Icon }) => (
         <Box className='m-0 w-full' key={name}>
-          <UnstyledLink
+          <UnStyledLink
             href={href}
             tabIndex={0}
-            className='flex w-full items-center justify-start gap-1 border-b border-slate-300 p-2 py-4 px-2 font-primary text-[1rem] font-[700] hover:bg-primary-100 focus:bg-primary-100 msm:border-none'
+            className='flex w-full items-center justify-start gap-1 border-b border-slate-300 p-2 py-4 px-2 font-primary text-[1rem] font-[700] hover:bg-primary-300 focus:bg-primary-300 dark:hover:bg-dark-500  dark:focus:bg-dark-500 msm:border-none'
           >
             <Icon />
             <span>{name}</span>
-          </UnstyledLink>
+          </UnStyledLink>
         </Box>
       ))}
 
@@ -184,13 +214,13 @@ function NavigationLinks({
       >
         <Stack
           className={`relative flex w-full cursor-pointer items-start 
-            gap-0 border-b border-slate-300 hover:bg-primary-100 focus:bg-primary-100 msm:border-none `}
+            gap-0 border-b border-slate-300 hover:bg-primary-300 focus:bg-primary-300 dark:hover:bg-dark-500  dark:focus:bg-dark-500 msm:border-none `}
           spacing={0}
           tabIndex={0}
           onKeyUp={(e) => {
             if (e.key === 'Escape') {
               setMenuOpened(false);
-              setSubMenuopened(false);
+              setSubMenuOpened(false);
             }
           }}
           onClick={handleClick}
@@ -211,16 +241,16 @@ function NavigationLinks({
             )}
           </Box>
           {subMenuOpened && (
-            <Box className='absolute top-[calc(100%+1px)] z-10 m-0 flex w-full flex-col gap-1.5 border bg-primary-100 p-0'>
+            <Box className='absolute top-[calc(100%+1px)] z-10 m-0 flex w-full flex-col gap-1.5 border border-primary-300 bg-primary-300 bg-opacity-75 p-0 drop-shadow-sm dark:border-dark-400 dark:bg-dark-400 dark:bg-opacity-75'>
               {otherLinks.map(({ name, href, Icon }) => (
-                <UnstyledLink
+                <UnStyledLink
                   key={name}
                   href={href}
-                  className='flex items-center gap-2 p-2 font-primary text-[.88rem] font-[700] hover:bg-primary-200'
+                  className='flex items-center gap-2 p-2  pl-3 font-primary text-[.88rem] font-[700] hover:bg-primary-300  dark:hover:bg-dark-500  '
                 >
                   <Icon />
                   <span>{name}</span>
-                </UnstyledLink>
+                </UnStyledLink>
               ))}
             </Box>
           )}

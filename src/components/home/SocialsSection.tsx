@@ -1,7 +1,7 @@
 import { Box, Box as Section } from '@mui/material';
 
 import LayerIntro from '@/components/home/LayerIntro';
-import UnstyledLink from '@/components/links/UnstyledLink';
+import UnStyledLink from '@/components/links/UnStyledLink';
 
 import { DevDataTypes, SVGImageData } from '@/@types/data';
 
@@ -66,10 +66,10 @@ function SocialIconLink({
   href: string;
 }) {
   return (
-    <UnstyledLink href={href}>
+    <UnStyledLink href={href}>
       <Box className='flex h-10 w-10 items-center justify-center'>
         <IconComponent className='h-full w-full object-cover' />
       </Box>
-    </UnstyledLink>
+    </UnStyledLink>
   );
 }

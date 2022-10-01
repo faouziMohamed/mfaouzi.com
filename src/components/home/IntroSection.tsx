@@ -55,7 +55,7 @@ export default function IntroSection({
           <Typography
             variant='subtitle1'
             component='p'
-            className='font-primary text-base font-[300] leading-normal text-black'
+            className='font-primary text-base font-[300] leading-normal'
           >
             {data.skils.join(' | ')}
           </Typography>

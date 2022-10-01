@@ -9,7 +9,7 @@ import ArrowLink from '@/components/links/ArrowLink';
 import ButtonLink from '@/components/links/ButtonLink';
 import PrimaryLink from '@/components/links/PrimaryLink';
 import UnderlineLink from '@/components/links/UnderlineLink';
-import UnstyledLink from '@/components/links/UnstyledLink';
+import UnStyledLink from '@/components/links/UnStyledLink';
 import NextImage from '@/components/NextImage';
 import Seo from '@/components/Seo';
 import Skeleton from '@/components/Skeleton';
@@ -99,7 +99,7 @@ export default function ComponentsPage() {
                     className={clsx(
                       'block max-w-xs rounded',
                       mode === 'dark'
-                        ? 'border border-gray-600 bg-dark'
+                        ? 'bg-dark border border-gray-600'
                         : 'border-gray-300 bg-white',
                       'focus:border-primary-400 focus:outline-none focus:ring focus:ring-primary-400',
                     )}
@@ -155,10 +155,10 @@ export default function ComponentsPage() {
                   give custom cursor for outside links.
                 </p>
                 <div className='space-x-2'>
-                  <UnstyledLink href='/'>Internal Links</UnstyledLink>
-                  <UnstyledLink href='https://theodorusclarence.com'>
+                  <UnStyledLink href='/'>Internal Links</UnStyledLink>
+                  <UnStyledLink href='https://theodorusclarence.com'>
                     Outside Links
-                  </UnstyledLink>
+                  </UnStyledLink>
                 </div>
               </li>
               <li className='space-y-2'>
@@ -199,7 +199,7 @@ export default function ComponentsPage() {
                   </ArrowLink>
                   <ArrowLink href='/'>Direction Right</ArrowLink>
                   <ArrowLink
-                    as={UnstyledLink}
+                    as={UnStyledLink}
                     className='inline-flex items-center'
                     href='/'
                   >

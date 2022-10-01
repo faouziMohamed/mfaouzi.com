@@ -15,10 +15,9 @@ interface IProjectProps {
   projects: IProjectDataType[];
 }
 
-export default function ProjectSection({
-  className = '',
-  projects,
-}: IProjectProps) {
+export default function ProjectSection(props: IProjectProps) {
+  const { className = '', projects } = props;
+
   return (
     <Section
       id='projects'

@@ -8,7 +8,7 @@ import ContactSection from '@/components/home/ContactSection';
 import DownArrowIcon from '@/components/home/DownArrowIcon';
 import IntroSection from '@/components/home/IntroSection';
 import ProjectsSection from '@/components/home/ProjectsSection';
-import SkillsAndStackSection from '@/components/home/SkilsAndStackSection';
+import SkillsAndStackSection from '@/components/home/SkillsAndStackSection';
 import SocialsSection from '@/components/home/SocialsSection';
 import SpaceMan from '@/components/images/SpaceMan';
 import Layout from '@/components/layout/Layout';
@@ -30,11 +30,11 @@ export default function HomePage() {
               data={data}
               className='grow basis-full px-6 md:px-4'
             />
-            <AboutMeSection className='rounded border border-primary-200 bg-primary-100 bg-opacity-80 px-6 py-2' />
+            <AboutMeSection className='rounded border border-primary-200 bg-primary-100 bg-opacity-80 px-6 py-2 dark:border-dark-300 dark:bg-dark-500 dark:bg-opacity-80' />
           </Box>
         </Box>
         <SocialsSection data={data} className='basis-full px-6 md:px-4' />
-        <DownArrowIcon className='text-5xl' />
+        <DownArrowIcon className=' text-5xl' />
         <ProjectsSection
           projects={projects as IProjectDataType[]}
           className='px-6'
@@ -56,6 +56,7 @@ export interface ProjectData {
   description: string;
   languages: { [key: string]: number };
 }
+
 function SpaceMans() {
   const media = useMediaQuery('(min-width: 768px)');
   return (

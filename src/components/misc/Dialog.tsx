@@ -58,7 +58,7 @@ const FZDialog: FC<IDialogProps> = (props) => {
         </DialogTitle>
       )}
       <DialogContent className='p-0'>{children}</DialogContent>
-      <DialogActions className='p-1'>
+      <DialogActions className='p-1 dark:bg-dark-primary'>
         <CloseButtonComponent onClick={handleClose} className='font-bold'>
           {closeBtnText}
         </CloseButtonComponent>

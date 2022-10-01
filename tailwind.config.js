@@ -10,8 +10,9 @@ function withOpacityValue(variable) {
   };
 }
 
-/** @type {import("@types/tailwindcss/tailwind-config").TailwindConfig } */
+/** @type {import('@types/tailwindcss/tailwind-config').TailwindConfig } */
 module.exports = {
+  darkMode: 'class',
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
@@ -35,7 +36,19 @@ module.exports = {
           800: withOpacityValue('--tw-color-primary-800'),
           900: withOpacityValue('--tw-color-primary-900'),
         },
-        dark: '#000f30',
+        dark: {
+          50: '#5f5f5f',
+          100: '#374151',
+          200: '#1f2937',
+          300: '#011f37',
+          400: '#010f27',
+          500: '#010f1f',
+          600: '#00041a',
+          700: '#000015',
+          800: '#00000f',
+          900: '#00000a',
+          primary: '#0f2937',
+        },
       },
       backgroundImage: {
         'form-gradient':

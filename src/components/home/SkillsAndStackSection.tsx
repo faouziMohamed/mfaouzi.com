@@ -36,18 +36,20 @@ const skillsTools: { name: string; Icon: SVGImageData }[] = [
   { name: 'Figma', Icon: FigmaIcon },
   { name: 'Docker', Icon: DockerIcon },
 ];
+
 interface SkillsSectionProps {
   className?: string;
 }
+
 // #endregion SkillsArray
 
-export default function SkilsAndStackSection({
+export default function SkillsAndStackSection({
   className = '',
 }: SkillsSectionProps) {
   return (
     <Section
       id='skills'
-      className={`flex flex-col items-center justify-center gap-4 ${className}`}
+      className={`flex flex-col items-center justify-center gap-4 rounded border bg-primary-100 bg-opacity-10 py-2 dark:border-dark-primary dark:bg-dark-500 dark:bg-opacity-80 ${className}`}
     >
       <SectionTitleWithBlob
         title='Skills & Stacks'
@@ -62,7 +64,7 @@ export default function SkilsAndStackSection({
       <Box className='flex w-full justify-start'>
         <Typography
           variant='h6'
-          className='text-center font-primary text-base font-bold text-primary-800'
+          className='text-center font-primary text-base font-bold text-primary-800 dark:text-primary-300'
         >
           Mostly used
         </Typography>

@@ -7,7 +7,7 @@ export default function FormTextField(props: FormTextFieldProps) {
     <Box className='flex flex-col gap-1 '>
       <InputLabel
         htmlFor={`${name}-input`}
-        className='font-[Roboto] text-base font-[500] text-dark text-opacity-90'
+        className='text-dark font-[Roboto] text-base font-[500] text-opacity-90'
       >
         {label}
       </InputLabel>

@@ -1,4 +1,4 @@
-import { Box, Button } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 import { useForm } from 'react-hook-form';
 
 import FormTextField, { FormValues } from '@/components/home/FormTextField';
@@ -22,12 +22,21 @@ export default function ContactForm(props: InputFieldProps) {
     console.log(data);
   };
 
+  // show a message telling the form is not yet implemented
+
   return (
     <Box
       component='form'
-      className={`flex w-full max-w-[50rem] flex-col gap-4 rounded-xl bg-form-gradient p-4 ${className}`} // eslint-disable-next-line @typescript-eslint/no-misused-promises
+      className={`relative flex w-full max-w-[50rem] flex-col gap-4 rounded-xl bg-form-gradient p-4 ${className}`} // eslint-disable-next-line @typescript-eslint/no-misused-promises
       onSubmit={handleSubmit(onSubmit)}
     >
+      <Box className='absolute inset-0 z-10 h-full rounded text-black'>
+        <Box className='flex h-full w-full items-center justify-center'>
+          <Typography className='text-2xl font-bold'>
+            This form is not yet implemented
+          </Typography>
+        </Box>
+      </Box>
       <FormTextField
         register={register('email', { required: true, pattern: emailRegex })}
         type='email'
