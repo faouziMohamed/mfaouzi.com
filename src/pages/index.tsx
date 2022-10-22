@@ -3,6 +3,7 @@ import { Box, Container as Main, useMediaQuery } from '@mui/material';
 import devData from '@/data/dev-data.json';
 import projects from '@/data/projects.json';
 
+import FadeEffectWrapper from '@/components/animations/FadeEffectWrapper';
 import AboutMeSection from '@/components/home/AboutMeSection';
 import ContactSection from '@/components/home/ContactSection';
 import DownArrowIcon from '@/components/home/DownArrowIcon';
@@ -30,7 +31,9 @@ export default function HomePage() {
               data={data}
               className='grow basis-full px-6 md:px-4'
             />
-            <AboutMeSection className='rounded border border-primary-200 bg-primary-100 bg-opacity-80 px-6 py-2 dark:border-dark-300 dark:bg-dark-500 dark:bg-opacity-80' />
+            <FadeEffectWrapper gutterTop='1rem'>
+              <AboutMeSection className='rounded border border-primary-200 bg-primary-100 bg-opacity-80 px-6 py-2 dark:border-dark-300 dark:bg-dark-500 dark:bg-opacity-80' />
+            </FadeEffectWrapper>
           </Box>
         </Box>
         <SocialsSection data={data} className='basis-full px-6 md:px-4' />
