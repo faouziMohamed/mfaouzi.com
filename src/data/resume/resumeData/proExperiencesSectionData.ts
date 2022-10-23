@@ -7,7 +7,7 @@ export const proExperiencesSectionData: IProfessionalExperience = {
       Title: 'Requirement Admin - End-of-study internship',
       Company: 'Lear Corporation',
       CompanyLink: 'https://www.lear.com/',
-      city: 'Rabat Technopolis Sala Al Jadida',
+      city: 'Rabat Technopolis, Sala Al Jadida',
       Country: 'Morocco',
       Date: '06/2021 - 08/2021',
       Description: {

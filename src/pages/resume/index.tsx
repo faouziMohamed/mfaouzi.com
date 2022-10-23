@@ -36,7 +36,11 @@ export default function HomePage() {
   return (
     <ResumeLayout>
       <Box className='flex flex-col gap-8 bg-transparent sm:flex-row sm:gap-1'>
-        <Seo title='Resume' />
+        <Seo
+          title='Resume'
+          /* eslint-disable-next-line @typescript-eslint/restrict-template-expressions */
+          url={`${process.env.NEXT_PUBLIC_SITE_URL}/resume`}
+        />
         <Box className='flex flex-col gap-6 bg-gray-800 p-2 py-8 text-white dark:bg-dark-r-400 md:w-full md:max-w-md'>
           <Box className='flex flex-col items-center gap-4 py-16 sm:flex-col sm:justify-between md:flex-col'>
             <UserAvatar />

@@ -24,8 +24,8 @@ const userContactsAndProfileData: IUserContactsAndProfileData = {
     Link: 'https://www.linkedin.com/in/mohamed-faouzi',
   },
   Website: {
-    Title: 'fz-portfolio.vercel.app',
-    Link: 'https://fz-portfolio.vercel.app',
+    Title: 'mfaouzi.live',
+    Link: 'https://mfaouzi.live',
   },
   Github: {
     Title: 'faouziMohamed',

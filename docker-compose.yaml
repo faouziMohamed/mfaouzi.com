@@ -1,20 +1,15 @@
-version: '3.7'
+version: '3.9'
 services:
-  db:
-    networks:
-      - mongo-net
-    image: mongo:5
-    restart: 'always'
-    container_name: mongodb
-    environment:
-      DATA_DIR: /data/db
+  app:
+    build: .
+    container_name: fz-portfolio
     ports:
-      - 27017:27017
-    volumes:
-      - mongo-dir:/data/db
+      - "3000:3000"
 
-volumes:
-  mongo-dir:
-
-networks:
-  mongo-net:
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - "8080:80"
+    depends_on:
+      - app

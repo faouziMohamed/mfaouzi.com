@@ -15,7 +15,6 @@ const lastBuild = new Date(new Date().toUTCString()).toLocaleString(
 );
 
 const { createSecureHeaders } = require('next-secure-headers');
-const isProd = process.env.NODE_ENV === 'production';
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL.replace(/(^\w+:|^)\/\//, '');
 const env = process.env.NODE_ENV;
 // console.log(router);
