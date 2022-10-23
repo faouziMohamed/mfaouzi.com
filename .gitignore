@@ -37,3 +37,11 @@ yarn-error.log*
 robots.txt
 sitemap.xml
 /.ignore.ts
+/.idea/codeStyles/Project.xml
+/.idea/sonarlint/issuestore/
+/.idea/inspectionProfiles/
+/.idea/.name
+/.idea/git_toolbox_prj.xml
+/.idea/modules.xml
+/.idea/portfolio.iml
+/.idea/vcs.xml
