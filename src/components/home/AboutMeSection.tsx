@@ -40,11 +40,7 @@ export default function AboutMeSection({
         </Typography>
       </Box>
       <Box className='flex w-full items-center justify-center gap-4'>
-        <ButtonLink
-          href='https://kutokcv.netlify.app'
-          className='text-center'
-          variant='primary'
-        >
+        <ButtonLink href='/resume' className='text-center' variant='primary'>
           View resume
         </ButtonLink>
         <ButtonLink

@@ -17,7 +17,10 @@ const UnStyledLink = forwardRef<HTMLAnchorElement, UnStyledLinkProps>(
     const isNewTab =
       openNewTab !== undefined
         ? openNewTab
-        : href && !href.startsWith('/') && !href.startsWith('#');
+        : href &&
+          !href.startsWith('/') &&
+          !href.startsWith('#') &&
+          !href.includes(process.env.NEXT_PUBLIC_SITE_URL!);
 
     if (!isNewTab) {
       return (

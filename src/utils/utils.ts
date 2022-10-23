@@ -32,3 +32,8 @@ export const postData: PostFC = async (url, data) => {
 
   return response.json();
 };
+
+export const camelCaseToTitleCase = (str: string) => {
+  const regex = /([A-Z])(?=[A-Z][a-z])|([a-z])(?=[A-Z])/g;
+  return startCaseAll(str.replace(regex, '$& '));
+};

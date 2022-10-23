@@ -1,7 +1,7 @@
 {
   "avatar": "~/images/faouzi-mhd.jpeg",
   "fullName": "Faouzi Mohamed",
-  "skils": ["Software Engineer", "Full-stack Web Developer"],
+  "skills": ["Software Engineer", "Full-stack Web Developer"],
   "socials": {
     "facebook": {
       "url": "https://www.facebook.com/faouzi.mohamed.97",

@@ -9,7 +9,7 @@ interface IFadeEffect {
   centerContent?: boolean;
 }
 
-const cardVariants: Variants = {
+export const cardVariants: Variants = {
   offscreen: {
     opacity: 0,
     y: 0,
@@ -54,7 +54,7 @@ export default function FadeEffectWrapper(props: IFadeEffect & StackProps) {
       <motion.div
         initial='offscreen'
         whileInView='onscreen'
-        viewport={{ once: false, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.2 }}
         className='w-full'
       >
         <motion.div className={`w-full ${flexClasses}`} variants={cardVariants}>

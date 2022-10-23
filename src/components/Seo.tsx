@@ -80,7 +80,7 @@ export default function Seo(props: SeoProps) {
       <meta property='og:site_name' content={meta.siteName} />
       <meta property='og:description' content={meta.description} />
       <meta property='og:title' content={meta.title} />
-      <meta name='image' property='og:image' content={meta.image} />
+      <meta property='og:image' content={meta.image} name='image' />
       <meta property='og:image:width' content={meta.imageWidth} />
       <meta property='og:image:height' content={meta.imageHeight} />
       <meta name='fb:app_id' property='fb:app_id' content={meta.ogId} />
