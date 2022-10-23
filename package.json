@@ -27,7 +27,7 @@
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "eslint src --fix && yarn format:fix",
-    "lint:strict": "eslint --max-warnings=0 {src,*config*{js,ts}}",
+    "lint:strict": "eslint --max-warnings=0 src",
     "type-check": "tsc --noEmit --incremental false",
     "test:watch": "jest --watch",
     "test": "jest",
