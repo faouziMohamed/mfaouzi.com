@@ -15,6 +15,6 @@ describe('Open Graph function should work correctly', () => {
       description: 'Test description',
       siteName: 'Test site name',
     });
-    expect(result).toContain('&templateTitle=Test%20Template%20Title');
+    expect(result).toContain('&templateTitle=Test%2520Template%2520Title');
   });
 });

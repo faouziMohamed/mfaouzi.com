@@ -37,7 +37,7 @@ export default function IntroSection({
         >
           <Image
             src={devPicture}
-            alt='Header background blob'
+            alt='MainHeader background blob'
             layout='responsive'
             width='208'
             height='208'
@@ -57,7 +57,7 @@ export default function IntroSection({
             component='p'
             className='font-primary text-base font-[300] leading-normal'
           >
-            {data.skils.join(' | ')}
+            {data.skills.join(' | ')}
           </Typography>
         </Stack>
       </Stack>

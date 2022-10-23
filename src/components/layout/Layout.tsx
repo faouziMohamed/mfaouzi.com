@@ -1,52 +1,73 @@
-import {
-  Box as AlertBanner,
-  Box as MainContainer,
-  Box as SiteContent,
-  Stack,
-  Typography,
-} from '@mui/material';
-import { ReactNode } from 'react';
-import { RiMagicFill } from 'react-icons/ri';
+import { Box as SiteContent } from '@mui/material';
+import { AnimatePresence, motion } from 'framer-motion';
+import { ReactNode, useEffect, useState } from 'react';
 
+import {
+  mainNavLinks,
+  mainOtherLinks,
+} from '@/components/Headers/headers-data';
+import MainHeader from '@/components/Headers/MainHeader';
 import Footer from '@/components/layout/Footer';
+import UnderConstructionBanner from '@/components/layout/UnderConstructionBanner';
 
 import { useNextTheme } from '@/themes/themeContext';
-
-import Header from './Header';
 
 interface LayoutProps {
   children: ReactNode;
   className?: string;
 }
 
+const layoutVariants = {
+  hidden: {
+    opacity: 0,
+    x: 100,
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      type: 'spring',
+      stiffness: 100,
+      damping: 20,
+    },
+  },
+};
 export default function Layout({ children, className = '' }: LayoutProps) {
   const isBuilding = process.env.NEXT_PUBLIC_ISBUILDING === 'true';
   const { theme } = useNextTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  if (!mounted) return null;
+  const env = process.env.NODE_ENV;
+  // decide http or https based on node environment
+  const protocol = env === 'development' ? 'http://' : 'https://';
+  const domainUrl = window.location.href.replace(/resume$/, '');
+  if (domainUrl.startsWith(`${protocol}resume.`)) {
+    window.location.replace('/resume');
+  }
   let bg = '';
   if (theme === 'light') {
     bg = 'bg-app';
   }
   return (
-    <MainContainer className={`z-10 flex w-full flex-col p-0 ${bg}`}>
-      {isBuilding && <UnderConstructionBanner />}
-      <SiteContent className={`p-0 ${className}`}>
-        <Header />
-        {children}
-        <Footer />
-      </SiteContent>
-    </MainContainer>
-  );
-}
-
-function UnderConstructionBanner() {
-  return (
-    <AlertBanner className='z-10 flex w-full items-center justify-center bg-primary-100 py-1 dark:bg-dark-primary'>
-      <Stack className='flex-row items-center gap-2 text-primary-600'>
-        <RiMagicFill className='animate-bounce fill-orange-500' />
-        <Typography className='font-primary font-[400]'>
-          Web site under construction
-        </Typography>
-      </Stack>
-    </AlertBanner>
+    <AnimatePresence>
+      <motion.div
+        variants={layoutVariants}
+        initial='hidden'
+        animate='visible'
+        exit='hidden'
+        key='main-layout'
+        className={`z-10 flex w-full flex-col p-0 ${bg}`}
+      >
+        {isBuilding && <UnderConstructionBanner />}
+        <SiteContent className={`p-0 ${className}`}>
+          <MainHeader navLinks={mainNavLinks} otherLinks={mainOtherLinks} />
+          {children}
+          <Footer />
+        </SiteContent>
+      </motion.div>
+    </AnimatePresence>
   );
 }

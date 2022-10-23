@@ -1,9 +1,11 @@
+import React from 'react';
+
 export type SVGImageData = React.FC<React.SVGProps<SVGSVGElement>>;
 
 export interface DevDataTypes {
   avatar: string;
   fullName: string;
-  skils: string[];
+  skills: string[];
   socials: Socials;
 }
 

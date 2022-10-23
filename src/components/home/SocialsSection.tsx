@@ -1,4 +1,5 @@
-import { Box, Box as Section } from '@mui/material';
+import { Box } from '@mui/material';
+import { motion, Variants } from 'framer-motion';
 
 import LayerIntro from '@/components/home/LayerIntro';
 import UnStyledLink from '@/components/links/UnStyledLink';
@@ -23,13 +24,36 @@ interface SocialSectionProps {
   className?: string;
 }
 
+const cardVariants: Variants = {
+  offscreen: {
+    opacity: 0,
+    y: 25,
+    transition: {
+      type: 'keyframes',
+      ease: 'easeIn',
+      duration: 1,
+    },
+  },
+  onscreen: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+    },
+  },
+};
+
 export default function SocialsSection({
   data,
   className = '',
 }: SocialSectionProps) {
   return (
-    <Section
-      className={`relative flex flex-col items-center justify-center gap-6 ${className}`}
+    <motion.section
+      initial='offscreen'
+      whileInView='onscreen'
+      viewport={{ once: false, amount: 0.5 }}
+      variants={cardVariants}
+      className={`relative  flex flex-col items-center justify-center gap-6 ${className}`}
     >
       <LayerIntro message='Find me on socials' BlobComponent={SocialBlob} />
       <Box className='flex gap-4'>
@@ -46,7 +70,7 @@ export default function SocialsSection({
             ),
         )}
       </Box>
-    </Section>
+    </motion.section>
   );
 }
 

@@ -1,4 +1,5 @@
-import { Box, Box as Section, Stack as ProjectCardStack } from '@mui/material';
+import { Box, Stack as ProjectCardStack } from '@mui/material';
+import { motion } from 'framer-motion';
 
 import SectionTitleWithBlob from '@/components/home/SectionTitleWithBlob';
 import SVGBlob from '@/components/home/SVGBlob';
@@ -19,7 +20,7 @@ export default function ProjectSection(props: IProjectProps) {
   const { className = '', projects } = props;
 
   return (
-    <Section
+    <motion.section
       id='projects'
       className={`flex w-full flex-col items-center gap-4 ${className}`}
     >
@@ -53,6 +54,6 @@ export default function ProjectSection(props: IProjectProps) {
           See More Projects
         </ArrowLink>
       </Box>
-    </Section>
+    </motion.section>
   );
 }

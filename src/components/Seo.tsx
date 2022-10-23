@@ -1,88 +1,16 @@
-/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable react/jsx-props-no-spreading,@typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 /* eslint-disable react/destructuring-assignment */
+import getConfig from 'next/config';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 import { openGraph } from '@/lib/helper';
 
-import theme from '@/themes/theme';
+import FavIcons from '@/components/FavIcons';
 
-const favicons: Array<Favicons> = [
-  {
-    rel: 'apple-touch-icon',
-    sizes: '57x57',
-    href: '/favicon/apple-icon-57x57.png',
-  },
-  {
-    rel: 'apple-touch-icon',
-    sizes: '60x60',
-    href: '/favicon/apple-icon-60x60.png',
-  },
-  {
-    rel: 'apple-touch-icon',
-    sizes: '72x72',
-    href: '/favicon/apple-icon-72x72.png',
-  },
-  {
-    rel: 'apple-touch-icon',
-    sizes: '76x76',
-    href: '/favicon/apple-icon-76x76.png',
-  },
-  {
-    rel: 'apple-touch-icon',
-    sizes: '114x114',
-    href: '/favicon/apple-icon-114x114.png',
-  },
-  {
-    rel: 'apple-touch-icon',
-    sizes: '120x120',
-    href: '/favicon/apple-icon-120x120.png',
-  },
-  {
-    rel: 'apple-touch-icon',
-    sizes: '144x144',
-    href: '/favicon/apple-icon-144x144.png',
-  },
-  {
-    rel: 'apple-touch-icon',
-    sizes: '152x152',
-    href: '/favicon/apple-icon-152x152.png',
-  },
-  {
-    rel: 'apple-touch-icon',
-    sizes: '180x180',
-    href: '/favicon/apple-icon-180x180.png',
-  },
-  {
-    rel: 'icon',
-    type: 'image/png',
-    sizes: '192x192',
-    href: '/favicon/android-icon-192x192.png',
-  },
-  {
-    rel: 'icon',
-    type: 'image/png',
-    sizes: '32x32',
-    href: '/favicon/favicon-32x32.png',
-  },
-  {
-    rel: 'icon',
-    type: 'image/png',
-    sizes: '96x96',
-    href: '/favicon/favicon-96x96.png',
-  },
-  {
-    rel: 'icon',
-    type: 'image/png',
-    sizes: '16x16',
-    href: '/favicon/favicon-16x16.png',
-  },
-  {
-    rel: 'manifest',
-    href: '/favicon/manifest.json',
-  },
-];
+import theme from '@/themes/theme';
+import { useNextTheme } from '@/themes/themeContext';
 
 const defaultMeta = {
   title: 'Faouzi Mohamed',
@@ -92,21 +20,27 @@ const defaultMeta = {
   url: process.env.NEXT_PUBLIC_SITE_URL,
   type: 'website',
   robots: 'follow, index',
+  locale: 'en_US',
+  imageWidth: '1200',
+  imageHeight: '630',
+  ogId: process.env.NEXT_PUBLIC_FB_APP_ID,
   /** No need to be filled, will be populated with openGraph function */
   image: '',
+  keywords: '',
 };
 
-type SeoProps = {
-  date?: string;
-  templateTitle?: string;
-} & Partial<typeof defaultMeta>;
+type SeoProps = { date?: string; templateTitle?: string } & Partial<
+  typeof defaultMeta
+>;
+
+const { publicRuntimeConfig } = getConfig();
+const { lastBuild } = publicRuntimeConfig;
 
 export default function Seo(props: SeoProps) {
   const router = useRouter();
-  const meta = {
-    ...defaultMeta,
-    ...props,
-  };
+  const { theme: themeMode } = useNextTheme();
+  const { date = lastBuild || '' } = props;
+  const meta = { ...defaultMeta, ...props, date };
   meta.title = props.templateTitle
     ? `${props.templateTitle} | ${meta.siteName}`
     : meta.title;
@@ -116,33 +50,52 @@ export default function Seo(props: SeoProps) {
   meta.image = openGraph({
     description: meta.description,
     siteName: props.templateTitle ? meta.siteName : meta.title,
-    // templateTitle: props.templateTitle,
+    templateTitle: props.templateTitle,
     logo: 'https://avatars.githubusercontent.com/u/57812398?&v=4',
-    theme: 'light',
+    theme: themeMode,
   });
+  const themeColor =
+    themeMode === 'dark'
+      ? theme.palette.primary.dark
+      : theme.palette.primary.main;
 
   return (
     <Head>
       <title>{meta.title}</title>
       <meta name='robots' content={meta.robots} />
-      <meta content={meta.description} name='description' />
-      <meta property='og:url' content={`${meta.url}${router.asPath}`} />
+      <meta name='description' content={meta.description} />
       <link rel='canonical' href={`${meta.url}${router.asPath}`} />
+      <meta name='site_map' content={`${meta.url}/sitemap.xml`} />
+      <meta name='url' content={meta.url} />
+      <meta name='copyright' content='Faouzi Mohamed' />
+      <meta name='classification' content='portfolio' />
+      <meta
+        name='keywords'
+        content={`faouzi, mohamed,Faouzi Mohamed, Portfolio, developer, ${meta.keywords}`}
+      />
+
       {/* Open Graph */}
+      <meta property='og:url' content={`${meta.url}${router.asPath}`} />
       <meta property='og:type' content={meta.type} />
       <meta property='og:site_name' content={meta.siteName} />
       <meta property='og:description' content={meta.description} />
       <meta property='og:title' content={meta.title} />
-      <meta name='image' property='og:image' content={meta.image} />
+      <meta property='og:image' content={meta.image} name='image' />
+      <meta property='og:image:width' content={meta.imageWidth} />
+      <meta property='og:image:height' content={meta.imageHeight} />
+      <meta name='fb:app_id' property='fb:app_id' content={meta.ogId} />
+
       {/* Twitter */}
       <meta name='twitter:card' content='summary_large_image' />
       <meta name='twitter:site' content='@fz_faouzi' />
       <meta name='twitter:title' content={meta.title} />
       <meta name='twitter:description' content={meta.description} />
       <meta name='twitter:image' content={meta.image} />
+      <meta name='twitter:image:alt' content={"Faouzi Mohamed's Portfolio"} />
+      <meta name='twitter:creator' content='@fz_faouzi' />
+
       {meta.date && (
         <>
-          <meta property='article:published_time' content={meta.date} />
           <meta
             name='publish_date'
             property='og:publish_date'
@@ -156,23 +109,23 @@ export default function Seo(props: SeoProps) {
         </>
       )}
 
-      {/* Favicons */}
-      {favicons.map((linkProps) => (
-        <link key={linkProps.href} {...linkProps} />
-      ))}
-      <meta name='msapplication-TileColor' content='#ffffff' />
       <meta
-        name='msapplication-TileImage'
-        content='/favicon/ms-icon-144x144.png'
+        name='apple-mobile-web-app-title'
+        content={process.env.NEXT_PUBLIC_APP_NAME}
       />
-      <meta name='theme-color' content={theme.palette.primary.main} />
+      <meta
+        name='application-name'
+        content={process.env.NEXT_PUBLIC_APP_NAME}
+      />
+      <meta name='apple-mobile-web-app-capable' content='yes' />
+      <meta name='apple-touch-fullscreen' content='yes' />
+
+      {/* Theme */}
+      <meta name='theme-color' content={themeColor} />
+      <meta name='apple-mobile-web-app-status-bar-style' content={themeColor} />
+      <meta name='msapplication-TileColor' content={themeColor} />
+      {/* FavIcons */}
+      <FavIcons />
     </Head>
   );
 }
-
-type Favicons = {
-  rel: string;
-  href: string;
-  sizes?: string;
-  type?: string;
-};
