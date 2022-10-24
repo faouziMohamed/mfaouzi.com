@@ -7,7 +7,7 @@
 
 # testing
 /coverage
-
+nginx
 # next.js
 .next
 /.next/

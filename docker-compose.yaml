@@ -1,15 +1,11 @@
 version: '3.9'
 services:
-  app:
+  next-app:
     build: .
     container_name: fz-portfolio
-    ports:
-      - "3000:3000"
 
   nginx:
-    image: nginx:latest
+    build: ./nginx/docker
     container_name: nginx
     ports:
       - "8080:80"
-    depends_on:
-      - app
