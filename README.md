@@ -1,105 +1,141 @@
-<div align="center">
-  <h1>🔋 ts-nextjs-tailwind-starter</h1>
-  <p>Next.js + Tailwind CSS + TypeScript starter packed with useful development features.</p>
-  <p>Made by <a href="https://theodorusclarence.com">Theodorus Clarence</a></p>
-  
-  
-  [![CodeFactor](https://www.codefactor.io/repository/github/theodorusclarence/ts-nextjs-tailwind-starter/badge/main)](https://www.codefactor.io/repository/github/theodorusclarence/ts-nextjs-tailwind-starter/overview/main)
-  [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=theodorusclarence_ts-nextjs-tailwind-starter&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=theodorusclarence_ts-nextjs-tailwind-starter)
-  [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=theodorusclarence_ts-nextjs-tailwind-starter&metric=bugs)](https://sonarcloud.io/dashboard?id=theodorusclarence_ts-nextjs-tailwind-starter)
-  [![GitHub Repo stars](https://img.shields.io/github/stars/theodorusclarence/ts-nextjs-tailwind-starter)](https://github.com/theodorusclarence/ts-nextjs-tailwind-starter/stargazers)
-  
-  [![Depfu](https://badges.depfu.com/badges/fc6e730632ab9dacaf7df478a08684a7/overview.svg)](https://depfu.com/github/theodorusclarence/ts-nextjs-tailwind-starter?project_id=30160)
-  [![Last Update](https://img.shields.io/badge/deps%20update-every%20sunday-blue.svg)](https://shields.io/)
-</div>
+# Faouzi's Mohamed developer Portfolio
 
-## Features
-
-This repository is 🔋 battery packed with:
-
-- ⚡️ Next.js 12
-- ⚛️ React 17
-- ✨ TypeScript
-- 💨 Tailwind CSS 3 — Configured with CSS Variables to extend the **primary** color
-- 💎 Pre-built Components — Components that will **automatically adapt** with your brand color, [check here for the demo](https://tsnext-tw.thcl.dev/components)
-- 🃏 Jest — Configured for unit testing
-- 📈 Absolute Import and Path Alias — Import components using `@/` prefix
-- 📏 ESLint — Find and fix problems in your code, also will **auto sort** your imports
-- 💖 Prettier — Format your code consistently
-- 🐶 Husky & Lint Staged — Run scripts on your staged files before they are committed
-- 🤖 Conventional Commit Lint — Make sure you & your teammates follow conventional commit
-- ⏰ Standard Version Changelog — Generate your changelog using `yarn release`
-- 👷 Github Actions — Lint your code on PR
-- 🚘 Automatic Branch and Issue Autolink — Branch will be automatically created on issue **assign**, and auto linked on PR
-- 🔥 Snippets — A collection of useful snippets
-- 👀 Default Open Graph — Awesome open graph generated using [og.thcl.dev](https://github.com/theodorusclarence/og), fork it and deploy!
-- 🗺 Site Map — Automatically generate sitemap.xml
-- 📦 Expansion Pack — Easily install common libraries, additional components, and configs
-
-See the 👉 [feature details and changelog](https://github.com/theodorusclarence/ts-nextjs-tailwind-starter/blob/main/CHANGELOG.md) 👈 for more.
-
-You can also check all of the **details and demos** on my blog post:
-
-- [One-stop Starter to Maximize Efficiency on Next.js & Tailwind CSS Projects](https://theodorusclarence.com/blog/one-stop-starter)
+💡 visit on 🚅 [mfaouzi.live](https://mfaouzi.live)
 
 ## Getting Started
 
-### 1. Clone this template using one of the three ways:
-
-1. Use this repository as template
-
-   **Disclosure:** by using this repository as a template, there will be an attribution on your repository.
-
-   I'll appreciate if you do, so this template can be known by others too 😄
-
-   ![Use as template](https://user-images.githubusercontent.com/55318172/129183039-1a61e68d-dd90-4548-9489-7b3ccbb35810.png)
-
-2. Using `create-next-app`
-
-   ```bash
-   npx create-next-app -e https://github.com/theodorusclarence/ts-nextjs-tailwind-starter project-name
-   ```
-
-3. Deploy to Vercel
-
-   [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Ftheodorusclarence%2Fts-nextjs-tailwind-starter)
-
-### 2. Install dependencies
-
-It is encouraged to use **yarn** so the husky hooks can work properly.
+First, run the development server:
 
 ```bash
-yarn install
-```
-
-### 3. Run the development server
-
-You can start the server using this command:
-
-```bash
+npm run dev
+# or
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result. You can start editing the page by modifying `src/pages/index.tsx`.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the
+result.
 
-### 4. Change defaults
+## Using Docker
 
-There are some things you need to change including title, urls, favicons, etc.
+1. You'll need to have [Docker](https://docs.docker.com/engine/install/)
+   installed in your machine
+1. Build a docker image using the command bellow
+   ```bash
+   # This assumes you are in the root of the directory project
+    docker build --pull --rm -f "Dockerfile" -t fz-portfolio:latest .
+   ```
+1. If the command from the step 1 and 2 finished to run, run the Web server and
+   expose the port 3000 to your host. ( ❗ make sure that the port 3000 is not
+   used by another app)
+   ```bash
+   docker run -it --rm --name fz-portfolio -p 3000:3000 fz-portfolio:latest
+   ```
 
-Find all comments with !STARTERCONF, then follow the guide.
+After these steps, open [http://localhost:3000](http://localhost:3000) with your
+browser to see the result.
 
-Don't forget to change the package name in package.json
+To stop the docker container, run the command bellow
 
-### 5. Commit Message Convention
+```bash
+docker stop fz-portfolio
+```
 
-This starter is using [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/), it is mandatory to use it to commit changes.
+## Before pushing your code
 
-## Expansion Pack 📦
+- Make sure to run the command `npm run type-check` or `yarn type-check` to make
+  sure that your code is type safe
+- Make sure to run the command `npm run lint:fix` or `yarn lint:fix` to fix all
+  the linting errors and warnings
+- Make sure to run the command `npm run test:ci` or `yarn test:ci` to make sure
+  that all the tests are passing
+- You can run the test on your browser by running the
+  command `npm run test:open` or
+  `yarn test:open`
 
-This starter is now equipped with an [expansion pack](https://github.com/theodorusclarence/expansion-pack).
+## Bump the version
 
-You can easily add expansion such as React Hook Form + Components, Storybook, and more just using a single command line.
+- If you want to bump the version of the project, you can run the
+  command `npm run release` or `yarn release`.
+- for a major version bump, run `npm run release:major` or `yarn release:major`.
+- Push the changes to the remote repository with the
+  command `npm run push-release` or `yarn push-release`.
 
-https://user-images.githubusercontent.com/55318172/146631994-e1cac137-1664-4cfe-950b-a96decc1eaa6.mp4
+- To stop the web server [the docker container] run
 
-Check out the [expansion pack repository](https://github.com/theodorusclarence/expansion-pack) for the commands
+```bash
+docker stop fz-portfolio
+```
+
+## Deploy on Heroku (container)
+
+💡 I'm going to use the name fz-portfolio for the app name, but you can use any
+or
+leave the default name that Heroku will give to your app.
+
+- Make sure to have
+  the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)
+  installed in your machine
+- Login to your Heroku account
+  ```bash
+    heroku login
+  ```
+- login to your Heroku container registry
+  ```bash
+    heroku container:login
+  ```
+- Create a new app if you don't have one already
+  ```bash
+    heroku create fz-portfolio
+  ```
+- Push the docker image to Heroku
+  ```bash
+    heroku container:push web --app fz-portfolio
+  ```
+- Release the docker image to Heroku
+  ```bash
+    heroku container:release web --app fz-portfolio
+  ```
+- Open the app in your browser
+  ```bash
+    heroku open --app fz-portfolio
+  ```
+
+## Deploy on a reverse proxy server (nginx 🐶)
+
+1. Create a new file in the root of the project with the name `nginx.conf`
+1. Copy the content below and paste it in the `nginx.conf`
+   file (https://mfaouzi.live)
+   ```nginx
+    server {
+      listen 80;
+      server_name mfaouzi.live;
+      location / {
+         proxy_pass http://localhost:3000;
+      }
+    }
+   ```
+1. create a nginx.Dockerfile in the root of the project for the nginx server
+   ```dockerfile
+   FROM nginx:1.19.6-alpine
+   COPY nginx.conf /etc/nginx/nginx.conf
+   ```
+1. Create a docker-compose file to deploy the app image to nginx server using
+   the app Dockerfile and nginx Dockerfile
+   ```yaml
+   version: '3.9'
+   services:
+     app:
+       build: .
+       ports:
+         - '3000:3000'
+     nginx:
+       build: .
+       ports:
+         - '80:80'
+         - '8080:80'
+       depends_on:
+         - app
+   ```
+1. Run the command `docker-compose up` to start the app and the nginx server
+1. Open [http://localhost:8080](http://localhost:8080) with your browser to see
+   the result.

@@ -17,7 +17,7 @@ import {
   MdWbSunny,
 } from 'react-icons/md';
 
-import { INavLink } from '@/components/Headers/headers-data';
+import type { INavLink } from '@/components/Headers/headers-data';
 import SiteLogo from '@/components/Headers/SiteLogo';
 import UnStyledLink from '@/components/links/UnStyledLink';
 

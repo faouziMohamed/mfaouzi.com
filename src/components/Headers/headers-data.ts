@@ -57,7 +57,7 @@ export const mainOtherLinks: INavLink[] = [
 export const resumeNavLinks: INavLink[] = [
   {
     name: 'Home',
-    href: process.env.NEXT_PUBLIC_SITE_URL!,
+    href: '/#',
     Icon: MdHome,
   },
 ];
