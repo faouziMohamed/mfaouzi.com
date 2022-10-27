@@ -62,12 +62,9 @@ export default function SkillsAndStackSection({
         )}
       />
       <Box className='flex w-full justify-start'>
-        <Typography
-          variant='h6'
-          className='text-center font-primary text-base font-bold text-primary-800 dark:text-primary-300'
-        >
+        <h3 className='text-center font-primary text-base font-bold text-primary-800 dark:text-primary-300'>
           Mostly used
-        </Typography>
+        </h3>
       </Box>
       <Box>
         <Box className='relative flex flex-wrap justify-center gap-6'>

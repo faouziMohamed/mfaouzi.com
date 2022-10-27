@@ -32,7 +32,6 @@ module.exports = {
   output: 'standalone',
   publicRuntimeConfig: { lastBuild },
   poweredByHeader: false,
-
   async headers() {
     return [
       {

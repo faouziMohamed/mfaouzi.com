@@ -38,25 +38,24 @@ export default function UserInformation({ data }: IUserInformationProps) {
   ];
   return (
     <Box className='flex flex-col items-center justify-center gap-4 text-center  msm:items-start'>
-      <Typography variant='h1' className='text-3xl font-bold'>
+      <h1 className='text-3xl font-bold'>
         {FirstName} {LastName}
-      </Typography>
-      <Typography variant='h2' className='text-lg'>
-        {Profession}
-      </Typography>
+      </h1>
+      <h2 className='text-lg'>{Profession}</h2>
       <Box className='flex w-full flex-col items-center justify-center msm:items-start'>
         <Box className='flex flex-col gap-1 '>
           <Box className=' flex items-center gap-2 text-sm font-[500]'>
-            <MdOutlineLocationOn />
+            <MdOutlineLocationOn aria-hidden />
             <Typography>
               {City}, {Country}
             </Typography>
           </Box>
           {userInformation.map((value) => (
             <UnStyledLink
-              className={`flex items-center gap-2 px-1 text-xs font-[500] `}
+              className={`flex items-center gap-2 py-1 px-1 text-xs font-[500] `}
               key={value.Title}
               href={`${value?.Prefix || ''}${value.Link}`}
+              aria-label={value.Title}
             >
               <value.Icon />
               <Typography>{value.Title}</Typography>

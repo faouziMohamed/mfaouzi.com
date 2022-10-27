@@ -6,6 +6,8 @@ export default function SpMan() {
       height='173'
       fill='none'
       viewBox='0 0 165 173'
+      aria-label={"Space man's image"}
+      aria-hidden
     >
       <g opacity='.22'>
         <path

@@ -11,7 +11,7 @@ import { camelCaseToTitleCase } from '@/utils/utils';
 export default function DetailsSections() {
   const keys = Object.keys(skillsAndAbilities);
   return (
-    <Box>
+    <Box component='section'>
       {keys.map((sectionTitle) => (
         <Stack key={sectionTitle} className='gap-2'>
           <SectionTitle
@@ -46,7 +46,7 @@ function SubSection(props: { sectionName: string; data: string[] }) {
   const { sectionName, data } = props;
   return (
     <Box>
-      <Typography variant='subtitle2' className='text-xl'>
+      <Typography component='h4' variant='subtitle2' className='text-xl'>
         {sectionName}
       </Typography>
       <Typography variant='body2' className=''>

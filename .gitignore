@@ -45,3 +45,5 @@ sitemap.xml
 /.idea/modules.xml
 /.idea/portfolio.iml
 /.idea/vcs.xml
+
+.vscode

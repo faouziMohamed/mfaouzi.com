@@ -47,7 +47,7 @@ export default function FadeEffectWrapper(props: IFadeEffect & StackProps) {
       pt='4rem'
       // eslint-disable-next-line react/jsx-props-no-spreading
       {...rest}
-      className={`${className}`}
+      className={className}
     >
       {/* eslint-disable-next-line eqeqeq */}
       {gutterTop != 0 && <Box py={gutterTop} />}

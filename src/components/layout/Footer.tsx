@@ -1,4 +1,4 @@
-import { Box, Box as FooterSection, Stack, Typography } from '@mui/material';
+import { Box, Box as FooterSection, Stack } from '@mui/material';
 
 import devData from '@/data/dev-data.json';
 
@@ -62,18 +62,17 @@ export default function Footer() {
   return (
     <FooterSection className='w-full bg-primary-100 px-2 pt-8 pb-4 dark:bg-dark-primary'>
       <Stack className='flex items-center gap-4'>
-        <Typography className='text-lg font-[500] leading-3' component='h3'>
+        <h3 className='text-lg font-[500] leading-3'>
           Faouzi Mohamed - {new Date().getFullYear()}
-        </Typography>
+        </h3>
         <Stack className='flex-row gap-4'>
-          <Typography className='font-primary font-[300]'>
-            Built with:
-          </Typography>
+          <p className='font-primary font-[300]'>Built with:</p>
           <Stack className='flex flex-row gap-2'>
             {usedTech.map(({ Icon, name }, index) => (
               <Box
                 key={name}
-                className='flex items-center justify-center gap-2'
+                className='flex items-center justify-center gap-2 font-normal'
+                component='strong'
               >
                 <Icon className='h-5 w-5' />
                 {index + 1 < usedTech.length && <span>/</span>}
@@ -81,9 +80,13 @@ export default function Footer() {
             ))}
           </Stack>
         </Stack>
-        <Stack className='flex-row gap-4'>
+        <Stack className='flex-row gap-4' component='nav'>
           {SocialsStack.map(({ Icon, name, link }) => (
-            <UnStyledLink key={name} href={link}>
+            <UnStyledLink
+              key={name}
+              href={link}
+              aria-label={`Link to my ${name}`}
+            >
               <Icon className='h-5 w-5' />
             </UnStyledLink>
           ))}

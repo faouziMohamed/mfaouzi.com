@@ -21,18 +21,25 @@ interface IExperienceSectionProps {
 export default function ExperienceSection(props: IExperienceSectionProps) {
   const { experience } = props;
   return (
-    <Box>
+    <Box component='section'>
       <Box className='flex flex-wrap items-center gap-1'>
-        <Typography variant='h4' className='inline text-sm font-bold'>
-          {experience.Title} {', '}{' '}
-        </Typography>
+        <h4 className='inline text-sm font-bold'>
+          {experience.Title}
+          {', '}
+        </h4>
         <Typography variant='body2' className='inline text-sm'>
-          {' '}
-          {experience.Company}{' '}
+          {experience.Company}
         </Typography>
         {experience.CompanyLink && (
-          <UnStyledLink href={experience.CompanyLink}>
-            <IconButton size='small' className='dark:text-gray-100'>
+          <UnStyledLink
+            href={experience.CompanyLink}
+            aria-label={`Link to ${experience.Company}`}
+          >
+            <IconButton
+              size='small'
+              className='dark:text-gray-100'
+              aria-label={`Click to view ${experience.Company} website`}
+            >
               <TbExternalLink />
             </IconButton>
           </UnStyledLink>
@@ -43,9 +50,7 @@ export default function ExperienceSection(props: IExperienceSectionProps) {
         {', '}
         {experience.Country}
       </Typography>
-      <Typography variant='h5' className='text-sm font-bold'>
-        {experience.Description.Title}
-      </Typography>
+      <h5 className='text-sm font-bold'>{experience.Description.Title}</h5>
       <List className='list-disc'>
         {experience.Description.Tasks.map((task) => (
           <ListItem key={task.Task} className='flex flex-col p-0 text-sm'>
@@ -68,15 +73,12 @@ export default function ExperienceSection(props: IExperienceSectionProps) {
   );
 }
 
-function ShowListItemWithIcon({
-  text,
-  Icon,
-  iconSize = 7,
-}: {
+function ShowListItemWithIcon(props: {
   text: string;
   Icon: IconType;
   iconSize: number;
 }) {
+  const { text, Icon, iconSize = 7 } = props;
   return (
     <Box className='flex w-full items-baseline gap-2'>
       <span className='shrink-0'>

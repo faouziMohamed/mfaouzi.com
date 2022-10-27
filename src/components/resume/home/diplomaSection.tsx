@@ -6,10 +6,10 @@ export default function DiplomaSection({ diploma }: { diploma: IDiploma }) {
   return (
     <Box className=''>
       <Box className=''>
-        <Typography variant='h4' className='inline text-sm font-bold'>
+        <h4 className='inline text-sm font-bold'>
           {diploma.Title}
           {', '}
-        </Typography>
+        </h4>
         <Typography variant='body2' className='inline text-sm'>
           {diploma.Institution}
         </Typography>

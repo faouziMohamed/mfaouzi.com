@@ -65,7 +65,10 @@ export default function Seo(props: SeoProps) {
       <meta name='robots' content={meta.robots} />
       <meta name='description' content={meta.description} />
       <link rel='canonical' href={`${meta.url}${router.asPath}`} />
-      <meta name='site_map' content={`${meta.url}/sitemap.xml`} />
+      <meta
+        name='site_map'
+        content={`${process.env.NEXT_PUBLIC_SITE_URL}/sitemap.xml`}
+      />
       <meta name='url' content={meta.url} />
       <meta name='copyright' content='Faouzi Mohamed' />
       <meta name='classification' content='portfolio' />

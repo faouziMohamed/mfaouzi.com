@@ -38,8 +38,8 @@ export default function HomePage() {
       <Box className='flex flex-col gap-8 bg-transparent sm:flex-row sm:gap-1'>
         <Seo
           title='Resume'
-          /* eslint-disable-next-line @typescript-eslint/restrict-template-expressions */
-          url='/resume'
+          // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+          description={Profile.Description}
         />
         <Box className='flex flex-col gap-6 bg-gray-800 p-2 py-8 text-white dark:bg-dark-r-400 md:w-full md:max-w-md'>
           <Box className='flex flex-col items-center gap-4 py-16 sm:flex-col sm:justify-between md:flex-col'>
@@ -73,7 +73,7 @@ function ResumeSectionTitle(props: { title: string; Icon: IconType }) {
 
 function Education({ education }: { education: IEducation }) {
   return (
-    <Stack className='gap-4'>
+    <Stack className='gap-4' component='section'>
       <ResumeSectionTitle title={education.Title} Icon={FaGraduationCap} />
       {education.Diploma.map((diploma) => (
         <DiplomaSection key={diploma.Title} diploma={diploma} />
@@ -82,27 +82,22 @@ function Education({ education }: { education: IEducation }) {
   );
 }
 
-function ResumeSections({
-  profile,
-  education,
-  certifications,
-  experiences,
-  projects,
-}: {
+function ResumeSections(props: {
   profile: IProfile;
   education: IEducation;
   certifications: ICertification;
   experiences: IProfessionalExperience;
   projects: IProject;
 }) {
+  const { profile, education, certifications, experiences, projects } = props;
   return (
     <Stack className='gap-4 px-2 sm:py-16'>
-      <Stack className='gap-4'>
+      <Stack className='gap-4' component='section'>
         <ResumeSectionTitle title={profile.Title} Icon={RiContactsFill} />
         <Typography variant='body1'>{profile.Description}</Typography>
       </Stack>
       <Education education={education} />
-      <Stack className='gap-4'>
+      <Stack className='gap-4' component='section'>
         <ResumeSectionTitle title={certifications.Title} Icon={FaCertificate} />
         {certifications.Certificates.map((certification) => (
           <CertificationsSection
@@ -111,13 +106,13 @@ function ResumeSections({
           />
         ))}
       </Stack>
-      <Stack className='gap-4'>
+      <Stack className='gap-4' component='section'>
         <ResumeSectionTitle title={experiences.Title} Icon={FaBriefcase} />
         {experiences.Experiences.map((experience) => (
           <ExperienceSection experience={experience} key={experience.Title} />
         ))}
       </Stack>
-      <Stack className='gap-2'>
+      <Stack className='gap-2' component='section'>
         <ResumeSectionTitle title={projects.Title} Icon={FaFolderOpen} />
         {projects.ProjectDetails.map((project) => (
           <ProjectSection key={project.Name} project={project} />

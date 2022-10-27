@@ -57,9 +57,12 @@ export default function MainHeader({ navLinks, otherLinks }: IHeaderNavLinks) {
         exit='fromTop'
         className='text-dark relative flex w-full flex-col px-4'
       >
-        <Stack className='flex w-full flex-row items-center justify-between gap-1.5'>
+        <Stack
+          component='header'
+          className='flex w-full flex-row items-center justify-between gap-1.5'
+        >
           {isMediumSmallScreen && (
-            <UnStyledLink href='/'>
+            <UnStyledLink href='/' aria-label='Link to Home'>
               <SiteLogo />
             </UnStyledLink>
           )}
@@ -102,7 +105,7 @@ function NavigationMenu(props: IHeaderNavLinks) {
           menuOpened={menuOpened}
         />
         {!isMediumSmallScreen && (
-          <UnStyledLink href='/'>
+          <UnStyledLink href='/' aria-label='Link to Home'>
             <SiteLogo />
           </UnStyledLink>
         )}
@@ -130,6 +133,8 @@ function ToggleThemeButton() {
       size='small'
       className='text-gray-800 dark:text-yellow-300 sm:text-cyan-800'
       onClick={updateTheme}
+      aria-label={`Toggle ${themeName} theme`}
+      aria-expanded={false}
     >
       {themeName === 'dark' ? (
         <MdWbSunny fontSize='1.9rem' tabIndex={0} />
@@ -155,6 +160,8 @@ function ToggleMenuButton(props: {
       className='text-[#001344] dark:text-gray-100 msm:hidden'
       tabIndex={0}
       onClick={handleToggleMenu}
+      aria-label={menuOpened ? 'Close menu' : 'Open menu'}
+      aria-expanded={menuOpened}
       onKeyDown={(e) => {
         if (e.key === 'Enter') handleToggleMenu();
       }}
@@ -201,6 +208,7 @@ function NavigationLinks(props: {
             href={href}
             tabIndex={0}
             className='flex w-full items-center justify-start gap-1 border-b border-slate-300 p-2 py-4 px-2 font-primary text-[1rem] font-[700] hover:bg-primary-300 focus:bg-primary-300 dark:hover:bg-dark-500  dark:focus:bg-dark-500 msm:border-none'
+            aria-label={`Link to ${name}`}
           >
             <Icon />
             <span>{name}</span>
@@ -216,6 +224,7 @@ function NavigationLinks(props: {
         <Stack
           className={`relative flex w-full cursor-pointer items-start 
             gap-0 border-b border-slate-300 hover:bg-primary-300 focus:bg-primary-300 dark:hover:bg-dark-500  dark:focus:bg-dark-500 msm:border-none `}
+          aria-label='Submenu for other links'
           spacing={0}
           tabIndex={0}
           onKeyUp={(e) => {
@@ -248,6 +257,7 @@ function NavigationLinks(props: {
                   key={name}
                   href={href}
                   className='flex items-center gap-2 p-2 pl-3 font-primary text-[.88rem] font-[700] hover:bg-primary-300  dark:hover:bg-dark-500 '
+                  aria-label={`Link to ${name}`}
                 >
                   <Icon />
                   <span>{name}</span>

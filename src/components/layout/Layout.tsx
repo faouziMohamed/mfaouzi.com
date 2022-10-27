@@ -40,13 +40,6 @@ export default function Layout({ children, className = '' }: LayoutProps) {
     setMounted(true);
   }, []);
   if (!mounted) return null;
-  const env = process.env.NODE_ENV;
-  // decide http or https based on node environment
-  const protocol = env === 'development' ? 'http://' : 'https://';
-  const domainUrl = window.location.href.replace(/resume$/, '');
-  if (domainUrl.startsWith(`${protocol}resume.`)) {
-    window.location.replace('/resume');
-  }
   let bg = '';
   if (theme === 'light') {
     bg = 'bg-app';

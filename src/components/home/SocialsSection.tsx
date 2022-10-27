@@ -43,10 +43,8 @@ const cardVariants: Variants = {
   },
 };
 
-export default function SocialsSection({
-  data,
-  className = '',
-}: SocialSectionProps) {
+export default function SocialsSection(props: SocialSectionProps) {
+  const { data, className = '' } = props;
   return (
     <motion.section
       initial='offscreen'
@@ -66,6 +64,7 @@ export default function SocialsSection({
                 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
                 href={data.socials[key].url}
                 IconComponent={socialIcons[key]}
+                aria-label={key}
               />
             ),
         )}
@@ -85,12 +84,14 @@ function SocialBlob() {
 function SocialIconLink({
   IconComponent,
   href,
+  'aria-label': ariaLabel,
 }: {
   IconComponent: SVGImageData;
   href: string;
+  'aria-label': string;
 }) {
   return (
-    <UnStyledLink href={href}>
+    <UnStyledLink href={href} aria-label={`social link ${ariaLabel}`}>
       <Box className='flex h-10 w-10 items-center justify-center'>
         <IconComponent className='h-full w-full object-cover' />
       </Box>

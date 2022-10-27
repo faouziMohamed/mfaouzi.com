@@ -1,4 +1,4 @@
-import { Box, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 
 interface SectionTitleProps {
   title: string;
@@ -11,12 +11,9 @@ export default function SectionTitleWithBlob({
 }: SectionTitleProps) {
   return (
     <Box className='relative flex w-full max-w-[15rem] flex-col items-center border-b border-b-black dark:border-b-gray-100'>
-      <Typography
-        variant='h2'
-        className='text-center font-primary text-2xl font-[700] leading-6 '
-      >
+      <h2 className='text-center font-primary text-2xl font-[700] leading-6 '>
         {title}
-      </Typography>
+      </h2>
       {BlobComponent && <BlobComponent />}
     </Box>
   );

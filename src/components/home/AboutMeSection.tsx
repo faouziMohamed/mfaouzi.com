@@ -15,7 +15,10 @@ export default function AboutMeSection({
   className = '',
 }: AboutMeSectionProps) {
   return (
-    <Section className={`flex w-full flex-col items-center gap-4 ${className}`}>
+    <Section
+      component='section'
+      className={`flex w-full flex-col items-center gap-4 ${className}`}
+    >
       <SectionTitleWithBlob
         title='About Me'
         BlobComponent={() => (

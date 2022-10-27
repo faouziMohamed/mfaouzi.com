@@ -49,22 +49,11 @@ export default function HomePage() {
   );
 }
 
-export interface ProjectData {
-  name: string;
-  fullName: string;
-  url: string;
-  homepage: string;
-  stargazersCount: number;
-  forksCount: number;
-  description: string;
-  languages: { [key: string]: number };
-}
-
 function SpaceMans() {
   const media = useMediaQuery('(min-width: 768px)');
   return (
     <>
-      <Box className=' top-0 animate-wiggle-slower md:absolute md:opacity-50'>
+      <Box className='top-0 animate-wiggle-slower md:absolute md:opacity-50'>
         <SpaceMan />
       </Box>
       {media && (

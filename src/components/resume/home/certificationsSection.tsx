@@ -14,15 +14,23 @@ export default function CertificationsSection(props: ICertificateSectionProps) {
   return (
     <Box>
       <Box className=''>
-        <Typography variant='h4' className='inline text-sm font-bold'>
+        <h4 className='inline text-sm font-bold'>
           {certification.Title}
           {', '}
-        </Typography>
+        </h4>
         <Typography variant='body2' className='inline text-sm'>
           {certification.Institution}
         </Typography>
-        <UnStyledLink href={certification.Link} className='inline'>
-          <IconButton size='small' className='dark:text-gray-100'>
+        <UnStyledLink
+          href={certification.Link}
+          className='inline'
+          aria-label={certification.Title}
+        >
+          <IconButton
+            size='small'
+            className='dark:text-gray-100'
+            aria-label={`View ${certification.Title} certificate`}
+          >
             <TbExternalLink />
           </IconButton>
         </UnStyledLink>

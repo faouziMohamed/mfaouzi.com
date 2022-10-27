@@ -51,7 +51,7 @@ export default function ResumeHeader() {
           width='100'
           height='31'
           className='-sm:top-6 relative w-full  object-cover'
-          layout='responsive'
+          // layout='responsive'
         />
       </Box>
     </Box>
@@ -102,6 +102,7 @@ function ThemeToggleButton() {
     <IconButton
       size='small'
       onClick={updateTheme}
+      aria-label={`Toggle ${themeName} theme`}
       className='text-gray-50 dark:text-yellow-400 sm:text-cyan-800'
     >
       {themeName === 'dark' ? (
@@ -124,6 +125,8 @@ function MenuToggleButtons(props: {
       size='medium'
       className='text-white sm:hidden'
       onClick={handleToggleMenu}
+      aria-label={menuOpened ? 'Close menu' : 'Open menu'}
+      aria-expanded={menuOpened}
       tabIndex={0}
       onKeyDown={(e) => {
         if (e.key === 'Enter') handleToggleMenu();

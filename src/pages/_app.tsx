@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable react/jsx-props-no-spreading */
 import { CacheProvider, EmotionCache } from '@emotion/react';
-import CssBaseline from '@mui/material/CssBaseline';
+import { CssBaseline } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 // import "tailwindcss/tailwind.css";
 import { AppProps } from 'next/app';
@@ -17,7 +17,6 @@ import '@fontsource/ubuntu/400.css';
 import '@fontsource/ubuntu/500.css';
 import '@fontsource/ubuntu/700.css';
 import '@/styles/globals.scss';
-import '@/styles/colors.scss';
 
 import theme from '@/themes/theme';
 import NextThemeProvider from '@/themes/themeContext';
@@ -35,10 +34,9 @@ interface MyAppProps extends AppProps {
 }
 
 export default function MyApp(props: MyAppProps) {
-  const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
-
+  const { Component, pageProps } = props;
   return (
-    <CacheProvider value={emotionCache}>
+    <CacheProvider value={clientSideEmotionCache}>
       <Head>
         <title>Faouzi Mohamed</title>
         <meta name='viewport' content='initial-scale=1, width=device-width' />

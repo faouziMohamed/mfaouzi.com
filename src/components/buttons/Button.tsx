@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import { ImSpinner2 } from 'react-icons/im';
 
 import clsxm from '@/lib/clsxm';
@@ -38,6 +38,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         type='button'
         disabled={disabled}
+        aria-label='Generic Button'
         className={clsxm(
           'inline-flex items-center rounded px-4 py-2 font-semibold',
           'focus:outline-none focus-visible:ring focus-visible:ring-primary-500',

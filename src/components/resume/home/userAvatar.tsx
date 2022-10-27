@@ -14,6 +14,8 @@ export default function UserAvatar() {
         alt='developer picture'
         src={userProfileAvatar}
         layout='fill'
+        objectFit='cover'
+        priority
       />
     </Box>
   );

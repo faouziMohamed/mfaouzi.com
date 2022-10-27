@@ -34,6 +34,7 @@ export default function IntroSection({
              avatar-shadow avatar-border relative h-[13rem] w-[13rem]
              animate-bounce-low items-center justify-center gap-2 rounded-full 
             `}
+          aria-label={"Faouzi Mohamed's avatar"}
         >
           <Image
             src={devPicture}
@@ -42,16 +43,14 @@ export default function IntroSection({
             width='208'
             height='208'
             className='h-full w-full rounded-full object-cover'
+            priority
           />
         </Box>
         <Stack className='w-full items-center text-center'>
           <LayerIntro message='Hi There!' showLines={!matches} />
-          <Typography
-            variant='h2'
-            className='font-primary text-[1.88rem] font-[700] leading-snug'
-          >
+          <h2 className='font-primary text-[1.88rem] font-[700] leading-snug'>
             I&apos;m {data.fullName || 'Faouzi Mohamed'}
-          </Typography>
+          </h2>
           <Typography
             variant='subtitle1'
             component='p'

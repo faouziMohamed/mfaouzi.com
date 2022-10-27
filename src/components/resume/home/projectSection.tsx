@@ -13,17 +13,24 @@ export default function ProjectSection({ project }: IProjectSectionProps) {
   return (
     <Box className='border-b pb-2 last:border-0'>
       <Box className='flex flex-wrap items-center gap-1'>
-        <Typography variant='h4' className='inline text-sm font-bold'>
+        <h4 className='inline text-sm font-bold'>
           {project.Name}
           {project.Link && (
-            <UnStyledLink href={project.Link}>
-              <IconButton size='small' className='dark:text-gray-100'>
+            <UnStyledLink
+              href={project.Link}
+              aria-label={`Link to project's ${project.Name} website or repository`}
+            >
+              <IconButton
+                size='small'
+                className='dark:text-gray-100'
+                aria-label={`Click to open ${project.Name} website or repository`}
+              >
                 <TbExternalLink />
               </IconButton>
             </UnStyledLink>
           )}
           {project.Summary && ', '}
-        </Typography>
+        </h4>
         <Typography variant='body2' className='inline text-sm'>
           {project.Summary}
         </Typography>
@@ -32,9 +39,7 @@ export default function ProjectSection({ project }: IProjectSectionProps) {
         {project.StartDate} {' - '}{' '}
         {project.EndDate !== '-1' ? project.EndDate : 'Present'}
       </Typography>
-      <Typography variant='h5' className='text-sm '>
-        {project.Description}
-      </Typography>
+      <h5 className='text-sm'>{project.Description}</h5>
       <Typography variant='body2' className='text-sm'>
         <span className='font-bold'>Technologies used: </span>
         {project.Technologies.join(' | ')}
