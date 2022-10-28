@@ -42,7 +42,7 @@ export default function HomePage() {
           description={Profile.Description}
         />
         <Box className='flex flex-col gap-6 bg-gray-800 p-2 py-8 text-white dark:bg-dark-r-400 md:w-full md:max-w-md'>
-          <Box className='flex flex-col items-center gap-4 py-16 sm:flex-col sm:justify-between md:flex-col'>
+          <Box className='flex flex-col items-center gap-4 pt-16 sm:flex-col sm:justify-between md:flex-col'>
             <UserAvatar />
             <UserInformation data={userInformation} />
           </Box>

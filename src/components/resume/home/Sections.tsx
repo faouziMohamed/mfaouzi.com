@@ -11,7 +11,7 @@ import { camelCaseToTitleCase } from '@/utils/utils';
 export default function DetailsSections() {
   const keys = Object.keys(skillsAndAbilities);
   return (
-    <Box component='section'>
+    <Stack component='section' className='gap-4'>
       {keys.map((sectionTitle) => (
         <Stack key={sectionTitle} className='gap-2'>
           <SectionTitle
@@ -23,7 +23,7 @@ export default function DetailsSections() {
           />
         </Stack>
       ))}
-    </Box>
+    </Stack>
   );
 }
 
