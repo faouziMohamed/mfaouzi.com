@@ -1,4 +1,4 @@
-import { Box, Stack, Typography } from '@mui/material';
+import { Box, Stack } from '@mui/material';
 
 import skillsAndAbilities, {
   ISubSectionData,
@@ -11,9 +11,13 @@ import { camelCaseToTitleCase } from '@/utils/utils';
 export default function DetailsSections() {
   const keys = Object.keys(skillsAndAbilities);
   return (
-    <Stack component='section' className='gap-4'>
+    <Stack component='section' className='gap-4 px-2'>
       {keys.map((sectionTitle) => (
-        <Stack key={sectionTitle} className='gap-2'>
+        <Stack
+          key={sectionTitle}
+          className='gap-2'
+          aria-label={`Section ${camelCaseToTitleCase(sectionTitle)}`}
+        >
           <SectionTitle
             title={camelCaseToTitleCase(sectionTitle)}
             Icon={skillsAndAbilities[sectionTitle].Icon}
@@ -46,12 +50,8 @@ function SubSection(props: { sectionName: string; data: string[] }) {
   const { sectionName, data } = props;
   return (
     <Box>
-      <Typography component='h4' variant='subtitle2' className='text-xl'>
-        {sectionName}
-      </Typography>
-      <Typography variant='body2' className=''>
-        {data.join(' | ')}
-      </Typography>
+      <h4 className='text-xl font-[400]'>{sectionName}</h4>
+      <p className='font-[300]'>{data.join(' | ')}</p>
     </Box>
   );
 }

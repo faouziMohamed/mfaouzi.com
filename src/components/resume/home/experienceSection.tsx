@@ -95,7 +95,7 @@ function ShowListItemWithIcon(props: {
 
 function SubTaskDetails({ subTask }: { subTask: ISubTask }) {
   return (
-    <List className='w-full p-0 pl-2'>
+    <List className='w-full p-0 pl-5'>
       {subTask.SubTaskDetails.map((subSubTask) => (
         <ListItem key={subSubTask} className='p-0'>
           <ShowListItemWithIcon

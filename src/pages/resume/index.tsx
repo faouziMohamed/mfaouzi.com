@@ -12,10 +12,10 @@ import data from '@/data/resume/resumeData/resumeMainData';
 import userInformation from '@/data/resume/resumeData/userIformationData';
 
 import CertificationsSection from '@/components/resume/home/certificationsSection';
+import DetailsSections from '@/components/resume/home/DetailsSections';
 import DiplomaSection from '@/components/resume/home/diplomaSection';
 import ExperienceSection from '@/components/resume/home/experienceSection';
 import ProjectSection from '@/components/resume/home/projectSection';
-import DetailsSections from '@/components/resume/home/Sections';
 import SectionTitle from '@/components/resume/home/SectionTitle';
 import UserAvatar from '@/components/resume/home/userAvatar';
 import UserInformation from '@/components/resume/home/UserInformation';
@@ -91,7 +91,7 @@ function ResumeSections(props: {
 }) {
   const { profile, education, certifications, experiences, projects } = props;
   return (
-    <Stack className='gap-4 px-2 sm:py-16'>
+    <Stack className='gap-4 px-3 sm:py-16'>
       <Stack className='gap-4' component='section'>
         <ResumeSectionTitle title={profile.Title} Icon={RiContactsFill} />
         <Typography variant='body1'>{profile.Description}</Typography>

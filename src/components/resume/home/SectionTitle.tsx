@@ -1,4 +1,3 @@
-import { Box } from '@mui/material';
 import { IconType } from 'react-icons';
 
 interface ISectionTitle {
@@ -7,15 +6,11 @@ interface ISectionTitle {
   className?: string;
 }
 
-export default function SectionTitle({
-  title,
-  Icon,
-  className = '',
-}: ISectionTitle) {
+export default function SectionTitle(props: ISectionTitle) {
+  const { title, Icon, className = '' } = props;
   return (
-    <Box
-      component='header'
-      className={`flex items-center gap-2 border-b-[3px] border-b text-2xl ${className}`}
+    <header
+      className={`flex items-center gap-2 border-b-[3px] border-b text-xl ${className}`}
     >
       <Icon />
       <h3
@@ -24,6 +19,6 @@ export default function SectionTitle({
       >
         {title}
       </h3>
-    </Box>
+    </header>
   );
 }
