@@ -10,13 +10,13 @@ import {
   Stack,
   Typography,
 } from '@mui/material';
+import dynamic from 'next/dynamic';
 import type { FC, ReactNode } from 'react';
 import { useState } from 'react';
 import { MdStar } from 'react-icons/md';
 
 import Button from '@/components/buttons/Button';
 import UnStyledLink from '@/components/links/UnStyledLink';
-import FZDialog from '@/components/misc/Dialog';
 
 import type { IProjectDataType } from '@/@types/data';
 import { startCaseAll } from '@/utils/utils';
@@ -24,6 +24,8 @@ import { startCaseAll } from '@/utils/utils';
 import ExternalLinkIcon from '~/icons/external-link-full.svg';
 import GitForkIcon from '~/icons/git-fork.svg';
 import GihubLinkIcon from '~/icons/github-link.svg';
+
+const FZDialog = dynamic(() => import('@/components/misc/Dialog'));
 
 const CardBody: FC<{ children: ReactNode; className?: string }> = ({
   children,
@@ -38,10 +40,12 @@ export default function ProjectCard(props: IProjectDataType) {
     <Card className='w-[18rem] bg-opacity-10 py-2 pt-0 dark:bg-dark-100 dark:text-gray-100 dark:shadow-sm dark:shadow-dark-primary'>
       {/* eslint-disable-next-line react/jsx-props-no-spreading */}
       <CardFront {...props} onClick={() => setOpen(true)} />
-      <FZDialog open={open} setOpen={setOpen}>
-        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-        <CardBack {...props} />
-      </FZDialog>
+      {open && (
+        <FZDialog open={open} setOpen={setOpen}>
+          {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+          <CardBack {...props} />
+        </FZDialog>
+      )}
     </Card>
   );
 }
@@ -60,28 +64,22 @@ function CardFront(props: IProjectDataType & { onClick: () => void }) {
           alt='green iguana'
         />
         <CardContent className='w-full'>
-          <Typography
-            gutterBottom
-            variant='h5'
-            className='font-primary text-base font-bold'
-            component='div'
-          >
-            {title}
-          </Typography>
+          <h3 className='font-primary text-base font-bold'>{title}</h3>
           <Box className='h-[5rem]  '>
-            <Typography
-              variant='body2'
-              // color='text.secondary'
-              className='w-full text-dark-50 line-clamp-4 dark:text-gray-200'
-            >
+            <p className='w-full text-dark-50 line-clamp-4 dark:text-gray-200'>
               {description}
-            </Typography>
+            </p>
           </Box>
         </CardContent>
       </CardActionArea>
       <Box className='flex items-end justify-between px-4 pb-1'>
-        <CardActions className=''>
-          <Button onClick={onClick}>More Details</Button>
+        <CardActions>
+          <Button
+            aria-label='Open a modal to view details about the project'
+            onClick={onClick}
+          >
+            More Details
+          </Button>
         </CardActions>
         <RepoStats forks={forks} stars={stars} />
       </Box>
@@ -97,41 +95,45 @@ export function CardBack(props: IProjectDataType) {
   return (
     <Card className='max-w-xl bg-opacity-10 pt-2 dark:bg-dark-primary dark:text-gray-100'>
       <CardHeader>
-        <Typography
-          variant='h5'
-          className='border-b py-2 text-center font-primary text-base font-bold'
-          component='div'
-        >
+        <h3 className='border-b py-2 text-center font-primary text-base font-bold'>
           {title}
-        </Typography>
+        </h3>
       </CardHeader>
       <CardBody className='flex gap-4 border-y px-2'>
         <Box className='flex flex-col gap-3'>
-          <Typography variant='body1' className='w-full py-1'>
+          <p className='w-full py-1'>
             <span className='block pr-1 font-bold'>About</span>
             <span className='block text-dark-100 dark:text-gray-200'>
               {description}
             </span>
-          </Typography>
-          <Typography variant='body2' className='w-full'>
+          </p>
+          <p className='w-full'>
             <span className='block pr-1 font-bold'>Tools</span>
             <span className='block text-dark-100 dark:text-gray-200'>
               {startCaseAll(languages.join(', '))}
             </span>
-          </Typography>
-          <Typography variant='body2' className='w-full '>
+          </p>
+          <Box className='w-full '>
             <span className='block pr-1 font-bold'>Stats</span>
             <RepoStats forks={forks} stars={stars} />
-          </Typography>
+          </Box>
         </Box>
         <Box className='flex flex-col items-center self-center'>
-          <IconButton>
-            <UnStyledLink href={liveUrl || '#'} openNewTab>
+          <IconButton aria-label='Link to the projects live' href={liveUrl}>
+            <UnStyledLink
+              href={liveUrl || '#'}
+              openNewTab
+              aria-label={"Link to the project's live site"}
+            >
               <ExternalLinkIcon className='rounded-full bg-[#427177] text-5xl text-white hover:bg-[#003A42]' />
             </UnStyledLink>
           </IconButton>
-          <IconButton>
-            <UnStyledLink href={repoUrl} openNewTab>
+          <IconButton aria-label='Button to view the source code'>
+            <UnStyledLink
+              href={repoUrl}
+              openNewTab
+              aria-label={"Click to view the project's repository"}
+            >
               <GihubLinkIcon className='rounded-full bg-[#427177] text-5xl text-white hover:bg-[#003A42]' />
             </UnStyledLink>
           </IconButton>

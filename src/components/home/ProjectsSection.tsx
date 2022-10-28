@@ -1,5 +1,6 @@
 import { Box, Stack as ProjectCardStack } from '@mui/material';
 import { motion } from 'framer-motion';
+import dynamic from 'next/dynamic';
 
 import SectionTitleWithBlob from '@/components/home/SectionTitleWithBlob';
 import SVGBlob from '@/components/home/SVGBlob';
@@ -9,7 +10,7 @@ import type { IProjectDataType } from '@/@types/data';
 
 import ProjectsBlob from '~/icons/projects-blob.svg';
 
-import ProjectCard from './ProjectCard';
+const ProjectCard = dynamic(() => import('./ProjectCard'));
 
 interface IProjectProps {
   className?: string;

@@ -17,7 +17,7 @@ console.log(`Version: ${apiVersion},  Last Build: ${lastBuild}`);
 
 const apiInfo = { version: apiVersion, lastBuild };
 const handler = (req: NextApiRequest, res: NextApiResponse) => {
-  res.setHeader('Cache-control', 's-maxage=6000, stale-while-revalidate=30');
+  res.setHeader('Cache-control', 's-maxage=36000, stale-while-revalidate=30');
   res.status(200).json({ apiInfo });
 };
 

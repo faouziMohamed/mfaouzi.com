@@ -76,7 +76,7 @@ export default function MainHeader({ navLinks, otherLinks }: IHeaderNavLinks) {
             width='100'
             height='31'
             className='-sm:top-6 relative w-full  object-cover'
-            layout='responsive'
+            sizes='100vw'
           />
         </Box>
       </motion.nav>
