@@ -16,7 +16,7 @@ export function openGraph(props: OpenGraphType): string {
   const ogTemplateTitle = templateTitle
     ? encodeURIComponent(templateTitle.trim())
     : undefined;
-  // return `https://fz-og.vercel.app/api/general?siteName=${ogSiteName}&description=${ogDesc}&logo=${ogLogo}${
+  // return `https://og.mfaouzi.live/api/general?siteName=${ogSiteName}&description=${ogDesc}&logo=${ogLogo}${
   //   ogTemplateTitle ? `&templateTitle=${ogTemplateTitle}` : ''}&theme=${theme}`;
   const ogDesc = encodeURIComponent(description.trim());
   const query = new URLSearchParams({
@@ -30,5 +30,5 @@ export function openGraph(props: OpenGraphType): string {
     query.append('templateTitle', ogTemplateTitle);
   }
 
-  return `https://fz-og.vercel.app/api/general?${query.toString()}`;
+  return `https://og.mfaouzi.live/api/general?${query.toString()}`;
 }

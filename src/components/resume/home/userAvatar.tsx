@@ -13,8 +13,8 @@ export default function UserAvatar() {
         className='h-full w-full rounded-full object-cover'
         alt='developer picture'
         src={userProfileAvatar}
-        layout='fill'
-        objectFit='cover'
+        width={240}
+        height={240}
         priority
       />
     </Box>

@@ -19,9 +19,20 @@
       "@/*": ["./src/*"],
       "~/*": ["./public/*"]
     },
-    "incremental": true
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
-  "include": ["custom-next-env.d.ts", "jest.setup.js", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "custom-next-env.d.ts",
+    "jest.setup.js",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
   "exclude": ["next-env.d.ts", "node_modules"],
   "moduleResolution": ["node_modules", ".next", "node"]
 }

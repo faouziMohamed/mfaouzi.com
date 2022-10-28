@@ -1,4 +1,5 @@
 import { Box, Container as Main, useMediaQuery } from '@mui/material';
+import dynamic from 'next/dynamic';
 
 import devData from '@/data/dev-data.json';
 import projects from '@/data/projects.json';
@@ -8,7 +9,7 @@ import AboutMeSection from '@/components/home/AboutMeSection';
 import ContactSection from '@/components/home/ContactSection';
 import DownArrowIcon from '@/components/home/DownArrowIcon';
 import IntroSection from '@/components/home/IntroSection';
-import ProjectsSection from '@/components/home/ProjectsSection';
+// import ProjectsSection from '@/components/home/ProjectsSection';
 import SkillsAndStackSection from '@/components/home/SkillsAndStackSection';
 import SocialsSection from '@/components/home/SocialsSection';
 import SpaceMan from '@/components/images/SpaceMan';
@@ -16,6 +17,11 @@ import Layout from '@/components/layout/Layout';
 import Seo from '@/components/Seo';
 
 import type { DevDataTypes, IProjectDataType } from '@/@types/data';
+
+const ProjectsSection = dynamic(
+  () => import('@/components/home/ProjectsSection'),
+  { ssr: false },
+);
 
 const data = devData as DevDataTypes;
 

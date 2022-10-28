@@ -15,11 +15,6 @@ const lastBuild = new Date(new Date().toUTCString()).toLocaleString(
 );
 
 const { createSecureHeaders } = require('next-secure-headers');
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL.replace(/(^\w+:|^)\/\//, '');
-const env = process.env.NODE_ENV;
-// console.log(router);
-// decide http or https based on node environment
-const protocol = env === 'development' ? 'http://' : 'https://';
 
 /** @type {import('next').NextConfig} */
 module.exports = {
@@ -44,15 +39,6 @@ module.exports = {
             value: 'max-age=31536000; includeSubDomains; preload',
           },
         ],
-      },
-    ];
-  },
-
-  async rewrites() {
-    return [
-      {
-        source: '/resume',
-        destination: `${protocol}resume${siteUrl}`,
       },
     ];
   },

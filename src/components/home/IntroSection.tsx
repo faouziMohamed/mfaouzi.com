@@ -39,9 +39,6 @@ export default function IntroSection({
           <Image
             src={devPicture}
             alt='MainHeader background blob'
-            layout='responsive'
-            width='208'
-            height='208'
             className='h-full w-full rounded-full object-cover'
             priority
           />

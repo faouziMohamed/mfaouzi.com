@@ -18,6 +18,7 @@ const defaultMeta = {
   description:
     'My personal Portfolio where I present myself, my skills, some projects etc. ',
   url: process.env.NEXT_PUBLIC_SITE_URL,
+  pathname: '',
   type: 'website',
   robots: 'follow, index',
   locale: 'en_US',
@@ -26,7 +27,8 @@ const defaultMeta = {
   ogId: process.env.NEXT_PUBLIC_FB_APP_ID,
   /** No need to be filled, will be populated with openGraph function */
   image: '',
-  keywords: '',
+  keywords:
+    'faouzi, mohamed,Faouzi Mohamed, Portfolio, developer, web developer, full-stack developer, backend developer, resume',
 };
 
 type SeoProps = { date?: string; templateTitle?: string } & Partial<
@@ -35,7 +37,6 @@ type SeoProps = { date?: string; templateTitle?: string } & Partial<
 
 const { publicRuntimeConfig } = getConfig();
 const { lastBuild } = publicRuntimeConfig;
-
 export default function Seo(props: SeoProps) {
   const router = useRouter();
   const { theme: themeMode } = useNextTheme();
@@ -44,7 +45,7 @@ export default function Seo(props: SeoProps) {
   meta.title = props.templateTitle
     ? `${props.templateTitle} | ${meta.siteName}`
     : meta.title;
-
+  const pathname = meta.pathname || router.pathname;
   // Use siteName if there is templateTitle
   // but show full title if there is none
   meta.image = openGraph({
@@ -64,7 +65,7 @@ export default function Seo(props: SeoProps) {
       <title>{meta.title}</title>
       <meta name='robots' content={meta.robots} />
       <meta name='description' content={meta.description} />
-      <link rel='canonical' href={`${meta.url}${router.asPath}`} />
+      <link rel='canonical' href={`${meta.url}${pathname}`} />
       <meta
         name='site_map'
         content={`${process.env.NEXT_PUBLIC_SITE_URL}/sitemap.xml`}
@@ -72,13 +73,10 @@ export default function Seo(props: SeoProps) {
       <meta name='url' content={meta.url} />
       <meta name='copyright' content='Faouzi Mohamed' />
       <meta name='classification' content='portfolio' />
-      <meta
-        name='keywords'
-        content={`faouzi, mohamed,Faouzi Mohamed, Portfolio, developer, ${meta.keywords}`}
-      />
+      <meta name='keywords' content={`${meta.keywords}`} />
 
       {/* Open Graph */}
-      <meta property='og:url' content={`${meta.url}${router.asPath}`} />
+      <meta property='og:url' content={`${meta.url}${meta.pathname}`} />
       <meta property='og:type' content={meta.type} />
       <meta property='og:site_name' content={meta.siteName} />
       <meta property='og:description' content={meta.description} />

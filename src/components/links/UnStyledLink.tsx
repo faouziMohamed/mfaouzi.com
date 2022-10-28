@@ -24,10 +24,14 @@ const UnStyledLink = forwardRef<HTMLAnchorElement, UnStyledLinkProps>(
 
     if (!isNewTab) {
       return (
-        <Link href={href} {...nextLinkProps}>
-          <a ref={ref} {...rest} className={className}>
-            {children}
-          </a>
+        <Link
+          href={href}
+          {...nextLinkProps}
+          ref={ref}
+          {...rest}
+          className={className}
+        >
+          {children}
         </Link>
       );
     }

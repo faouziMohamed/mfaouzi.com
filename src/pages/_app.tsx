@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable react/jsx-props-no-spreading */
 import { CacheProvider, EmotionCache } from '@emotion/react';
-import { CssBaseline } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 // import "tailwindcss/tailwind.css";
 import { AppProps } from 'next/app';
@@ -43,8 +42,6 @@ export default function MyApp(props: MyAppProps) {
       </Head>
       <ThemeProvider theme={theme}>
         <NextThemeProvider>
-          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-          <CssBaseline />
           {/* eslint-disable-next-line react/jsx-props-no-spreading */}
           <Component {...pageProps} />
         </NextThemeProvider>

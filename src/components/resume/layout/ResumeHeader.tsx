@@ -1,10 +1,4 @@
-import {
-  Box,
-  ClickAwayListener,
-  IconButton,
-  Stack,
-  useMediaQuery,
-} from '@mui/material';
+import { Box, ClickAwayListener, IconButton, Stack } from '@mui/material';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import {
@@ -21,15 +15,14 @@ import {
   resumeOtherLinks,
 } from '@/components/Headers/headers-data';
 import SiteLogo from '@/components/Headers/SiteLogo';
+import { useMounted, useSMallScreen } from '@/components/hooks';
 import UnStyledLink from '@/components/links/UnStyledLink';
 
 import { useNextTheme } from '@/themes/themeContext';
 
 export default function ResumeHeader() {
   const { theme: themeName } = useNextTheme();
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
-
+  const mounted = useMounted();
   if (!mounted) return null;
 
   return (
@@ -51,7 +44,6 @@ export default function ResumeHeader() {
           width='100'
           height='31'
           className='-sm:top-6 relative w-full  object-cover'
-          // layout='responsive'
         />
       </Box>
     </Box>
@@ -86,10 +78,6 @@ function NavigationMenu() {
       <NavigationLinks menuOpened={menuOpened} setMenuOpened={setMenuOpened} />
     </Box>
   );
-}
-
-function useSMallScreen() {
-  return useMediaQuery('(min-width: 640px)');
 }
 
 function ThemeToggleButton() {
