@@ -4,7 +4,6 @@ import dynamic from 'next/dynamic';
 
 import SectionTitleWithBlob from '@/components/home/SectionTitleWithBlob';
 import SVGBlob from '@/components/home/SVGBlob';
-import ArrowLink from '@/components/links/ArrowLink';
 
 import { IProject } from '@/@types/resume.types';
 
@@ -49,15 +48,15 @@ export default function ProjectSection(props: IProjectProps) {
             />
           ))}
         </ProjectCardStack>
-        <Box className='flex w-full justify-end'>
-          <ArrowLink
-            direction='right'
-            href='/projects/more'
-            className='text-primary-600'
-          >
-            See More Projects
-          </ArrowLink>
-        </Box>
+        {/* <Box className='flex w-full justify-end'> */}
+        {/*  <ArrowLink */}
+        {/*    direction='right' */}
+        {/*    href='/projects/more' */}
+        {/*    className='text-primary-600' */}
+        {/*  > */}
+        {/*    See More Projects */}
+        {/*  </ArrowLink> */}
+        {/* </Box> */}
       </motion.section>
     </Box>
   );

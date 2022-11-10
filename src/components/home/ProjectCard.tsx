@@ -88,11 +88,11 @@ export function CardBack(props: Omit<ProjectCardProps, 'Image'>) {
   return (
     <Card className='max-w-xl bg-opacity-10 pt-2 dark:bg-dark-primary dark:text-gray-100'>
       <CardHeader>
-        <h3 className='border-b py-2 text-center font-primary text-base font-bold'>
+        <h3 className=' py-2 text-center font-primary text-base font-bold'>
           {Name}
         </h3>
       </CardHeader>
-      <CardBody className='flex gap-4 border-y px-2'>
+      <CardBody className='flex gap-4 border-y p-2'>
         <Box className='flex flex-col gap-3'>
           <p className='w-full py-1'>
             <span className='block pr-1 font-bold'>About</span>
@@ -106,9 +106,6 @@ export function CardBack(props: Omit<ProjectCardProps, 'Image'>) {
               {startCaseAll(Technologies.join(', '))}
             </span>
           </p>
-          <Box className='w-full '>
-            <span className='block pr-1 font-bold'>Stats</span>
-          </Box>
         </Box>
         <Box className='flex flex-col items-center self-center'>
           {LiveLink && (
