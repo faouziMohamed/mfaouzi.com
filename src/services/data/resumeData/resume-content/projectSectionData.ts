@@ -7,10 +7,11 @@ export const projectSectionData: IProject = {
       Name: 'Leave Management System',
       Summary:
         'A fullstack project made with Blazor WASM and ASP.Net Core allowing employees to make leave requests. The admins will be able to accept or refuse the requests.',
-      Description: '',
+      Description:
+        'A Single page Application (SPA) representing a small platform to manage Leave request in a company!!',
       StartDate: '09/2021',
       EndDate: '09/2021',
-      Link: 'https://github.com/faouziMohamed/LeaveManagement',
+      SrcLink: 'https://github.com/faouziMohamed/LeaveManagement',
       Technologies: [
         'C#',
         'ASP.Net Core',
@@ -20,14 +21,16 @@ export const projectSectionData: IProject = {
     },
     {
       Name: 'Taradjam',
-      Summary: 'A platform for creating diplome from one language to another.',
+      Summary:
+        'A platform for creating translation from one language to another.',
       Description:
         'This project consists, from sentences in a source language, to receive translation proposals in a language of, to create a dataset of several languages.',
       StartDate: '01/2022',
       EndDate: '-1',
-      Link: 'https://taradjam.vercel.app',
+      SrcLink: 'https://github.com/faouziMohamed/Taradjam-backend',
+      LiveLink: 'https://taradjam.mfaouzi.live',
       Technologies: [
-        'ReactJs(NextJs)',
+        'ReactJs (NextJs)',
         'Asp.Net Core',
         'Sql Server',
         'MaterialUi',
@@ -38,7 +41,8 @@ export const projectSectionData: IProject = {
     {
       Name: 'Social share',
       Summary: 'Mini social network',
-      Link: 'https://fz-social-share.vercel.app',
+      SrcLink: 'https://github.com/faouziMohamed/social-share',
+      LiveLink: 'https://social-share.mfaouzi.live',
       Description:
         'A Social Network-like web-app, with a design based on Facebook and other social networks',
       StartDate: '10/2021',
@@ -48,7 +52,8 @@ export const projectSectionData: IProject = {
     {
       Name: 'ACEM - Vote',
       Summary: 'Online vote secured for a student association called ACEM',
-      Link: 'https://acem-vote.vercel.app',
+      SrcLink: 'https://github.com/faouziMohamed/acem-vote',
+      LiveLink: 'https://acem-vote.vercel.app',
       Description: '',
       StartDate: '10/2021',
       EndDate: '-1',
@@ -62,18 +67,9 @@ export const projectSectionData: IProject = {
       ],
     },
     {
-      Name: 'FzNavigator',
-      Summary: 'A simple web Browser based on Chromium',
-      Link: 'https://github.com/faouziMohamed/fzNavigator',
-      Description: '',
-      StartDate: '02/2020',
-      EndDate: '03/2020',
-      Technologies: ['C++', 'Qt5', 'CMake'],
-    },
-    {
       Name: 'Covid Data',
       Summary: 'Desktop application that displays Covid 19',
-      Link: 'https://github.com/faouziMohamed/covid-data',
+      SrcLink: 'https://github.com/faouziMohamed/covid-data',
       Description: '',
       StartDate: '12/2020',
       EndDate: '01/2021',

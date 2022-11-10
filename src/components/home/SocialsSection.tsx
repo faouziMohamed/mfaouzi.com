@@ -4,7 +4,7 @@ import { motion, Variants } from 'framer-motion';
 import LayerIntro from '@/components/home/LayerIntro';
 import UnStyledLink from '@/components/links/UnStyledLink';
 
-import { DevDataTypes, SVGImageData } from '@/@types/data';
+import { IDevDataTypes, SVGImageData } from '@/@types/data';
 
 import FindMeOnSocialsBlob from '~/icons/findme-on-socials-blob.svg';
 import FacebookIcon from '~/icons/logo_facebook.svg';
@@ -20,7 +20,7 @@ const socialIcons: { [key: string]: SVGImageData } = {
 };
 
 interface SocialSectionProps {
-  data: DevDataTypes;
+  data: IDevDataTypes;
   className?: string;
 }
 
@@ -51,7 +51,7 @@ export default function SocialsSection(props: SocialSectionProps) {
       whileInView='onscreen'
       viewport={{ once: false, amount: 0.5 }}
       variants={cardVariants}
-      className={`relative  flex flex-col items-center justify-center gap-6 ${className}`}
+      className={`relative  flex w-full flex-col items-center justify-center gap-6 ${className}`}
     >
       <LayerIntro message='Find me on socials' BlobComponent={SocialBlob} />
       <Box className='flex gap-4'>
@@ -61,7 +61,7 @@ export default function SocialsSection(props: SocialSectionProps) {
               <SocialIconLink
                 key={key}
                 // @ts-expect-error: key is not a string
-                // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-assignment
                 href={data.socials[key].url}
                 IconComponent={socialIcons[key]}
                 aria-label={key}

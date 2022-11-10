@@ -1,8 +1,7 @@
 import { Box, Box as FooterSection, Stack } from '@mui/material';
 
-import devData from '@/data/dev-data.json';
-
-import { DevDataTypes, SVGImageData } from '@/@types/data';
+import { IDevDataTypes, SVGImageData } from '@/@types/data';
+import devData from '@/services/data/dev-data';
 
 import Facebook from '~/icons/facebook.svg';
 import Github from '~/icons/github.svg';
@@ -16,7 +15,7 @@ import Typescript from '~/icons/typescript.svg';
 
 import UnStyledLink from '../links/UnStyledLink';
 
-const socialData: DevDataTypes = devData;
+const socialData: IDevDataTypes = devData;
 const usedTech: readonly { name: string; Icon: SVGImageData }[] = [
   { name: 'NextJs', Icon: NextJs },
   { name: 'Typescript', Icon: Typescript },

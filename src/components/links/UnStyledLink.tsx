@@ -43,7 +43,7 @@ const UnStyledLink = forwardRef<HTMLAnchorElement, UnStyledLinkProps>(
         rel='noopener noreferrer'
         href={href}
         {...rest}
-        className={clsxm('cursor-newtab', className)}
+        className={clsxm(className)}
       >
         {children}
       </a>

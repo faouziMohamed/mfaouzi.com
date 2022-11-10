@@ -9,12 +9,12 @@ import Image from 'next/image';
 
 import LayerIntro from '@/components/home/LayerIntro';
 
-import type { DevDataTypes } from '@/@types/data';
+import type { IDevDataTypes } from '@/@types/data';
 
 import devPicture from '~/images/faouzi-mhd.jpeg';
 
 type IntroSectionProps = {
-  data: DevDataTypes;
+  data: IDevDataTypes;
   className?: string;
 };
 export default function IntroSection({

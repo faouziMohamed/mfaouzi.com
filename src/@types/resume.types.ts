@@ -1,5 +1,4 @@
-//
-import React from 'react';
+import { ISkillsAndAbilities } from '@/services/data/resumeData/resume-content/skillsAndAbilities';
 
 export interface IProfile {
   Description: string;
@@ -63,7 +62,9 @@ export interface IProjectDetail {
   EndDate: string;
   Name: string;
   Technologies: string[];
-  Link?: string;
+  SrcLink?: string;
+  LiveLink?: string;
+  Image?: string;
 }
 
 export interface IProject {
@@ -72,14 +73,14 @@ export interface IProject {
 }
 
 export interface IResumeData {
+  UserInformation: IUserContactsAndProfileData;
   Profile: IProfile;
+  SkillsAndAbilities: ISkillsAndAbilities;
   Education: IEducation;
   Certification: ICertification;
   ProfessionalExperience: IProfessionalExperience;
   Project: IProject;
 }
-
-export type SVGImageData = React.FC<React.SVGProps<SVGSVGElement>>;
 
 export interface About {
   FirstName: string;
@@ -119,6 +120,7 @@ export interface Github {
 }
 
 export interface IUserContactsAndProfileData {
+  Avatar: string;
   About: About;
   Location: Location;
   Tel: Tel;

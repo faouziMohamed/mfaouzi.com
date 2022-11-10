@@ -5,7 +5,7 @@ import getConfig from 'next/config';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-import { openGraph } from '@/lib/helper';
+import { openGraphImage } from '@/lib/helper';
 
 import FavIcons from '@/components/FavIcons';
 
@@ -18,43 +18,43 @@ const defaultMeta = {
   description:
     'My personal Portfolio where I present myself, my skills, some projects etc. ',
   url: process.env.NEXT_PUBLIC_SITE_URL,
-  pathname: '',
+  pathname: '/',
   type: 'website',
   robots: 'follow, index',
   locale: 'en_US',
   imageWidth: '1200',
   imageHeight: '630',
   ogId: process.env.NEXT_PUBLIC_FB_APP_ID,
-  /** No need to be filled, will be populated with openGraph function */
-  image: '',
   keywords:
     'faouzi, mohamed,Faouzi Mohamed, Portfolio, developer, web developer, full-stack developer, backend developer, resume',
 };
 
-type SeoProps = { date?: string; templateTitle?: string } & Partial<
-  typeof defaultMeta
->;
+type SeoProps = {
+  image?: string;
+  date?: string;
+  templateTitle?: string;
+} & Partial<typeof defaultMeta>;
 
 const { publicRuntimeConfig } = getConfig();
 const { lastBuild } = publicRuntimeConfig;
 export default function Seo(props: SeoProps) {
   const router = useRouter();
   const { theme: themeMode } = useNextTheme();
-  const { date = lastBuild || '' } = props;
+  const { date = lastBuild || '', image } = props;
   const meta = { ...defaultMeta, ...props, date };
   meta.title = props.templateTitle
     ? `${props.templateTitle} | ${meta.siteName}`
     : meta.title;
   const pathname = meta.pathname || router.pathname;
-  // Use siteName if there is templateTitle
-  // but show full title if there is none
-  meta.image = openGraph({
-    description: meta.description,
-    siteName: props.templateTitle ? meta.siteName : meta.title,
-    templateTitle: props.templateTitle,
-    logo: 'https://avatars.githubusercontent.com/u/57812398?&v=4',
-    theme: themeMode,
-  });
+  meta.image =
+    image ??
+    openGraphImage({
+      description: meta.description,
+      siteName: props.templateTitle ? meta.siteName : meta.title,
+      templateTitle: props.templateTitle,
+      logo: 'https://avatars.githubusercontent.com/u/57812398?&v=4',
+      theme: themeMode,
+    });
   const themeColor =
     themeMode === 'dark'
       ? theme.palette.primary.dark
@@ -80,7 +80,7 @@ export default function Seo(props: SeoProps) {
       <meta property='og:type' content={meta.type} />
       <meta property='og:site_name' content={meta.siteName} />
       <meta property='og:description' content={meta.description} />
-      <meta property='og:title' content={meta.title} />
+      <meta property='og:Name' content={meta.title} />
       <meta property='og:image' content={meta.image} name='image' />
       <meta property='og:image:width' content={meta.imageWidth} />
       <meta property='og:image:height' content={meta.imageHeight} />
@@ -89,7 +89,7 @@ export default function Seo(props: SeoProps) {
       {/* Twitter */}
       <meta name='twitter:card' content='summary_large_image' />
       <meta name='twitter:site' content='@fz_faouzi' />
-      <meta name='twitter:title' content={meta.title} />
+      <meta name='twitter:Name' content={meta.title} />
       <meta name='twitter:description' content={meta.description} />
       <meta name='twitter:image' content={meta.image} />
       <meta name='twitter:image:alt' content={"Faouzi Mohamed's Portfolio"} />
@@ -111,7 +111,7 @@ export default function Seo(props: SeoProps) {
       )}
 
       <meta
-        name='apple-mobile-web-app-title'
+        name='apple-mobile-web-app-Name'
         content={process.env.NEXT_PUBLIC_APP_NAME}
       />
       <meta

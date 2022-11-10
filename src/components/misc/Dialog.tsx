@@ -16,7 +16,7 @@ interface IDialogProps {
   open?: boolean;
   setOpen?: (open: boolean) => void;
   children: ReactNode;
-  title?: string;
+  Name?: string;
   sx?: SxProps<Theme>;
   closeBtnText?: string;
   CloseButtonComponent?: typeof Button;
@@ -29,7 +29,7 @@ const FZDialog: FC<IDialogProps> = (props) => {
     CloseButtonComponent = Button,
     closeOnlyOnBtnClick = false,
   } = props;
-  const { sx, open = false, setOpen = () => {}, children, title = '' } = props;
+  const { sx, open = false, setOpen = () => {}, children, Name = '' } = props;
   const handleClose = () => {
     setOpen(false);
   };
@@ -46,15 +46,15 @@ const FZDialog: FC<IDialogProps> = (props) => {
     <Dialog
       open={open}
       onClose={!closeOnlyOnBtnClick ? handleClose : () => {}}
-      aria-labelledby='scroll-dialog-title'
+      aria-labelledby='scroll-dialog-Name'
       aria-describedby='scroll-dialog-description'
       TransitionComponent={Transition}
       className='bg-black bg-opacity-20'
       sx={sx}
     >
-      {title && (
+      {Name && (
         <DialogTitle>
-          <Typography variant='h6'>{title}</Typography>
+          <Typography variant='h6'>{Name}</Typography>
         </DialogTitle>
       )}
       <DialogContent className='p-0'>{children}</DialogContent>

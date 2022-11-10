@@ -8,15 +8,12 @@ import {
 } from 'react-icons/fa';
 import { RiContactsFill } from 'react-icons/ri';
 
-import data from '@/data/resume/resumeData/resumeMainData';
-import userInformation from '@/data/resume/resumeData/userIformationData';
-
 import CertificationsSection from '@/components/resume/home/certificationsSection';
-import DetailsSections from '@/components/resume/home/DetailsSections';
 import DiplomaSection from '@/components/resume/home/diplomaSection';
 import ExperienceSection from '@/components/resume/home/experienceSection';
 import ProjectSection from '@/components/resume/home/projectSection';
 import SectionTitle from '@/components/resume/home/SectionTitle';
+import SkillsAndSoftSkillsSections from '@/components/resume/home/SkillsAndSoftSkillsSections';
 import UserAvatar from '@/components/resume/home/userAvatar';
 import UserInformation from '@/components/resume/home/UserInformation';
 import ResumeLayout from '@/components/resume/layout/ResumeLayout';
@@ -29,24 +26,23 @@ import {
   IProfile,
   IProject,
 } from '@/@types/resume.types';
+import resumeMainData from '@/services/data/resumeData/resumeMainData';
 
 export default function HomePage() {
-  const { Profile, Project, Certification } = data;
-  const { Education: education, ProfessionalExperience } = data;
+  const { Profile, Project, Certification } = resumeMainData;
+  const { Education: education, ProfessionalExperience } = resumeMainData;
+  const { UserInformation: userInformation } = resumeMainData;
+  const { SkillsAndAbilities } = resumeMainData;
   return (
     <ResumeLayout>
       <Box className='flex flex-col gap-8 bg-transparent sm:flex-row sm:gap-1'>
-        <Seo
-          title='Resume'
-          // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-          description={Profile.Description}
-        />
+        <Seo title='Resume' description={Profile.Description} />
         <Box className='flex flex-col gap-6 bg-gray-800 p-2 py-8 text-white dark:bg-dark-r-400 md:w-full md:max-w-md'>
           <Box className='flex flex-col items-center gap-4 pt-16 sm:flex-col sm:justify-between md:flex-col'>
-            <UserAvatar />
+            <UserAvatar avatar={userInformation.Avatar} />
             <UserInformation data={userInformation} />
           </Box>
-          <DetailsSections />
+          <SkillsAndSoftSkillsSections skills={SkillsAndAbilities} />
         </Box>
         <ResumeSections
           profile={Profile}

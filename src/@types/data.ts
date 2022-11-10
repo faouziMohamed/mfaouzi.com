@@ -2,11 +2,11 @@ import React from 'react';
 
 export type SVGImageData = React.FC<React.SVGProps<SVGSVGElement>>;
 
-export interface DevDataTypes {
+export interface IDevDataTypes {
   avatar: string;
   fullName: string;
   skills: string[];
-  socials: Socials;
+  socials: Socials | { [key: string]: Social };
 }
 
 export interface Socials {

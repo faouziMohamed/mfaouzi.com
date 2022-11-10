@@ -1,13 +1,15 @@
 import { IUserContactsAndProfileData } from '@/@types/resume.types';
 
-const userContactsAndProfileData: IUserContactsAndProfileData = {
+export const userInformation: IUserContactsAndProfileData = {
+  Avatar: '/images/userProfilePicture.jpeg',
   About: {
     FirstName: 'Faouzoudine',
     LastName: 'Mohamed Faouzi',
-    Profession: 'Full-stack software developer ReactJs • DotNet Core • Java',
+    Profession:
+      'Full-stack software developer Angular/ReactJs • DotNet Core • Java',
   },
   Location: {
-    City: 'Sale',
+    City: 'Salé',
     Country: 'Morocco',
     Type: 'location',
   },
@@ -32,5 +34,3 @@ const userContactsAndProfileData: IUserContactsAndProfileData = {
     Link: 'https://github.com/faouziMohamed',
   },
 };
-
-export default userContactsAndProfileData;

@@ -1,14 +1,17 @@
 import { Box, Stack } from '@mui/material';
 
-import skillsAndAbilities, {
-  ISubSectionData,
-} from '@/data/resume/resumeData/skillsAndAbilities';
-
 import SectionTitle from '@/components/resume/home/SectionTitle';
 
+import {
+  ISkillsAndAbilities,
+  ISubSectionData,
+} from '@/services/data/resumeData/resume-content/skillsAndAbilities';
 import { camelCaseToTitleCase } from '@/utils/utils';
 
-export default function DetailsSections() {
+export default function SkillsAndSoftSkillsSections(props: {
+  skills: ISkillsAndAbilities;
+}) {
+  const { skills: skillsAndAbilities } = props;
   const keys = Object.keys(skillsAndAbilities);
   return (
     <Stack component='section' className='gap-4 px-2'>

@@ -1,9 +1,7 @@
 import { Box } from '@mui/material';
 import Image from 'next/image';
 
-import userProfileAvatar from '~/images/userProfilePicture.jpeg';
-
-export default function UserAvatar() {
+export default function UserAvatar({ avatar }: { avatar: string }) {
   return (
     <Box
       className='shrink-none relative flex h-[15rem] w-[15rem]
@@ -12,7 +10,7 @@ export default function UserAvatar() {
       <Image
         className='h-full w-full rounded-full object-cover'
         alt='developer picture'
-        src={userProfileAvatar}
+        src={avatar}
         width={240}
         height={240}
         priority

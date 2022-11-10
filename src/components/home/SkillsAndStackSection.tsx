@@ -1,4 +1,4 @@
-import { Box, Box as Section, Typography } from '@mui/material';
+import { Box, Box as Section } from '@mui/material';
 
 import SectionTitleWithBlob from '@/components/home/SectionTitleWithBlob';
 import SVGBlob from '@/components/home/SVGBlob';
@@ -47,40 +47,42 @@ export default function SkillsAndStackSection({
   className = '',
 }: SkillsSectionProps) {
   return (
-    <Section
-      id='skills'
-      className={`flex flex-col items-center justify-center gap-4 rounded border bg-primary-100 bg-opacity-10 py-2 dark:border-dark-primary dark:bg-dark-500 dark:bg-opacity-80 ${className}`}
-    >
-      <SectionTitleWithBlob
-        title='Skills & Stacks'
-        BlobComponent={() => (
-          <SVGBlob
-            Blob={SkillsBlob}
-            twHeight='h-[1.05rem]'
-            twBottom='-bottom-[.89rem]'
-          />
-        )}
-      />
-      <Box className='flex w-full justify-start'>
-        <h3 className='text-center font-primary text-base font-bold text-primary-800 dark:text-primary-300'>
-          Mostly used
-        </h3>
-      </Box>
-      <Box>
-        <Box className='relative flex flex-wrap justify-center gap-6'>
-          {skillsTools.map((s) => (
-            <Box
-              key={s.name}
-              className='flex flex-col items-center justify-center gap-1'
-            >
-              <s.Icon className='h-20 w-auto self-center' />
-              <Typography variant='body2' className='font-[Roboto] font-bold'>
-                {s.name}
-              </Typography>
-            </Box>
-          ))}
+    <Box className='flex w-full justify-center'>
+      <Section
+        id='skills'
+        className={`flex max-w-4xl flex-col items-center justify-center gap-4 rounded 
+      border bg-primary-100 bg-opacity-10 py-2 dark:border-dark-primary dark:bg-dark-500 
+      dark:bg-opacity-80 ${className}`}
+      >
+        <SectionTitleWithBlob
+          title='Skills & Stacks'
+          BlobComponent={() => (
+            <SVGBlob
+              Blob={SkillsBlob}
+              twHeight='h-[1.05rem]'
+              twBottom='-bottom-[.89rem]'
+            />
+          )}
+        />
+        <Box className='flex w-full justify-start'>
+          <h3 className='text-center font-primary text-base font-bold text-primary-800 dark:text-primary-300'>
+            Mostly used
+          </h3>
         </Box>
-      </Box>
-    </Section>
+        <Box>
+          <Box className='relative flex flex-wrap justify-center gap-6'>
+            {skillsTools.map((s) => (
+              <Box
+                key={s.name}
+                className='flex flex-col items-center justify-center gap-1'
+              >
+                <s.Icon className='h-20 w-auto self-center' />
+                <h4 className='font-[Roboto] text-sm font-bold'>{s.name}</h4>
+              </Box>
+            ))}
+          </Box>
+        </Box>
+      </Section>
+    </Box>
   );
 }

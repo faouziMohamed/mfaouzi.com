@@ -1,29 +1,24 @@
 import {
   Box,
-  Box as CardStats,
   Card,
   CardActionArea,
   CardActions,
   CardContent,
   CardMedia,
   IconButton,
-  Stack,
-  Typography,
 } from '@mui/material';
 import dynamic from 'next/dynamic';
 import type { FC, ReactNode } from 'react';
 import { useState } from 'react';
-import { MdStar } from 'react-icons/md';
 
 import Button from '@/components/buttons/Button';
 import UnStyledLink from '@/components/links/UnStyledLink';
 
-import type { IProjectDataType } from '@/@types/data';
+import { IProjectDetail } from '@/@types/resume.types';
 import { startCaseAll } from '@/utils/utils';
 
 import ExternalLinkIcon from '~/icons/external-link-full.svg';
-import GitForkIcon from '~/icons/git-fork.svg';
-import GihubLinkIcon from '~/icons/github-link.svg';
+import GitHubLinkIcon from '~/icons/github-link.svg';
 
 const FZDialog = dynamic(() => import('@/components/misc/Dialog'));
 
@@ -32,8 +27,11 @@ const CardBody: FC<{ children: ReactNode; className?: string }> = ({
   className = '',
 }) => <Box className={`w-full px-2 ${className}`}>{children}</Box>;
 const CardHeader = CardBody;
-
-export default function ProjectCard(props: IProjectDataType) {
+export type ProjectCardProps = Omit<
+  IProjectDetail,
+  'Summary' | 'EndDate' | 'StartDate'
+>;
+export default function ProjectCard(props: ProjectCardProps) {
   const [open, setOpen] = useState<boolean>(false);
 
   return (
@@ -50,24 +48,22 @@ export default function ProjectCard(props: IProjectDataType) {
   );
 }
 
-function CardFront(props: IProjectDataType & { onClick: () => void }) {
-  const { title, description, image } = props;
-  const { forks = 0, stars = 0 } = props;
-  const { onClick } = props;
+function CardFront(props: ProjectCardProps & { onClick: () => void }) {
+  const { Name, Description, Image, onClick } = props;
   return (
     <Box className='p-0'>
       <CardActionArea className='flex flex-col' onClick={onClick}>
         <CardMedia
           component='img'
           height='140'
-          image={image || '/icons/office-1.svg'}
+          image={Image || '/icons/office-1.svg'}
           alt='green iguana'
         />
         <CardContent className='w-full'>
-          <h3 className='font-primary text-base font-bold'>{title}</h3>
+          <h3 className='font-primary text-base font-bold'>{Name}</h3>
           <Box className='h-[5rem]  '>
             <p className='w-full text-dark-50 line-clamp-4 dark:text-gray-200'>
-              {description}
+              {Description}
             </p>
           </Box>
         </CardContent>
@@ -81,22 +77,19 @@ function CardFront(props: IProjectDataType & { onClick: () => void }) {
             More Details
           </Button>
         </CardActions>
-        <RepoStats forks={forks} stars={stars} />
       </Box>
     </Box>
   );
 }
 
-export function CardBack(props: IProjectDataType) {
-  const { title, description, languages = ['No tech used'] } = props;
-  const { forks = 0, stars = 0 } = props;
-  const { repoUrl, liveUrl } = props;
-
+export function CardBack(props: Omit<ProjectCardProps, 'Image'>) {
+  const { Name, Description, Technologies = ['No tech used'] } = props;
+  const { SrcLink, LiveLink } = props;
   return (
     <Card className='max-w-xl bg-opacity-10 pt-2 dark:bg-dark-primary dark:text-gray-100'>
       <CardHeader>
         <h3 className='border-b py-2 text-center font-primary text-base font-bold'>
-          {title}
+          {Name}
         </h3>
       </CardHeader>
       <CardBody className='flex gap-4 border-y px-2'>
@@ -104,65 +97,44 @@ export function CardBack(props: IProjectDataType) {
           <p className='w-full py-1'>
             <span className='block pr-1 font-bold'>About</span>
             <span className='block text-dark-100 dark:text-gray-200'>
-              {description}
+              {Description}
             </span>
           </p>
           <p className='w-full'>
             <span className='block pr-1 font-bold'>Tools</span>
             <span className='block text-dark-100 dark:text-gray-200'>
-              {startCaseAll(languages.join(', '))}
+              {startCaseAll(Technologies.join(', '))}
             </span>
           </p>
           <Box className='w-full '>
             <span className='block pr-1 font-bold'>Stats</span>
-            <RepoStats forks={forks} stars={stars} />
           </Box>
         </Box>
         <Box className='flex flex-col items-center self-center'>
-          <IconButton aria-label='Link to the projects live' href={liveUrl}>
-            <UnStyledLink
-              href={liveUrl || '#'}
-              openNewTab
-              aria-label={"Link to the project's live site"}
-            >
-              <ExternalLinkIcon className='rounded-full bg-[#427177] text-5xl text-white hover:bg-[#003A42]' />
-            </UnStyledLink>
-          </IconButton>
-          <IconButton aria-label='Button to view the source code'>
-            <UnStyledLink
-              href={repoUrl}
-              openNewTab
-              aria-label={"Click to view the project's repository"}
-            >
-              <GihubLinkIcon className='rounded-full bg-[#427177] text-5xl text-white hover:bg-[#003A42]' />
-            </UnStyledLink>
-          </IconButton>
+          {LiveLink && (
+            <IconButton aria-label='Link to the projects live' href={LiveLink}>
+              <UnStyledLink
+                href={LiveLink || '#'}
+                openNewTab
+                aria-label={"Link to the project's live site"}
+              >
+                <ExternalLinkIcon className='rounded-full bg-[#427177] text-5xl text-white hover:bg-[#003A42]' />
+              </UnStyledLink>
+            </IconButton>
+          )}
+          {SrcLink && (
+            <IconButton aria-label='Button to view the source code'>
+              <UnStyledLink
+                href={SrcLink}
+                openNewTab
+                aria-label={"Click to view the project's repository"}
+              >
+                <GitHubLinkIcon className='rounded-full bg-[#427177] text-5xl text-white hover:bg-[#003A42]' />
+              </UnStyledLink>
+            </IconButton>
+          )}
         </Box>
       </CardBody>
     </Card>
-  );
-}
-
-function RepoStats(props: {
-  forks: number;
-  stars: number;
-  className?: string;
-}) {
-  const { forks, stars, className = '' } = props;
-  return (
-    <CardStats className={`flex items-end gap-2 pb-3 ${className}`}>
-      <Stack direction='row' className='items-center justify-center'>
-        <MdStar className='text-dark-200 dark:text-gray-100' />
-        <Typography variant='body2' className='text-dark-50 dark:text-gray-200'>
-          {stars}
-        </Typography>
-      </Stack>
-      <Stack direction='row' className='items-center justify-center'>
-        <GitForkIcon className='text-dark-200 dark:text-gray-200' />
-        <Typography variant='body2' className='text-dark-50 dark:text-gray-200'>
-          {forks}
-        </Typography>
-      </Stack>
-    </CardStats>
   );
 }

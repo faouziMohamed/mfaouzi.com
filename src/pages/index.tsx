@@ -1,53 +1,66 @@
 import { Box, Container as Main, useMediaQuery } from '@mui/material';
 import dynamic from 'next/dynamic';
-
-import devData from '@/data/dev-data.json';
-import projects from '@/data/projects.json';
+import { Suspense, useEffect, useState } from 'react';
 
 import FadeEffectWrapper from '@/components/animations/FadeEffectWrapper';
 import AboutMeSection from '@/components/home/AboutMeSection';
-import ContactSection from '@/components/home/ContactSection';
 import DownArrowIcon from '@/components/home/DownArrowIcon';
 import IntroSection from '@/components/home/IntroSection';
-// import ProjectsSection from '@/components/home/ProjectsSection';
-import SkillsAndStackSection from '@/components/home/SkillsAndStackSection';
 import SocialsSection from '@/components/home/SocialsSection';
-import SpaceMan from '@/components/images/SpaceMan';
 import Layout from '@/components/layout/Layout';
 import Seo from '@/components/Seo';
 
-import type { DevDataTypes, IProjectDataType } from '@/@types/data';
+import { IProject } from '@/@types/resume.types';
+import devData from '@/services/data/dev-data';
+import { getProjectData } from '@/services/resume.service';
 
+const SpaceMan = dynamic(() => import('@/components/images/SpaceMan'));
 const ProjectsSection = dynamic(
   () => import('@/components/home/ProjectsSection'),
-  { ssr: false },
 );
 
-const data = devData as DevDataTypes;
+const SkillsAndStackSection = dynamic(
+  () => import('@/components/home/SkillsAndStackSection'),
+);
+
+const ContactSection = dynamic(
+  () => import('@/components/home/ContactSection'),
+);
 
 export default function HomePage() {
+  // const projectSections = getProjectData();
+  const [loading, setLoading] = useState<IProject | null>(null);
+  useEffect(() => {
+    // eslint-disable-next-line promise/always-return
+    void getProjectData().then((data) => {
+      setLoading(data);
+    });
+  });
   return (
-    <Layout className='flex flex-col gap-4 p-0'>
-      <Seo templateTitle='Home' title='Faouzi Mohamed' />
-      <Main component='main' className='flex max-w-none flex-col gap-4 '>
+    <Layout className='flex flex-col gap-4 p-0 '>
+      <Seo templateTitle='Home' title='Faouzi Mohamed' pathname='/' />
+      <Main component='main' className=' flex max-w-7xl flex-col gap-4 '>
         <Box className='relative flex w-full basis-6 flex-col md:grow md:pt-24'>
           <SpaceMans />
           <Box className='z-10 flex flex-col justify-center gap-2 md:flex-row md:items-center'>
             <IntroSection
-              data={data}
+              data={devData}
               className='grow basis-full px-6 md:px-4'
             />
             <FadeEffectWrapper gutterTop='1rem'>
-              <AboutMeSection className='rounded border border-primary-200 bg-primary-100 bg-opacity-80 px-6 py-2 dark:border-dark-300 dark:bg-dark-500 dark:bg-opacity-80' />
+              <AboutMeSection
+                className='rounded border border-primary-200
+              bg-primary-100 bg-opacity-80 px-6 py-2 dark:border-dark-300
+              dark:bg-dark-500 dark:bg-opacity-80'
+              />
             </FadeEffectWrapper>
           </Box>
         </Box>
-        <SocialsSection data={data} className='basis-full px-6 md:px-4' />
+        <SocialsSection data={devData} className='basis-full px-6 md:px-4' />
         <DownArrowIcon className=' text-5xl' />
-        <ProjectsSection
-          projects={projects as IProjectDataType[]}
-          className='px-6'
-        />
+        <Suspense fallback={<div>Loading...</div>}>
+          <ProjectsSection projects={loading!} className='px-6' />
+        </Suspense>
         <SkillsAndStackSection className='px-6' />
         <ContactSection className='px-6' />
       </Main>

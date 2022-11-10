@@ -11,7 +11,7 @@ export interface ISkillsAndAbilities {
   };
 }
 
-const skillsAndAbilities: ISkillsAndAbilities = {
+export const skillsAndAbilities: ISkillsAndAbilities = {
   Skills: {
     title: 'Skills',
     Icon: GiNinjaHead,
@@ -76,5 +76,3 @@ const skillsAndAbilities: ISkillsAndAbilities = {
     },
   },
 };
-
-export default skillsAndAbilities;

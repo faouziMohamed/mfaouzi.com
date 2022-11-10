@@ -12,7 +12,7 @@ export interface ISeoData {
   author?: string;
 }
 
-const seoData: ISeoData = {
+const resumeSeoData: ISeoData = {
   title: 'Faouzi Mohamed',
   siteName: "Faouzi Mohamed's Resume",
   description:
@@ -28,11 +28,11 @@ const seoData: ISeoData = {
 process.on('uncaughtException', (err) => {
   // eslint-disable-next-line no-console
   console.warn(
-    "You probably have set an incorrect value for the 'logo' property in the 'seoData.ts' file. The value must be a public url not a relative path.",
+    "You probably have set an incorrect value for the 'logo' property in the 'resumeSeoData.ts' file. The value must be a public url not a relative path.",
   );
   // eslint-disable-next-line no-console
   console.error(err);
   process.exit(1);
 });
 
-export default seoData;
+export default resumeSeoData;

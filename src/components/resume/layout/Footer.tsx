@@ -1,11 +1,10 @@
 import { Box, Box as FooterSection, Stack, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 
-import socialData from '@/data/resume/resumeData/dev-data';
-
 import UnStyledLink from '@/components/links/UnStyledLink';
 
 import { SVGImageData } from '@/@types/data';
+import socialData from '@/services/data/dev-data';
 
 import Facebook from '~/icons/facebook.svg';
 import Github from '~/icons/github.svg';
