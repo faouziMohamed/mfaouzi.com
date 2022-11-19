@@ -38,7 +38,7 @@
     "postbuild": "next-sitemap",
     "prepare": "husky install",
     "container:run": "docker compose -f docker-compose.yml up",
-    "container:build": "docker build -t magical-ravers ."
+    "container:build": "docker build -t mfaouzi ."
   },
   "dependencies": {
     "@emotion/cache": "11.10.5",
