@@ -1,4 +1,4 @@
-/* eslint-disable react/jsx-props-no-spreading,@typescript-eslint/no-unsafe-assignment */
+/* eslint-disable react/jsx-props-no-spreading,@typescript-eslint/no-unsafe-assignment,react/no-danger */
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 /* eslint-disable react/destructuring-assignment */
 import getConfig from 'next/config';
@@ -8,6 +8,7 @@ import { useRouter } from 'next/router';
 import { openGraphImage } from '@/lib/helper';
 
 import FavIcons from '@/components/FavIcons';
+import getLdJsonStringified from '@/components/ldJsonDataDefinition';
 
 import theme from '@/themes/theme';
 import { useNextTheme } from '@/themes/themeContext';
@@ -59,7 +60,6 @@ export default function Seo(props: SeoProps) {
     themeMode === 'dark'
       ? theme.palette.primary.dark
       : theme.palette.primary.main;
-
   return (
     <Head>
       <title>{meta.title}</title>
@@ -125,6 +125,18 @@ export default function Seo(props: SeoProps) {
       <meta name='theme-color' content={themeColor} />
       <meta name='apple-mobile-web-app-status-bar-style' content={themeColor} />
       <meta name='msapplication-TileColor' content={themeColor} />
+      {/*  JSON LD  */}
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{
+          __html: getLdJsonStringified({
+            siteUrl: defaultMeta.url!,
+            dateModified: lastBuild,
+            ogImage: meta.image,
+          }),
+        }}
+        key='structured-data'
+      />
       {/* FavIcons */}
       <FavIcons />
     </Head>

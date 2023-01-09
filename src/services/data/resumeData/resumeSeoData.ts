@@ -4,7 +4,7 @@ export interface ISeoData {
   title: string;
   siteName: string;
   description: string;
-  type: typeof seoTypes[number];
+  type: (typeof seoTypes)[number];
   robots: string;
   // logo must be a public url not a relative path
   logo: URL;
