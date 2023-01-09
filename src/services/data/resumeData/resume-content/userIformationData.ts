@@ -1,5 +1,6 @@
 import { IUserContactsAndProfileData } from '@/@types/resume.types';
 
+const websiteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://mfaouzi.com';
 export const userInformation: IUserContactsAndProfileData = {
   Avatar: '/images/userProfilePicture.jpeg',
   About: {
@@ -13,21 +14,21 @@ export const userInformation: IUserContactsAndProfileData = {
     Country: 'Morocco',
     Type: 'location',
   },
-  Tel: {
-    Title: '+212 658 987 654',
-    Link: '+212 658 987 654',
-  },
+  // Tel: {
+  //   Title: '+212 658 987 654', // Not my real phone number
+  //   Link: '+212 658 987 654',
+  // },
   Email: {
-    Title: 'whoamiz@duck.com',
-    Link: 'whoamiz@duck.com',
+    Title: 'hello@mfaouzi.com',
+    Link: 'hello@mfaouzi.com',
   },
   Linkedin: {
     Title: 'mohamed-faouzi',
     Link: 'https://www.linkedin.com/in/mohamed-faouzi',
   },
   Website: {
-    Title: 'mfaouzi.live',
-    Link: 'https://mfaouzi.live',
+    Title: websiteUrl.replace(/https?:\/\//, ''),
+    Link: websiteUrl,
   },
   Github: {
     Title: 'faouziMohamed',

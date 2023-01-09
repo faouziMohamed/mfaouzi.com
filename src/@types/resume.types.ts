@@ -123,7 +123,7 @@ export interface IUserContactsAndProfileData {
   Avatar: string;
   About: About;
   Location: Location;
-  Tel: Tel;
+  Tel?: Tel;
   Email: Email;
   Linkedin: Linkedin;
   Website: Website;

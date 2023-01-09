@@ -16,26 +16,37 @@ interface IUserInformationProps {
   data: IUserContactsAndProfileData;
 }
 
+interface IUserInformation {
+  Icon: IconType;
+  Title: string;
+  Link: string;
+  Prefix?: string;
+}
+
 export default function UserInformation({ data }: IUserInformationProps) {
   const { About, Location } = data;
   const { FirstName, LastName, Profession } = About;
   const { City, Country } = Location;
   const { Tel, Email, Linkedin, Github, Website } = data;
 
-  interface IUserInformation {
-    Icon: IconType;
-    Title: string;
-    Link: string;
-    Prefix?: string;
-  }
-
-  const userInformation: IUserInformation[] = [
-    { ...Tel, Icon: MdOutlineLocalPhone, Prefix: 'tel:' },
-    { ...Email, Icon: MdEmail, Prefix: 'mailto:' },
-    { ...Linkedin, Icon: AiFillLinkedin },
-    { ...Github, Icon: AiOutlineGithub },
-    { ...Website, Icon: MdLanguage },
-  ];
+  const userInformation: IUserInformation[] = [];
+  if (Tel)
+    userInformation.push({ ...Tel, Icon: MdOutlineLocalPhone, Prefix: 'tel:' });
+  userInformation.push(
+    ...[
+      { ...Email, Icon: MdEmail, Prefix: 'mailto:' },
+      { ...Linkedin, Icon: AiFillLinkedin },
+      { ...Github, Icon: AiOutlineGithub },
+      { ...Website, Icon: MdLanguage },
+    ],
+  );
+  //     [
+  //   { ...Tel, Icon: MdOutlineLocalPhone, Prefix: 'tel:' },
+  //   { ...Email, Icon: MdEmail, Prefix: 'mailto:' },
+  //   { ...Linkedin, Icon: AiFillLinkedin },
+  //   { ...Github, Icon: AiOutlineGithub },
+  //   { ...Website, Icon: MdLanguage },
+  // ];
   return (
     <Box
       className='flex flex-col items-center justify-center gap-4 text-center  msm:items-start'
@@ -54,7 +65,7 @@ export default function UserInformation({ data }: IUserInformationProps) {
       >
         <Box
           className='flex flex-col gap-1 '
-          aria-label={`Contact and location Information for${FirstName} ${LastName}`}
+          aria-label={`Contact and location Information for ${FirstName} ${LastName}`}
           id='loc-and-contact-info'
         >
           <Box
