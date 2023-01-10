@@ -11,12 +11,10 @@ export function openGraphImage(props: OpenGraphType): string {
   const {
     logo = 'https://avatars.githubusercontent.com/u/57812398?s=800&v=4',
   } = props;
-  const ogLogo = encodeURIComponent(logo);
-  const ogSiteName = encodeURIComponent(siteName.trim());
-  const ogTemplateTitle = templateTitle
-    ? encodeURIComponent(templateTitle.trim())
-    : undefined;
-  const ogDesc = encodeURIComponent(description.trim());
+  const ogLogo = logo;
+  const ogSiteName = siteName.trim();
+  const ogTemplateTitle = templateTitle ? templateTitle.trim() : undefined;
+  const ogDesc = description.trim();
   const query = new URLSearchParams({
     siteName: ogSiteName,
     description: ogDesc,
@@ -27,8 +25,7 @@ export function openGraphImage(props: OpenGraphType): string {
   if (ogTemplateTitle) {
     query.append('templateTitle', ogTemplateTitle);
   }
-
-  return `https://og.mfaouzi.live/api/general?${query.toString()}`;
+  return `https://og.mfaouzi.com/api/general?${query.toString()}`;
 }
 
 export function promisify<T>(data: T): Promise<T> {
