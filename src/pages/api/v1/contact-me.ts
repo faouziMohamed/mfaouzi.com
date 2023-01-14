@@ -36,13 +36,12 @@ handler.post(async (req: NextApiRequestWithBody, res: NextApiResponse) => {
     if (info.accepted.length > 0) {
       res.status(200).json({ message: 'success! mail sent' });
     } else {
-      const errorMsg = `Error sending email`;
-      res.status(500).json({ message: errorMsg });
+      res.status(500).json({ message: ['Error sending the mail'] });
     }
   } catch (error) {
     res
       .status(500)
-      .json({ message: 'Unable to send email, please try again later' });
+      .json({ errors: ['Unable to send email, please try again later'] });
   }
 });
 
