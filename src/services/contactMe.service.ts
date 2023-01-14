@@ -8,7 +8,7 @@ export type TErrorResponse = { errors: string[] };
 export async function sendEmail(data: FormValues) {
   try {
     const result = await axios.post<TOkResponse>('/api/v1/contact-me', data);
-    return result.data;
+    return result.data.message;
   } catch (error) {
     const errorMsg = (<AxiosError<TErrorResponse>>error).response?.data;
     return errorMsg?.errors;

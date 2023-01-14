@@ -1,5 +1,4 @@
-import { Alert, Box, List, Snackbar, Stack } from '@mui/material';
-import Grow from '@mui/material/Grow';
+import { Alert, Snackbar, Stack } from '@mui/material';
 import Slide, { SlideProps } from '@mui/material/Slide';
 import { SyntheticEvent, useState } from 'react';
 
@@ -22,7 +21,6 @@ export default function AlertMessage(props: AlerteMessageProps) {
     onClose();
     setOpen(false);
   };
-
   return (
     <Snackbar
       anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}

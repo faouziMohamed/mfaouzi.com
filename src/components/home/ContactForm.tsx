@@ -1,20 +1,11 @@
-import {
-  Box,
-  Button,
-  CircularProgress,
-  Fab,
-  LinearProgress,
-  List,
-  Typography,
-} from '@mui/material';
-import { green } from '@mui/material/colors';
+import { Box, Button, CircularProgress } from '@mui/material';
 import { useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { RiSendPlaneFill } from 'react-icons/ri';
 
 import FormTextField, { FormValues } from '@/components/home/FormTextField';
 
-import { sendEmail, TErrorResponse } from '@/services/contactMe.service';
+import { sendEmail } from '@/services/contactMe.service';
 import { emailRegex } from '@/utils/utils';
 
 import AlertMessage from './AlertMessage';
@@ -50,7 +41,7 @@ export default function ContactForm(props: InputFieldProps) {
       formRef.current?.reset();
       setMessage({ msg: 'Message sent successfully', type: 'success' });
     } else if (response) {
-      const res = response as string[];
+      const res = response;
       setMessage({ msg: res, type: 'error' });
     } else {
       setMessage({ msg: 'Something went wrong', type: 'error' });
@@ -102,7 +93,7 @@ export default function ContactForm(props: InputFieldProps) {
         error={errors.subject}
       />
       <FormTextField
-        register={register('message', { required: true })}
+        register={register('message', { required: false })}
         type='textarea'
         name='message'
         label='Message'

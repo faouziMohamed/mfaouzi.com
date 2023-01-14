@@ -27,11 +27,11 @@ handler.post(async (req: NextApiRequestWithBody, res: NextApiResponse) => {
 
   if (errorsMessages.length > 0) {
     res.status(400).json({ errors: errorsMessages });
+    return;
   }
 
-  const mailMessage = createMailMessage({ name, email, subject, message });
-
   try {
+    const mailMessage = createMailMessage({ name, email, subject, message });
     const info = await transporter.sendMail(mailMessage);
     if (info.accepted.length > 0) {
       res.status(200).json({ message: 'success! mail sent' });
