@@ -1,5 +1,5 @@
 const data = {
-  avatar: '~/images/userProfilePicture.jpeg',
+  avatar: '/images/userProfilePicture.jpeg',
   fullName: 'Faouzi Mohamed',
   skills: [
     'Software Engineer',

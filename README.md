@@ -1,6 +1,6 @@
 # Faouzi's Mohamed developer Portfolio
 
-💡 visit on 🚅 [mfaouzi.live](https://mfaouzi.live)
+💡 visit on 🚅 [mfaouzi.com](https://mfaouzi.com)
 
 ## Getting Started
 
@@ -14,6 +14,19 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 result.
+
+---
+
+❗To use the mail service you'll need to create an `.env.local` file containing
+your an env variable for your Sendgrid API Key
+
+The content should be like this:
+
+```.env
+SENDGRID_API_KEY=<your-sendgrid-api-key>
+```
+
+---
 
 ## Using Docker
 
