@@ -1,9 +1,23 @@
-import { Box, Button, Typography } from '@mui/material';
+import {
+  Box,
+  Button,
+  CircularProgress,
+  Fab,
+  LinearProgress,
+  List,
+  Typography,
+} from '@mui/material';
+import { green } from '@mui/material/colors';
+import { useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { RiSendPlaneFill } from 'react-icons/ri';
 
 import FormTextField, { FormValues } from '@/components/home/FormTextField';
 
+import { sendEmail, TErrorResponse } from '@/services/contactMe.service';
 import { emailRegex } from '@/utils/utils';
+
+import AlertMessage from './AlertMessage';
 
 interface InputFieldProps {
   className?: string;
@@ -16,27 +30,53 @@ export default function ContactForm(props: InputFieldProps) {
     handleSubmit,
     formState: { errors },
   } = useForm<FormValues>();
+  type TAlertMsg = { msg: string | string[]; type: 'success' | 'error' };
 
-  const onSubmit = (data: FormValues) => {
-    // eslint-disable-next-line no-console
-    console.log(data);
+  const [message, setMessage] = useState<TAlertMsg>({
+    msg: '',
+    type: 'success',
+  });
+  const formRef = useRef<HTMLFormElement>(null);
+  const [isSending, setIsSending] = useState(false);
+  const [openSnack, setOpenSnack] = useState(false);
+
+  const onSubmit = async (data: FormValues) => {
+    setIsSending(true);
+    const response = await sendEmail(data);
+    setIsSending(false);
+
+    if (typeof response === 'string') {
+      // empty the form
+      formRef.current?.reset();
+      setMessage({ msg: 'Message sent successfully', type: 'success' });
+    } else if (response) {
+      const res = response as string[];
+      setMessage({ msg: res, type: 'error' });
+    } else {
+      setMessage({ msg: 'Something went wrong', type: 'error' });
+    }
+    setOpenSnack(true);
   };
-
-  // show a message telling the form is not yet implemented
 
   return (
     <Box
       component='form'
-      className={`relative flex w-full max-w-[50rem] flex-col gap-4 rounded-xl bg-form-gradient p-4 ${className}`} // eslint-disable-next-line @typescript-eslint/no-misused-promises
+      ref={formRef}
+      className={`relative flex w-full max-w-[50rem] flex-col gap-4 rounded-xl 
+       bg-form-gradient p-4 ${className}`} // eslint-disable-next-line @typescript-eslint/no-misused-promises
       onSubmit={handleSubmit(onSubmit)}
     >
-      <Box className='absolute inset-0 z-10 h-full rounded text-black'>
-        <Box className='flex h-full w-full items-center justify-center'>
-          <Typography className='text-2xl font-bold'>
-            This form is not yet implemented
-          </Typography>
-        </Box>
-      </Box>
+      {openSnack ? (
+        <AlertMessage
+          open
+          message={message.msg}
+          type={message.type}
+          onClose={() => {
+            setOpenSnack(false);
+          }}
+        />
+      ) : null}
+
       <FormTextField
         register={register('email', { required: true, pattern: emailRegex })}
         type='email'
@@ -54,6 +94,14 @@ export default function ContactForm(props: InputFieldProps) {
         error={errors.name}
       />
       <FormTextField
+        register={register('subject', { required: true })}
+        type='text'
+        name='subject'
+        label='Subject'
+        placeholder='Your name'
+        error={errors.subject}
+      />
+      <FormTextField
         register={register('message', { required: true })}
         type='textarea'
         name='message'
@@ -63,11 +111,19 @@ export default function ContactForm(props: InputFieldProps) {
       />
       <Box className='flex w-full justify-start'>
         <Button
+          disabled={isSending}
           type='submit'
           variant='contained'
-          className='w-full bg-primary-500'
+          className='flex w-full items-center justify-center gap-1 bg-primary-500'
         >
-          Send
+          <span className='flex items-center gap-0.5'>
+            {isSending ? 'Sending' : 'Send'}
+          </span>
+          {isSending ? (
+            <CircularProgress size={30} className='text-[#f0f5ff]' />
+          ) : (
+            <RiSendPlaneFill fontSize='1.4rem' />
+          )}
         </Button>
       </Box>
     </Box>

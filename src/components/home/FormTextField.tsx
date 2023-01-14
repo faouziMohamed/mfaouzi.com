@@ -34,6 +34,7 @@ export interface FormValues {
   name: string;
   email: string;
   message: string;
+  subject: string;
 }
 
 interface FormTextFieldProps {
