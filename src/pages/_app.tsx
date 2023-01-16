@@ -2,7 +2,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { CacheProvider, EmotionCache } from '@emotion/react';
 import { ThemeProvider } from '@mui/material/styles';
-// import "tailwindcss/tailwind.css";
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 
