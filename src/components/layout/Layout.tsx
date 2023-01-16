@@ -12,6 +12,8 @@ import UnderConstructionBanner from '@/components/layout/UnderConstructionBanner
 
 import { useNextTheme } from '@/themes/themeContext';
 
+import ToTopButton from '../buttons/ToTopButton';
+
 interface LayoutProps {
   children: ReactNode;
   className?: string;
@@ -33,7 +35,7 @@ export default function Layout({ children, className = '' }: LayoutProps) {
   return (
     <div className={`relative z-10 flex w-full flex-col p-0 ${bg}`}>
       {isBuilding && <UnderConstructionBanner />}
-      <SiteContent className={`p-0 ${className}`}>
+      <SiteContent className={`p-0 ${className}`} id='to-top'>
         <MainHeader navLinks={mainNavLinks} otherLinks={mainOtherLinks} />
         <Box className='xl:-top-22 absolute inset-0 -top-1 -z-10 w-full sm:-top-12 md:-top-16 lg:-top-[7rem] 2xl:-top-[8rem]'>
           <Image
@@ -46,6 +48,7 @@ export default function Layout({ children, className = '' }: LayoutProps) {
             sizes='100vw'
           />
         </Box>
+        <ToTopButton />
         {children}
         <Footer />
       </SiteContent>

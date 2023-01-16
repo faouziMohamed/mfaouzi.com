@@ -74,6 +74,7 @@ module.exports = {
         'wiggle-fast': 'wiggle 2s ease-in-out infinite',
         'wiggle-slower': 'wiggle 8s ease-in-out infinite',
         'bounce-low': 'bounce-low 8s ease infinite',
+        'bounce-to-top': 'bounce-to-top 1.6s ease infinite',
       },
     },
   },
@@ -98,11 +99,21 @@ function keyFrames() {
     // #region bounce-low
     'bounce-low': {
       '0%, 100%': {
-        transform: 'translateY(-3%)',
+        transform: 'translateY(-4%)',
         animationTimingFunction: 'cubic-bezier(0.8, 0, 1, 1)',
       },
       '50%': {
         transform: 'translateY(0)',
+        'animation-timing-function': 'cubic-bezier(0, 0, 0.2, 1)',
+      },
+    },
+    'bounce-to-top': {
+      '0%, 100%': {
+        transform: 'translateY(15%)',
+        animationTimingFunction: 'cubic-bezier(0.8, 0, 1, 1)',
+      },
+      '50%': {
+        transform: 'translateY(-8%)',
         'animation-timing-function': 'cubic-bezier(0, 0, 0.2, 1)',
       },
     },
