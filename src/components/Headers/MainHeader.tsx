@@ -6,7 +6,6 @@ import {
   useMediaQuery,
 } from '@mui/material';
 import { AnimatePresence, motion } from 'framer-motion';
-import Image from 'next/image';
 import { useCallback, useEffect, useState } from 'react';
 import {
   MdClose,
@@ -41,7 +40,6 @@ const layoutVariants = {
   },
 };
 export default function MainHeader({ navLinks, otherLinks }: IHeaderNavLinks) {
-  const { theme: themeName } = useNextTheme();
   const [mounted, setMounted] = useState(false);
   const isMediumSmallScreen = useMediaQuery('(min-width: 693px)'); // sm
   useEffect(() => setMounted(true), []);
@@ -55,7 +53,7 @@ export default function MainHeader({ navLinks, otherLinks }: IHeaderNavLinks) {
         initial='fromTop'
         animate='toTop'
         exit='fromTop'
-        className='text-dark relative flex w-full flex-col px-4'
+        className='text-dark relative z-20 flex w-full flex-col px-4'
       >
         <Stack
           component='header'
@@ -68,17 +66,6 @@ export default function MainHeader({ navLinks, otherLinks }: IHeaderNavLinks) {
           )}
           <NavigationMenu navLinks={navLinks} otherLinks={otherLinks} />
         </Stack>
-        <Box className='xl:-top-22 absolute inset-0 -top-1 -z-10 w-full sm:-top-12 md:-top-16 lg:-top-[7rem] 2xl:-top-[8rem]'>
-          <Image
-            src={`/icons/header-blob-${themeName}.svg`}
-            alt='MainHeader background blob'
-            priority
-            width='100'
-            height='31'
-            className='-sm:top-6 relative w-full  object-cover'
-            sizes='100vw'
-          />
-        </Box>
       </motion.nav>
     </AnimatePresence>
   );
@@ -251,12 +238,15 @@ function NavigationLinks(props: {
             )}
           </Box>
           {subMenuOpened && (
-            <Box className='absolute top-[calc(100%+1px)] z-10 m-0 flex w-full flex-col gap-1.5 border border-primary-300 bg-primary-300 bg-opacity-75 p-0 drop-shadow-sm dark:border-dark-400 dark:bg-dark-400 dark:bg-opacity-75'>
+            <Box
+              className='absolute top-[calc(100%+1px)] z-20 m-0 flex w-full flex-col gap-1.5 
+            border border-primary-300 bg-primary-300 bg-opacity-75 p-0 drop-shadow-sm dark:border-dark-400 dark:bg-dark-400 dark:bg-opacity-75'
+            >
               {otherLinks.map(({ name, href, Icon }) => (
                 <UnStyledLink
                   key={name}
                   href={href}
-                  className='flex items-center gap-2 p-2 pl-3 font-primary text-[.88rem] font-[700] hover:bg-primary-300  dark:hover:bg-dark-500 '
+                  className='flex items-center gap-2  p-2 pl-3 font-primary text-[.88rem] font-[700] hover:bg-primary-300  dark:hover:bg-dark-500 '
                   aria-label={`Link to ${name}`}
                 >
                   <Icon />
