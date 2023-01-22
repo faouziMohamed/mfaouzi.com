@@ -3,7 +3,7 @@ const data = {
   fullName: 'Faouzi Mohamed',
   skills: [
     'Software Engineer',
-    'Full-stack Web Developer (Angular / ReactJs / Asp.Net)',
+    'Full-stack Web Developer (ReactJs/ Angular / Asp.Net)',
   ],
   socials: {
     facebook: {

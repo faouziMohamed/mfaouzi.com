@@ -29,8 +29,8 @@ export default function AboutMeSection({
         <Typography variant='body1' className='font-[300] '>
           I am a{' '}
           <strong className='font-bold'>
-            software engineer, Full-stack software developer ReactJs/DotNet
-            Core/Java/MERN Stack developer
+            software engineer, Full-stack software developer
+            ReactJs/Angular/DotNet Core/Java/MERN Stack developer
           </strong>{' '}
           with a passion for building software that solves problems.
         </Typography>
@@ -38,8 +38,8 @@ export default function AboutMeSection({
           I&apos;m interested in the intersection of technology and design, and
           I Love Javascript technologies. I love to learn new things. I have a
           background in computer science and mathematics and I am currently
-          I&apos;m working as Frontend developer at{' '}
-          <strong className='font-bold'>Keystone</strong> .
+          I&apos;m working as Web Developer at{' '}
+          <strong className='font-bold'>Keystone</strong>.
         </Typography>
       </Box>
       <Box className='flex w-full items-center justify-center gap-4'>
