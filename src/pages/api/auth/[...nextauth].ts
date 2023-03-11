@@ -73,7 +73,7 @@ export default NextAuth({
       const tk = token as ObjectWithUser<JWT>;
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore: Ignore default user type
-      session.user = { ...tk.user, id: undefined };
+      session.user = { ...tk.user };
       console.log('session ENDED', { session });
       return session;
     },
