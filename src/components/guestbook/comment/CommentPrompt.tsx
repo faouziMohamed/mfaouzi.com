@@ -35,7 +35,7 @@ export default function CommentPrompt({
           width={isReply ? 45 : 69}
           height={isReply ? 45 : 69}
           className='rounded-full'
-          alt={`${user.fullName}'s avatar`}
+          alt={`${user.name}'s avatar`}
         />
       </div>
       <AddNewCommentTextField
@@ -114,7 +114,7 @@ function createCommentPayload(
     replies: [],
     author: {
       providerId: user.id,
-      fullName: user.fullName,
+      name: user.name,
       avatar: user.avatar,
     },
   };

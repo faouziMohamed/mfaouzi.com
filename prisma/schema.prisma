@@ -12,7 +12,7 @@ model GUser {
   userId       String     @default(cuid())
   providerId   String     @unique
   email        String
-  fullName     String
+  name         String
   providerName String
   avatar       String
   createdAt    DateTime   @default(now())

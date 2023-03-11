@@ -178,12 +178,12 @@ function DisplayLoginStatus() {
           width={45}
           height={45}
           className='rounded-full'
-          alt={`${user.fullName}'s avatar`}
+          alt={`${user.name}'s avatar`}
         />
       </div>
       <Typography className='m-0 text-[0.8rem] text-[#616869] dark:text-[#b5cdd1]'>
         You are currently signed in as{' '}
-        <span className='font-bold'>{user.fullName}</span>{' '}
+        <span className='font-bold'>{user.name}</span>{' '}
       </Typography>
     </div>
   );

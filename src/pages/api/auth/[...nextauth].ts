@@ -21,7 +21,7 @@ function assembleNewUser(account: Account, profile: ProviderProfile) {
     providerId: account.providerAccountId,
     email: profile.email!,
     avatar: profile.avatar_url,
-    fullName: capitalize(profile.name || profile.login),
+    name: capitalize(profile.name || profile.login),
     providerName: account.provider,
   };
   return user;
@@ -35,8 +35,8 @@ function getUpdatedFields(maybeUser: AppUserWithEmail, profile: Profile) {
   if (maybeUser.avatar !== profile.image) {
     updatedFields.avatar = profile.image!;
   }
-  if (maybeUser.fullName !== profile.name) {
-    updatedFields.fullName = profile.name!;
+  if (maybeUser.name !== profile.name) {
+    updatedFields.name = profile.name!;
   }
   return updatedFields;
 }
@@ -55,8 +55,7 @@ export default NextAuth({
     }),
   ],
   callbacks: {
-    // eslint-disable-next-line @typescript-eslint/require-await
-    async jwt({ token, user, account }) {
+    jwt({ token, user, account }) {
       // user and account are only available on sign in
       console.log('jwt STARTED', { token, user, account }, '\n\n');
       if (user) {
@@ -64,19 +63,16 @@ export default NextAuth({
         tk.user = {
           id: user.id,
           avatar: user.image!,
-          fullName: capitalize(user.name!),
+          name: capitalize(user.name!),
         };
       }
       console.log('jwt', { token }, '\n\n');
       return token;
     },
-    // eslint-disable-next-line @typescript-eslint/require-await
-    async session({ session, token }) {
+    session({ session, token }) {
       console.log('session STARTED', { session });
       const tk = token as ObjectWithUser<JWT>;
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore: Ignore default user type
-      session.user = { ...tk.user };
+      session.user = tk.user;
       console.log('session ENDED', { session }, '\n\n');
       return session;
     },
@@ -93,7 +89,7 @@ export default NextAuth({
           await addNewUser(newUser);
           return true;
         }
-        // check if the avatar, email and the fullName are the same as the one in the database
+        // check if the avatar, email and the name are the same as the one in the database
         const updatedFields = getUpdatedFields(maybeUser, profile!);
         if (Object.keys(updatedFields).length > 0) {
           await updateUser(maybeUser.providerId, updatedFields);

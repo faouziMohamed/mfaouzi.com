@@ -1,7 +1,7 @@
 [
   {
     "id": "0e663972-4646-4499-acd0-fdd429785278",
-    "fullName": "Emma Smith",
+    "name": "Emma Smith",
     "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
     "comment": "I don't believe in vaccines. They are a scam.",
     "createdAt": "March 30, 2023, 11:04 PM",
@@ -9,7 +9,7 @@
   },
   {
     "id": "57440dae-0d98-4534-a8a4-c051a7af8ab9",
-    "fullName": "Alex Johnson",
+    "name": "Alex Johnson",
     "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
     "comment": "You are so stupid if you don't believe in vaccines. \nDo you want to get sick?",
     "createdAt": "March 31, 2023, 1:04 PM",
@@ -17,7 +17,7 @@
     "replies": [
       {
         "id": "ec3c9785-b2df-44d1-b94c-a39a099e9dfe",
-        "fullName": "Emma Smith",
+        "name": "Emma Smith",
         "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
         "comment": "I've done my own research and vaccines are not safe. 🚫",
         "createdAt": "March 31, 2023, 3:04 PM",
@@ -25,7 +25,7 @@
       },
       {
         "id": "22acacf6-79f2-499b-9a47-45c4ed8c407b",
-        "fullName": "Alex Johnson",
+        "name": "Alex Johnson",
         "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
         "comment": "Your research is probably from anti-vaxx websites. 🤦‍♂️\nVaccines are safe and save lives!",
         "createdAt": "March 31, 2023, 4:04 PM",
@@ -35,7 +35,7 @@
   },
   {
     "id": "339cd825-7854-4f0a-8624-32c0e61161e7",
-    "fullName": "Ifeoma Nnadi",
+    "name": "Ifeoma Nnadi",
     "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
     "comment": "I completely agree! That’s what makes African music so unique and special.",
     "createdAt": "March 06, 2023, 04:21 PM",
@@ -43,7 +43,7 @@
   },
   {
     "id": "fa4c54f1-0cbb-44a9-a090-937688fc7a71",
-    "fullName": "Iron Man",
+    "name": "Iron Man",
     "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
     "comment": "Starting to find this stuff funny!",
     "createdAt": "March 02, 2022, 11:04 AM",
@@ -57,7 +57,7 @@
   },
   {
     "id": "f97a52ad-c473-4ae0-8c8a-fc825f7c3ccc",
-    "fullName": "Liam Smith",
+    "name": "Liam Smith",
     "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
     "comment": "The confinement is really tough. I miss going outside, hanging out with friends and just doing normal things 💔",
     "createdAt": "March 30, 2023, 8:20 PM",
@@ -65,7 +65,7 @@
   },
   {
     "id": "7d8b1aee-fe63-4df5-a13d-0729946b19e2",
-    "fullName": "John Doe",
+    "name": "John Doe",
     "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
     "comment": "I am a comment",
     "createdAt": "March 05, 2023, 11:04 PM",
@@ -73,7 +73,7 @@
   },
   {
     "id": "97ae6daf-d567-4f68-bbb2-8a569b5158b2",
-    "fullName": "Efe Omoregie",
+    "name": "Efe Omoregie",
     "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
     "comment": "One of my favorite African songs is “African Queen” by 2Baba. The melody is so sweet and the lyrics are very meaningful.",
     "createdAt": "March 06, 2023, 11:34 AM",
@@ -81,7 +81,7 @@
     "replies": [
       {
         "id": "299d573c-04e5-433f-8300-f4d1a48d4d7c",
-        "fullName": "Victor Adebayo",
+        "name": "Victor Adebayo",
         "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
         "comment": "I also love that song! It’s a classic.",
         "createdAt": "March 06, 2023, 12:07 PM",
@@ -89,7 +89,7 @@
       },
       {
         "id": "6704d417-9260-48f1-8f78-c30eac9e2acc",
-        "fullName": "Ngozi Okonkwo",
+        "name": "Ngozi Okonkwo",
         "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
         "comment": "I’m more of a fan of “Sweet Mother” by Prince Nico Mbarga. The guitar playing is just amazing.",
         "createdAt": "March 06, 2023, 01:24 PM",
@@ -99,7 +99,7 @@
   },
   {
     "id": "308fc753-34a8-4996-aff1-e789fb5faa2c",
-    "fullName": "John Doe",
+    "name": "John Doe",
     "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
     "comment": "I love this new feature!",
     "createdAt": "March 05, 2023, 11:04 PM",
@@ -107,7 +107,7 @@
     "replies": [
       {
         "id": "a547b81a-7ff3-49c7-a068-94afc011acac",
-        "fullName": "Jane Doe",
+        "name": "Jane Doe",
         "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
         "comment": "I agree, it's really useful!",
         "createdAt": "March 05, 2023, 11:05 PM",
@@ -115,7 +115,7 @@
         "replies": [
           {
             "id": "35c532d1-698c-4a59-8117-34d76dbdfa0b",
-            "fullName": "Jim Smith",
+            "name": "Jim Smith",
             "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
             "comment": "I also love this feature, great job!",
             "createdAt": "March 05, 2023, 11:06 PM",
@@ -124,7 +124,7 @@
           },
           {
             "id": "9c20c9f3-b3d6-42a5-ab06-ea6abb7f4a0e",
-            "fullName": "Emily Johnson",
+            "name": "Emily Johnson",
             "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
             "comment": "I have been using it for a while now, it's amazing!",
             "createdAt": "March 05, 2023, 11:07 PM",
@@ -135,7 +135,7 @@
       },
       {
         "id": "118bcbb3-5b44-497d-bd40-80f03bc98558",
-        "fullName": "Michael Wilson",
+        "name": "Michael Wilson",
         "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
         "comment": "This is exactly what I was looking for!",
         "createdAt": "March 05, 2023, 11:08 PM",
@@ -146,7 +146,7 @@
   },
   {
     "id": "6b34f4a0-26e8-4d78-8e99-34f8f4733700",
-    "fullName": "Chika Odum",
+    "name": "Chika Odum",
     "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
     "comment": "African music has always had a special place in my heart. The rhythm and beats are so unique and mesmerizing.",
     "createdAt": "March 05, 2023, 11:04 PM",
@@ -154,7 +154,7 @@
   },
   {
     "id": "e468dfc8-ec4b-47b7-ac2c-a0d05a4db0d0",
-    "fullName": "Isabelle Williams",
+    "name": "Isabelle Williams",
     "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
     "comment": "Can we please stop fighting about this? 🙏\nLet's all just do what's best for our health.",
     "createdAt": "March 31, 2023, 5:04 PM",
@@ -162,7 +162,7 @@
   },
   {
     "id": "1d1c9e8e-c549-4028-9d45-22f6509788a3",
-    "fullName": "Emeka Anyaoku",
+    "name": "Emeka Anyaoku",
     "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
     "comment": "African music is not just about rhythm and beats, it’s also about storytelling and preserving cultural heritage.",
     "createdAt": "March 06, 2023, 02:14 PM",
@@ -170,7 +170,7 @@
   },
   {
     "id": "8aeb730a-3c61-4ce7-a7cf-72d0613b7923",
-    "fullName": "Jane Doe",
+    "name": "Jane Doe",
     "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
     "comment": "Just finished a project on machine learning. It's amazing how you can train models to make predictions based on data.",
     "createdAt": "January 31, 2023, 10:15 AM",
@@ -178,7 +178,7 @@
   },
   {
     "id": "e96956a0-5408-4f02-9745-12d0fd5ecbad",
-    "fullName": "Sarah Johnson",
+    "name": "Sarah Johnson",
     "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
     "comment": "I'm so happy I found this!",
     "createdAt": "March 05, 2023, 11:09 PM",
@@ -187,7 +187,7 @@
   },
   {
     "id": "32937c03-f3f3-4b00-ba6f-92a1bd43b84c",
-    "fullName": "Alice Johnson",
+    "name": "Alice Johnson",
     "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
     "comment": "The COVID pandemic is affecting everyone's life in different ways.\nSome are struggling with illness or loss of a loved one.\nOthers are facing financial difficulties due to job loss or reduced hours.\n💔",
     "createdAt": "March 05, 2023, 11:04 PM",
@@ -195,7 +195,7 @@
     "replies": [
       {
         "id": "b8d007fd-0f01-4b02-aad3-ad33a29c738f",
-        "fullName": "Robert Smith",
+        "name": "Robert Smith",
         "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
         "comment": "I agree, it's a tough time for everyone.\nBut we need to stay positive and support each other.\n💪",
         "createdAt": "March 05, 2023, 11:07 PM",
@@ -203,7 +203,7 @@
       },
       {
         "id": "b699635c-5ab2-4168-9a18-36fe4aafd424",
-        "fullName": "Emily Davis",
+        "name": "Emily Davis",
         "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
         "comment": "It's important to follow guidelines from health officials to stop the spread of the virus.\nWash your hands, wear a mask, and practice social distancing.\n🧼💊💉",
         "createdAt": "March 06, 2023, 08:12 AM",
@@ -213,7 +213,7 @@
   },
   {
     "id": "19d602bd-7ca3-4c8c-ae6c-3f1f4d714ce8",
-    "fullName": "Noah Johnson",
+    "name": "Noah Johnson",
     "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
     "comment": "Working from home is great, but I miss the office environment and face-to-face interactions with colleagues 🙁.",
     "createdAt": "March 28, 2023, 4:10 PM",
@@ -221,7 +221,7 @@
   },
   {
     "id": "78bdf7f7-cd2b-4f25-a603-9a8feba8b30c",
-    "fullName": "Bob Smith",
+    "name": "Bob Smith",
     "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
     "comment": "I love working with algorithms! They allow you to solve complex problems in an efficient manner.",
     "createdAt": "January 30, 2023, 5:30 PM",
@@ -229,7 +229,7 @@
   },
   {
     "id": "d5ff2e11-2eb3-49ac-bdf5-0d2a12d8d822",
-    "fullName": "Jane Doe",
+    "name": "Jane Doe",
     "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
     "comment": "I had a dream that I was a comment",
     "createdAt": "March 02, 2022, 11:04 AM",
@@ -237,7 +237,7 @@
     "replies": [
       {
         "id": "c91d89a2-cc4b-4833-9046-0009b7991128",
-        "fullName": "Kaladin Stormblessed",
+        "name": "Kaladin Stormblessed",
         "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
         "comment": "Good morning Kaladin, say hello to your mother for me",
         "createdAt": "Nov 02, 2023, 01:04 PM",
@@ -245,7 +245,7 @@
         "replies": [
           {
             "id": "535d466f-d880-44a6-8272-dfa4ecbfb59e",
-            "fullName": "Lift",
+            "name": "Lift",
             "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
             "comment": "Hey hon, I'm fine, how are you?",
             "createdAt": "Nov 02, 2023, 10:04 PM",
@@ -253,7 +253,7 @@
             "replies": [
               {
                 "id": "5f928168-0c15-4d82-89fc-a6c6894a64c1",
-                "fullName": "Kaladin Stormblessed",
+                "name": "Kaladin Stormblessed",
                 "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
                 "comment": "I'm fine, thanks for asking",
                 "createdAt": "Nov 02, 2023, 10:04 PM",
@@ -261,7 +261,7 @@
               },
               {
                 "id": "6ac87726-b6e5-4c97-9864-8cd7f63a10f8",
-                "fullName": "Sqweebles",
+                "name": "Sqweebles",
                 "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
                 "comment": "Just a moment, I'm trying to find my phone",
                 "createdAt": "Nov 02, 2023, 10:04 PM",
@@ -269,7 +269,7 @@
               },
               {
                 "id": "a2468b84-feeb-4626-8f89-b07a48dd8792",
-                "fullName": "Kaladin Stormblessed",
+                "name": "Kaladin Stormblessed",
                 "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
                 "comment": "Buil up your courage, you can do it",
                 "createdAt": "Nov 02, 2023, 10:04 PM",
@@ -277,7 +277,7 @@
               },
               {
                 "id": "4344a188-c34d-4bb0-ae5d-114832cfe39d",
-                "fullName": "Sqweebles",
+                "name": "Sqweebles",
                 "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
                 "comment": "Are you sure you're fine?",
                 "createdAt": "Nov 02, 2023, 10:04 PM",
@@ -285,7 +285,7 @@
                 "replies": [
                   {
                     "id": "08205492-0a1e-40b4-992b-0920be4592be",
-                    "fullName": "Kaladin Stormblessed",
+                    "name": "Kaladin Stormblessed",
                     "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
                     "comment": "I'm fine, thanks for asking",
                     "createdAt": "Nov 02, 2023, 10:04 PM",
@@ -297,7 +297,7 @@
           },
           {
             "id": "86372c67-4e44-4a14-8d67-8ed8b0b011ca",
-            "fullName": "Kaladin Stormblessed",
+            "name": "Kaladin Stormblessed",
             "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
             "comment": "I'm fine, thanks for asking",
             "createdAt": "Nov 02, 2023, 10:04 PM",
@@ -307,7 +307,7 @@
       },
       {
         "id": "61fe970a-0b8a-4e5b-830d-5358ed380d79",
-        "fullName": "Kaladin Stormblessed",
+        "name": "Kaladin Stormblessed",
         "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
         "comment": "Okay, I'll tell her (I'm not sure if I should though)",
         "createdAt": "Nov 02, 2023, 10:04 PM",
@@ -317,7 +317,7 @@
   },
   {
     "id": "2d34111a-0b65-4989-8c2d-61a7cb823820",
-    "fullName": "Faouzi Mohamed",
+    "name": "Faouzi Mohamed",
     "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
     "comment": "Changed my name to Mr. Tweet, now Twitter won't let me change it back, what do I do? I'm stuck with this name now and I don't like it.\nI'm not even a bird! I'm a human being! Please help me!",
     "createdAt": "March 05, 2023, 12:57 PM",
@@ -325,7 +325,7 @@
     "replies": [
       {
         "id": "ea4e38fa-726a-4d77-9718-16f812dd3ac7",
-        "fullName": "Anders Hejlsberg",
+        "name": "Anders Hejlsberg",
         "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
         "comment": "I am a reply",
         "createdAt": "March 05, 2023, 12:57 PM",
@@ -333,7 +333,7 @@
       },
       {
         "id": "085a1f05-51f3-4841-b046-1d0e494bf1c5",
-        "fullName": "Miriam Suzanne",
+        "name": "Miriam Suzanne",
         "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
         "comment": "I feel like a reply too",
         "createdAt": "Dec 05, 2021, 12:57 PM",
@@ -343,7 +343,7 @@
   },
   {
     "id": "0e5737ef-1da7-484e-88c8-2e4a157a4a01",
-    "fullName": "Siphokazi Mdlalose",
+    "name": "Siphokazi Mdlalose",
     "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
     "comment": "Amapiano music is taking over South Africa! 🔥🎶",
     "createdAt": "March 30, 2023, 11:04 PM",
@@ -351,7 +351,7 @@
     "replies": [
       {
         "id": "bfa4e395-31db-434c-969b-170a84491af5",
-        "fullName": "Trevor Noah",
+        "name": "Trevor Noah",
         "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
         "comment": "I absolutely love Amapiano music! 💃🏽",
         "createdAt": "March 31, 2023, 01:54 AM",
@@ -359,7 +359,7 @@
         "replies": [
           {
             "id": "e56904c7-a736-400e-b6bc-0a05c284940d",
-            "fullName": "Babes Wodumo",
+            "name": "Babes Wodumo",
             "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
             "comment": "Amapiano is here to stay! 💯",
             "createdAt": "March 31, 2023, 02:30 AM",
@@ -367,7 +367,7 @@
             "replies": [
               {
                 "id": "65f0cc54-d979-460b-8ceb-01c1f4bd16c8",
-                "fullName": "Cassper Nyovest",
+                "name": "Cassper Nyovest",
                 "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
                 "comment": "Amapiano is the future of South African music. 🚀",
                 "createdAt": "March 31, 2023, 03:12 AM",
@@ -375,7 +375,7 @@
                 "replies": [
                   {
                     "id": "91a1846b-f7b5-4697-a244-ae5e081f0f2c",
-                    "fullName": "Nasty C",
+                    "name": "Nasty C",
                     "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
                     "comment": "I'm so happy to see Amapiano grow so much! 🙏🏽",
                     "createdAt": "March 31, 2023, 04:03 AM",
@@ -389,7 +389,7 @@
       },
       {
         "id": "36681818-037f-45d5-93f5-317e4a7d35a1",
-        "fullName": "DJ Maphorisa",
+        "name": "DJ Maphorisa",
         "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
         "comment": "Amapiano is the future of African music! 🌍",
         "createdAt": "March 31, 2023, 05:00 AM",
@@ -399,7 +399,7 @@
   },
   {
     "id": "c41244cb-127f-4bf3-9298-6c13b18b225c",
-    "fullName": "Michael Brown",
+    "name": "Michael Brown",
     "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
     "comment": "The COVID vaccine is a crucial tool in the fight against the pandemic.\nGet vaccinated to protect yourself and those around you.\n💉💊💪",
     "createdAt": "March 06, 2023, 11:23 AM",
@@ -407,7 +407,7 @@
   },
   {
     "id": "93a71744-73bd-4c26-a7a8-74439f015a8b",
-    "fullName": "David Brown",
+    "name": "David Brown",
     "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
     "comment": "I have recommended this to all my friends!",
     "createdAt": "March 05, 2023, 11:10 PM",
@@ -416,7 +416,7 @@
   },
   {
     "id": "b82b92b3-8536-4944-b6d9-4d3c975514f3",
-    "fullName": "Emma Williams",
+    "name": "Emma Williams",
     "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
     "comment": "I'm struggling with the isolation, but at least I have my loved ones by my side 💕.\n\nWe are making the best of this situation, trying new recipes and playing board games together.",
     "createdAt": "March 29, 2023, 6:15 PM",
@@ -424,7 +424,7 @@
   },
   {
     "id": "3c8917a2-c3f0-4828-9285-4c1460ee0334",
-    "fullName": "Ava Brown",
+    "name": "Ava Brown",
     "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
     "comment": "It's tough to balance work and taking care of my kids at home 🤯.\n\nI hope this situation will end soon so that they can go back to school.",
     "createdAt": "March 27, 2023, 2:05 PM",
@@ -432,7 +432,7 @@
     "replies": [
       {
         "id": "0bf8ef9e-11be-4437-bb7c-454ff57f68f0",
-        "fullName": "Mia Davis",
+        "name": "Mia Davis",
         "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
         "comment": "I totally understand where you're coming from. Being a parent during the pandemic is challenging, but we'll get through it together 💪",
         "createdAt": "March 28, 2023, 6:00 PM",
@@ -440,7 +440,7 @@
       },
       {
         "id": "e8133402-fbbe-40cd-8078-afb64598abcd",
-        "fullName": "Evelyn Rodriguez",
+        "name": "Evelyn Rodriguez",
         "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
         "comment": "It's great to have support from other parents. I think it's important to reach out and connect with others during these times 💕",
         "createdAt": "March 29, 2023, 8:05 PM",
@@ -450,7 +450,7 @@
   },
   {
     "id": "f22b3869-3e7c-460b-a05c-b4b5e3678981",
-    "fullName": "John Doe",
+    "name": "John Doe",
     "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
     "comment": "I'm really interested in learning more about computer networks and how they work.",
     "createdAt": "January 31, 2023, 2:00 PM",
@@ -458,7 +458,7 @@
     "replies": [
       {
         "id": "dd208026-e4c7-41dc-a6f3-dcf45d8f66a2",
-        "fullName": "Emily Brown",
+        "name": "Emily Brown",
         "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
         "comment": "You should check out the OSI model. It's a great way to understand the different layers involved in networking.",
         "createdAt": "January 31, 2023, 4:30 PM",
@@ -466,7 +466,7 @@
       },
       {
         "id": "e02ef263-372c-4cfd-ab5c-17d864f02643",
-        "fullName": "Daniel Lee",
+        "name": "Daniel Lee",
         "avatar": "https://avatars.githubusercontent.com/u/46004116?v=4",
         "comment": "Agreed, the OSI model is a fundamental concept to understand. It's used in many networking courses and exams.",
         "createdAt": "January 31, 2023, 6:00 PM",

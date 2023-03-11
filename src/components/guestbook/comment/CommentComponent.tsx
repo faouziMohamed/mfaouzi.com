@@ -46,7 +46,7 @@ function CommentHeader({ comment }: { comment: GuestbookComment }) {
           width={45}
           height={45}
           className='rounded-full'
-          alt={`${comment.author.fullName}'s avatar`}
+          alt={`${comment.author.name}'s avatar`}
         />
       </div>
       <div className='flex flex-col gap-0'>
@@ -54,7 +54,7 @@ function CommentHeader({ comment }: { comment: GuestbookComment }) {
           component='h3'
           className='m-0 font-secondary text-[0.85rem] font-[700] text-[#495F70] dark:text-[#9bd3dd]'
         >
-          {comment.author.fullName}
+          {comment.author.name}
         </Typography>
         <Typography className='m-0 font-secondary text-[0.68rem] text-[#607274] dark:text-[#b5cdd1]'>
           {formatDate(new Date(comment.updatedAt))}

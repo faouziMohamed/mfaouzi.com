@@ -20,7 +20,7 @@ export const SELECT_COMMENT_FILTER_QUERY = {
   author: {
     select: {
       providerId: true,
-      fullName: true,
+      name: true,
       avatar: true,
     },
   },
@@ -176,7 +176,7 @@ export async function getUserByProviderId(providerId: string) {
       email: true,
       avatar: true,
       providerName: true,
-      fullName: true,
+      name: true,
     },
   });
   return user as AppUserWithEmail | null;
@@ -198,7 +198,7 @@ export async function addNewUser(user: AppUserWithEmail) {
       email: user.email,
       providerName: user.providerName,
       providerId: user.providerId,
-      fullName: user.fullName,
+      name: user.name,
       avatar: user.avatar,
     },
   });

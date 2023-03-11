@@ -19,7 +19,7 @@ export default function AddNewComment({ user }: { user: AppUser }) {
     >
       <Typography className='text-center text-[0.8rem]  text-[#34484d] dark:text-[#b5cdd1]'>
         You are currently signed in as{' '}
-        <span className='font-bold'>{user.fullName}</span>{' '}
+        <span className='font-bold'>{user.name}</span>{' '}
       </Typography>
       <CommentPrompt />
       <ArrowButton
