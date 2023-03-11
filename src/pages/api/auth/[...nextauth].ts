@@ -49,7 +49,6 @@ export default NextAuth({
       clientSecret: process.env.GITHUB_SECRET!,
     }),
   ],
-
   callbacks: {
     // eslint-disable-next-line @typescript-eslint/require-await
     async jwt({ token, user, account }) {
