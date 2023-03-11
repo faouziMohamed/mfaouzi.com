@@ -69,11 +69,12 @@ export default NextAuth({
     },
     // eslint-disable-next-line @typescript-eslint/require-await
     async session({ session, token }) {
+      console.log('session STARTED', { session });
       const tk = token as ObjectWithUser<JWT>;
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore: Ignore default user type
       session.user = { ...tk.user, id: undefined };
-      console.log('session', { session });
+      console.log('session ENDED', { session });
       return session;
     },
     async signIn(props) {
