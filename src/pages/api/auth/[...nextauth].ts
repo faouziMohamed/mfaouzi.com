@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import NextAuth, { Account, Profile } from 'next-auth';
 import { JWT } from 'next-auth/jwt';
 import GithubProvider from 'next-auth/providers/github';
@@ -63,6 +64,7 @@ export default NextAuth({
           fullName: capitalize(user.name!),
         };
       }
+      console.log('jwt', { token });
       return token;
     },
     // eslint-disable-next-line @typescript-eslint/require-await
@@ -71,6 +73,7 @@ export default NextAuth({
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore: Ignore default user type
       session.user = { ...tk.user, id: undefined };
+      console.log('session', { session });
       return session;
     },
     async signIn(props) {
@@ -90,12 +93,13 @@ export default NextAuth({
         if (Object.keys(updatedFields).length > 0) {
           await updateUser(maybeUser.providerId, updatedFields);
         }
+        console.log('User already exists', maybeUser);
         return true;
       } catch (error) {
         // eslint-disable-next-line no-console
         console.log(error);
+        return false;
       }
-      return true;
     },
   },
 });
