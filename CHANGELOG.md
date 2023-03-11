@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/faouziMohamed/mfaouzi.com/compare/v1.1.0...v1.2.0) (2023-03-11)
+
+
+### Features
+
+* add generated seo on server side before rendering ([721d90f](https://github.com/faouziMohamed/mfaouzi.com/commit/721d90f68341a82b93196f0683fc268b8c1f2122))
+* add to top button ([85be968](https://github.com/faouziMohamed/mfaouzi.com/commit/85be96866db2f66fe85eb10f1abedfc173137100))
+* update profile data ([2aa0f17](https://github.com/faouziMohamed/mfaouzi.com/commit/2aa0f173066898c26dc082a478331e28cf364309))
+
 ## [1.1.0](https://github.com/faouziMohamed/fz-portfolio/compare/v1.0.0...v1.1.0) (2023-01-16)
 
 

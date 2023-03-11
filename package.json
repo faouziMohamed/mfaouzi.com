@@ -18,7 +18,7 @@
     "faouziMohamed",
     "personal"
   ],
-  "version": "1.1.0",
+  "version": "1.2.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -38,7 +38,7 @@
     "postbuild": "next-sitemap",
     "prepare": "husky install",
     "container:run": "docker compose -f docker-compose.yml up",
-    "container:build": "docker build -t mfaouzi ."
+    "container:build": "docker build -t mfaouzi.com ."
   },
   "dependencies": {
     "@emotion/cache": "11.10.5",
