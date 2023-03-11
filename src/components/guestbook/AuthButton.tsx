@@ -3,6 +3,8 @@ import { Typography } from '@mui/material';
 import { signIn } from 'next-auth/react';
 import { RxGithubLogo } from 'react-icons/rx';
 
+import { GUESTBOOK_PAGE } from '@/lib/client-route.contant';
+
 import Button from '@/components/buttons/Button';
 
 export default function AuthButtons() {
@@ -21,7 +23,12 @@ export default function AuthButtons() {
       <div className='flex w-full flex-col gap-2'>
         {/* GitHub Login Button */}
         <Button
-          onClick={() => signIn('github', { redirect: false })}
+          onClick={() =>
+            signIn('github', {
+              redirect: false,
+              callbackUrl: GUESTBOOK_PAGE,
+            })
+          }
           className='flex w-full items-center justify-center gap-2 rounded-md
           border-0  bg-[#101720] text-[#fff8f8] shadow-sm hover:bg-[#000000] 
           focus:outline-none focus:ring-2 focus:ring-[#101720] focus:ring-offset-2 

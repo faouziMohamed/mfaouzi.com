@@ -46,13 +46,17 @@ export type ErrorMessage = {
   cause?: string;
 };
 export type AppUserWithEmail = {
-  id: string;
+  providerId: string;
   email: string;
   avatar: string;
   providerName: string;
   fullName: string;
 };
-export type AppUser = Omit<AppUserWithEmail, 'email' | 'providerName'>;
+export type AppUser = Omit<
+  AppUserWithEmail,
+  'email' | 'providerName' | 'providerId'
+> & { id: string };
+
 export type CommentLikes = {
   commentId: string;
   likeCount: number;
