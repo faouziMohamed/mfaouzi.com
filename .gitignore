@@ -53,3 +53,4 @@ sitemap.xml
 /src/pages/api/help.ts
 /.env.local
 /.env.local.production
+/git-filter-repo
