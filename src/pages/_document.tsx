@@ -24,6 +24,7 @@ const ogImg = openGraphImage({
 
 const { publicRuntimeConfig } = getConfig();
 const { lastBuild } = publicRuntimeConfig;
+
 class MyDocument extends Document {
   render() {
     return (

@@ -4,6 +4,7 @@ import { CacheProvider, EmotionCache } from '@emotion/react';
 import { ThemeProvider } from '@mui/material/styles';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
+import Script from 'next/script';
 import { SessionProvider } from 'next-auth/react';
 
 import '@fontsource/roboto/300.css';
@@ -15,7 +16,7 @@ import '@fontsource/ubuntu/300.css';
 import '@fontsource/ubuntu/400.css';
 import '@fontsource/ubuntu/500.css';
 import '@fontsource/ubuntu/700.css';
-import '@/futura-spinner.module.scss/globals.scss';
+import '@/styles/globals.scss';
 
 import { createEmotionCache } from '@/lib/utils';
 
@@ -50,6 +51,12 @@ export default function MyApp(props: MyAppProps) {
           </NextThemeProvider>
         </ThemeProvider>
       </SessionProvider>
+      {/* // <!-- Cloudflare Web Analytics --> */}
+      <Script
+        src='https://static.cloudflareinsights.com/beacon.min.js'
+        data-cf-beacon='{"token": "ef48beb9e14244c49e6dc029d90095ba"}'
+      />
+      {/* // <!-- End Cloudflare Web Analytics --> */}
     </CacheProvider>
   );
 }
