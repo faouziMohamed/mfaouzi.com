@@ -69,6 +69,7 @@ export default NextAuth({
       console.log('jwt', { token }, '\n\n');
       return token;
     },
+
     session({ session, token }) {
       console.log('session STARTED', { session });
       const tk = token as ObjectWithUser<JWT>;
