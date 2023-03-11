@@ -21,7 +21,7 @@ export default function AuthButtons() {
       <div className='flex w-full flex-col gap-2'>
         {/* GitHub Login Button */}
         <Button
-          onClick={() => signIn('github')}
+          onClick={() => signIn('github', { redirect: false })}
           className='flex w-full items-center justify-center gap-2 rounded-md
           border-0  bg-[#101720] text-[#fff8f8] shadow-sm hover:bg-[#000000] 
           focus:outline-none focus:ring-2 focus:ring-[#101720] focus:ring-offset-2 
