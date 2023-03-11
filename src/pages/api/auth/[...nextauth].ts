@@ -1,6 +1,5 @@
 /* eslint-disable no-console */
 import NextAuth, { Account, Profile } from 'next-auth';
-import { JWT } from 'next-auth/jwt';
 import GithubProvider from 'next-auth/providers/github';
 
 import { GUESTBOOK_PAGE } from '@/lib/client-route.contant';
@@ -12,7 +11,7 @@ import {
   updateUser,
 } from '@/Repository/guestbook.queries';
 
-import { AppUser, AppUserWithEmail } from '@/types/guestbook/guestbook.types';
+import { AppUserWithEmail } from '@/types/guestbook/guestbook.types';
 
 type ProviderProfile = Profile & { avatar_url: string; login: string };
 
@@ -41,7 +40,7 @@ function getUpdatedFields(maybeUser: AppUserWithEmail, profile: Profile) {
   return updatedFields;
 }
 
-type ObjectWithUser<T extends object> = T & { user: AppUser };
+// type ObjectWithUser<T extends object> = T & { user: AppUser };
 export default NextAuth({
   pages: {
     error: GUESTBOOK_PAGE,
@@ -55,28 +54,28 @@ export default NextAuth({
     }),
   ],
   callbacks: {
-    jwt({ token, user, account }) {
-      // user and account are only available on sign in
-      console.log('jwt STARTED', { token, user, account }, '\n\n');
-      if (user) {
-        const tk = token as ObjectWithUser<JWT>;
-        tk.user = {
-          id: user.id,
-          avatar: user.image!,
-          name: capitalize(user.name!),
-        };
-      }
-      console.log('jwt', { token }, '\n\n');
-      return token;
-    },
+    // jwt({ token, user, account }) {
+    //   // user and account are only available on sign in
+    //   console.log('jwt STARTED', { token, user, account }, '\n\n');
+    //   if (user) {
+    //     const tk = token as ObjectWithUser<JWT>;
+    //     tk.user = {
+    //       id: user.id,
+    //       avatar: '/images/faouzi-mhd.jpeg',
+    //       name: capitalize(user.name!),
+    //     };
+    //   }
+    //   console.log('jwt', { token }, '\n\n');
+    //   return token;
+    // },
 
-    session({ session, token }) {
-      console.log('session STARTED', { session });
-      const tk = token as ObjectWithUser<JWT>;
-      session.user = tk.user;
-      console.log('session ENDED', { session }, '\n\n');
-      return session;
-    },
+    // session({ session, token }) {
+    //   console.log('session STARTED', { session });
+    //   const tk = token as ObjectWithUser<JWT>;
+    //   session.user = tk.user;
+    //   console.log('session ENDED', { session }, '\n\n');
+    //   return session;
+    // },
     async signIn(props) {
       const { account, profile } = props;
       console.log('signIn STARTED', { account, profile });
