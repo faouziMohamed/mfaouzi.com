@@ -9,16 +9,16 @@ import Image from 'next/image';
 
 import LayerIntro from '@/components/home/LayerIntro';
 
-import type { IDevDataTypes } from '@/@types/data';
-
 import devPicture from '~/images/faouzi-mhd.jpeg';
 
+import type { DevDataTypes } from '@/types/portfolio/portfolio.types';
+
 type IntroSectionProps = {
-  data: IDevDataTypes;
+  introData: DevDataTypes;
   className?: string;
 };
 export default function IntroSection({
-  data,
+  introData,
   className = '',
 }: IntroSectionProps) {
   const matches = useMediaQuery('(min-width:768px)'); // md
@@ -46,14 +46,14 @@ export default function IntroSection({
         <Stack className='w-full items-center text-center'>
           <LayerIntro message='Hi There!' showLines={!matches} />
           <h2 className='font-primary text-[1.88rem] font-[700] leading-snug'>
-            I&apos;m {data.fullName || 'Faouzi Mohamed'}
+            I&apos;m {introData.fullName || 'Faouzi Mohamed'}
           </h2>
           <Typography
             variant='subtitle1'
             component='p'
             className='font-primary text-base font-[300] leading-normal'
           >
-            {data.skills.join(' | ')}
+            {introData.skills.join(' | ')}
           </Typography>
         </Stack>
       </Stack>

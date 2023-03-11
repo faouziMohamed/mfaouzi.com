@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { forwardRef } from 'react';
 
-import clsxm from '@/lib/clsxm';
+import clsxm from '@/lib/utils';
 
 import UnStyledLink, {
   UnStyledLinkProps,

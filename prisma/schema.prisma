@@ -1,0 +1,57 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model GUser {
+  userId       String     @default(cuid())
+  providerId   String     @unique
+  email        String
+  fullName     String
+  providerName String
+  avatarUrl    String
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  comments     GComment[]
+  likes        GLike[]
+
+  @@id([providerId, email])
+  @@index([userId], map: "idx_users_id")
+  @@index([email], map: "idx_users_email")
+  @@index([providerId], map: "idx_users_provider_id")
+  @@map("users")
+}
+
+model GComment {
+  commentId String     @id @default(cuid())
+  content   String
+  parentId  String?
+  authorId  String
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  likes     GLike[]
+  parent    GComment?  @relation("replies", fields: [parentId], references: [commentId], onDelete: NoAction, onUpdate: NoAction)
+  author    GUser      @relation(fields: [authorId], references: [providerId])
+  replies   GComment[] @relation("replies")
+
+  @@index([parentId], map: "idx_comments_parent_id")
+  @@index([authorId], map: "idx_comments_author_id")
+  @@map("comments")
+}
+
+model GLike {
+  providerId String
+  commentId  String
+  user       GUser    @relation(fields: [providerId], references: [providerId], onDelete: NoAction, onUpdate: NoAction)
+  comment    GComment @relation(fields: [commentId], references: [commentId], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([providerId, commentId])
+  @@index([providerId], map: "idx_likes_provider_id")
+  @@index([commentId], map: "idx_likes_comment_id")
+  @@map("likes")
+}

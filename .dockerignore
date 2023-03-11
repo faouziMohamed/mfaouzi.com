@@ -9,4 +9,4 @@ node_modules/
 nginx*
 docker*
 *Dockerfile
-*.log
+src/pages/api/help.ts

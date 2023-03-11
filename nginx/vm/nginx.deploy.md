@@ -4,14 +4,15 @@ Here are the steps to follow for deploying the NextJs app on a nginx server (on
 Ubuntu) using the [pm2](https://pm2.keymetrics.io/) process manager
 and [certbot](https://certbot.eff.org/) for a free SSL certificate.
 
-I've tested the following steps on an **Ubuntu 22 server** from **Azure** and on
-**wsl2 (Ubuntu 20.04)** on a **Windows server 22**.
+I've tested the following steps on an **Ubuntu 22 server** from **Azure** and
+on **wsl2 (Ubuntu 20.04)** on a **Windows server 22**.
 
 ## Before starting
 
-- You need obviously to have a linux server (with **Ubuntu** installed).
-- You need to have a **domain name** (or a **subdomain**), like `mfaouzi.live`
-  , `www.mfaouzi.live`, `api.mfaouzi.live`, etc.
+- You need to have a linux server (with **Ubuntu** installed).
+- You need to have a **domain name** (or a **subdomain**),
+  like `mfaouzi.com`
+  , `www.mfaouzi.com`, `api.mfaouzi.com`, etc.
 - For the **SSL certificate**, you need to have a **public IP** address for your
   server (or a **static IP** address if you have one).
 - If you are using a vm from the cloud (like **Azure**), you need to **open the
@@ -48,21 +49,21 @@ I've tested the following steps on an **Ubuntu 22 server** from **Azure** and on
     1. create an ssh folder for the user:
 
   ```bash
-  mkdir /home/<username>/.ssh
+  mkdir /homePage/<username>/.ssh
   ```
 
     1. Copy the `authorized_keys` file from the root user to the new user:
 
   ```bash
-  cp /root/.ssh/authorized_keys /home/<username>/.ssh/authorized_keys
+  cp /root/.ssh/authorized_keys /homePage/<username>/.ssh/authorized_keys
   ```
 
     1. Make the `.ssh` folder and the `authorized_keys` file only readable by
        the user:
 
   ```bash
-  sudo chmod 700 /home/<username>/.ssh
-  sudo chmod 600 /home/<username>/.ssh/authorized_keys
+  sudo chmod 700 /homePage/<username>/.ssh
+  sudo chmod 600 /homePage/<username>/.ssh/authorized_keys
   ```
 
     - You can now connect to your server from an ssh client using the new user:
@@ -76,30 +77,24 @@ I've tested the following steps on an **Ubuntu 22 server** from **Azure** and on
 - [ ] Clone the **NextJs app** on the server:
 
   ```bash
-  git clone https://github.com/faouzimohamed/fz-portofolio.git
-  ```
-
-- [ ] 😻 I like to clone the app in the `/var/www` folder, but you can clone it
-  in
-  any folder you want (here I'm using the `/var/www/mfaouzi.live` folder):
-
-  ```bash
-  sudo mv fz-portofolio /var/www/mfaouzi.live
-  sudo chown -R <username>:<username> /var/www/mfaouzi.live
+  # git clone https://github.com/faouziMohamed/mfaouzi.com.git
+  ##or
+  git clone git@github.com:faouziMohamed/mfaouzi.com
   ```
 
 - The path to the app will be used later
 - Avoid using a path with spaces in it, it may cause some problems
 
-- [ ] Copy the **nginx configuration file** from the app to the nginx
+- [ ] Copy the **nginx configuration file** from the app
+  folder `mfaouzi.com/nginx/vm/deploy.conf` to the nginx
   folder `/etc/nginx/sites-available`:
   ```bash
-  sudo cp fz-portofolio/nginx/mfaouzi-vm.conf /etc/nginx/sites-available/
+  sudo cp mfaouzi.com/nginx/deploy.conf /etc/nginx/sites-available/
   ```
 - [ ] Create a **symbolic link** from the nginx configuration file to the nginx
   folder `/etc/nginx/sites-enabled`:
   ```bash
-  sudo ln -s /etc/nginx/sites-available/mfaouzi-vm.conf /etc/nginx/sites-enabled/
+  sudo ln -s /etc/nginx/sites-available/deploy.conf /etc/nginx/sites-enabled/
   ```
 - [ ] **Remove the default nginx configuration file** from the nginx
   folder `/etc/nginx/sites-enabled`:
@@ -108,33 +103,22 @@ I've tested the following steps on an **Ubuntu 22 server** from **Azure** and on
   sudo rm /etc/nginx/sites-enabled/default
   ```
 
-- [x] **Edit the nginx configuration
-  file** `/etc/nginx/sites-available/mfaouzi.conf` to:
+    - [ ] **Edit the nginx configuration
+      file** `/etc/nginx/sites-available/deploy.conf` to change the `server_name`
+      to your domain name (or subdomain). Initially it is set to underscore ( _ ).  
+      You may want to change it and use a domain or subdomain. _Make sure the domain name
+      is pointing to the public IP address of your server or the static IP address
+      if you have one_.
 
-    - [ ] change the `server_name` to your domain name (or subdomain)  
-      ‼ You have to make sure the domain name is pointing to the public IP
-      address of your server (or the static IP address if you have one).
-      Here replace `mfaouzi.live` with your domains name (or subdomains):
-      ```nginx
-      server {
-        listen 80;
-        listen [::]:80;
-        server_name mfaouzi.live www.mfaouzi.live;
-        ...
-      }
-      ```
-    - [ ] update the path in the alias, here replace `/var/www/mfaouzi.live` by
-      the path to your app
-      ```nginx
-      server {
-        ...
-        location /_next/static/ {
-          ...
-          alias /var/www/mfaouzi.live/.next/static/;
-          ...
-        }
-      }
-      ```
+   ```diff
+    server {
+      listen 80;
+      listen [::]:80;
+   -  server_name _;
+   +  server_name mfaouzi.com;
+      ...
+    }
+   ```
 
 - [ ] **Restart nginx** to apply the changes:
   ```bash
@@ -164,7 +148,7 @@ I've tested the following steps on an **Ubuntu 22 server** from **Azure** and on
   ```
 - [ ] **Install the dependencies** of the app:
   ```bash
-  cd /var/www/mfaouzi.live
+  cd mfaouzi.com
   yarn install
   ```
 - [ ] **Build the app**:
@@ -173,7 +157,7 @@ I've tested the following steps on an **Ubuntu 22 server** from **Azure** and on
   ```
 - [ ] **Start the app using pm2**:
   ```bash
-  pm2 start yarn --name "mfaouzi.live" -- start
+  pm2 start yarn --name "mfaouzi.com" -- start
   ```
 - [ ] **Save the pm2 processes** to be able to start them automatically when the
   server starts:
@@ -183,26 +167,23 @@ I've tested the following steps on an **Ubuntu 22 server** from **Azure** and on
   ```
 
 - [ ] **Check if the app is running**:
-  Open your browser and go to the url of your domain name (or subdomain)
-  you see the app, it's working 🎉
-    - Here replace [mfaouzi.live](http://mfaouzi.live) with your domains name (
-      or subdomains):
-        - [mfaouzi.live](http://mfaouzi.live)
-        - [www.mfaouzi.live](http://www.mfaouzi.live)
+  Open your browser and go to the url of your domain name (or
+  subdomain) `http://mfaouzi.com` 🎉.
 
 ### Configure the SSL certificate
 
 - [ ] **Generate the SSL certificate**:
-    - This command will generate the SSL certificate and configure nginx to use
-      it.
-    - It will also configure nginx to automatically renew the certificate before
-      it expires.
+
+    - This command will generate the SSL certificate and configure nginx to
+      redirect the `http` traffic to `https`.
     - It won't work if you don't have a domain name pointing to the public IP
       address of your server (or the static IP address if you have one).
-    - Here replace `mfaouzi.live` with your domains name (or subdomains):
+    - Here replace `mfaouzi.com` with your domains name (or subdomains):
+
   ```bash
-  sudo certbot --nginx -d mfaouzi.live
+  sudo certbot --nginx -d mfaouzi.com
   ```
+
 - [ ] **Check if the SSL certificate is working**:
   If you go to the url of your domain name (or subdomain), you should be
   redirected to the https version of the url.

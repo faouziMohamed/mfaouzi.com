@@ -7,11 +7,10 @@ next-env.d.ts
 
 # testing
 /coverage
-
 # next.js
 /.next/
 /out/
-
+.env
 # production
 /build
 
@@ -25,10 +24,8 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
-.env.local
 .env.development.local
 .env.test.local
-.env.production.local
 
 # vercel
 .vercel
@@ -48,3 +45,9 @@ sitemap.xml
 
 .vscode
 /public/sitemap-0.xml
+.env.production.local
+./**/*/planetscale.txt
+/comments
+/src/Repository/planetscale.txt
+./src/pages/api/help.ts
+/src/pages/api/help.ts

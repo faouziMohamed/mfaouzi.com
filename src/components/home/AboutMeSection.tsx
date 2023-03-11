@@ -27,19 +27,14 @@ export default function AboutMeSection({
       />
       <Box className='flex flex-col gap-4 text-justify leading-6'>
         <Typography variant='body1' className='font-[300] '>
-          I am a{' '}
-          <strong className='font-bold'>
-            software engineer, Full-stack software developer
-            ReactJs/Angular/DotNet Core/Java/MERN Stack developer
-          </strong>{' '}
-          with a passion for building software that solves problems.
+          I&apos;m a software engineer 👨‍💻 with expertise in ReactJs, Angular,
+          DotNet Core, Java, and MERN Stack. My passion is building software
+          that solves problems and creates engaging user experiences.
         </Typography>
         <Typography variant='body1' className='font-[300]'>
-          I&apos;m interested in the intersection of technology and design, and
-          I Love Javascript technologies. I love to learn new things. I have a
-          background in computer science and mathematics and I am currently
-          I&apos;m working as Web Developer at{' '}
-          <strong className='font-bold'>Keystone</strong>.
+          I work at Keystone as a software developer. I&apos;m interested in
+          collaborating on projects related to web design, cloud, and
+          virtualization, so feel free to reach out to me.
         </Typography>
       </Box>
       <Box className='flex w-full items-center justify-center gap-4'>

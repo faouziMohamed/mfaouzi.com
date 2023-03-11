@@ -2,7 +2,7 @@
 import Link, { LinkProps } from 'next/link';
 import { ComponentPropsWithRef, forwardRef, ReactNode } from 'react';
 
-import clsxm from '@/lib/clsxm';
+import clsxm from '@/lib/utils';
 
 export type UnStyledLinkProps = {
   href: string;

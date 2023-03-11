@@ -8,16 +8,18 @@ import {
 } from 'react-icons/fa';
 import { RiContactsFill } from 'react-icons/ri';
 
-import CertificationsSection from '@/components/resume/home/certificationsSection';
-import DiplomaSection from '@/components/resume/home/diplomaSection';
-import ExperienceSection from '@/components/resume/home/experienceSection';
-import ProjectSection from '@/components/resume/home/projectSection';
-import SectionTitle from '@/components/resume/home/SectionTitle';
-import SkillsAndSoftSkillsSections from '@/components/resume/home/SkillsAndSoftSkillsSections';
-import UserAvatar from '@/components/resume/home/userAvatar';
-import UserInformation from '@/components/resume/home/UserInformation';
-import ResumeLayout from '@/components/resume/layout/ResumeLayout';
+import ResumeLayout from '@/components/layout/resume/ResumeLayout';
+import CertificationsSection from '@/components/resume/certificationsSection';
+import DiplomaSection from '@/components/resume/diplomaSection';
+import ExperienceSection from '@/components/resume/experienceSection';
+import ProjectSection from '@/components/resume/projectSection';
+import SectionTitle from '@/components/resume/SectionTitle';
+import SkillsAndSoftSkillsSections from '@/components/resume/SkillsAndSoftSkillsSections';
+import UserAvatar from '@/components/resume/userAvatar';
+import UserInformation from '@/components/resume/UserInformation';
 import Seo from '@/components/Seo';
+
+import resumeMainData from '@/Repository/data/resumeData/resumeMainData';
 
 import {
   ICertification,
@@ -25,8 +27,7 @@ import {
   IProfessionalExperience,
   IProfile,
   IProject,
-} from '@/@types/resume.types';
-import resumeMainData from '@/services/data/resumeData/resumeMainData';
+} from '@/types/portfolio/resume.types';
 
 export default function HomePage() {
   const { Profile, Project, Certification } = resumeMainData;

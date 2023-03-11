@@ -4,7 +4,6 @@ import SectionTitleWithBlob from '@/components/home/SectionTitleWithBlob';
 import SVGBlob from '@/components/home/SVGBlob';
 
 import ContactBlob from '~/icons/contact-blob.svg';
-import FormBlob from '~/icons/form-blob.svg';
 
 import ContactForm from './ContactForm';
 
@@ -30,9 +29,6 @@ export default function ContactSection(props: ContactSectionProps) {
           />
         )}
       />
-      <Section className='absolute -left-[5rem] -z-10 h-[24rem] w-[25rem]'>
-        <FormBlob className='h-full w-full object-cover' />
-      </Section>
       <ContactForm />
     </Section>
   );

@@ -54,7 +54,7 @@ export default function FadeEffectWrapper(props: IFadeEffect & StackProps) {
       <motion.div
         initial='offscreen'
         whileInView='onscreen'
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: false, amount: 0.1 }}
         className='w-full'
       >
         <motion.div className={`w-full ${flexClasses}`} variants={cardVariants}>

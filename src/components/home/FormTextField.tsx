@@ -1,6 +1,8 @@
 import { Box, InputLabel, TextField } from '@mui/material';
 import type { FieldError, UseFormRegisterReturn } from 'react-hook-form';
 
+import { ContactFormFields } from '@/types/portfolio/portfolio.types';
+
 export default function FormTextField(props: FormTextFieldProps) {
   const { register, type = 'text', name, label, placeholder } = props;
   return (
@@ -30,17 +32,11 @@ export default function FormTextField(props: FormTextFieldProps) {
     </Box>
   );
 }
-export interface FormValues {
-  name: string;
-  email: string;
-  message: string;
-  subject: string;
-}
 
 interface FormTextFieldProps {
   register: UseFormRegisterReturn;
   type: string;
-  name: keyof FormValues;
+  name: keyof ContactFormFields;
   label: string;
   placeholder: string;
   error?: FieldError;

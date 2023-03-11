@@ -8,13 +8,11 @@ import getConfig from 'next/config';
 import Document, { Head, Html, Main, NextScript } from 'next/document';
 import { Children } from 'react';
 
-import { openGraphImage } from '@/lib/helper';
+import { createEmotionCache, openGraphImage } from '@/lib/utils';
 
-import getLdJsonStringified from '@/components/ldJsonDataDefinition';
-import seoDefault from '@/components/seoDefault';
-
-import theme from '@/themes/theme';
-import createEmotionCache from '@/utils/createEmotionCache';
+import getLdJsonStringified from '@/Repository/data/seo/ldJsonDataDefinition';
+import seoDefault from '@/Repository/data/seo/seoDefault';
+import theme from '@/styles/themes/mui-theme';
 
 const ogImg = openGraphImage({
   description: seoDefault.description,
@@ -46,11 +44,6 @@ class MyDocument extends Document {
           <meta property='og:image' content={ogImg} name='image' />
           <meta property='og:image:width' content={seoDefault.imageWidth} />
           <meta property='og:image:height' content={seoDefault.imageHeight} />
-          <meta
-            name='fb:app_id'
-            property='fb:app_id'
-            content={seoDefault.ogId}
-          />
           <meta name='twitter:card' content='summary_large_image' />
           <meta name='twitter:site' content='@fz_faouzi' />
           <meta

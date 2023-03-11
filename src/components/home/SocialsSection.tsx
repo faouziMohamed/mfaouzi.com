@@ -4,13 +4,13 @@ import { motion, Variants } from 'framer-motion';
 import LayerIntro from '@/components/home/LayerIntro';
 import UnStyledLink from '@/components/links/UnStyledLink';
 
-import { IDevDataTypes, SVGImageData } from '@/@types/data';
-
 import FindMeOnSocialsBlob from '~/icons/findme-on-socials-blob.svg';
 import FacebookIcon from '~/icons/logo_facebook.svg';
 import GithubIcon from '~/icons/logo_github.svg';
 import LinkedinIcon from '~/icons/logo_linkedin.svg';
 import TwitterIcon from '~/icons/logo_twitter_bird.svg';
+
+import { DevDataTypes, SVGImageData } from '@/types/portfolio/portfolio.types';
 
 const socialIcons: { [key: string]: SVGImageData } = {
   facebook: FacebookIcon,
@@ -20,7 +20,7 @@ const socialIcons: { [key: string]: SVGImageData } = {
 };
 
 interface SocialSectionProps {
-  data: IDevDataTypes;
+  data: DevDataTypes;
   className?: string;
 }
 

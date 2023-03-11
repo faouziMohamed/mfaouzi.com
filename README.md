@@ -20,12 +20,6 @@ result.
 ❗To use the mail service you'll need to create an `.env.local` file containing
 your an env variable for your Sendgrid API Key
 
-The content should be like this:
-
-```.env
-SENDGRID_API_KEY=<your-sendgrid-api-key>
-```
-
 ---
 
 ## Using Docker
@@ -35,13 +29,13 @@ SENDGRID_API_KEY=<your-sendgrid-api-key>
 1. Build a docker image using the command bellow
    ```bash
    # This assumes you are in the root of the directory project
-    docker build --pull --rm -f "Dockerfile" -t fz-portfolio:latest .
+    docker build --pull --rm -f "Dockerfile" -t mfaouzi.com:latest .
    ```
 1. If the command from the step 1 and 2 finished to run, run the Web server and
    expose the port 3000 to your host. ( ❗ make sure that the port 3000 is not
    used by another app)
    ```bash
-   docker run -it --rm --name fz-portfolio -p 3000:3000 fz-portfolio:latest
+   docker run -it --rm --name mfaouzi.com -p 3000:3000 mfaouzi.com:latest
    ```
 
 After these steps, open [http://localhost:3000](http://localhost:3000) with your
@@ -50,7 +44,7 @@ browser to see the result.
 To stop the docker container, run the command bellow
 
 ```bash
-docker stop fz-portfolio
+docker stop mfaouzi.com
 ```
 
 ## Before pushing your code
@@ -76,12 +70,12 @@ docker stop fz-portfolio
 - To stop the web server [the docker container] run
 
 ```bash
-docker stop fz-portfolio
+docker stop mfaouzi.com
 ```
 
 ## Deploy on Heroku (container)
 
-💡 I'm going to use the name fz-portfolio for the app name, but you can use any
+💡 I'm going to use the name mfaouzi.com for the app name, but you can use any
 or
 leave the default name that Heroku will give to your app.
 
@@ -98,30 +92,31 @@ leave the default name that Heroku will give to your app.
   ```
 - Create a new app if you don't have one already
   ```bash
-    heroku create fz-portfolio
+    heroku create mfaouzi.com
   ```
 - Push the docker image to Heroku
   ```bash
-    heroku container:push web --app fz-portfolio
+    heroku container:push web --app mfaouzi.com
   ```
 - Release the docker image to Heroku
   ```bash
-    heroku container:release web --app fz-portfolio
+    heroku container:release web --app mfaouzi.com
   ```
 - Open the app in your browser
   ```bash
-    heroku open --app fz-portfolio
+    heroku open --app mfaouzi.com
   ```
 
 ## Deploy on a reverse proxy server (nginx 🐶)
 
 1. Create a new file in the root of the project with the name `nginx.conf`
 1. Copy the content below and paste it in the `nginx.conf`
-   file (https://mfaouzi.live)
-   ```nginx
+   file
+1. Replace the `server_name mfaouzi.com;` with your domain name or IP address
+1. ```nginx
     server {
       listen 80;
-      server_name mfaouzi.live;
+      server_name mfaouzi.com;
       location / {
          proxy_pass http://localhost:3000;
       }
@@ -150,5 +145,5 @@ leave the default name that Heroku will give to your app.
          - app
    ```
 1. Run the command `docker-compose up` to start the app and the nginx server
-1. Open [http://localhost:8080](http://localhost:8080) with your browser to see
+1. Open [http://localhost](http://localhost) with your browser to see
    the result.

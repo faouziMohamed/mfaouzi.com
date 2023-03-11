@@ -11,16 +11,18 @@ import dynamic from 'next/dynamic';
 import type { FC, ReactNode } from 'react';
 import { useState } from 'react';
 
+import clsxm, { startCaseAll } from '@/lib/utils';
+
 import Button from '@/components/buttons/Button';
 import UnStyledLink from '@/components/links/UnStyledLink';
 
-import { IProjectDetail } from '@/@types/resume.types';
-import { startCaseAll } from '@/utils/utils';
-
 import ExternalLinkIcon from '~/icons/external-link-full.svg';
 import GitHubLinkIcon from '~/icons/github-link.svg';
+import web from '~/images/projects/web.jpeg';
 
-const FZDialog = dynamic(() => import('@/components/misc/Dialog'));
+import { IProjectDetail } from '@/types/portfolio/resume.types';
+
+const FZDialog = dynamic(() => import('@/components/Dialogs/Dialog'));
 
 const CardBody: FC<{ children: ReactNode; className?: string }> = ({
   children,
@@ -35,7 +37,12 @@ export default function ProjectCard(props: ProjectCardProps) {
   const [open, setOpen] = useState<boolean>(false);
 
   return (
-    <Card className='w-[18rem] bg-opacity-10 py-2 pt-0 dark:bg-dark-100 dark:text-gray-100 dark:shadow-sm dark:shadow-dark-primary'>
+    <Card
+      className={clsxm(
+        'w-full bg-opacity-10 py-2 pt-0 dark:bg-dark-100 xs:w-[18rem] ',
+        'dark:text-gray-100 dark:shadow-sm dark:shadow-dark-primary ',
+      )}
+    >
       {/* eslint-disable-next-line react/jsx-props-no-spreading */}
       <CardFront {...props} onClick={() => setOpen(true)} />
       {open && (
@@ -49,15 +56,20 @@ export default function ProjectCard(props: ProjectCardProps) {
 }
 
 function CardFront(props: ProjectCardProps & { onClick: () => void }) {
-  const { Name, Description, Image, onClick } = props;
+  const { Name, Description, Image: img, onClick } = props;
+  let src = (img || web.src) as string;
+  if (img && typeof img !== 'string') {
+    src = img.src;
+  }
+
   return (
     <Box className='p-0'>
       <CardActionArea className='flex flex-col' onClick={onClick}>
         <CardMedia
           component='img'
           height='140'
-          image={Image || '/icons/office-1.svg'}
-          alt='green iguana'
+          image={src}
+          alt={`Project ${Name} logo`}
         />
         <CardContent className='w-full'>
           <h3 className='font-primary text-base font-bold'>{Name}</h3>

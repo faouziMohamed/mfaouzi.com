@@ -1,26 +1,27 @@
 import { Box, Box as FooterSection, Stack } from '@mui/material';
 
-import { IDevDataTypes, SVGImageData } from '@/@types/data';
-import devData from '@/services/data/dev-data';
+import devData from '@/Repository/data/dev-data';
 
 import Facebook from '~/icons/facebook.svg';
 import Github from '~/icons/github.svg';
 import Instagram from '~/icons/instagram.svg';
 import Linkedin from '~/icons/linkedin.svg';
 import MaterialUi from '~/icons/material-ui.svg';
-import MongoDb from '~/icons/mongodb.svg';
+import Mysql from '~/icons/mysql.svg';
 import NextJs from '~/icons/nextjs.svg';
 import Twitter from '~/icons/twitter.svg';
 import Typescript from '~/icons/typescript.svg';
 
 import UnStyledLink from '../links/UnStyledLink';
 
-const socialData: IDevDataTypes = devData;
+import { DevDataTypes, SVGImageData } from '@/types/portfolio/portfolio.types';
+
+const socialData: DevDataTypes = devData;
 const usedTech: readonly { name: string; Icon: SVGImageData }[] = [
   { name: 'NextJs', Icon: NextJs },
   { name: 'Typescript', Icon: Typescript },
   { name: 'MaterialUi', Icon: MaterialUi },
-  { name: 'MongoDb', Icon: MongoDb },
+  { name: 'MySQL', Icon: Mysql },
 ];
 
 interface ISocialStacks {

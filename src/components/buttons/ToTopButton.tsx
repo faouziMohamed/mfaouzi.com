@@ -1,7 +1,8 @@
 import { Button } from '@mui/material';
 
+import clsxm from '@/lib/utils';
+
 export default function ToTopButton() {
-  // TODO: make the button draggable
   const handleClick = () => {
     const toTop = document.getElementById('to-top');
     if (toTop) {
@@ -11,11 +12,14 @@ export default function ToTopButton() {
 
   return (
     <Button
-      onClick={handleClick}
+      size='small'
       id='to-top-button'
-      className='group fixed right-2 bottom-4 z-20 rounded-full
-      bg-primary-700 p-2 text-white shadow-lg hover:bg-primary-600
-      dark:bg-dark-300 dark:hover:bg-dark-400'
+      className={clsxm(
+        'rounded-full text-white hover:bg-primary-600',
+        'flex flex-col items-center justify-center gap-1.5',
+        'h-[45px] w-[45px] min-w-fit',
+      )}
+      onClick={handleClick}
     >
       <svg
         xmlns='http://www.w3.org/2000/svg'
@@ -42,6 +46,7 @@ export default function ToTopButton() {
           className='hidden animate-bounce-to-top text-opacity-0 transition-opacity group-hover:block group-hover:text-opacity-100'
         />
       </svg>
+      <span className='text-xs'>TOP</span>
     </Button>
   );
 }

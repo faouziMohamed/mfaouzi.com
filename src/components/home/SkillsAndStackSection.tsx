@@ -3,8 +3,6 @@ import { Box, Box as Section } from '@mui/material';
 import SectionTitleWithBlob from '@/components/home/SectionTitleWithBlob';
 import SVGBlob from '@/components/home/SVGBlob';
 
-import { SVGImageData } from '@/@types/data';
-
 import CsharpIcon from '~/icons/csharp.svg';
 import DockerIcon from '~/icons/docker.svg';
 import FigmaIcon from '~/icons/figma.svg';
@@ -19,6 +17,8 @@ import ReactJsIcon from '~/icons/reactjs.svg';
 import SkillsBlob from '~/icons/skills-blob.svg';
 import TailwindCssIcon from '~/icons/tailwindcss.svg';
 import TypescriptIcon from '~/icons/typescript.svg';
+
+import { SVGImageData } from '@/types/portfolio/portfolio.types';
 
 // #region SkillsArray
 const skillsTools: { name: string; Icon: SVGImageData }[] = [

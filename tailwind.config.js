@@ -14,14 +14,16 @@ function withOpacityValue(variable) {
 module.exports = {
   darkMode: 'class',
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
-  // corePlugins: { preflight: false },
   theme: {
     extend: {
       screens: {
+        xsm: '333px',
+        xs: '340px',
         msm: '693px',
       },
       fontFamily: {
         primary: ['Ubuntu', 'Roboto', 'Inter', ...fontFamily.sans],
+        secondary: ['Roboto', 'Inter', ...fontFamily.sans],
       },
       colors: {
         primary: {
@@ -75,6 +77,7 @@ module.exports = {
         'wiggle-slower': 'wiggle 8s ease-in-out infinite',
         'bounce-low': 'bounce-low 8s ease infinite',
         'bounce-to-top': 'bounce-to-top 1.6s ease infinite',
+        'try-spin': 'try-spin 6.5s ease-in-out infinite',
       },
     },
   },
@@ -134,5 +137,15 @@ function keyFrames() {
       },
     },
     // #endregion shimmer
+    'try-spin': {
+      '0%': {
+        transform: 'rotate(-500deg)',
+        animationTimingFunction: 'cubic-bezier(.26,-0.48,.44,-0.45)',
+      },
+      '100%': {
+        transform: 'rotate(1800deg)',
+        'animation-timing-function': 'cubic-bezier(.86,-0.42,0,1.22)',
+      },
+    },
   };
 }

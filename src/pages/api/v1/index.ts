@@ -8,7 +8,7 @@ import packageJson from '../../../../package.json';
 
 const apiVersion = packageJson.version;
 
-//  get the last build date from next.config.js
+//  get the last build date from next.config.mjs
 const { publicRuntimeConfig } = getConfig();
 const { lastBuild } = publicRuntimeConfig;
 

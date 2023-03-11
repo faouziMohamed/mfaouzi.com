@@ -5,15 +5,15 @@ import getConfig from 'next/config';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-import { openGraphImage } from '@/lib/helper';
+import { openGraphImage } from '@/lib/utils';
 
 import FavIcons from '@/components/FavIcons';
-import getLdJsonStringified from '@/components/ldJsonDataDefinition';
 
-import theme from '@/themes/theme';
-import { useNextTheme } from '@/themes/themeContext';
+import getLdJsonStringified from '@/Repository/data/seo/ldJsonDataDefinition';
+import theme from '@/styles/themes/mui-theme';
+import { useNextTheme } from '@/styles/themes/theme-color';
 
-import defaultMeta from './seoDefault';
+import defaultMeta from '../Repository/data/seo/seoDefault';
 
 type SeoProps = {
   image?: string;

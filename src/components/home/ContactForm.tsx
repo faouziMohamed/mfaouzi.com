@@ -3,12 +3,15 @@ import { useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { RiSendPlaneFill } from 'react-icons/ri';
 
-import FormTextField, { FormValues } from '@/components/home/FormTextField';
+import { emailRegex } from '@/lib/utils';
 
-import { sendEmail } from '@/services/contactMe.service';
-import { emailRegex } from '@/utils/utils';
+import FormTextField from '@/components/home/FormTextField';
+
+import { sendEmail } from '@/services/client/mail.service';
 
 import AlertMessage from './AlertMessage';
+
+import { ContactFormFields } from '@/types/portfolio/portfolio.types';
 
 interface InputFieldProps {
   className?: string;
@@ -20,7 +23,7 @@ export default function ContactForm(props: InputFieldProps) {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormValues>();
+  } = useForm<ContactFormFields>();
   type TAlertMsg = { msg: string | string[]; type: 'success' | 'error' };
 
   const [message, setMessage] = useState<TAlertMsg>({
@@ -31,7 +34,7 @@ export default function ContactForm(props: InputFieldProps) {
   const [isSending, setIsSending] = useState(false);
   const [openSnack, setOpenSnack] = useState(false);
 
-  const onSubmit = async (data: FormValues) => {
+  const onSubmit = async (data: ContactFormFields) => {
     setIsSending(true);
     const response = await sendEmail(data);
     setIsSending(false);
@@ -41,8 +44,7 @@ export default function ContactForm(props: InputFieldProps) {
       formRef.current?.reset();
       setMessage({ msg: 'Message sent successfully', type: 'success' });
     } else if (response) {
-      const res = response;
-      setMessage({ msg: res, type: 'error' });
+      setMessage({ msg: response, type: 'error' });
     } else {
       setMessage({ msg: 'Something went wrong', type: 'error' });
     }
