@@ -11,11 +11,13 @@ import {
 } from '@/types/guestbook/guestbook.types';
 
 const handler = nc();
+
 interface RequestWithQuery extends NextApiRequest {
   query: {
     parentId?: string;
   };
 }
+
 handler.get(
   async (
     req: RequestWithQuery,
@@ -25,7 +27,7 @@ handler.get(
       const { parentId = null } = req.query;
       const token = await getToken({ req });
       const user = token?.user as AppUser;
-      const providerId: string | undefined = user?.providerId;
+      const providerId: string | undefined = user?.id;
       const comments = await getAllComments(providerId, parentId);
       res.status(200).json(comments);
     } catch (error) {

@@ -14,7 +14,7 @@ model GUser {
   email        String
   fullName     String
   providerName String
-  avatarUrl    String
+  avatar       String
   createdAt    DateTime   @default(now())
   updatedAt    DateTime   @updatedAt
   comments     GComment[]

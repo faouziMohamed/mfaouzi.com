@@ -42,7 +42,7 @@ function CommentHeader({ comment }: { comment: GuestbookComment }) {
     <div className='flex items-center gap-3'>
       <div className='relative'>
         <Image
-          src={comment.author.avatarUrl}
+          src={comment.author.avatar}
           width={45}
           height={45}
           className='rounded-full'

@@ -6,7 +6,7 @@ type GuestBookCommentBase = {
   parentId: string | null;
   createdAt: Date;
   updatedAt: Date;
-  author: { avatarUrl: string; fullName: string; providerId: string };
+  author: { avatar: string; fullName: string; providerId: string };
 };
 export type SelectCommentQueryResult = GuestBookCommentBase & {
   replies: DbComment[];
@@ -45,15 +45,16 @@ export type ErrorMessage = {
   message: string;
   cause?: string;
 };
-export type AppUser = {
-  providerId: string;
+export type AppUserWithEmail = {
+  id: string;
   email: string;
-  avatarUrl: string;
+  avatar: string;
   providerName: string;
   fullName: string;
 };
+export type AppUser = Omit<AppUserWithEmail, 'email' | 'providerName'>;
 export type CommentLikes = {
   commentId: string;
   likeCount: number;
-  providerId: string | null;
+  userId: string | null;
 };

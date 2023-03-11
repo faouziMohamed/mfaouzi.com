@@ -91,7 +91,7 @@ function LikeButton({ comment }: { comment: GuestbookComment }) {
       title='Like'
       onClick={() => {
         if (status !== 'authenticated') return;
-        void toggleCommentLike(comment, user.providerId);
+        void toggleCommentLike(comment, user.id);
         const newLikeCount = isLikedByMe
           ? comment.likeCount - 1
           : comment.likeCount + 1;

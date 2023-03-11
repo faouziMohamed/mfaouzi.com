@@ -68,7 +68,7 @@ export async function addNewComment(comment: GuestbookComment, user: AppUser) {
   const postComment: PostComment = {
     parentId: comment.parentId,
     comment: comment.content,
-    authorId: user.providerId,
+    authorId: user.id,
   };
 
   const res = await fetch(ADD_NEW_COMMENT_ROUTE, {
@@ -123,7 +123,7 @@ export async function toggleCommentLike(
 
   const commentLikes = (await res.json()) as CommentLikes;
   comment.likeCount = commentLikes.likeCount;
-  comment.isLikedByMe = commentLikes.providerId === providerId;
+  comment.isLikedByMe = commentLikes.userId === providerId;
   cacheOneCommentMutation(comment);
   return comment;
 }

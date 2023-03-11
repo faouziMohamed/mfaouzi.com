@@ -2,7 +2,7 @@
 import prisma, { DbComment } from '@/Repository/setup/prisma';
 
 import {
-  AppUser,
+  AppUserWithEmail,
   CommentLikes,
   GuestbookComment,
   GuestbookLike,
@@ -21,7 +21,7 @@ export const SELECT_COMMENT_FILTER_QUERY = {
     select: {
       providerId: true,
       fullName: true,
-      avatarUrl: true,
+      avatar: true,
     },
   },
   _count: { select: { likes: true, replies: true } },
@@ -66,7 +66,7 @@ export async function toggleLikeComment(commentId: string, providerId: string) {
   const commentLikes: CommentLikes = {
     likeCount: 0,
     commentId,
-    providerId: null,
+    userId: null,
   };
   const LIKE_COMMENT_SELECT_QUERY = {
     comment: { select: { _count: { select: { likes: true } } } },
@@ -83,7 +83,7 @@ export async function toggleLikeComment(commentId: string, providerId: string) {
       select: LIKE_COMMENT_SELECT_QUERY,
     });
     commentLikes.likeCount = res?.comment._count.likes || 0;
-    commentLikes.providerId = providerId;
+    commentLikes.userId = providerId;
   }
   return commentLikes;
 }
@@ -174,17 +174,17 @@ export async function getUserByProviderId(providerId: string) {
     select: {
       providerId: true,
       email: true,
-      avatarUrl: true,
+      avatar: true,
       providerName: true,
       fullName: true,
     },
   });
-  return user as AppUser | null;
+  return user as AppUserWithEmail | null;
 }
 
 export async function updateUser(
   providerId: string,
-  updatedFields: Partial<AppUser>,
+  updatedFields: Partial<AppUserWithEmail>,
 ) {
   await prisma.gUser.update({
     where: { providerId },
@@ -192,14 +192,14 @@ export async function updateUser(
   });
 }
 
-export async function addNewUser(user: AppUser) {
+export async function addNewUser(user: AppUserWithEmail) {
   await prisma.gUser.create({
     data: {
       email: user.email,
       providerName: user.providerName,
-      providerId: user.providerId,
+      providerId: user.id,
       fullName: user.fullName,
-      avatarUrl: user.avatarUrl,
+      avatar: user.avatar,
     },
   });
 }

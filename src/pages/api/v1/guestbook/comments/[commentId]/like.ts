@@ -16,9 +16,11 @@ import {
 } from '@/types/guestbook/guestbook.types';
 
 const handler = nc().use(authMiddleware);
+
 interface NextApiReqWithQuery extends NextApiRequest {
   query: { commentId: string };
 }
+
 handler.put(
   async (
     req: NextApiReqWithQuery,
@@ -35,7 +37,7 @@ handler.put(
     try {
       const token = await getToken({ req });
       const user = token!.user as AppUser;
-      const userId = user.providerId; // the authMiddleware middleware ensures that the user is logged in
+      const userId = user.id; // the authMiddleware middleware ensures that the user is logged in
 
       const commentExists = await isCommentExist(commentId);
       if (!commentExists) {

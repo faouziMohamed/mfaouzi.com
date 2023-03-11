@@ -11,9 +11,11 @@ import {
 } from '@/types/guestbook/guestbook.types';
 
 const handler = nc();
+
 interface NextApiReqWithQuery extends NextApiRequest {
   query: { commentId: string };
 }
+
 handler.get(
   async (
     req: NextApiReqWithQuery,
@@ -30,7 +32,7 @@ handler.get(
     try {
       const token = await getToken({ req });
       const user = token?.user as AppUser;
-      const userId: string | undefined = user?.providerId;
+      const userId: string | undefined = user?.id;
       const comment = await findCommentById(commentId, userId);
       if (!comment) {
         res.status(404).json({ message: 'Comment with given id not found' });

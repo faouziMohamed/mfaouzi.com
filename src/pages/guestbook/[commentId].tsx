@@ -174,7 +174,7 @@ function DisplayLoginStatus() {
     <div className='flex items-center justify-center gap-2'>
       <div className='relative'>
         <Image
-          src={user.avatarUrl}
+          src={user.avatar}
           width={45}
           height={45}
           className='rounded-full'
