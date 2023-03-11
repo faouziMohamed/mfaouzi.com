@@ -197,7 +197,7 @@ export async function addNewUser(user: AppUserWithEmail) {
     data: {
       email: user.email,
       providerName: user.providerName,
-      providerId: user.id,
+      providerId: user.providerId,
       fullName: user.fullName,
       avatar: user.avatar,
     },
