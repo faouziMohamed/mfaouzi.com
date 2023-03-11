@@ -51,3 +51,5 @@ sitemap.xml
 /src/Repository/planetscale.txt
 ./src/pages/api/help.ts
 /src/pages/api/help.ts
+/.env.local
+/.env.local.production
