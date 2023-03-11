@@ -54,6 +54,7 @@ export default NextAuth({
     // eslint-disable-next-line @typescript-eslint/require-await
     async jwt({ token, user, account }) {
       // user and account are only available on sign in
+      console.log('jwt STARTED', { token, user, account }, '\n\n');
       if (user) {
         const tk = token as ObjectWithUser<JWT>;
         tk.user = {
@@ -64,7 +65,7 @@ export default NextAuth({
           fullName: capitalize(user.name!),
         };
       }
-      console.log('jwt', { token });
+      console.log('jwt', { token }, '\n\n');
       return token;
     },
     // eslint-disable-next-line @typescript-eslint/require-await
@@ -74,12 +75,12 @@ export default NextAuth({
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore: Ignore default user type
       session.user = { ...tk.user };
-      console.log('session ENDED', { session });
+      console.log('session ENDED', { session }, '\n\n');
       return session;
     },
     async signIn(props) {
       const { account, profile } = props;
-
+      console.log('signIn STARTED', { account, profile });
       try {
         // If the user doesn't exist, create a new user
         const maybeUser = await getUserByProviderId(account!.providerAccountId);
@@ -94,7 +95,7 @@ export default NextAuth({
         if (Object.keys(updatedFields).length > 0) {
           await updateUser(maybeUser.providerId, updatedFields);
         }
-        console.log('User already exists', maybeUser);
+        console.log('SIGN IN ENDED', maybeUser, '\n\n');
         return true;
       } catch (error) {
         // eslint-disable-next-line no-console
