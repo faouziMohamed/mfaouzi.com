@@ -9,18 +9,15 @@ import Image from 'next/image';
 
 import LayerIntro from '@/components/home/LayerIntro';
 
-import devPicture from '~/images/faouzi-mhd.jpeg';
+import devData from '@/Repository/data/dev-data';
 
-import type { DevDataTypes } from '@/types/portfolio/portfolio.types';
+import devPicture from '~/images/me.jpeg';
 
 type IntroSectionProps = {
-  introData: DevDataTypes;
   className?: string;
 };
-export default function IntroSection({
-  introData,
-  className = '',
-}: IntroSectionProps) {
+export default function IntroSection({ className = '' }: IntroSectionProps) {
+  const introData = devData;
   const matches = useMediaQuery('(min-width:768px)'); // md
   return (
     <Intro
@@ -43,6 +40,7 @@ export default function IntroSection({
             priority
           />
         </Box>
+
         <Stack className='w-full items-center text-center'>
           <LayerIntro message='Hi There!' showLines={!matches} />
           <h2 className='font-primary text-[1.88rem] font-[700] leading-snug'>

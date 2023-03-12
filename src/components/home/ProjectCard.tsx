@@ -1,12 +1,9 @@
-import {
-  Box,
-  Card,
-  CardActionArea,
-  CardActions,
-  CardContent,
-  CardMedia,
-  IconButton,
-} from '@mui/material';
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardActionArea from '@mui/material/CardActionArea';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import IconButton from '@mui/material/IconButton';
 import dynamic from 'next/dynamic';
 import type { FC, ReactNode } from 'react';
 import { useState } from 'react';
@@ -18,7 +15,8 @@ import UnStyledLink from '@/components/links/UnStyledLink';
 
 import ExternalLinkIcon from '~/icons/external-link-full.svg';
 import GitHubLinkIcon from '~/icons/github-link.svg';
-import web from '~/images/projects/web.jpeg';
+import CodingDark from '~/images/projects/coding-dark.svg';
+import CodingLight from '~/images/projects/coding-Light.svg';
 
 import { IProjectDetail } from '@/types/portfolio/resume.types';
 
@@ -56,21 +54,13 @@ export default function ProjectCard(props: ProjectCardProps) {
 }
 
 function CardFront(props: ProjectCardProps & { onClick: () => void }) {
-  const { Name, Description, Image: img, onClick } = props;
-  let src = (img || web.src) as string;
-  if (img && typeof img !== 'string') {
-    src = img.src;
-  }
+  const { Name, Description, onClick } = props;
 
   return (
     <Box className='p-0'>
       <CardActionArea className='flex flex-col' onClick={onClick}>
-        <CardMedia
-          component='img'
-          height='140'
-          image={src}
-          alt={`Project ${Name} logo`}
-        />
+        <CodingDark className='hidden h-[13rem] w-full bg-slate-100 py-4 dark:block dark:bg-slate-400' />
+        <CodingLight className='h-[13rem] w-full bg-slate-100 py-4 dark:hidden' />
         <CardContent className='w-full'>
           <h3 className='font-primary text-base font-bold'>{Name}</h3>
           <Box className='h-[5rem]  '>

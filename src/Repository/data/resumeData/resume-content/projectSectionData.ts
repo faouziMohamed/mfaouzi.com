@@ -1,5 +1,3 @@
-import web from '~/images/projects/web.jpeg';
-
 import type { IProject } from '@/types/portfolio/resume.types';
 
 export const projectSectionData: IProject = {
@@ -15,7 +13,6 @@ export const projectSectionData: IProject = {
       SrcLink: 'https://github.com/faouzimohamed/mfaouzi.com',
       LiveLink: 'https://mfaouzi.com/guestbook',
       Technologies: ['NextJs', 'MaterialUi', 'Planet Scale', 'Prisma'],
-      Image: web,
     },
     {
       Name: 'Leave Management System',
@@ -32,7 +29,6 @@ export const projectSectionData: IProject = {
         'Blazor Web Assembly',
         'Bootstrap 5',
       ],
-      Image: web,
     },
     {
       Name: 'Taradjam',
@@ -52,7 +48,6 @@ export const projectSectionData: IProject = {
         'TailwindCss',
         'Azure',
       ],
-      Image: web,
     },
     {
       Name: 'Social share',
@@ -64,7 +59,6 @@ export const projectSectionData: IProject = {
       StartDate: '10/2021',
       EndDate: '02/2022',
       Technologies: ['ReactJs', 'SCSS', 'MongoDB'],
-      Image: web,
     },
     {
       Name: 'Covid Data',
@@ -74,7 +68,6 @@ export const projectSectionData: IProject = {
       StartDate: '12/2020',
       EndDate: '01/2021',
       Technologies: ['Python', 'PyQt5', 'Qss (Qt Style sheet)'],
-      Image: web,
     },
   ],
 };

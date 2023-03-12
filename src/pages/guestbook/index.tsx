@@ -43,6 +43,8 @@ export default function GuestBookPage() {
           crossOrigin='anonymous'
         />
       </Head>
+      {/* <Seo templateTitle='Home' title='Faouzi Mohamed' pathname='/' /> */}
+
       <section
         className='mt-36 flex w-full flex-col gap-5 px-4 transition-all msm:mt-28'
         id='guestbook'

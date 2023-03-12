@@ -1,6 +1,7 @@
 import { Box, Box as Section, Typography } from '@mui/material';
 
 import ButtonLink from '@/components/links/ButtonLink';
+import SpaceMan from '@/components/spaceman/SpaceMan';
 
 import AboutMeBlob from '~/icons/about-me-blob.svg';
 
@@ -17,8 +18,11 @@ export default function AboutMeSection({
   return (
     <Section
       component='section'
-      className={`flex w-full flex-col items-center gap-4 ${className}`}
+      className={`relative flex w-full flex-col items-center gap-4 ${className}`}
     >
+      <Box className='absolute right-0 bottom-0 -z-10 animate-wiggle-slower md:block'>
+        <SpaceMan />
+      </Box>
       <SectionTitleWithBlob
         title='About Me'
         BlobComponent={() => (

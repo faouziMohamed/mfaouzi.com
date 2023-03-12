@@ -6,21 +6,21 @@ import Image from 'next/image';
 import SectionTitleWithBlob from '@/components/home/SectionTitleWithBlob';
 import SVGBlob from '@/components/home/SVGBlob';
 
+import { projectSectionData } from '@/Repository/data/resumeData/resume-content/projectSectionData';
+
 import ProjectsBlob from '~/icons/projects-blob.svg';
 import devNight from '~/images/dev/dev-night.gif';
 
-import { IProject } from '@/types/portfolio/resume.types';
+import FadeEffectWrapper from '../animations/FadeEffectWrapper';
 
 const ProjectCard = dynamic(() => import('./ProjectCard'));
 
 interface IProjectProps {
   className?: string;
-  projects: IProject;
 }
 
 export default function ProjectSection(props: IProjectProps) {
-  const { className = '', projects } = props;
-
+  const { className = '' } = props;
   return (
     <Box className='flex w-full justify-center'>
       <motion.section
@@ -56,16 +56,21 @@ export default function ProjectSection(props: IProjectProps) {
           </Typography>
         </div>
         <ProjectCardStack className='flex flex-row flex-wrap justify-center gap-4 py-4'>
-          {projects.ProjectDetails.map((project) => (
-            <ProjectCard
+          {projectSectionData.ProjectDetails.map((project) => (
+            <FadeEffectWrapper
               key={project.Name}
-              Name={project.Name}
-              Description={project.Description || project.Summary}
-              SrcLink={project.SrcLink}
-              LiveLink={project.LiveLink}
-              Technologies={project.Technologies}
-              Image={project.Image}
-            />
+              gutterTop='0'
+              gutterBottom={0}
+            >
+              <ProjectCard
+                Name={project.Name}
+                Description={project.Description || project.Summary}
+                SrcLink={project.SrcLink}
+                LiveLink={project.LiveLink}
+                Technologies={project.Technologies}
+                Image={project.Image}
+              />
+            </FadeEffectWrapper>
           ))}
         </ProjectCardStack>
         {/* <Box className='flex w-full justify-end'> */}

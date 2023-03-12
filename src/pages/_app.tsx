@@ -51,12 +51,10 @@ export default function MyApp(props: MyAppProps) {
           </NextThemeProvider>
         </ThemeProvider>
       </SessionProvider>
-      {/* // <!-- Cloudflare Web Analytics --> */}
       <Script
         src='https://static.cloudflareinsights.com/beacon.min.js'
         data-cf-beacon='{"token": "ef48beb9e14244c49e6dc029d90095ba"}'
       />
-      {/* // <!-- End Cloudflare Web Analytics --> */}
     </CacheProvider>
   );
 }

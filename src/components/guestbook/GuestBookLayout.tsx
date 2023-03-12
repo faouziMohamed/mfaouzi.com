@@ -1,5 +1,4 @@
 import { Box as SiteContent, Container } from '@mui/material';
-import Head from 'next/head';
 import Image from 'next/image';
 import { ReactNode } from 'react';
 
@@ -9,6 +8,7 @@ import PageFixedItems from '@/components/buttons/PageFixedItems';
 import { INavLink } from '@/components/layout/Headers/headers-data';
 import MainHeader from '@/components/layout/Headers/MainHeader';
 import UnderConstructionBanner from '@/components/layout/UnderConstructionBanner';
+import Seo from '@/components/Seo';
 
 import { ThemeMode, useNextTheme } from '@/styles/themes/theme-color';
 
@@ -44,11 +44,11 @@ export default function GuestBookLayout({ children }: GuestbookLayoutProps) {
     <div className='relative z-10 flex w-full flex-col p-0'>
       {isBuilding && <UnderConstructionBanner />}
       <SiteContent className='relative p-0' id='to-top'>
-        <Head>
-          <title>The Guestbook | Faouzi Mohamed </title>
-          <meta content='width=device-width, initial-scale=1' name='viewport' />
-          <link rel='icon' href='/favicon.ico' />
-        </Head>
+        <Seo
+          templateTitle='The Guestbook 📝'
+          title='📝 The Guestbook | Faouzi Mohamed'
+          pathname={GUESTBOOK_PAGE}
+        />
         <MainHeader navLinks={mainNavLinks} />
         <div className='xl:-top-22 absolute inset-0 top-8 -z-10 w-full transition-all msm:-top-6 md:-top-7 lg:-top-9 xl:-right-8 2xl:-top-[5rem] '>
           <Image

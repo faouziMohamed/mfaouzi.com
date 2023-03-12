@@ -10,10 +10,9 @@ import { openGraphImage } from '@/lib/utils';
 import FavIcons from '@/components/FavIcons';
 
 import getLdJsonStringified from '@/Repository/data/seo/ldJsonDataDefinition';
+import defaultMeta from '@/Repository/data/seo/seoDefault';
 import theme from '@/styles/themes/mui-theme';
 import { useNextTheme } from '@/styles/themes/theme-color';
-
-import defaultMeta from '../Repository/data/seo/seoDefault';
 
 type SeoProps = {
   image?: string;
@@ -26,10 +25,10 @@ const { lastBuild } = publicRuntimeConfig;
 export default function Seo(props: SeoProps) {
   const router = useRouter();
   const { theme: themeMode } = useNextTheme();
-  const { date = lastBuild || '', image } = props;
+  const { date = lastBuild || '', image, templateTitle } = props;
   const meta = { ...defaultMeta, ...props, date };
-  meta.title = props.templateTitle
-    ? `${props.templateTitle} | ${meta.siteName}`
+  meta.title = templateTitle
+    ? `${templateTitle} | ${meta.siteName}`
     : meta.title;
   const pathname = meta.pathname || router.pathname;
   meta.image =
@@ -38,7 +37,7 @@ export default function Seo(props: SeoProps) {
       description: meta.description,
       siteName: props.templateTitle ? meta.siteName : meta.title,
       templateTitle: props.templateTitle,
-      logo: `${process.env.NEXT_PUBLIC_SITE_URL}/images/faouzi-mhd.jpeg`,
+      logo: `${process.env.NEXT_PUBLIC_SITE_URL}/images/me.jpeg`,
       theme: themeMode,
     });
   const themeColor =

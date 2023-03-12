@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import NextAuth, { Account, Profile } from 'next-auth';
 import { JWT } from 'next-auth/jwt';
 import GithubProvider from 'next-auth/providers/github';
@@ -57,7 +56,6 @@ export default NextAuth({
   callbacks: {
     jwt({ token, user }) {
       // user and account are only available on sign in
-      console.log('START jwt', { token, user });
       if (user) {
         const tk = token as ObjectWithUser<JWT>;
         tk.user = {
@@ -66,20 +64,16 @@ export default NextAuth({
           name: capitalize(user.name!),
         };
       }
-      console.log('END jwt', { token, user }, '\n\n');
       return token;
     },
     session({ session, token }) {
-      console.log('START session', { session });
       const tk = token as ObjectWithUser<JWT>;
       session.user = tk.user;
-      console.log('END session', { session }, '\n\n');
       return session;
     },
     async signIn(props) {
       const { account, profile } = props;
       try {
-        console.log('START signIn', { props });
         // If the user doesn't exist, create a new user
         const maybeUser = await getUserByProviderId(account!.providerAccountId);
         if (!maybeUser) {
@@ -93,7 +87,6 @@ export default NextAuth({
         if (Object.keys(updatedFields).length > 0) {
           await updateUser(maybeUser.providerId, updatedFields);
         }
-        console.log('END signIn', { props }, '\n\n');
         return true;
       } catch (error) {
         // eslint-disable-next-line no-console

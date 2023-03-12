@@ -1,4 +1,4 @@
-const data = {
+const devData = {
   avatar: '/spaceman/userProfilePicture.jpeg',
   fullName: 'Faouzi Mohamed',
   skills: [
@@ -28,4 +28,4 @@ const data = {
     },
   },
 };
-export default data;
+export default devData;
