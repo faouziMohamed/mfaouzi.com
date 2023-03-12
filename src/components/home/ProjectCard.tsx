@@ -16,7 +16,7 @@ import UnStyledLink from '@/components/links/UnStyledLink';
 import ExternalLinkIcon from '~/icons/external-link-full.svg';
 import GitHubLinkIcon from '~/icons/github-link.svg';
 import CodingDark from '~/images/projects/coding-dark.svg';
-import CodingLight from '~/images/projects/coding-Light.svg';
+import CodingLight from '~/images/projects/coding-light.svg';
 
 import { IProjectDetail } from '@/types/portfolio/resume.types';
 
