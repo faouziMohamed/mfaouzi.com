@@ -50,7 +50,7 @@ export default function GuestBookLayout({ children }: GuestbookLayoutProps) {
           pathname={GUESTBOOK_PAGE}
           description={
             'The guestbook is a comment system that allows users to comment on a ' +
-            'post and reply to other comments.\n ' +
+            'post and reply to other comments. ' +
             'Mark your presence in my portfolio by Giving a review, ' +
             'showing your appreciation, react to others comments...'
           }
