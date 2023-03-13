@@ -9,6 +9,7 @@ import { openGraphImage } from '@/lib/utils';
 
 import FavIcons from '@/components/FavIcons';
 
+import devData from '@/Repository/data/dev-data';
 import getLdJsonStringified from '@/Repository/data/seo/ldJsonDataDefinition';
 import defaultMeta from '@/Repository/data/seo/seoDefault';
 import theme from '@/styles/themes/mui-theme';
@@ -37,7 +38,7 @@ export default function Seo(props: SeoProps) {
       description: meta.description,
       siteName: props.templateTitle ? meta.siteName : meta.title,
       templateTitle: props.templateTitle,
-      logo: `${process.env.NEXT_PUBLIC_SITE_URL}/images/me.jpeg`,
+      logo: devData.avatar,
       theme: themeMode,
     });
   const themeColor =
