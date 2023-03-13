@@ -32,8 +32,6 @@ export default function EditButton(props: { comment: GuestbookComment }) {
       {isEditOpen && (
         <EditCommentTextFieldDialog
           isOpen={isEditOpen}
-          commentId={comment.commentId}
-          parentId={comment.parentId!}
           authorId={comment.author?.providerId}
           content={comment.content}
           onSave={async (updatedContent: string) => {
