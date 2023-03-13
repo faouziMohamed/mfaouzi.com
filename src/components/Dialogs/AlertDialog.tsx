@@ -7,16 +7,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 
 import Button from '@/components/buttons/Button';
 
-export default function AlertDialog({
-  onAccept = () => {},
-  onCancel = () => {},
-  acceptText = 'Accept',
-  cancelText = 'Cancel',
-  open = false,
-  title = 'Are you sure?',
-  description,
-  type = 'error',
-}: {
+type AlertDialogProps = {
   open: boolean;
   onAccept: () => void;
   onCancel: () => void;
@@ -25,7 +16,11 @@ export default function AlertDialog({
   title: string;
   description: string;
   type?: AlertColor;
-}) {
+};
+export default function AlertDialog(props: AlertDialogProps) {
+  const { title = 'Are you sure?', description, type = 'error' } = props;
+  const { open = false, acceptText = 'Accept', cancelText = 'Cancel' } = props;
+  const { onAccept = () => {}, onCancel = () => {} } = props;
   const handleClose = () => {
     onCancel();
   };

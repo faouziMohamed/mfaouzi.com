@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import { useSession } from 'next-auth/react';
-import { useEffect, useState } from 'react';
 
 import { GET_COMMENTS_ROUTE } from '@/lib/serverless-route.constant';
 
@@ -20,12 +19,14 @@ import { useComments } from '@/services/client/guestbook/guestbook.service';
 import { AppUser } from '@/types/guestbook/guestbook.types';
 
 export default function GuestBookPage() {
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
   const { data: comments = [], isLoading } = useComments();
   const { data: session, status } = useSession();
-  if (!mounted) return null;
-  if (status === 'loading') return <div>Loading...</div>;
+  if (status === 'loading')
+    return (
+      <div className='absolute inset-0 flex h-full w-full items-center justify-center'>
+        <HangOnSpinner text='Loading...' size='lg' />
+      </div>
+    );
   let isConnected = false;
   let connectedUser = {} as AppUser;
   if (status === 'authenticated' && session.user) {
@@ -43,8 +44,6 @@ export default function GuestBookPage() {
           crossOrigin='anonymous'
         />
       </Head>
-      {/* <Seo templateTitle='Home' title='Faouzi Mohamed' pathname='/' /> */}
-
       <section
         className='mt-36 flex w-full flex-col gap-5 px-4 transition-all msm:mt-28'
         id='guestbook'

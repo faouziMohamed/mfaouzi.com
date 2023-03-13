@@ -1,5 +1,7 @@
 import createCache from '@emotion/cache';
 import clsx, { ClassValue } from 'clsx';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
 import { twMerge } from 'tailwind-merge';
 
 export const emailRegex =
@@ -15,17 +17,9 @@ export const camelCaseToTitleCase = (str: string) => {
   const regex = /([A-Z])(?=[A-Z][a-z])|([a-z])(?=[A-Z])/g;
   return startCaseAll(str.replace(regex, '$& '));
 };
-
+dayjs.extend(relativeTime);
 export function formatDate(date: Date): string {
-  const formatter = new Intl.DateTimeFormat('en-US', {
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric',
-    hour: 'numeric',
-    minute: 'numeric',
-    hour12: true,
-  });
-  return formatter.format(date);
+  return dayjs().to(dayjs(date));
 }
 
 type OpenGraphType = {

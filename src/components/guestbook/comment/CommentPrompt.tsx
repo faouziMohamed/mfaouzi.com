@@ -17,10 +17,8 @@ type CommentPromptProps = {
   isReply?: boolean;
 };
 
-export default function CommentPrompt({
-  parentId,
-  isReply = false,
-}: CommentPromptProps) {
+export default function CommentPrompt(props: CommentPromptProps) {
+  const { parentId, isReply = false } = props;
   const { status, data } = useSession();
   if (status !== 'authenticated') return null;
   const user = data?.user as unknown as AppUser;

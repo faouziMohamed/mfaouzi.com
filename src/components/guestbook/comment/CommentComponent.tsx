@@ -19,7 +19,7 @@ export default function CommentComponent(props: CommentComponentProps) {
   const { comment: c } = props;
   const { data: comment, isLoading, error } = useSingleComment(c.commentId);
   if (isLoading) return <HangOnSpinner text='' />;
-  if (error) return null;
+  if (error || !comment) return null;
   return (
     <div className='flex flex-col gap-1 '>
       <CommentHeader comment={comment} />
@@ -31,7 +31,7 @@ export default function CommentComponent(props: CommentComponentProps) {
             className={`absolute top-0 bottom-0 left-1/2 w-[0.07rem] bg-transparent `}
           />
         </div>
-        <CommentPrompt parentId={comment.commentId} isReply />
+        <CommentPrompt parentId={comment?.commentId} isReply />
       </div>
     </div>
   );
@@ -42,11 +42,11 @@ function CommentHeader({ comment }: { comment: GuestbookComment }) {
     <div className='flex items-center gap-3'>
       <div className='relative'>
         <Image
-          src={comment.author.avatar}
+          src={comment?.author.avatar}
           width={45}
           height={45}
           className='rounded-full'
-          alt={`${comment.author.name}'s avatar`}
+          alt={`${comment?.author.name}'s avatar`}
         />
       </div>
       <div className='flex flex-col gap-0'>
@@ -54,7 +54,7 @@ function CommentHeader({ comment }: { comment: GuestbookComment }) {
           component='h3'
           className='m-0 font-secondary text-[0.85rem] font-[700] text-[#495F70] dark:text-[#9bd3dd]'
         >
-          {comment.author.name}
+          {comment?.author.name}
         </Typography>
         <Typography className='m-0 font-secondary text-[0.68rem] text-[#607274] dark:text-[#b5cdd1]'>
           {formatDate(new Date(comment.updatedAt))}

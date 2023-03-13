@@ -62,3 +62,7 @@ export type CommentLikes = {
   likeCount: number;
   userId: string | null;
 };
+export type CommentUpdateResult = {
+  updatedAt: Date;
+  commentId: string;
+};

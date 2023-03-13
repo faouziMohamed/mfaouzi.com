@@ -63,27 +63,6 @@ export default NextAuth({
     }),
   ],
   callbacks: {
-    jwt({ token, user }) {
-      // user and account are only available on sign in
-      delete token.email;
-      delete token.picture;
-      delete token.name;
-      if (user) {
-        const tk = token as ObjectWithUser<JWT>;
-        tk.user = {
-          id: user.id,
-          avatar: user.image!,
-          name: capitalize(user.name!),
-        };
-      }
-      return token;
-    },
-    session({ session, token }) {
-      const tk = token as ObjectWithUser<JWT>;
-      delete token.sub;
-      session.user = tk.user;
-      return session;
-    },
     async signIn(props) {
       const { account, profile } = props;
       try {
@@ -106,6 +85,27 @@ export default NextAuth({
         console.log(error);
         return false;
       }
+    },
+    jwt({ token, user }) {
+      // user and account are only available on sign in
+      delete token.email;
+      delete token.picture;
+      delete token.name;
+      if (user) {
+        const tk = token as ObjectWithUser<JWT>;
+        tk.user = {
+          id: user.id,
+          avatar: user.image!,
+          name: capitalize(user.name!),
+        };
+      }
+      return token;
+    },
+    session({ session, token }) {
+      const tk = token as ObjectWithUser<JWT>;
+      delete token.sub;
+      session.user = tk.user;
+      return session;
     },
   },
 });

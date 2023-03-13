@@ -8,6 +8,7 @@ type CommentButtonProps = {
   onClick: () => void;
   className?: string;
   count?: number;
+  disabled?: boolean;
 };
 
 export function CommentButton({
@@ -16,6 +17,7 @@ export function CommentButton({
   onClick,
   className = '',
   count,
+  disabled = false,
 }: CommentButtonProps) {
   return (
     <div className='flex items-center gap-0'>
@@ -34,6 +36,7 @@ export function CommentButton({
         onClick={onClick}
         className='text-[#72797a] hover:text-blue-400 dark:text-[#979797]'
         title={title}
+        disabled={disabled}
       >
         <Icon className={className} />
       </IconButton>
