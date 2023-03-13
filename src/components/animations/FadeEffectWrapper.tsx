@@ -38,9 +38,7 @@ export default function FadeEffectWrapper(props: IFadeEffect & StackProps) {
     centerContent = true,
     ...rest
   } = props;
-  const flexClasses = centerContent
-    ? ' flex flex-col items-center'
-    : String(centerContent);
+  const flexClasses = centerContent ? ' flex flex-col items-center' : '--';
   return (
     <Stack
       direction='column'
@@ -55,9 +53,12 @@ export default function FadeEffectWrapper(props: IFadeEffect & StackProps) {
         initial='offscreen'
         whileInView='onscreen'
         viewport={{ once: false, amount: 0.1 }}
-        className='w-full'
+        className='flex w-full items-center justify-center'
       >
-        <motion.div className={`w-full ${flexClasses}`} variants={cardVariants}>
+        <motion.div
+          className={`w-full ${flexClasses} --`}
+          variants={cardVariants}
+        >
           {children}
         </motion.div>
       </motion.div>

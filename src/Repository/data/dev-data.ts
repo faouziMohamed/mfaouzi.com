@@ -1,10 +1,7 @@
 const devData = {
   avatar: '/spaceman/userProfilePicture.jpeg',
   fullName: 'Faouzi Mohamed',
-  skills: [
-    'Software Engineer',
-    'Full-stack Web Developer (ReactJs/ Angular / Asp.Net)',
-  ],
+  skills: ['Software Engineer', 'Full-stack Web Developer'],
   socials: {
     facebook: {
       url: 'https://www.facebook.com/faouzi.mohamed.97',

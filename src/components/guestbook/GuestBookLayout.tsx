@@ -2,26 +2,26 @@ import { Box as SiteContent, Container } from '@mui/material';
 import Image from 'next/image';
 import { ReactNode } from 'react';
 
-import { GUESTBOOK_PAGE, HOME_PAGE } from '@/lib/client-route.contant';
+import { GUESTBOOK_PAGE } from '@/lib/client-route.contant';
 
 import PageFixedItems from '@/components/buttons/PageFixedItems';
-import { INavLink } from '@/components/layout/Headers/headers-data';
+import { mainNavLinks } from '@/components/layout/Headers/headers-data';
 import MainHeader from '@/components/layout/Headers/MainHeader';
 import UnderConstructionBanner from '@/components/layout/UnderConstructionBanner';
 import Seo from '@/components/Seo';
 
 import { ThemeMode, useNextTheme } from '@/styles/themes/theme-color';
 
-const mainNavLinks: INavLink[] = [
-  {
-    name: 'Home',
-    href: HOME_PAGE,
-  },
-  {
-    name: 'Sign',
-    href: `${GUESTBOOK_PAGE}#sign`,
-  },
-];
+// const mainNavLinks: INavLink[] = [
+//   {
+//     name: 'Home',
+//     href: HOME_PAGE,
+//   },
+//   {
+//     name: 'Sign',
+//     href: `${GUESTBOOK_PAGE}#sign`,
+//   },
+// ];
 
 const blobVariants = {
   desktopLight: '/icons/guestbook-top-deskblob-light.svg',

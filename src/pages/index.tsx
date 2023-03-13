@@ -5,7 +5,6 @@ import { HOME_PAGE } from '@/lib/client-route.contant';
 
 import FadeEffectWrapper from '@/components/animations/FadeEffectWrapper';
 import AboutMeSection from '@/components/home/AboutMeSection';
-import BlogSection from '@/components/home/BlogSection';
 import DownArrowIcon from '@/components/home/DownArrowIcon';
 import GuestBookSection from '@/components/home/GuestBookSection';
 import IntroSection from '@/components/home/IntroSection';
@@ -31,6 +30,8 @@ const ContactSection = dynamic(
 const BriefSummarySection = dynamic(
   () => import('@/components/BriefSummarySection'),
 );
+
+const BlogSection = dynamic(() => import('@/components/home/BlogSection'));
 
 export default function HomePage() {
   return (
@@ -59,12 +60,16 @@ export default function HomePage() {
           <GuestBookSection />
         </FadeEffectWrapper>
         <FadeEffectWrapper>
-          <BriefSummarySection />
+          <div className='flex w-full justify-center'>
+            <BriefSummarySection />
+          </div>
         </FadeEffectWrapper>
         <FadeEffectWrapper gutterTop='1rem'>
           <ProjectsSection className='sm:px-2' />
         </FadeEffectWrapper>
-        <BlogSection />
+        <div className='flex w-full justify-center'>
+          <BlogSection />
+        </div>
         <FadeEffectWrapper gutterTop='1rem'>
           <SkillsAndStackSection className='px-6' />
         </FadeEffectWrapper>

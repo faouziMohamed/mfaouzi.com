@@ -1,6 +1,5 @@
 import { Box as FooterSection, Stack } from '@mui/material';
 import Typography from '@mui/material/Typography';
-import * as process from 'process';
 import { IconType } from 'react-icons';
 
 import clsxm from '@/lib/utils';
@@ -8,6 +7,7 @@ import clsxm from '@/lib/utils';
 import { mainNavLinks } from '@/components/layout/Headers/headers-data';
 import SiteLogo from '@/components/layout/Headers/SiteLogo';
 import UnderlineLink from '@/components/links/UnderlineLink';
+import UnStyledLink from '@/components/links/UnStyledLink';
 
 import devData from '@/Repository/data/dev-data';
 
@@ -20,8 +20,6 @@ import Linkedin from '~/icons/linkedin.svg';
 // import NextJs from '~/icons/nextjs.svg';
 // import Typescript from '~/icons/typescript.svg';
 import Twitter from '~/icons/twitter.svg';
-
-import UnStyledLink from '../links/UnStyledLink';
 
 import { DevDataTypes, SVGImageData } from '@/types/portfolio/portfolio.types';
 
@@ -72,90 +70,67 @@ const SocialsStack: readonly ISocialStacks[] = [
 
 export default function Footer() {
   return (
-    // <FooterSection className='w-full bg-primary-100 px-2 pt-8 pb-4 dark:bg-dark-primary'>
-    //   <Stack className='flex items-center gap-4'>
-    //     <h3 className='text-lg font-[500] leading-3'>
-    //       Faouzi Mohamed - {new Date().getFullYear()}
-    //     </h3>
-    //     <Stack className='flex-row gap-4'>
-    //       <p className='font-primary font-[300]'>Built with:</p>
-    //       <Stack className='flex flex-row gap-2'>
-    //         {usedTech.map(({ Icon, name }, index) => (
-    //           <Box
-    //             key={name}
-    //             className='flex items-center justify-center gap-2 font-normal'
-    //             component='strong'
-    //           >
-    //             <Icon className='h-5 w-5' />
-    //             {index + 1 < usedTech.length && <span>/</span>}
-    //           </Box>
-    //         ))}
-    //       </Stack>
-    //     </Stack>
-    //     <Stack className='flex-row gap-4' component='nav'>
-    //       {SocialsStack.map(({ Icon, name, link }) => (
-    //         <UnStyledLink
-    //           key={name}
-    //           href={link}
-    //           aria-label={`Link to my ${name}`}
-    //         >
-    //           <Icon className='h-5 w-5' />
-    //         </UnStyledLink>
-    //       ))}
-    //     </Stack>
-    //   </Stack>
-    // </FooterSection>
-    <FooterSection className='w-full bg-primary-100 px-2 pt-8 pb-4 dark:bg-dark-primary'>
-      <Stack className='flex items-center gap-4'>
-        <SiteLogo />
-        <Stack className='flex-row gap-4'>
-          <Stack className='flex flex-col gap-2'>
-            {mainNavLinks.map(({ Icon, name, href }) => {
-              const MyIcon = Icon as IconType;
-              const isGuestbook = name === 'Guestbook';
-              return (
-                <UnderlineLink
-                  href={href}
-                  key={name}
-                  className='flex flex items-center justify-start gap-2 border-none font-normal'
-                >
-                  <MyIcon
-                    className={clsxm(
-                      'h-5 w-5 ',
-                      isGuestbook ? 'h-4 w-4 pl-0.5' : '',
-                    )}
-                  />
-                  <span>{name}</span>
-                </UnderlineLink>
-              );
-            })}
+    <FooterSection
+      id='footer'
+      className='flex w-full flex-col items-center justify-center gap-5 bg-primary-100 px-8 py-8 dark:bg-dark-primary sm:px-16'
+    >
+      <div className='flex w-full max-w-4xl flex-col gap-5 sm:flex-row sm:items-start sm:justify-between sm:px-8'>
+        <div className='flex flex-col  items-center gap-4 sm:items-start sm:gap-2 '>
+          <SiteLogo />
+          <Typography className='text-center'>
+            {devData.skills.join(' | ')}
+          </Typography>
+        </div>
+        <div className='flex flex-col items-center gap-4'>
+          <Stack className='flex-row gap-4'>
+            <Stack className='flex flex-col gap-2'>
+              {mainNavLinks.map(({ Icon, name, href }) => {
+                const MyIcon = Icon as IconType;
+                const isGuestbook = name === 'Guestbook';
+                return (
+                  <UnderlineLink
+                    href={href}
+                    key={name}
+                    className='flex items-center justify-start gap-2 border-none text-base font-normal'
+                  >
+                    <MyIcon
+                      className={clsxm(
+                        'h-5 w-5 ',
+                        isGuestbook ? 'h-4 w-4 pl-0.5' : '',
+                      )}
+                    />
+                    <span>{name}</span>
+                  </UnderlineLink>
+                );
+              })}
+            </Stack>
           </Stack>
-        </Stack>
-        <Stack className='flex-row gap-4' component='nav'>
-          {SocialsStack.map(({ Icon, name, link }) => (
-            <UnStyledLink
-              key={name}
-              href={link}
-              aria-label={`Link to my ${name}`}
-            >
-              <Icon className='h-5 w-5' />
-            </UnStyledLink>
-          ))}
-        </Stack>
-        <Stack className='items-center'>
-          <Typography className='text-sm'>
-            COPYRIGHT © 2022 - {new Date().getFullYear()}{' '}
-            <span className='font-[600]'>
-              {process.env.NEXT_PUBLIC_SITE_URL?.replace(/https?:\/\//, '') ||
-                'mfaouzi.com'}
-            </span>
-          </Typography>
-          <Typography className='text-sm'>
-            ❤️ Developed by{' '}
-            <span className='font-[600]'>{devData.fullName}</span> 😎
-          </Typography>
-        </Stack>
-      </Stack>
+        </div>
+      </div>
+      <div className='flex w-full flex-row justify-center gap-4 sm:gap-8'>
+        {SocialsStack.map(({ Icon, name, link }) => (
+          <UnStyledLink
+            key={name}
+            href={link}
+            aria-label={`Link to my ${name}`}
+          >
+            <Icon className='h-5 w-5' />
+          </UnStyledLink>
+        ))}
+      </div>
+      <div className='flex w-full max-w-4xl flex-col items-center justify-between sm:flex-row'>
+        <Typography className='text-sm'>
+          COPYRIGHT © 2022 - {new Date().getFullYear()}{' '}
+          <span className='font-[600]'>
+            {process.env.NEXT_PUBLIC_SITE_URL?.replace(/https?:\/\//, '') ||
+              'mfaouzi.com'}
+          </span>
+        </Typography>
+        <Typography className='text-sm'>
+          ❤️ Developed by <span className='font-[600]'>{devData.fullName}</span>{' '}
+          😎
+        </Typography>
+      </div>
     </FooterSection>
   );
 }
