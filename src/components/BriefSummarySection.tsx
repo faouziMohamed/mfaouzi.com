@@ -25,7 +25,7 @@ export default function BriefSummarySection() {
       id='brief-summary'
     >
       <div className='shrink-0'>
-        <Image src={coder} alt='Ghost developer' width='250' height='250' />
+        <Image src={coder.src} alt='Ghost developer' width='250' height='250' />
       </div>
       <div className='flex flex-col gap-4 text-center'>
         <Typography className='texts-sm'>

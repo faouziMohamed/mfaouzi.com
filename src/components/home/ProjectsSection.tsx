@@ -1,8 +1,11 @@
-import { Box, Stack as ProjectCardStack, Typography } from '@mui/material';
+import Box from '@mui/material/Box';
+import ProjectCardStack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 
+import FadeEffectWrapper from '@/components/animations/FadeEffectWrapper';
 import SectionTitleWithBlob from '@/components/home/SectionTitleWithBlob';
 import SVGBlob from '@/components/home/SVGBlob';
 
@@ -10,8 +13,6 @@ import { projectSectionData } from '@/Repository/data/resumeData/resume-content/
 
 import ProjectsBlob from '~/icons/projects-blob.svg';
 import devNight from '~/images/dev/dev-night.gif';
-
-import FadeEffectWrapper from '../animations/FadeEffectWrapper';
 
 const ProjectCard = dynamic(() => import('./ProjectCard'));
 
@@ -44,11 +45,12 @@ export default function ProjectSection(props: IProjectProps) {
             <Image
               src={devNight}
               alt='Ghost developer'
-              sizes='100vw'
+              width='669'
+              height='176'
               className='h-44 rounded-lg object-cover'
             />
           </div>
-          <Typography className='basis-1/2 pb-4 text-center text-[0.98rem] font-[400] md:max-w-none md:text-justify '>
+          <Typography className='min-w-[20rem] basis-1/2 pb-4 text-center text-[0.98rem] font-[400] md:max-w-none md:text-justify '>
             I build things for the web and desktop, sometimes for fun, sometimes
             for work. I use GitHub as my sanctuary, I experiment, build
             collaborate with others and share my work there. Here are some of my
