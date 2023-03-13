@@ -1,7 +1,10 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import { Typography } from '@mui/material';
 import { signIn } from 'next-auth/react';
+import { FcGoogle } from 'react-icons/fc';
 import { RxGithubLogo } from 'react-icons/rx';
+
+import clsxm from '@/lib/utils';
 
 import Button from '@/components/buttons/Button';
 
@@ -29,6 +32,19 @@ export default function AuthButtons() {
         >
           <RxGithubLogo className='text-3xl' />
           <span>Continue with GitHub</span>
+        </Button>
+        <Button
+          onClick={() => signIn('google')}
+          className={clsxm(
+            'flex w-full items-center justify-center gap-2 rounded-md',
+            'border-0  bg-[#FFFFFF] text-[#203E5B] shadow-sm hover:bg-[#F0FFFB] hover:text-[#203E5B]',
+            'focus:outline-none focus:ring-2 focus:ring-[#201720] ',
+            'dark:bg-[#224363] dark:text-[#fff8f8] dark:hover:bg-[#1B3650] dark:hover:text-[#fff8f8]',
+            'focus:ring-offset-2 active:bg-[#F4F4F4]',
+          )}
+        >
+          <FcGoogle className='text-3xl' />
+          <span>Continue with Google</span>
         </Button>
       </div>
 

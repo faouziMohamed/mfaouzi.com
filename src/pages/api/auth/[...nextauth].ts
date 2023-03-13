@@ -1,6 +1,7 @@
 import NextAuth, { Account, Profile } from 'next-auth';
 import { JWT } from 'next-auth/jwt';
 import GithubProvider from 'next-auth/providers/github';
+import GoogleProvider from 'next-auth/providers/google';
 
 import { GUESTBOOK_PAGE } from '@/lib/client-route.contant';
 import { capitalize } from '@/lib/utils';
@@ -13,13 +14,17 @@ import {
 
 import { AppUser, AppUserWithEmail } from '@/types/guestbook/guestbook.types';
 
-type ProviderProfile = Profile & { avatar_url: string; login: string };
+type ProviderProfile = Profile & {
+  avatar_url: string;
+  picture: string;
+  login: string;
+};
 
 function assembleNewUser(account: Account, profile: ProviderProfile) {
   const user: AppUserWithEmail = {
     providerId: account.providerAccountId,
     email: profile.email!,
-    avatar: profile.avatar_url,
+    avatar: profile.avatar_url || profile.picture,
     name: capitalize(profile.name || profile.login),
     providerName: account.provider,
   };
@@ -52,10 +57,17 @@ export default NextAuth({
       clientId: process.env.GITHUB_ID!,
       clientSecret: process.env.GITHUB_SECRET!,
     }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+    }),
   ],
   callbacks: {
     jwt({ token, user }) {
       // user and account are only available on sign in
+      delete token.email;
+      delete token.picture;
+      delete token.name;
       if (user) {
         const tk = token as ObjectWithUser<JWT>;
         tk.user = {
@@ -68,6 +80,7 @@ export default NextAuth({
     },
     session({ session, token }) {
       const tk = token as ObjectWithUser<JWT>;
+      delete token.sub;
       session.user = tk.user;
       return session;
     },
