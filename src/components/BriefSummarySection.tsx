@@ -10,8 +10,6 @@ import clsxm from '@/lib/utils';
 
 import UnderlineLink from '@/components/links/UnderlineLink';
 
-import coder from '~/images/dev/dev-coder.gif';
-
 export default function BriefSummarySection() {
   return (
     <Section
@@ -25,7 +23,12 @@ export default function BriefSummarySection() {
       id='brief-summary'
     >
       <div className='shrink-0'>
-        <Image src={coder.src} alt='Ghost developer' width='250' height='250' />
+        <Image
+          src='https://res.cloudinary.com/mfaouzi/image/upload/v1678703340/mfaouzi.com/dev/dev-coder.gif'
+          alt='Ghost developer'
+          width='250'
+          height='250'
+        />
       </div>
       <div className='flex flex-col gap-4 text-center'>
         <Typography className='texts-sm'>

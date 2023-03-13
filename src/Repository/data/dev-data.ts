@@ -1,5 +1,6 @@
 const devData = {
-  avatar: '/spaceman/userProfilePicture.jpeg',
+  avatar:
+    'https://res.cloudinary.com/mfaouzi/image/upload/v1678704417/mfaouzi.com/me.jpg',
   fullName: 'Faouzi Mohamed',
   skills: ['Software Engineer', 'Full-stack Web Developer'],
   socials: {

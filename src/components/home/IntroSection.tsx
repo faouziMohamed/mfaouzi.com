@@ -11,8 +11,6 @@ import LayerIntro from '@/components/home/LayerIntro';
 
 import devData from '@/Repository/data/dev-data';
 
-import devPicture from '~/images/me.jpeg';
-
 type IntroSectionProps = {
   className?: string;
 };
@@ -34,9 +32,11 @@ export default function IntroSection({ className = '' }: IntroSectionProps) {
           aria-label={"Faouzi Mohamed's avatar"}
         >
           <Image
-            src={devPicture}
-            alt='MainHeader background blob'
+            src={devData.avatar}
+            alt={"Faouzi Mohamed's avatar"}
             className='h-full w-full rounded-full object-cover'
+            fill
+            sizes='100%'
             priority
           />
         </Box>

@@ -2,12 +2,12 @@ import { IUserContactsAndProfileData } from '@/types/portfolio/resume.types';
 
 const websiteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://mfaouzi.com';
 export const userInformation: IUserContactsAndProfileData = {
-  Avatar: '/images/userProfilePicture.jpeg',
+  Avatar:
+    'https://res.cloudinary.com/mfaouzi/image/upload/v1678704417/mfaouzi.com/me.jpg',
   About: {
     FirstName: 'Faouzoudine',
     LastName: 'Mohamed Faouzi',
-    Profession:
-      'Full-stack software developer Angular/ReactJs • DotNet Core • Java',
+    Profession: 'Full-stack software developer Angular/ReactJs • DotNet Core',
   },
   Location: {
     City: 'Salé',

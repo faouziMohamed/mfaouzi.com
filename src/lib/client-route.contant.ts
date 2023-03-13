@@ -7,3 +7,4 @@ export const HOME_SKILLS_PAGE = `${HOME_PAGE}#skills`;
 export const HOME_PROJECTS_PAGE = `${HOME_PAGE}#projects`;
 export const HOME_CONTACTS_PAGE = `${HOME_PAGE}#contacts`;
 export const RESUME_PAGE = '/resume';
+export const RESUME_PDF_LINK = '/documents/resume-FaouziMohamed.pdf';

@@ -1,5 +1,7 @@
 import { Box, Box as Section, Typography } from '@mui/material';
 
+import { RESUME_PAGE, RESUME_PDF_LINK } from '@/lib/client-route.contant';
+
 import ButtonLink from '@/components/links/ButtonLink';
 import SpaceMan from '@/components/spaceman/SpaceMan';
 
@@ -42,11 +44,15 @@ export default function AboutMeSection({
         </Typography>
       </Box>
       <Box className='flex w-full items-center justify-center gap-4'>
-        <ButtonLink href='/resume' className='text-center' variant='primary'>
+        <ButtonLink
+          href={RESUME_PAGE}
+          className='text-center'
+          variant='primary'
+        >
           View resume
         </ButtonLink>
         <ButtonLink
-          href='/documents/resume-dev.pdf'
+          href={RESUME_PDF_LINK}
           download
           className='text-center'
           variant='ghost'

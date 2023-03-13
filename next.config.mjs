@@ -23,7 +23,7 @@ const config = {
   },
 
   images: {
-    domains: ['avatars.githubusercontent.com'],
+    domains: ['avatars.githubusercontent.com', 'res.cloudinary.com'],
   },
 
   reactStrictMode: true,
