@@ -48,6 +48,12 @@ export default function GuestBookLayout({ children }: GuestbookLayoutProps) {
           templateTitle='The Guestbook 📝'
           title='📝 The Guestbook | Faouzi Mohamed'
           pathname={GUESTBOOK_PAGE}
+          description={
+            'The guestbook is a comment system that allows users to comment on a ' +
+            'post and reply to other comments.\n ' +
+            'Mark your presence in my portfolio by Giving a review, ' +
+            'showing your appreciation, react to others comments...'
+          }
         />
         <MainHeader navLinks={mainNavLinks} />
         <div className='xl:-top-22 absolute inset-0 top-8 -z-10 w-full transition-all msm:-top-6 md:-top-7 lg:-top-9 xl:-right-8 2xl:-top-[5rem] '>
