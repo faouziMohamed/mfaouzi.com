@@ -24,7 +24,7 @@ export default function BriefSummarySection() {
     >
       <div className='shrink-0'>
         <Image
-          src='https://res.cloudinary.com/mfaouzi/image/upload/v1678703340/mfaouzi.com/dev/dev-coder.gif'
+          src='https://res.cloudinary.com/mfaouzi/image/upload/c_scale,q_50,w_189/v1678703340/mfaouzi.com/dev/dev-coder.gif'
           alt='Ghost developer'
           width='250'
           height='250'

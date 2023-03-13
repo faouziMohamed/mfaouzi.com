@@ -42,7 +42,7 @@ export default function ProjectSection(props: IProjectProps) {
         >
           <div className='relative w-auto shrink-0  basis-1/2'>
             <Image
-              src='https://res.cloudinary.com/mfaouzi/image/upload/v1678703347/mfaouzi.com/dev/dev-night.gif'
+              src='https://res.cloudinary.com/mfaouzi/image/upload/c_scale,q_48,w_429/v1678703347/mfaouzi.com/dev/dev-night.gif'
               alt='Ghost developer'
               width='669'
               height='176'
