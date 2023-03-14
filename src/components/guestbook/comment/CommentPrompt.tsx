@@ -56,7 +56,7 @@ function AddNewCommentTextField({
   return (
     <TextField
       id='comment-text-field'
-      label='Add a comment'
+      label={isReply ? 'Add a reply' : 'Add a comment'}
       placeholder='Hey there, I just wanted to say...'
       multiline
       variant='outlined'
