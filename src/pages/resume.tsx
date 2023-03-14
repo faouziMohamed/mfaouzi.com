@@ -21,6 +21,8 @@ import UserInformation from '@/components/resume/UserInformation';
 
 import resumeMainData from '@/Repository/data/resumeData/resumeMainData';
 
+import DevStereotype from '~/images/dev/dev-stereotype.svg';
+
 import {
   ICertification,
   IEducation,
@@ -36,23 +38,26 @@ export default function HomePage() {
   const { SkillsAndAbilities } = resumeMainData;
   return (
     <ResumeLayout>
-      <Box className='flex flex-col gap-8 bg-transparent sm:flex-row sm:gap-1'>
-        <AppSeoTheme />
-        <Box className='flex flex-col gap-6 bg-gray-800 p-2 py-8 text-white dark:bg-dark-r-400 md:w-full md:max-w-md'>
-          <Box className='flex flex-col items-center gap-4 pt-16 sm:flex-col sm:justify-between md:flex-col'>
-            <UserAvatar avatar={userInformation.Avatar} />
-            <UserInformation data={userInformation} />
+      <AppSeoTheme />
+      <DevStereotype className='fixed inset-0  top-[18%] -z-[999] h-[65rem] w-full dark:opacity-20  sm:top-[20%] md:top-[30%] lg:top-2/4' />
+      <div className=' flex justify-center '>
+        <Box className='relative flex flex-col gap-8 bg-transparent sm:flex-row sm:gap-1'>
+          <Box className='flex flex-col gap-6 bg-gray-800 p-2 py-8 text-white dark:bg-dark-r-400 md:w-full md:max-w-md'>
+            <Box className='flex flex-col items-center gap-4 pt-16 sm:flex-col sm:justify-between md:flex-col'>
+              <UserAvatar avatar={userInformation.Avatar} />
+              <UserInformation data={userInformation} />
+            </Box>
+            <SkillsAndSoftSkillsSections skills={SkillsAndAbilities} />
           </Box>
-          <SkillsAndSoftSkillsSections skills={SkillsAndAbilities} />
+          <ResumeSections
+            profile={Profile}
+            education={education}
+            certifications={Certification}
+            experiences={ProfessionalExperience}
+            projects={Project}
+          />
         </Box>
-        <ResumeSections
-          profile={Profile}
-          education={education}
-          certifications={Certification}
-          experiences={ProfessionalExperience}
-          projects={Project}
-        />
-      </Box>
+      </div>
     </ResumeLayout>
   );
 }

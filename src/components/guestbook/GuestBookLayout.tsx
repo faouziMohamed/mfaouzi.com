@@ -9,17 +9,6 @@ import UnderConstructionBanner from '@/components/layout/UnderConstructionBanner
 
 import { ThemeMode, useNextTheme } from '@/styles/themes/theme-color';
 
-// const mainNavLinks: INavLink[] = [
-//   {
-//     name: 'Home',
-//     href: HOME_PAGE,
-//   },
-//   {
-//     name: 'Sign',
-//     href: `${GUESTBOOK_PAGE}#sign`,
-//   },
-// ];
-
 const blobVariants = {
   desktopLight: '/icons/guestbook-top-deskblob-light.svg',
   desktopDark: '/icons/guestbook-top-deskblob-dark.svg',

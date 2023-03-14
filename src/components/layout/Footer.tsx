@@ -2,6 +2,7 @@ import { Box as FooterSection, Stack } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import { IconType } from 'react-icons';
 
+import { SITE_URL } from '@/lib/client-route.contant';
 import clsxm from '@/lib/utils';
 
 import { mainNavLinks } from '@/components/layout/Headers/headers-data';
@@ -122,8 +123,7 @@ export default function Footer() {
         <Typography className='text-sm'>
           COPYRIGHT © 2022 - {new Date().getFullYear()}{' '}
           <span className='font-[600]'>
-            {process.env.NEXT_PUBLIC_SITE_URL?.replace(/https?:\/\//, '') ||
-              'mfaouzi.com'}
+            {SITE_URL?.replace(/https?:\/\//, '') || 'mfaouzi.com'}
           </span>
         </Typography>
         <Typography className='text-sm'>

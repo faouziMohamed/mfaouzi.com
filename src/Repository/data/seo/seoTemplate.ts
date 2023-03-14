@@ -3,6 +3,7 @@ import {
   HOME_PAGE,
   NOT_FOUND_PAGE,
   RESUME_PAGE,
+  SITE_URL,
 } from '@/lib/client-route.contant';
 
 import { userInformation } from '@/Repository/data/resumeData/resume-content/userIformationData';
@@ -14,7 +15,7 @@ export const seoTemplate = {
   templateTitle: 'Home',
   description:
     'My personal Portfolio where I present myself, my skills, some projects etc. ',
-  url: process.env.NEXT_PUBLIC_SITE_URL,
+  url: SITE_URL,
   logoUrl:
     'https://res.cloudinary.com/mfaouzi/image/upload/v1678704417/mfaouzi.com/me.jpg',
   pathname: '/',

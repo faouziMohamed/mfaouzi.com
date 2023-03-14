@@ -2,6 +2,7 @@
 import Link, { LinkProps } from 'next/link';
 import { ComponentPropsWithRef, forwardRef, ReactNode } from 'react';
 
+import { SITE_URL } from '@/lib/client-route.contant';
 import clsxm from '@/lib/utils';
 
 export type UnStyledLinkProps = {
@@ -20,7 +21,7 @@ const UnStyledLink = forwardRef<HTMLAnchorElement, UnStyledLinkProps>(
         : href &&
           !href.startsWith('/') &&
           !href.startsWith('#') &&
-          !href.includes(process.env.NEXT_PUBLIC_SITE_URL!);
+          !href.includes(SITE_URL);
 
     if (!isNewTab) {
       return (
