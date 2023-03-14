@@ -8,6 +8,7 @@ import {
 } from 'react-icons/fa';
 import { RiContactsFill } from 'react-icons/ri';
 
+import AppSeoTheme from '@/components/AppSeoTheme';
 import ResumeLayout from '@/components/layout/resume/ResumeLayout';
 import CertificationsSection from '@/components/resume/certificationsSection';
 import DiplomaSection from '@/components/resume/diplomaSection';
@@ -17,7 +18,6 @@ import SectionTitle from '@/components/resume/SectionTitle';
 import SkillsAndSoftSkillsSections from '@/components/resume/SkillsAndSoftSkillsSections';
 import UserAvatar from '@/components/resume/userAvatar';
 import UserInformation from '@/components/resume/UserInformation';
-import Seo from '@/components/Seo';
 
 import resumeMainData from '@/Repository/data/resumeData/resumeMainData';
 
@@ -37,7 +37,7 @@ export default function HomePage() {
   return (
     <ResumeLayout>
       <Box className='flex flex-col gap-8 bg-transparent sm:flex-row sm:gap-1'>
-        <Seo title='Resume' description={Profile.Description} />
+        <AppSeoTheme />
         <Box className='flex flex-col gap-6 bg-gray-800 p-2 py-8 text-white dark:bg-dark-r-400 md:w-full md:max-w-md'>
           <Box className='flex flex-col items-center gap-4 pt-16 sm:flex-col sm:justify-between md:flex-col'>
             <UserAvatar avatar={userInformation.Avatar} />

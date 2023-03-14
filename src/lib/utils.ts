@@ -4,6 +4,8 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import { twMerge } from 'tailwind-merge';
 
+import { SeoTemplate } from '@/Repository/data/seo/seoTemplate';
+
 export const emailRegex =
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 export const startCase = (str: string) =>
@@ -69,4 +71,20 @@ export default function clsxm(...classes: ClassValue[]) {
 
 export function createEmotionCache() {
   return createCache({ key: 'mui', prepend: true });
+}
+
+export function calculatePageTitle(seo: SeoTemplate) {
+  return seo.templateTitle
+    ? `${seo.templateTitle} | ${seo.siteName}`
+    : seo.title;
+}
+
+export function getOgImage(seoTemplate: SeoTemplate) {
+  return openGraphImage({
+    description: seoTemplate.description,
+    siteName: seoTemplate.siteName,
+    templateTitle: seoTemplate.templateTitle,
+    logo: seoTemplate.logoUrl,
+    theme: 'light',
+  });
 }

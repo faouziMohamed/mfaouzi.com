@@ -1,16 +1,14 @@
 import { Box, Container as Main } from '@mui/material';
 import dynamic from 'next/dynamic';
 
-import { HOME_PAGE } from '@/lib/client-route.contant';
-
 import FadeEffectWrapper from '@/components/animations/FadeEffectWrapper';
+import AppSeoTheme from '@/components/AppSeoTheme';
 import AboutMeSection from '@/components/home/AboutMeSection';
 import DownArrowIcon from '@/components/home/DownArrowIcon';
 import GuestBookSection from '@/components/home/GuestBookSection';
 import IntroSection from '@/components/home/IntroSection';
 import SocialsSection from '@/components/home/SocialsSection';
 import Layout from '@/components/layout/Layout';
-import Seo from '@/components/Seo';
 import SpaceMan from '@/components/spaceman/SpaceMan';
 
 import DevStereotype from '~/images/dev/dev-stereotype.svg';
@@ -36,7 +34,7 @@ const BlogSection = dynamic(() => import('@/components/home/BlogSection'));
 export default function HomePage() {
   return (
     <Layout className='flex flex-col gap-4  p-0'>
-      <Seo templateTitle='Home' title='Faouzi Mohamed' pathname={HOME_PAGE} />
+      <AppSeoTheme />
       <Main component='main' className='flex max-w-7xl flex-col gap-4 '>
         <DevStereotype className='fixed inset-0  top-[18%] -z-[999] h-[65rem] w-full dark:opacity-20  sm:top-[20%] md:top-[30%] lg:top-2/4' />
         <Box className='flex w-full basis-6 flex-col md:grow md:pt-24'>
