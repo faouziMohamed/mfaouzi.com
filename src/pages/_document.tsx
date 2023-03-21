@@ -46,6 +46,10 @@ class MyDocument extends Document {
           <meta name='theme-color' content={themeColor} />
           <meta charSet='UTF-8' />
           <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
+          <meta
+            name='viewport'
+            content='width=device-width, initial-scale=1.0'
+          />
           <meta name='robots' content={seoTemplate.robots} />
           <meta name='description' content={seoTemplate.description} />
           <meta name='site_map' content={`${SITE_URL}/sitemap.xml`} />

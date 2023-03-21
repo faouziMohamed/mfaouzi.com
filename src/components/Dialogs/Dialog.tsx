@@ -10,7 +10,7 @@ import {
 } from '@mui/material';
 import { FC, ReactNode, useEffect, useRef } from 'react';
 
-import Transition from '../Transition';
+import Transition from '@/components/Transition';
 
 interface IDialogProps {
   open?: boolean;
