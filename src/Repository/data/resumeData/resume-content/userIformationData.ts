@@ -1,6 +1,8 @@
+import { SITE_URL } from '@/lib/client-route.contant';
+
 import { IUserContactsAndProfileData } from '@/types/portfolio/resume.types';
 
-const websiteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://mfaouzi.com';
+const websiteUrl = SITE_URL || 'https://mfaouzi.com';
 export const userInformation: IUserContactsAndProfileData = {
   Avatar:
     'https://res.cloudinary.com/mfaouzi/image/upload/v1678704417/mfaouzi.com/me.jpg',

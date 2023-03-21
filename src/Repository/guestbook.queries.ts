@@ -88,7 +88,7 @@ export async function toggleLikeComment(commentId: string, providerId: string) {
   return commentLikes;
 }
 
-export async function deleteComments(rootCommentId: string) {
+export async function deleteCommentWithItResources(rootCommentId: string) {
   const map = new Map<string, boolean>();
   await deleteComment(rootCommentId, map);
 
@@ -99,6 +99,14 @@ export async function deleteComments(rootCommentId: string) {
       where: { commentId: { in: commentIdsToDelete } },
     });
   }
+}
+
+export async function updateCommentContent(commentId: string, content: string) {
+  return prisma.gComment.update({
+    where: { commentId },
+    data: { content },
+    select: { updatedAt: true },
+  });
 }
 
 async function deleteComment(commentId: string, map: Map<string, boolean>) {

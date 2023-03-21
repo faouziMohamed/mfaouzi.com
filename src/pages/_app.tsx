@@ -18,8 +18,10 @@ import '@fontsource/ubuntu/500.css';
 import '@fontsource/ubuntu/700.css';
 import '@/styles/globals.scss';
 
-import { createEmotionCache } from '@/lib/utils';
+import { calculatePageTitle, createEmotionCache } from '@/lib/utils';
 
+import devData from '@/Repository/data/dev-data';
+import getPageSeo, { PageUrl } from '@/Repository/data/seo/seoTemplate';
 import theme from '@/styles/themes/mui-theme';
 import NextThemeProvider from '@/styles/themes/theme-color';
 
@@ -35,11 +37,14 @@ interface MyAppProps extends AppProps {
 }
 
 export default function MyApp(props: MyAppProps) {
-  const { Component, pageProps } = props;
+  const { Component, pageProps, router } = props;
+  const pagePath = router.asPath as PageUrl;
+  const seoTemplate = getPageSeo(pagePath);
+  const title = calculatePageTitle(seoTemplate);
   return (
     <CacheProvider value={clientSideEmotionCache}>
       <Head>
-        <title>Faouzi Mohamed</title>
+        <title>{title || devData.fullName}</title>
         <meta name='viewport' content='initial-scale=1, width=device-width' />
       </Head>
       {/* eslint-disable-next-line @typescript-eslint/no-unsafe-member-access */}

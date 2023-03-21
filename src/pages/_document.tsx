@@ -8,43 +8,69 @@ import getConfig from 'next/config';
 import Document, { Head, Html, Main, NextScript } from 'next/document';
 import { Children } from 'react';
 
-import { createEmotionCache, openGraphImage } from '@/lib/utils';
+import { SITE_URL } from '@/lib/client-route.contant';
+import { createEmotionCache, getOgImage } from '@/lib/utils';
+
+import FavIcons from '@/components/FavIcons';
 
 import getLdJsonStringified from '@/Repository/data/seo/ldJsonDataDefinition';
-import seoDefault from '@/Repository/data/seo/seoDefault';
+import getPageSeo, {
+  PAGE_URLS,
+  PageUrl,
+  SEO_TEMPLATE_FILE_PATH,
+} from '@/Repository/data/seo/seoTemplate';
 import theme from '@/styles/themes/mui-theme';
 
-const ogImg = openGraphImage({
-  description: seoDefault.description,
-  siteName: seoDefault.siteName,
-  templateTitle: seoDefault.siteName,
-  logo: `${process.env.NEXT_PUBLIC_SITE_URL}/images/faouzi-mhd.jpeg`,
-  theme: 'light',
-});
-
 const { publicRuntimeConfig } = getConfig();
-const { lastBuild } = publicRuntimeConfig;
+const { lastBuild } = publicRuntimeConfig as { lastBuild: string };
 
 class MyDocument extends Document {
   render() {
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    const { __NEXT_DATA__: nextData } = this.props;
+    const path = nextData.page as PageUrl;
+    if (!PAGE_URLS.includes(path)) {
+      // throw a warning if the path does not have a corresponding SEO template
+      // eslint-disable-next-line no-console
+      console.warn(
+        `The path name ${path} does not have a corresponding SEO template. Please consider adding one to the ${SEO_TEMPLATE_FILE_PATH} file.`,
+      );
+    }
+    const seoTemplate = getPageSeo(path);
+    const ogImg = getOgImage(seoTemplate);
+    const canonical = `${SITE_URL}${path}`;
+    const themeColor = theme.palette.primary.main;
     return (
       <Html lang='en' className='scroll-smooth'>
         <Head>
-          <meta name='theme-color' content={theme.palette.primary.main} />
+          <meta name='theme-color' content={themeColor} />
           <meta charSet='UTF-8' />
           <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
-          <meta name='robots' content={seoDefault.robots} />
-          <meta name='description' content={seoDefault.description} />
           <meta
-            name='site_map'
-            content={`${process.env.NEXT_PUBLIC_SITE_URL}/sitemap.xml`}
+            name='viewport'
+            content='width=device-width, initial-scale=1.0'
           />
-          <meta property='og:Name' content={seoDefault.title} />
-          <meta property='og:site_name' content={seoDefault.siteName} />
-          <meta property='og:description' content={seoDefault.description} />
+          <meta name='robots' content={seoTemplate.robots} />
+          <meta name='description' content={seoTemplate.description} />
+          <meta name='site_map' content={`${SITE_URL}/sitemap.xml`} />
+          <link rel='canonical' href={canonical} />
+          <meta name='url' content={canonical} />
+          <meta name='keywords' content={seoTemplate.keywords} key='keywords' />
+
+          {/* Open Graph */}
+          <meta property='og:url' content={canonical} />
+          <meta property='og:type' content={seoTemplate.type} />
+          <meta property='og:Name' content={seoTemplate.title} />
+          <meta property='og:site_name' content={seoTemplate.siteName} />
+          <meta property='og:description' content={seoTemplate.description} />
           <meta property='og:image' content={ogImg} name='image' />
-          <meta property='og:image:width' content={seoDefault.imageWidth} />
-          <meta property='og:image:height' content={seoDefault.imageHeight} />
+          <meta property='og:image:width' content={seoTemplate.imageWidth} />
+          <meta property='og:image:height' content={seoTemplate.imageHeight} />
+
+          {/* Twitter */}
+          <meta name='twitter:Name' content={seoTemplate.title} />
+          <meta name='twitter:description' content={seoTemplate.description} />
+          <meta name='twitter:image' content={ogImg} />
           <meta name='twitter:card' content='summary_large_image' />
           <meta name='twitter:site' content='@fz_faouzi' />
           <meta
@@ -52,13 +78,17 @@ class MyDocument extends Document {
             content={"Faouzi Mohamed's Portfolio"}
           />
           <meta name='twitter:creator' content='@fz_faouzi' />
-
+          <meta name='theme-color' content={themeColor} />
+          <meta
+            name='apple-mobile-web-app-status-bar-style'
+            content={themeColor}
+          />
+          <meta name='msapplication-TileColor' content={themeColor} />
           {lastBuild ? (
             <>
               <meta
                 name='publish_date'
                 property='og:publish_date'
-                // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
                 content={lastBuild}
               />
               <meta
@@ -69,29 +99,26 @@ class MyDocument extends Document {
             </>
           ) : null}
 
-          <meta name='copyright' content='Faouzi Mohamed' />
+          <meta name='copyright' content={seoTemplate.siteName} />
           <meta name='classification' content='portfolio' />
 
           <meta
             name='apple-mobile-web-app-Name'
-            content={process.env.NEXT_PUBLIC_APP_NAME}
+            content={seoTemplate.siteName}
           />
-          <meta
-            name='application-name'
-            content={process.env.NEXT_PUBLIC_APP_NAME}
-          />
+          <meta name='application-name' content={seoTemplate.siteName} />
           <meta name='apple-mobile-web-app-capable' content='yes' />
           <meta name='apple-touch-fullscreen' content='yes' />
           <script
             type='application/ld+json'
             dangerouslySetInnerHTML={{
               __html: getLdJsonStringified({
-                siteUrl: seoDefault.url!,
                 dateModified: lastBuild,
-                ogImage: ogImg,
+                seo: seoTemplate,
               }),
             }}
           />
+          <FavIcons />
           {/* @ts-expect-error: attribute not existing */}
           {this.props.emotionStyleTags}
         </Head>

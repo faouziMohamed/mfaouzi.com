@@ -20,12 +20,12 @@ export default function HangOnSpinner({
     lg: 'text-[1rem]',
   };
   return (
-    <div className='flex items-center gap-4'>
-      <div
+    <span className='flex items-center gap-4'>
+      <span
         className={clsxm(
           spinnerSize[size] || spinnerSize.sm,
           'block animate-try-spin',
-          'rounded-[20px] border-[3px] border border-double border-y-black ',
+          'rounded-[20px] border-[3px] border border-double border-y-black dark:border-y-white',
           'border-x-transparent',
         )}
       />
@@ -37,6 +37,6 @@ export default function HangOnSpinner({
       >
         {text}
       </span>
-    </div>
+    </span>
   );
 }

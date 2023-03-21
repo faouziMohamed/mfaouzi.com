@@ -11,6 +11,7 @@ import {
   MdWbSunny,
 } from 'react-icons/md';
 
+import { SITE_URL } from '@/lib/client-route.contant';
 import { useMounted, useSMallScreen } from '@/lib/hooks';
 
 import {
@@ -70,7 +71,7 @@ function NavigationMenu() {
           menuOpened={menuOpened}
         />
         {!isSM && (
-          <UnStyledLink href={process.env.NEXT_PUBLIC_SITE_URL!}>
+          <UnStyledLink href={SITE_URL}>
             <SiteLogo />
           </UnStyledLink>
         )}

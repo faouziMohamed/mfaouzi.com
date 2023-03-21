@@ -3,7 +3,6 @@ import useSWR, { mutate } from 'swr';
 import {
   ADD_NEW_COMMENT_ROUTE,
   GET_COMMENTS_ROUTE,
-  getCommentDeleteRoute,
   getCommentLikeToggleRoute,
   getCommentRepliesRoute,
   getSingleCommentRoute,
@@ -70,7 +69,6 @@ export async function addNewComment(comment: GuestbookComment, user: AppUser) {
     comment: comment.content,
     authorId: user.id,
   };
-
   const res = await fetch(ADD_NEW_COMMENT_ROUTE, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -129,7 +127,7 @@ export async function toggleCommentLike(
 }
 
 export async function deleteComment(commentId: string) {
-  const res = await fetch(getCommentDeleteRoute(commentId), {
+  const res = await fetch(getSingleCommentRoute(commentId), {
     method: 'DELETE',
   });
 
@@ -137,13 +135,42 @@ export async function deleteComment(commentId: string) {
     const errorMessage = (await res.json()) as ErrorMessage;
     throw new Error(errorMessage.message);
   }
+  await removeCommentFromCache(commentId);
   await refreshCommentsCache();
   return commentId;
+}
+export async function updateComment(
+  comment: GuestbookComment,
+  content: string,
+) {
+  comment.content = content;
+  cacheOneCommentMutation(comment);
+  const res = await fetch(getSingleCommentRoute(comment.commentId), {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ content }),
+  });
+
+  if (!res.ok) {
+    const errorMessage = (await res.json()) as ErrorMessage;
+    throw new Error(errorMessage.message);
+  }
+  await res.json();
+  comment.content = content;
+  cacheOneCommentMutation(comment);
+  return comment;
 }
 
 function cacheOneCommentMutation(comment: GuestbookComment) {
   void mutate(getSingleCommentRoute(comment.commentId), comment, {
     optimisticData: comment,
+    revalidate: false,
+  });
+}
+
+function removeCommentFromCache(commentId: string) {
+  return mutate<GuestbookComment>(getSingleCommentRoute(commentId), undefined, {
+    optimisticData: () => false,
     revalidate: false,
   });
 }

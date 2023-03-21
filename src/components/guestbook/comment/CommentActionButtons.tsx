@@ -1,61 +1,16 @@
 import { useSession } from 'next-auth/react';
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import { AiOutlineHeart } from 'react-icons/ai';
-import { BsTrashFill } from 'react-icons/bs';
 import { FaRegComment } from 'react-icons/fa';
 import { FcLike } from 'react-icons/fc';
-import { TbEdit } from 'react-icons/tb';
 
-import AlertDialog from '@/components/Dialogs/AlertDialog';
 import { CommentButton } from '@/components/guestbook/comment/CommentButton';
-import HangOnSpinner from '@/components/Spinners/HangOnSpinner';
+import DeleteCommentButton from '@/components/guestbook/comment/DeleteCommentButton';
+import EditButton from '@/components/guestbook/comment/EditButton';
 
-import {
-  deleteComment,
-  toggleCommentLike,
-} from '@/services/client/guestbook/guestbook.service';
+import { toggleCommentLike } from '@/services/client/guestbook/guestbook.service';
 
 import { AppUser, GuestbookComment } from '@/types/guestbook/guestbook.types';
-
-function DeleteButton({ comment }: { comment: GuestbookComment }) {
-  const [open, setOpen] = useState(false);
-  const [isDeleting, setIsDeleting] = useState(false);
-  const onAccept = useCallback(() => {
-    void deleteComment(comment.commentId);
-    setOpen(false);
-    setIsDeleting(true);
-  }, [comment.commentId]);
-  const onCancel = useCallback(() => {
-    setOpen(false);
-    setIsDeleting(false);
-  }, []);
-  return (
-    <>
-      {isDeleting ? (
-        <HangOnSpinner text='' size='sm' />
-      ) : (
-        <CommentButton
-          Icon={BsTrashFill}
-          title='Delete'
-          onClick={() => {
-            setOpen(true);
-            setIsDeleting(true);
-          }}
-          className='w-5'
-        />
-      )}
-      {open && (
-        <AlertDialog
-          open={open}
-          onAccept={onAccept}
-          onCancel={onCancel}
-          title='Are you sure you want to delete your comment?'
-          description='This action cannot be undone and your comment will be permanently deleted.'
-        />
-      )}
-    </>
-  );
-}
 
 export default function CommentActionButtons({
   comment,
@@ -73,10 +28,10 @@ export default function CommentActionButtons({
           className='w-5'
           count={comment.repliesCount}
         />
-        <CommentButton Icon={TbEdit} title='Edit' onClick={() => {}} />
+        <EditButton comment={comment} />
       </div>
 
-      <DeleteButton comment={comment} />
+      <DeleteCommentButton comment={comment} />
     </div>
   );
 }

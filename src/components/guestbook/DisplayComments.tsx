@@ -32,7 +32,7 @@ export default function DisplayComments(props: DisplayCommentsProps) {
     <>
       {comments.map((comment, index) => (
         <Fragment key={comment.commentId}>
-          <CreateCommentAndReplies
+          <ShowCommentAndItReplies
             isThread={isThread}
             comment={comment}
             depth={depth}
@@ -44,11 +44,13 @@ export default function DisplayComments(props: DisplayCommentsProps) {
   );
 }
 
-export function CreateCommentAndReplies(props: {
+type ShowCommentAndItRepliesProps = {
   comment: GuestbookComment;
   depth: number;
   isThread?: boolean;
-}) {
+};
+
+export function ShowCommentAndItReplies(props: ShowCommentAndItRepliesProps) {
   const { comment, depth, isThread = false } = props;
 
   // When depth is greater than the initial depth, it means that's a reply
@@ -57,24 +59,24 @@ export function CreateCommentAndReplies(props: {
   const isReply = depth > COMMENT_INITIAL_DEPTH;
 
   // Tell swr to handle changes on the reply
-  const { data: fetchedComment, isLoading } = useSWR<GuestbookComment>(
-    getSingleCommentRoute(comment.commentId),
+  const { data: trackedComment, isLoading } = useSWR<GuestbookComment>(
+    getSingleCommentRoute(comment?.commentId),
     () => comment,
   );
 
   if (isLoading && isReply) return <HangOnSpinner text='' />;
 
   // decide which comment to use (the fetched one or the one passed as props)
-  const usedComment = isReply ? fetchedComment! : comment;
+  const usedComment = isReply ? trackedComment! : comment;
 
   return (
     <div className='flex flex-col gap-1 pt-4 pb-0.5 pl-1'>
       <CommentComponent comment={usedComment} />
-      {!!usedComment.repliesCount && (
+      {!!usedComment?.repliesCount && (
         <CommentReplies
-          commentId={usedComment.commentId}
+          commentId={usedComment?.commentId}
           depth={depth}
-          length={usedComment.repliesCount}
+          length={usedComment?.repliesCount}
           isThread={isThread}
         />
       )}

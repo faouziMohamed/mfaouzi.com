@@ -14,5 +14,3 @@ export const getCommentByIdRoute = (commentId: string) =>
 
 export const getCommentLikeToggleRoute = (commentId: string) =>
   `${getCommentByIdRoute(commentId)}/like`;
-export const getCommentDeleteRoute = (commentId: string) =>
-  `${getCommentByIdRoute(commentId)}/delete`;

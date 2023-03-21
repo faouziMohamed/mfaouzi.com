@@ -4,6 +4,7 @@ import { SlBookOpen } from 'react-icons/sl';
 
 import {
   GUESTBOOK_PAGE,
+  HOME_ABOUT_PAGE,
   HOME_CONTACTS_PAGE,
   HOME_PAGE,
   HOME_SKILLS_PAGE,
@@ -36,6 +37,11 @@ export const mainNavLinks: INavLink[] = [
 
 export const mainOtherLinks: INavLink[] = [
   {
+    name: 'About',
+    href: HOME_ABOUT_PAGE,
+    Icon: MdDoneAll,
+  },
+  {
     name: 'Skills',
     href: HOME_SKILLS_PAGE,
     Icon: MdDoneAll,
@@ -46,6 +52,11 @@ export const resumeNavLinks: INavLink[] = [
     name: 'Home',
     href: HOME_PAGE,
     Icon: MdHome,
+  },
+  {
+    name: 'About',
+    href: HOME_ABOUT_PAGE,
+    Icon: MdDoneAll,
   },
 ];
 export const resumeOtherLinks = [];

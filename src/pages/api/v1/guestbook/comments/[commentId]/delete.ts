@@ -3,7 +3,10 @@ import nc from 'next-connect';
 
 import { authMiddleware } from '@/lib/middleware';
 
-import { deleteComments, isCommentExist } from '@/Repository/guestbook.queries';
+import {
+  deleteCommentWithItResources,
+  isCommentExist,
+} from '@/Repository/guestbook.queries';
 
 import { CommentLikes, ErrorMessage } from '@/types/guestbook/guestbook.types';
 
@@ -31,7 +34,7 @@ handler.delete(
         return;
       }
 
-      await deleteComments(commentId);
+      await deleteCommentWithItResources(commentId);
       res
         .status(200)
         .json({ message: 'Comment, related replies and likes deleted' });
