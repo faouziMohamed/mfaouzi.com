@@ -1,3 +1,5 @@
+import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -40,7 +42,7 @@ export default function GuestbookCommentPage() {
   if (isLoading && !error)
     return (
       <GuestBookLayout>
-        <div className='fixed top-0 left-0 flex h-full w-full items-center justify-center  '>
+        <div className='fixed left-0 top-0 flex h-full w-full items-center justify-center'>
           <HangOnSpinner text='Fetching the comments...' />
         </div>
       </GuestBookLayout>
@@ -167,12 +169,16 @@ function DisplayLoginStatus() {
   const { data, status } = useSession();
   if (status === 'loading') return <div>Loading...</div>;
   if (status === 'unauthenticated') {
-    return <AuthButtons />;
+    return (
+      <Stack alignItems='center'>
+        <AuthButtons />
+      </Stack>
+    );
   }
   const user = data!.user as unknown as AppUser;
   return (
-    <div className='flex items-center justify-center gap-2'>
-      <div className='relative'>
+    <Stack sx={{ alignItems: 'center', gap: 2, justifyContent: 'center' }}>
+      <Box position='relative'>
         <Image
           src={user.avatar}
           width={45}
@@ -180,11 +186,11 @@ function DisplayLoginStatus() {
           className='rounded-full'
           alt={`${user.name}'s avatar`}
         />
-      </div>
+      </Box>
       <Typography className='m-0 text-[0.8rem] text-[#616869] dark:text-[#b5cdd1]'>
         You are currently signed in as{' '}
         <span className='font-bold'>{user.name}</span>{' '}
       </Typography>
-    </div>
+    </Stack>
   );
 }
