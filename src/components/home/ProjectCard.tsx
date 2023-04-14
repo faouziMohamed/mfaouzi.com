@@ -64,7 +64,7 @@ function CardFront(props: ProjectCardProps & { onClick: () => void }) {
         <CardContent className='w-full'>
           <h3 className='font-primary text-base font-bold'>{Name}</h3>
           <Box className='h-[5rem]  '>
-            <p className='w-full text-dark-50 line-clamp-4 dark:text-gray-200'>
+            <p className='line-clamp-4 w-full text-dark-50 dark:text-gray-200'>
               {Description}
             </p>
           </Box>

@@ -70,7 +70,7 @@ export function ShowCommentAndItReplies(props: ShowCommentAndItRepliesProps) {
   const usedComment = isReply ? trackedComment! : comment;
 
   return (
-    <div className='flex flex-col gap-1 pt-4 pb-0.5 pl-1'>
+    <div className='flex flex-col gap-1 pb-0.5 pl-1 pt-4'>
       <CommentComponent comment={usedComment} />
       {!!usedComment?.repliesCount && (
         <CommentReplies
@@ -155,7 +155,7 @@ function DisplayReplies(props: {
     <div className='flex gap-3'>
       <div className='relative flex w-[3.4975rem] items-stretch justify-center pr-12 xsm:w-[3.2rem]'>
         {/* create a vertical line centered  */}
-        <div className='absolute top-0 bottom-0 left-1/2 w-[0.07rem] bg-[#dfdfdfec] dark:bg-[#4c5455]' />
+        <div className='absolute bottom-0 left-1/2 top-0 w-[0.07rem] bg-[#dfdfdfec] dark:bg-[#4c5455]' />
       </div>
       <div className='grow'>
         <DisplayComments comments={commentReplies} depth={depth + 1} />

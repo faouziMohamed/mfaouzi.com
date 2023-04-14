@@ -26,7 +26,7 @@ export default function PageFixedItems() {
     <Portal>
       <div
         className={clsxm(
-          'fixed right-2 bottom-4 z-[9999]  px-1 py-1 ',
+          'fixed bottom-4 right-2 z-[9999]  px-1 py-1 ',
           isOnBottom ? '-translate-y-[8rem] bg-transparent ' : '',
           'flex flex-col items-center justify-center gap-2',
           'group rounded-[2.1rem]  transition-all duration-300 ease-in-out',

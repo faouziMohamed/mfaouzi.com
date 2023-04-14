@@ -60,7 +60,7 @@ function NavigationMenu(props: IHeaderNavLinks) {
     >
       <Box
         component='div'
-        className='flex w-full items-center justify-between bg-cyan-200 py-1 px-2
+        className='flex w-full items-center justify-between bg-cyan-200 px-2 py-1
         dark:bg-dark-400 msm:w-fit msm:justify-end msm:bg-transparent msm:dark:bg-transparent '
       >
         <ToggleMenuButton
@@ -145,7 +145,7 @@ function NavigationLinks(
           <UnStyledLink
             href={href}
             tabIndex={0}
-            className='flex w-full w-fit items-center justify-start gap-1 border-b border-slate-300 p-2 py-4 px-2
+            className='flex w-fit w-full items-center justify-start gap-1 border-b border-slate-300 p-2 px-2 py-4
             font-primary text-[1rem] font-[700] hover:bg-primary-300 focus:bg-primary-300 dark:hover:bg-dark-500 
              dark:focus:bg-dark-500 msm:border-none'
             aria-label={`Link to ${name}`}

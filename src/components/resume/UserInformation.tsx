@@ -79,7 +79,7 @@ export default function UserInformation({ data }: IUserInformationProps) {
           </Box>
           {userInformation.map((value) => (
             <UnStyledLink
-              className='flex items-center gap-2 py-[0.4rem] px-1 text-xs'
+              className='flex items-center gap-2 px-1 py-[0.4rem] text-xs'
               key={value.Title}
               href={`${value?.Prefix || ''}${value.Link}`}
               aria-label={value.Title}

@@ -22,7 +22,7 @@ export default function AboutMeSection({
       component='section'
       className={`relative flex w-full flex-col items-center gap-4 ${className}`}
     >
-      <Box className='absolute right-0 bottom-0 -z-10 animate-wiggle-slower md:block'>
+      <Box className='absolute bottom-0 right-0 -z-10 animate-wiggle-slower md:block'>
         <SpaceMan />
       </Box>
       <SectionTitleWithBlob

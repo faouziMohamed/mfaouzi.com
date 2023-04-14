@@ -10,7 +10,7 @@ export default function SectionTitle(props: ISectionTitle) {
   const { title, Icon, className = '' } = props;
   return (
     <header
-      className={`flex items-center gap-2 border-b-[3px] border-b text-xl ${className}`}
+      className={`flex items-center gap-2 border-b border-b-[3px] text-xl ${className}`}
     >
       <Icon />
       <h3

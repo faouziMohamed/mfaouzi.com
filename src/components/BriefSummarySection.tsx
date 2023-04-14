@@ -18,7 +18,7 @@ export default function BriefSummarySection() {
         'flex w-full max-w-[50rem] items-center gap-5',
         'flex-col  md:flex-row md:justify-center lg:flex-col',
         'drops-shadow rounded-lg',
-        'self-stretch bg-primary-50/10 py-4 px-2',
+        'self-stretch bg-primary-50/10 px-2 py-4',
       )}
       id='brief-summary'
     >

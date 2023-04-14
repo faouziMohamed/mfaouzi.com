@@ -65,7 +65,7 @@ export default function Footer() {
   if (router.pathname === '/about') themeName = 'dark';
   return (
     <Box className={`${themeName} w-full p-0`}>
-      <FooterSection className='w-full bg-primary-100 px-2 pt-8 pb-4 dark:bg-slate-900 dark:text-gray-100'>
+      <FooterSection className='w-full bg-primary-100 px-2 pb-4 pt-8 dark:bg-slate-900 dark:text-gray-100'>
         <Stack className='flex items-center gap-4'>
           <Typography className='text-lg font-[500] leading-3' component='h3'>
             Faouzi Mohamed - 2022

@@ -64,7 +64,7 @@ function NavigationMenu() {
     >
       <Box
         component='div'
-        className='flex w-full items-center justify-between py-1 px-2 sm:w-fit sm:justify-end'
+        className='flex w-full items-center justify-between px-2 py-1 sm:w-fit sm:justify-end'
       >
         <MenuToggleButtons
           setMenuOpened={setMenuOpened}
@@ -164,7 +164,7 @@ function NavigationLinks(props: {
               href={href}
               tabIndex={0}
               className={`flex w-full items-center justify-start gap-1 border-b border-slate-300 p-2 
-                py-4 px-2 font-primary text-[1rem] font-[700] hover:bg-gray-900 hover:text-gray-100 
+                px-2 py-4 font-primary text-[1rem] font-[700] hover:bg-gray-900 hover:text-gray-100 
                 focus:bg-gray-900 sm:rounded-2xl sm:border-none sm:text-gray-700 sm:hover:bg-primary-700
                  sm:hover:bg-opacity-5 sm:hover:text-gray-900 sm:focus:bg-opacity-5 dark:sm:text-gray-100 dark:sm:hover:bg-gray-900 dark:sm:focus:bg-gray-900`}
             >

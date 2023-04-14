@@ -25,7 +25,7 @@ export default function HangOnSpinner({
         className={clsxm(
           spinnerSize[size] || spinnerSize.sm,
           'block animate-try-spin',
-          'rounded-[20px] border-[3px] border border-double border-y-black dark:border-y-white',
+          'rounded-[20px] border border-[3px] border-double border-y-black dark:border-y-white',
           'border-x-transparent',
         )}
       />

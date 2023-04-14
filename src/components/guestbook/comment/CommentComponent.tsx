@@ -28,7 +28,7 @@ export default function CommentComponent(props: CommentComponentProps) {
         <div className='relative flex w-[3.125rem] items-stretch justify-center pr-10'>
           {/* create a vertical line centered  */}
           <div
-            className={`absolute top-0 bottom-0 left-1/2 w-[0.07rem] bg-transparent `}
+            className={`absolute bottom-0 left-1/2 top-0 w-[0.07rem] bg-transparent `}
           />
         </div>
         <CommentPrompt parentId={comment?.commentId} isReply />
@@ -65,7 +65,7 @@ function CommentHeader({ comment }: { comment: GuestbookComment }) {
 }
 
 function CommentBody({ comment }: { comment: GuestbookComment }) {
-  const { repliesCount = [] } = comment;
+  const { repliesCount = 0 } = comment;
   const hasReplies = repliesCount > 0;
   const vLineVisible = hasReplies
     ? ' bg-[#dfdfdfec] dark:bg-[#4c5455]'
@@ -75,7 +75,7 @@ function CommentBody({ comment }: { comment: GuestbookComment }) {
       <div className='relative flex w-[3.125rem] items-stretch justify-center pr-10'>
         {/* create a vertical line centered  */}
         <div
-          className={`absolute top-0 bottom-0 left-1/2 w-[0.07rem] ${vLineVisible} `}
+          className={`absolute bottom-0 left-1/2 top-0 w-[0.07rem] ${vLineVisible} `}
         />
       </div>
       <div className='flex w-full flex-col gap-1'>

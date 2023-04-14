@@ -13,7 +13,7 @@ export default function AddNewComment({ user }: { user: AppUser }) {
   return (
     <section
       className='flex w-full max-w-[38rem] flex-col items-center gap-3
-              rounded-md bg-[#C9F7FFC2] px-4 pt-7 pb-2 shadow shadow-[#cdcdcd]
+              rounded-md bg-[#C9F7FFC2] px-4 pb-2 pt-7 shadow shadow-[#cdcdcd]
               dark:bg-[#002539] dark:shadow-[#1c222248]'
       id='sign'
     >
