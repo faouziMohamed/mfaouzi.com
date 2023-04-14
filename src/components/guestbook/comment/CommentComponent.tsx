@@ -82,7 +82,6 @@ function CommentBody({ comment }: { comment: GuestbookComment }) {
         <Typography className='whitespace-pre-wrap font-secondary text-[0.95rem] text-[#151718] dark:text-[#b5cdd1]'>
           {comment.content}
         </Typography>
-        {/* Add icons */}
         <CommentActionButtons comment={comment} />
       </div>
     </div>
