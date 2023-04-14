@@ -90,9 +90,7 @@ export function useSingleComment(commentId: string | null | undefined) {
   return useSWR<GuestbookComment, Error>(
     commentId ? getSingleCommentRoute(commentId) : null,
     () => commentFetcher(commentId!),
-    {
-      refreshWhenOffline: false,
-    },
+    { refreshWhenOffline: false },
   );
 }
 
@@ -170,7 +168,6 @@ function cacheOneCommentMutation(comment: GuestbookComment) {
 
 function removeCommentFromCache(commentId: string) {
   return mutate<GuestbookComment>(getSingleCommentRoute(commentId), undefined, {
-    optimisticData: () => false,
     revalidate: false,
   });
 }

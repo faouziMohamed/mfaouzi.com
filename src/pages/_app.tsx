@@ -45,7 +45,7 @@ export default function MyApp(props: MyAppProps) {
     <CacheProvider value={clientSideEmotionCache}>
       <Head>
         <title>{title || devData.fullName}</title>
-        <meta name='viewport' content='initial-scale=1, width=device-width' />
+        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
       </Head>
       {/* eslint-disable-next-line @typescript-eslint/no-unsafe-member-access */}
       <SessionProvider session={pageProps.session} refetchInterval={10}>
