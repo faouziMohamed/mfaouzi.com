@@ -28,13 +28,20 @@ export default function MainHeader({
   if (!mounted) return null;
 
   return (
-    <Box
+    <Stack
       component='nav'
-      className='text-dark relative z-20 flex w-full flex-col px-4'
+      className='text-dark'
+      sx={{ position: 'relative', zIndex: 20, width: '100%', px: 4 }}
     >
       <Stack
         component='header'
-        className='flex w-full flex-row items-center justify-between gap-1.5'
+        sx={{
+          flexDirection: 'row',
+          width: '100%',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: '0.375rem',
+        }}
       >
         {isMediumSmallScreen && (
           <UnStyledLink href='/' aria-label='Link to Home'>
@@ -43,7 +50,7 @@ export default function MainHeader({
         )}
         <NavigationMenu navLinks={navLinks} otherLinks={otherLinks} />
       </Stack>
-    </Box>
+    </Stack>
   );
 }
 
@@ -53,15 +60,40 @@ function NavigationMenu(props: IHeaderNavLinks) {
   const isMediumSmallScreen = useMediaQuery('(min-width: 693px)'); // sm
   return (
     <Box
-      className='absolute inset-0 z-30 h-fit w-full select-none bg-primary-300
-      bg-opacity-50 p-0 transition-all dark:bg-dark-400  dark:bg-opacity-70 msm:relative
-      msm:flex msm:w-fit msm:grow msm:flex-row-reverse msm:justify-start
-      msm:bg-transparent msm:dark:bg-transparent'
+      className='bg-primary-300 bg-opacity-50 transition-all dark:bg-dark-400
+      dark:bg-opacity-70 msm:bg-transparent msm:dark:bg-transparent'
+      sx={{
+        position: 'absolute',
+        inset: 0,
+        zIndex: 30,
+        height: 'fit-content',
+        width: '100%',
+        select: 'none',
+        p: 0,
+        '@media (min-width: 693px)': {
+          position: 'relative',
+          display: 'flex',
+          width: 'fit-content',
+          flexGrow: 1,
+          flexDirection: 'row-reverse',
+          justifyContent: 'flex-start',
+        },
+      }}
     >
       <Box
-        component='div'
-        className='flex w-full items-center justify-between bg-cyan-200 py-1 px-2
-        dark:bg-dark-400 msm:w-fit msm:justify-end msm:bg-transparent msm:dark:bg-transparent '
+        className='bg-cyan-200 dark:bg-dark-400 msm:bg-transparent msm:dark:bg-transparent'
+        sx={{
+          display: 'flex',
+          width: '100%',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          px: '0.5rem',
+          py: '0.25rem',
+          '@media (min-width: 693px)': {
+            width: 'fit-content',
+            justifyContent: 'flex-end',
+          },
+        }}
       >
         <ToggleMenuButton
           setMenuOpened={setMenuOpened}
@@ -76,7 +108,6 @@ function NavigationMenu(props: IHeaderNavLinks) {
       </Box>
       {/* Navigation menu */}
       <NavigationLinks
-        isMediumSmallScreen={isMediumSmallScreen}
         isMenuOpened={menuOpened}
         setMenuOpened={setMenuOpened}
         navLinks={navLinks}
@@ -121,32 +152,28 @@ function ToggleMenuButton(props: {
 
 function NavigationLinks(
   props: {
-    isMediumSmallScreen: boolean;
     isMenuOpened: boolean;
     setMenuOpened: (prev: boolean) => void;
   } & IHeaderNavLinks,
 ) {
-  const {
-    isMediumSmallScreen,
-    isMenuOpened,
-    setMenuOpened,
-    navLinks,
-    otherLinks,
-  } = props;
+  const { isMenuOpened, setMenuOpened, navLinks, otherLinks } = props;
 
   return (
     <Box
-      className={`flex-col items-start msm:flex-row ${
-        (!isMediumSmallScreen && (isMenuOpened ? 'flex' : 'hidden')) || 'flex'
-      }`}
+      sx={{
+        display: isMenuOpened ? 'flex' : 'none',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        '@media (min-width: 693px)': { display: 'flex', flexDirection: 'row' },
+      }}
     >
       {navLinks.map(({ name, href, Icon }) => (
-        <Box className='m-0 w-full' key={name}>
+        <Box key={name} sx={{ m: 0, width: '100%' }}>
           <UnStyledLink
             href={href}
             tabIndex={0}
-            className='flex w-full w-fit items-center justify-start gap-1 border-b border-slate-300 p-2 py-4 px-2
-            font-primary text-[1rem] font-[700] hover:bg-primary-300 focus:bg-primary-300 dark:hover:bg-dark-500 
+            className='flex w-full items-center justify-start gap-1 border-b border-slate-300 p-2 px-2 py-4
+            font-primary text-[1rem] font-[700] hover:bg-primary-300 focus:bg-primary-300 dark:hover:bg-dark-500
              dark:focus:bg-dark-500 msm:border-none'
             aria-label={`Link to ${name}`}
           >
@@ -178,8 +205,16 @@ function OthersLinks(props: {
       onClickAway={handleClickAway}
     >
       <Stack
-        className={`relative flex w-full cursor-pointer items-start 
-            gap-0 border-b border-slate-300 hover:bg-primary-300 focus:bg-primary-300 dark:hover:bg-dark-500  dark:focus:bg-dark-500 msm:border-none `}
+        className={`border-b border-slate-300 hover:bg-primary-300 
+        focus:bg-primary-300 dark:hover:bg-dark-500 dark:focus:bg-dark-500 
+        msm:border-none `}
+        sx={{
+          position: 'relative',
+          cursor: 'pointer',
+          alignItems: 'flex-start',
+          gap: 0,
+          width: '100%',
+        }}
         aria-label='Submenu for other links'
         spacing={0}
         tabIndex={0}
@@ -191,25 +226,41 @@ function OthersLinks(props: {
         }}
         onClick={handleClick}
         onKeyDown={(e) => {
-          // when enter is pressed, open the menu
           if (e.key === 'Enter') handleClick();
         }}
       >
-        <Box
-          className={`flex items-center justify-center gap-1 
-              px-2 py-4 font-primary text-[1rem] font-[700] `}
+        <Stack
+          className='font-primary'
+          sx={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: `100%`,
+            gap: '0.25rem',
+            px: '0.5rem',
+            py: '1rem',
+            fontSize: '1rem',
+            fontWeight: 700,
+          }}
         >
-          <p>Others</p>
+          <p className='w-full'>Others</p>
           {subMenuOpened ? (
             <MdExpandLess className='font-[700]' />
           ) : (
             <MdExpandMore className='font-[700]' />
           )}
-        </Box>
+        </Stack>
         {subMenuOpened && (
-          <Box
-            className='absolute top-[calc(100%+1px)] z-20 m-0 flex w-full flex-col gap-1.5 
-            border border-primary-300 bg-primary-300 bg-opacity-75 p-0 drop-shadow-sm dark:border-dark-400 dark:bg-dark-400 dark:bg-opacity-75'
+          <Stack
+            className='border border-primary-300 bg-primary-300 bg-opacity-75 drop-shadow-sm
+            dark:border-dark-400 dark:bg-dark-400 dark:bg-opacity-75'
+            sx={{
+              position: 'absolute',
+              top: 'calc(100% + 1px)',
+              zIndex: 20,
+              width: '100%',
+              gap: '0.375rem',
+            }}
           >
             {otherLinks?.map(({ name, href, Icon }) => (
               <UnStyledLink
@@ -222,7 +273,7 @@ function OthersLinks(props: {
                 <span>{name}</span>
               </UnStyledLink>
             ))}
-          </Box>
+          </Stack>
         )}
       </Stack>
     </ClickAwayListener>

@@ -1,4 +1,4 @@
-import { Box as SiteContent, Container } from '@mui/material';
+import { Box, Box as SiteContent, Container, Stack } from '@mui/material';
 import Image from 'next/image';
 import { ReactNode } from 'react';
 
@@ -28,11 +28,32 @@ export default function GuestBookLayout({ children }: GuestbookLayoutProps) {
   const isBuilding = process.env.NEXT_PUBLIC_ISBUILDING === 'true';
   const { theme } = useNextTheme();
   return (
-    <div className='relative z-10 flex w-full flex-col p-0'>
+    <Stack
+      sx={{
+        position: 'relative',
+        zIndex: 10,
+        width: '100%',
+        p: 0,
+      }}
+    >
       {isBuilding && <UnderConstructionBanner />}
-      <SiteContent className='relative p-0' id='to-top'>
+      <SiteContent position='relative' p={0} id='to-top'>
         <MainHeader navLinks={mainNavLinks} />
-        <div className='xl:-top-22 absolute inset-0 top-8 -z-10 w-full transition-all msm:-top-6 md:-top-7 lg:-top-9 xl:-right-8 2xl:-top-[5rem] '>
+        <Box
+          className='transition-all'
+          sx={{
+            position: 'absolute',
+            inset: 0,
+            top: '2rem',
+            zIndex: -10,
+            width: '100%',
+            '@media (min-width: 1280px)': { right: '-2rem' },
+            '@media (min-width: 693px)': { top: '-1.5rem' },
+            '@media (min-width: 768px)': { top: '-1.75rem' },
+            '@media (min-width: 1024px)': { top: '-2.25rem' },
+            '@media (min-width: 1536px)': { top: '-5rem' },
+          }}
+        >
           <Image
             src={getBlobSrcPath(theme)}
             alt='Guestbook background blob'
@@ -41,10 +62,10 @@ export default function GuestBookLayout({ children }: GuestbookLayoutProps) {
             className='w-full object-cover'
             sizes='100vw'
           />
-        </div>
+        </Box>
         <PageFixedItems />
         <Container>{children}</Container>
       </SiteContent>
-    </div>
+    </Stack>
   );
 }
