@@ -3,10 +3,10 @@ import { TbExternalLink } from 'react-icons/tb';
 
 import UnStyledLink from '@/components/links/UnStyledLink';
 
-import { ICertificate } from '@/types/portfolio/resume.types';
+import { Certificate } from '@/types/portfolio/resume.types';
 
 interface ICertificateSectionProps {
-  certification: ICertificate;
+  certification: Certificate;
 }
 
 export default function CertificationsSection(props: ICertificateSectionProps) {
@@ -15,28 +15,28 @@ export default function CertificationsSection(props: ICertificateSectionProps) {
     <Box>
       <Box className=''>
         <h4 className='inline text-sm font-bold'>
-          {certification.Title}
+          {certification.title}
           {', '}
         </h4>
         <Typography variant='body2' className='inline text-sm'>
-          {certification.Institution}
+          {certification.institution}
         </Typography>
         <UnStyledLink
-          href={certification.Link}
+          href={certification.link}
           className='inline'
-          aria-label={certification.Title}
+          aria-label={certification.title}
         >
           <IconButton
             size='small'
             className='dark:text-gray-100'
-            aria-label={`View ${certification.Title} certificate`}
+            aria-label={`View ${certification.title} certificate`}
           >
             <TbExternalLink />
           </IconButton>
         </UnStyledLink>
       </Box>
       <Typography variant='body2' className='text-sm'>
-        {certification.Date}
+        {certification.date}
       </Typography>
     </Box>
   );

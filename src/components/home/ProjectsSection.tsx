@@ -59,30 +59,21 @@ export default function ProjectSection(props: IProjectProps) {
         <ProjectCardStack className='flex flex-row flex-wrap justify-center gap-4 py-4'>
           {projectSectionData.ProjectDetails.map((project) => (
             <FadeEffectWrapper
-              key={project.Name}
+              key={project.name}
               gutterTop='0'
               gutterBottom={0}
             >
               <ProjectCard
-                Name={project.Name}
-                Description={project.Description || project.Summary}
-                SrcLink={project.SrcLink}
-                LiveLink={project.LiveLink}
-                Technologies={project.Technologies}
-                Image={project.Image}
+                name={project.name}
+                description={project.description || project.summary}
+                srcLink={project.srcLink}
+                liveLink={project.liveLink}
+                technologies={project.technologies}
+                image={project.image}
               />
             </FadeEffectWrapper>
           ))}
         </ProjectCardStack>
-        {/* <Box className='flex w-full justify-end'> */}
-        {/*   <ArrowLink */}
-        {/*     direction='right' */}
-        {/*     href='/projects/more' */}
-        {/*     className='text-primary-600' */}
-        {/*   > */}
-        {/*     See More Projects */}
-        {/*   </ArrowLink> */}
-        {/* </Box> */}
       </motion.section>
     </Box>
   );

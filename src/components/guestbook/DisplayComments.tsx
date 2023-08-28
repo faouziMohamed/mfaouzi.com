@@ -1,4 +1,4 @@
-import { ButtonUnstyled } from '@mui/base';
+import { Button } from '@mui/material';
 import Link from 'next/link';
 import { Fragment, useState } from 'react';
 import { CgBorderStyleDotted } from 'react-icons/cg';
@@ -116,13 +116,13 @@ export function CommentReplies(props: {
             Continue on this thread...
           </Link>
         ) : (
-          <ButtonUnstyled
+          <Button
             className='text-[0.8rem]
-        text-[#616869] dark:text-[#b5cdd1]'
+        text-[#616869] dark:text-[#b5cdd1] capitalize'
             onClick={toggleShowReplies}
           >
             {showReplies ? 'Show less' : `Show ${length} replies`}
-          </ButtonUnstyled>
+          </Button>
         )}
         {showReplies ? <HorizontalLine /> : null}
       </div>

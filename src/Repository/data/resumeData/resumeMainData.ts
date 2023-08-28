@@ -6,16 +6,16 @@ import { projectSectionData } from '@/Repository/data/resumeData/resume-content/
 import { skillsAndAbilities } from '@/Repository/data/resumeData/resume-content/skillsAndAbilities';
 import { userInformation } from '@/Repository/data/resumeData/resume-content/userIformationData';
 
-import type { IResumeData } from '@/types/portfolio/resume.types';
+import type { ResumeData } from '@/types/portfolio/resume.types';
 
-const resumeMainData: IResumeData = {
-  UserInformation: userInformation,
-  Profile: profileSectionData,
-  SkillsAndAbilities: skillsAndAbilities,
-  Education: educationSectionData,
-  Certification: certificationSectionDataData,
-  ProfessionalExperience: proExperiencesSectionData,
-  Project: projectSectionData,
+const resumeMainData: ResumeData = {
+  userInformation,
+  profile: profileSectionData,
+  skillsAndAbilities,
+  education: educationSectionData,
+  certification: certificationSectionDataData,
+  professionalExperience: proExperiencesSectionData,
+  project: projectSectionData,
 };
 
 export default resumeMainData;

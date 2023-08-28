@@ -1,131 +1,137 @@
-import { ISkillsAndAbilities } from '@/Repository/data/resumeData/resume-content/skillsAndAbilities';
+import { SkillsAndAbilities } from '@/Repository/data/resumeData/resume-content/skillsAndAbilities';
 
-export interface IProfile {
-  Description: string;
-  Title: string;
+export interface Profile {
+  description: string;
+  title: string;
 }
 
-export interface IDiploma {
-  Institution: string;
+export interface Diploma {
+  institution: string;
   city: string;
-  Title: string;
-  Country: string;
-  Date: string;
+  title: string;
+  country: string;
+  date: string;
 }
 
-export interface IEducation {
-  Title: string;
-  Diploma: IDiploma[];
+export interface Education {
+  title: string;
+  diploma: Diploma[];
 }
 
-export interface ICertificate {
-  Institution: string;
-  Link: string;
-  Title: string;
-  Date: string;
+export interface Certificate {
+  institution: string;
+  link: string;
+  title: string;
+  date: string;
 }
 
-export interface ICertification {
-  Certificates: ICertificate[];
-  Title: string;
+export interface Certification {
+  certificates: Certificate[];
+  title: string;
 }
 
-export interface ISubTask {
-  SubTask: string;
-  SubTaskDetails: string[];
+export interface SubTask {
+  subTask: string;
+  subTaskDetails?: string[];
 }
 
-export interface ITask {
-  Task: string;
-  SubTasks: ISubTask[];
+export interface ProjectTask {
+  task: string;
+  summary?: string;
+  subTasks: SubTask[];
+  technologies?: string[];
 }
 
-export interface IExperience {
-  Company: string;
-  CompanyLink?: string;
-  Description: { Tasks: ITask[]; Title: string; Technologies: string[] };
+export interface Experience {
+  company: string;
+  companyLink?: string;
+  description: {
+    project: ProjectTask[];
+    summary: string;
+    technologies?: string[];
+  };
   city: string;
+  title: string;
+  country: string;
+  date: string;
+}
+
+export interface ProfessionalExperience {
+  experiences: Experience[];
+  title: string;
+}
+
+export interface ProjectDetail {
+  startDate: string;
+  description: string;
+  summary: string;
+  endDate: string;
+  name: string;
+  technologies: string[];
+  srcLink?: string;
+  liveLink?: string;
+  image?: string | StaticImageData;
+}
+
+export interface Project {
+  ProjectDetails: ProjectDetail[];
   Title: string;
-  Country: string;
-  Date: string;
 }
 
-export interface IProfessionalExperience {
-  Experiences: IExperience[];
-  Title: string;
-}
-
-export interface IProjectDetail {
-  StartDate: string;
-  Description: string;
-  Summary: string;
-  EndDate: string;
-  Name: string;
-  Technologies: string[];
-  SrcLink?: string;
-  LiveLink?: string;
-  Image?: string | StaticImageData;
-}
-
-export interface IProject {
-  ProjectDetails: IProjectDetail[];
-  Title: string;
-}
-
-export interface IResumeData {
-  UserInformation: IUserContactsAndProfileData;
-  Profile: IProfile;
-  SkillsAndAbilities: ISkillsAndAbilities;
-  Education: IEducation;
-  Certification: ICertification;
-  ProfessionalExperience: IProfessionalExperience;
-  Project: IProject;
+export interface ResumeData {
+  userInformation: UserContactsAndProfileData;
+  profile: Profile;
+  skillsAndAbilities: SkillsAndAbilities;
+  education: Education;
+  certification: Certification;
+  professionalExperience: ProfessionalExperience;
+  project: Project;
 }
 
 export interface About {
-  FirstName: string;
-  LastName: string;
-  Profession: string;
+  firstName: string;
+  lastName: string;
+  profession: string;
 }
 
 export interface Location {
-  City: string;
-  Country: string;
-  Type: string;
+  city: string;
+  country: string;
+  type: string;
 }
 
 export interface Tel {
-  Title: string;
-  Link: string;
+  title: string;
+  link: string;
 }
 
 export interface Email {
-  Title: string;
-  Link: string;
+  title: string;
+  link: string;
 }
 
 export interface Linkedin {
-  Title: string;
-  Link: string;
+  title: string;
+  link: string;
 }
 
 export interface Website {
-  Title: string;
-  Link: string;
+  title: string;
+  link: string;
 }
 
 export interface Github {
-  Title: string;
-  Link: string;
+  title: string;
+  link: string;
 }
 
-export interface IUserContactsAndProfileData {
-  Avatar: string;
-  About: About;
-  Location: Location;
-  Tel?: Tel;
-  Email: Email;
-  Linkedin: Linkedin;
-  Website: Website;
-  Github: Github;
+export interface UserContactsAndProfileData {
+  avatar: string;
+  about: About;
+  location: Location;
+  tel?: Tel;
+  email: Email;
+  linkedin: Linkedin;
+  website: Website;
+  github: Github;
 }

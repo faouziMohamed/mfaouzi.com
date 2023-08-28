@@ -1,16 +1,17 @@
-import { Box, Stack } from '@mui/material';
+import { Box, Stack, Typography } from '@mui/material';
+import { Fragment } from 'react';
 
 import { camelCaseToTitleCase } from '@/lib/utils';
 
 import SectionTitle from '@/components/resume/SectionTitle';
 
 import {
-  ISkillsAndAbilities,
   ISubSectionData,
+  SkillsAndAbilities,
 } from '@/Repository/data/resumeData/resume-content/skillsAndAbilities';
 
 export default function SkillsAndSoftSkillsSections(props: {
-  skills: ISkillsAndAbilities;
+  skills: SkillsAndAbilities;
 }) {
   const { skills: skillsAndAbilities } = props;
   const keys = Object.keys(skillsAndAbilities);
@@ -24,9 +25,10 @@ export default function SkillsAndSoftSkillsSections(props: {
         >
           <SectionTitle
             title={camelCaseToTitleCase(sectionTitle)}
-            Icon={skillsAndAbilities[sectionTitle].Icon}
+            Icon={skillsAndAbilities[sectionTitle].icon}
           />
           <CreateSubSections
+            isSkills={sectionTitle.toLowerCase() === 'skills'}
             subsections={skillsAndAbilities[sectionTitle].subsections}
           />
         </Stack>
@@ -35,7 +37,13 @@ export default function SkillsAndSoftSkillsSections(props: {
   );
 }
 
-function CreateSubSections({ subsections }: { subsections: ISubSectionData }) {
+function CreateSubSections({
+  subsections,
+  isSkills = false,
+}: {
+  subsections: ISubSectionData;
+  isSkills: boolean;
+}) {
   const data = Object.keys(subsections);
   return (
     <>
@@ -43,19 +51,73 @@ function CreateSubSections({ subsections }: { subsections: ISubSectionData }) {
         <SubSection
           key={t}
           sectionName={camelCaseToTitleCase(t)}
+          isSkills={isSkills}
           data={subsections[t]}
         />
       ))}
     </>
   );
 }
-
-function SubSection(props: { sectionName: string; data: string[] }) {
-  const { sectionName, data } = props;
+function SubSection(props: {
+  sectionName: string;
+  data: string[];
+  isSkills: boolean;
+}) {
+  const { sectionName, data, isSkills } = props;
   return (
-    <Box>
-      <h4 className='text-xl font-[400]'>{sectionName}</h4>
-      <p className='font-[300]'>{data.join(' | ')}</p>
+    <Box
+      sx={
+        isSkills
+          ? {
+              border: '1px solid #fff',
+              borderRadius: '0.2rem',
+              px: '0.4rem',
+              py: '0.3rem',
+            }
+          : {}
+      }
+    >
+      <Typography
+        component='h4'
+        sx={{ fontSize: '0.9rem', fontWeight: 600, display: 'inline-block' }}
+      >
+        {sectionName}
+      </Typography>{' '}
+      <Typography
+        sx={{
+          fontSize: '0.8rem',
+          fontWeight: 400,
+          display: isSkills ? 'inline' : 'block',
+        }}
+      >
+        {isSkills ? `(${data.join(' | ')})` : data.join(' | ')}
+      </Typography>
     </Box>
   );
 }
+
+// function SubSection(props: { sectionName: string; data: string[] }) {
+//   const { sectionName, data } = props;
+//   return (
+//     <Box
+//       sx={{
+//         border: '1px solid #fff',
+//         borderRadius: '0.2rem',
+//         px: '0.4rem',
+//         py: '0.3rem',
+//       }}
+//     >
+//       <Typography
+//         component='h4'
+//         sx={{ fontSize: '0.8rem', fontWeight: 600, display: 'inline-block' }}
+//       >
+//         {sectionName}
+//       </Typography>{' '}
+//       <Typography
+//         sx={{ fontSize: '0.7rem', fontWeight: 400, display: 'inline' }}
+//       >
+//         ( {data.join(' | ')} )
+//       </Typography>
+//     </Box>
+//   );
+// }

@@ -1,4 +1,4 @@
-import { ButtonUnstyled } from '@mui/base';
+import { Button } from '@mui/material';
 import { ElementType, ReactNode } from 'react';
 
 import clsxm from '@/lib/utils';
@@ -24,8 +24,10 @@ export default function ArrowButton<C extends ElementType>({
   direction = 'right',
   ...rest
 }: ArrowButtonProps<C>) {
-  const Component = ButtonAlias || ButtonUnstyled;
+  const Component = ButtonAlias || Button;
   return (
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     <Component
       className={clsxm(
         'inline-flex items-center',

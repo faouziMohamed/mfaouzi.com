@@ -1,73 +1,74 @@
-import type { IProject } from '@/types/portfolio/resume.types';
+import type { Project } from '@/types/portfolio/resume.types';
 
-export const projectSectionData: IProject = {
+export const projectSectionData: Project = {
   Title: 'Projects',
   ProjectDetails: [
     {
-      Name: 'The Guestbook',
-      Summary: 'A Comment system supporting nested comments and replies',
-      Description:
+      name: 'The Guestbook',
+      summary: 'A Comment system supporting nested comments and replies',
+      description:
         'The guestbook is a comment system that allows users to comment on a post and reply to other comments. It is built with ReactJs and NodeJs. It uses the thread model to store comments and replies in a database. It also uses the Material UI library for the design. The project is part of my portfolio.',
-      StartDate: '02/2023',
-      EndDate: '03/2023',
-      SrcLink: 'https://github.com/faouzimohamed/mfaouzi.com',
-      LiveLink: 'https://mfaouzi.com/guestbook',
-      Technologies: ['NextJs', 'MaterialUi', 'Planet Scale', 'Prisma'],
+      startDate: '02/2023',
+      endDate: '03/2023',
+      srcLink: 'https://github.com/faouzimohamed/mfaouzi.com',
+      liveLink: 'https://mfaouzi.com/guestbook',
+      technologies: ['NextJs', 'MaterialUi', 'Planet Scale', 'Prisma'],
     },
     {
-      Name: 'Leave Management System',
-      Summary:
+      name: 'Trust 4 Finance',
+      summary: '',
+      description:
+        'An admin driven platform to manage finance and users for associations',
+      startDate: '03/2023',
+      endDate: '-1',
+      srcLink: 'https://github.com/faouziMohamed/Taradjam-backend',
+      liveLink: 'https://taradjam.mfaouzi.com',
+      technologies: [
+        'NextJs',
+        'MaterialUi',
+        'MySQL',
+        'Serverless',
+        'ExpressJs',
+        'Nginx',
+        'Docker',
+      ],
+    },
+    {
+      name: 'Trakz',
+      summary: 'Yet another task manager more than a todo list',
+      srcLink: 'https://github.com/faouziMohamed/trakz',
+      liveLink: 'https://trakz.mfaouzi.com',
+      description: 'A Fancy web based of Microsoft To-Do',
+      startDate: '2023',
+      endDate: '-1',
+      technologies: ['Angular', 'Spring Boot', 'MySQL', 'Angular Material'],
+    },
+    {
+      name: 'AMCI Scholarship',
+      summary: '',
+      srcLink: 'https://github.com/faouziMohamed/amci-scholarship',
+      liveLink: 'https://amci-scholarship.vercel.app/',
+      description:
+        'A convenient way that students will use to get their AMCI scholarship codes',
+      startDate: '03/2023',
+      endDate: '',
+      technologies: ['ReactJs', 'Serverless API', 'MySQL', 'Prisma'],
+    },
+    {
+      name: 'Leave Management System',
+      summary:
         'A fullstack project made with Blazor WASM and ASP.Net Core allowing employees to make leave requests. The admins will be able to accept or refuse the requests.',
-      Description:
+      description:
         'A Single page Application (SPA) representing a small platform to manage Leave request in a company!!',
-      StartDate: '09/2021',
-      EndDate: '09/2021',
-      SrcLink: 'https://github.com/faouziMohamed/LeaveManagement',
-      Technologies: [
+      startDate: '09/2021',
+      endDate: '09/2021',
+      srcLink: 'https://github.com/faouziMohamed/LeaveManagement',
+      technologies: [
         'C#',
         'ASP.Net Core',
         'Blazor Web Assembly',
         'Bootstrap 5',
       ],
-    },
-    {
-      Name: 'Taradjam',
-      Summary:
-        'A platform for creating translation from one language to another.',
-      Description:
-        'This project consists, from sentences in a source language, to receive translation proposals in a language of, to create a dataset of several languages.',
-      StartDate: '01/2022',
-      EndDate: '-1',
-      SrcLink: 'https://github.com/faouziMohamed/Taradjam-backend',
-      LiveLink: 'https://taradjam.mfaouzi.com',
-      Technologies: [
-        'ReactJs (NextJs)',
-        'Asp.Net Core',
-        'Sql Server',
-        'MaterialUi',
-        'TailwindCss',
-        'Azure',
-      ],
-    },
-    {
-      Name: 'Social share',
-      Summary: 'Mini social network',
-      SrcLink: 'https://github.com/faouziMohamed/social-share',
-      LiveLink: 'https://social-share.mfaouzi.com',
-      Description:
-        'A Social Network-like web-app, with a design based on Facebook and other social networks',
-      StartDate: '10/2021',
-      EndDate: '02/2022',
-      Technologies: ['ReactJs', 'SCSS', 'MongoDB'],
-    },
-    {
-      Name: 'Covid Data',
-      Summary: 'Desktop application that displays Covid 19',
-      SrcLink: 'https://github.com/faouziMohamed/covid-data',
-      Description: '',
-      StartDate: '12/2020',
-      EndDate: '01/2021',
-      Technologies: ['Python', 'PyQt5', 'Qss (Qt Style sheet)'],
     },
   ],
 };

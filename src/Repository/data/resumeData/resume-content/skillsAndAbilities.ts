@@ -3,59 +3,36 @@ import { GiHobbitDoor, GiNinjaHead, GiWorld } from 'react-icons/gi';
 
 export type ISubSectionData = { [key: string]: string[] };
 
-export interface ISkillsAndAbilities {
+export interface SkillsAndAbilities {
   [key: string]: {
-    Icon: IconType;
+    icon: IconType;
     title: string;
     subsections: ISubSectionData;
   };
 }
 
-export const skillsAndAbilities: ISkillsAndAbilities = {
+export const skillsAndAbilities: SkillsAndAbilities = {
   Skills: {
     title: 'Skills',
-    Icon: GiNinjaHead,
+    icon: GiNinjaHead,
     subsections: {
-      programmingLanguages: [
-        'C#',
-        'Java',
-        'Javascript',
-        'Typescript',
-        'Python',
-        'C++',
-      ],
+      programmingLanguages: ['C#', 'Java', 'Javascript', 'Typescript'],
       frameworksAndLibraries: [
+        'Spring Boot',
         'Asp.Net Core',
-        'ExpressJs',
-        'NextJs',
-        'Blazor Web Assembly',
-        'ReactJs',
-        'Bootstrap',
-        'PyQt5',
+        'NextJs (ReactJs)',
+        'Angular',
       ],
       databases: ['MongoDB', 'MySQL', 'SQL Server'],
       cloudProviders: ['Azure', 'DigitalOcean'],
-      environments: ['Windows', 'Linux'],
       virtualization: ['Docker', 'VirtualBox'],
-      conceptionAndRedaction: [
-        'StarUML',
-        'MS Word',
-        'MS Powerpoint',
-        'Figma',
-        'InkScape',
-      ],
-      personality: [
-        'Dynamic',
-        'Curious',
-        'Team Player',
-        'Stress management',
-        'Adaptable',
-      ],
+      writingAndDesign: ['MS Word', 'MS Powerpoint', 'Figma', 'InkScape'],
+      others: ['Git', 'Jira', 'Confluence', 'Agile', 'Scrum,...'],
     },
   },
   languages: {
     title: 'Languages',
-    Icon: GiWorld,
+    icon: GiWorld,
     subsections: {
       french: ['Native'],
       english: ['Fluent'],
@@ -64,7 +41,7 @@ export const skillsAndAbilities: ISkillsAndAbilities = {
   },
   interests: {
     title: 'Interests',
-    Icon: GiHobbitDoor,
+    icon: GiHobbitDoor,
     subsections: {
       Learning: [
         'Web Development',

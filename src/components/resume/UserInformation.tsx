@@ -10,43 +10,36 @@ import {
 
 import UnStyledLink from '@/components/links/UnStyledLink';
 
-import type { IUserContactsAndProfileData } from '@/types/portfolio/resume.types';
+import type { UserContactsAndProfileData } from '@/types/portfolio/resume.types';
 
-interface IUserInformationProps {
-  data: IUserContactsAndProfileData;
+interface UserInformationProps {
+  data: UserContactsAndProfileData;
 }
 
-interface IUserInformation {
+interface UserInformationData {
   Icon: IconType;
-  Title: string;
-  Link: string;
-  Prefix?: string;
+  title: string;
+  link: string;
+  prefix?: string;
 }
 
-export default function UserInformation({ data }: IUserInformationProps) {
-  const { About, Location } = data;
-  const { FirstName, LastName, Profession } = About;
-  const { City, Country } = Location;
-  const { Tel, Email, Linkedin, Github, Website } = data;
+export default function UserInformation({ data }: UserInformationProps) {
+  const { about, location } = data;
+  const { firstName, lastName, profession } = about;
+  const { city, country } = location;
+  const { tel, email, linkedin, github, website } = data;
 
-  const userInformation: IUserInformation[] = [];
-  if (Tel)
-    userInformation.push({ ...Tel, Icon: MdOutlineLocalPhone, Prefix: 'tel:' });
+  const userInformation: UserInformationData[] = [];
+  if (tel)
+    userInformation.push({ ...tel, Icon: MdOutlineLocalPhone, prefix: 'tel:' });
   userInformation.push(
     ...[
-      { ...Email, Icon: MdEmail, Prefix: 'mailto:' },
-      { ...Linkedin, Icon: AiFillLinkedin },
-      { ...Github, Icon: AiOutlineGithub },
-      { ...Website, Icon: MdLanguage },
+      { ...email, Icon: MdEmail, prefix: 'mailto:' },
+      { ...linkedin, Icon: AiFillLinkedin },
+      { ...github, Icon: AiOutlineGithub },
+      { ...website, Icon: MdLanguage },
     ],
   );
-  //     [
-  //   { ...Tel, Icon: MdOutlineLocalPhone, Prefix: 'tel:' },
-  //   { ...Email, Icon: MdEmail, Prefix: 'mailto:' },
-  //   { ...Linkedin, Icon: AiFillLinkedin },
-  //   { ...Github, Icon: AiOutlineGithub },
-  //   { ...Website, Icon: MdLanguage },
-  // ];
   return (
     <Box
       className='flex flex-col items-center justify-center gap-4 text-center  msm:items-start'
@@ -54,10 +47,10 @@ export default function UserInformation({ data }: IUserInformationProps) {
       role='contentinfo'
     >
       <h1 className='text-3xl font-bold' aria-label='First Name and Last Name'>
-        {FirstName} {LastName}
+        {firstName} {lastName}
       </h1>
       <h2 className='text-lg ' aria-label='Profession'>
-        {Profession}
+        {profession}
       </h2>
       <Box
         className='flex w-full flex-col items-center justify-center text-lg'
@@ -65,7 +58,7 @@ export default function UserInformation({ data }: IUserInformationProps) {
       >
         <Box
           className='flex flex-col gap-1 '
-          aria-label={`Contact and location Information for ${FirstName} ${LastName}`}
+          aria-label={`Contact and location Information for ${firstName} ${lastName}`}
           id='loc-and-contact-info'
         >
           <Box
@@ -73,20 +66,20 @@ export default function UserInformation({ data }: IUserInformationProps) {
             aria-label='Location'
           >
             <MdOutlineLocationOn aria-hidden />
-            <strong aria-label={`City: ${City}`} className='font-normal'>
-              {City}, {Country}
+            <strong aria-label={`City: ${city}`} className='font-normal'>
+              {city}, {country}
             </strong>
           </Box>
           {userInformation.map((value) => (
             <UnStyledLink
               className='flex items-center gap-2 px-1 py-[0.4rem] text-xs'
-              key={value.Title}
-              href={`${value?.Prefix || ''}${value.Link}`}
-              aria-label={value.Title}
+              key={value.title}
+              href={`${value?.prefix || ''}${value.link}`}
+              aria-label={value.title}
             >
               <value.Icon />
               <strong className='text-[0.95rem] font-normal'>
-                {value.Title}
+                {value.title}
               </strong>
             </UnStyledLink>
           ))}

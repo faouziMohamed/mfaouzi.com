@@ -1,39 +1,40 @@
 import { SITE_URL } from '@/lib/client-route.contant';
 
-import { IUserContactsAndProfileData } from '@/types/portfolio/resume.types';
+import { UserContactsAndProfileData } from '@/types/portfolio/resume.types';
 
 const websiteUrl = SITE_URL || 'https://mfaouzi.com';
-export const userInformation: IUserContactsAndProfileData = {
-  Avatar:
+export const userInformation: UserContactsAndProfileData = {
+  avatar:
     'https://res.cloudinary.com/mfaouzi/image/upload/v1678704417/mfaouzi.com/me.jpg',
-  About: {
-    FirstName: 'Faouzoudine',
-    LastName: 'Mohamed Faouzi',
-    Profession: 'Full-stack software developer Angular/ReactJs • DotNet Core',
+  about: {
+    firstName: 'Faouzoudine',
+    lastName: 'Mohamed Faouzi',
+    profession:
+      'Software Developer | Fullstack developer (Spring Boot/ReactJs/Angular)',
   },
-  Location: {
-    City: 'Salé',
-    Country: 'Morocco',
-    Type: 'location',
+  location: {
+    city: 'Salé',
+    country: 'Morocco',
+    type: 'location',
   },
   // Tel: {
   //   Title: '+212 658 987 654', // Not my real phone number
   //   Link: '+212 658 987 654',
   // },
-  Email: {
-    Title: 'me@mfaouzi.com',
-    Link: 'me@mfaouzi.com',
+  email: {
+    title: 'me@mfaouzi.com',
+    link: 'me@mfaouzi.com',
   },
-  Linkedin: {
-    Title: 'mohamed-faouzi',
-    Link: 'https://www.linkedin.com/in/mohamed-faouzi',
+  linkedin: {
+    title: 'mohamed-faouzi',
+    link: 'https://www.linkedin.com/in/mohamed-faouzi',
   },
-  Website: {
-    Title: websiteUrl.replace(/https?:\/\//, ''),
-    Link: websiteUrl,
+  website: {
+    title: websiteUrl.replace(/https?:\/\//, ''),
+    link: websiteUrl,
   },
-  Github: {
-    Title: 'faouziMohamed',
-    Link: 'https://github.com/faouziMohamed',
+  github: {
+    title: 'faouziMohamed',
+    link: 'https://github.com/faouziMohamed',
   },
 };

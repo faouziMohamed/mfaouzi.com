@@ -71,9 +71,9 @@ export const notFoundSeo: SeoTemplate = {
 
 export const resumeSeo: SeoTemplate = {
   ...seoTemplate,
-  templateTitle: `${userInformation.About.LastName}'s Resume`,
-  title: `${userInformation.About.LastName} | ${userInformation.About.Profession}`,
-  description: resumeMainData.Profile.Description,
+  templateTitle: `${userInformation.about.lastName}'s Resume`,
+  title: `${userInformation.about.lastName} | ${userInformation.about.profession}`,
+  description: resumeMainData.profile.description,
   pathname: RESUME_PAGE,
   keywords: ['resume', 'cv', 'developer', 'portfolio', 'faouzi mohamed'].join(
     ', ',

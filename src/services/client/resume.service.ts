@@ -6,17 +6,17 @@ import resumeSeoData, {
   ISeoData,
 } from '@/Repository/data/resumeData/resumeSeoData';
 
-import type { IResumeData } from '@/types/portfolio/resume.types';
-import { IProject } from '@/types/portfolio/resume.types';
+import type { ResumeData } from '@/types/portfolio/resume.types';
+import { Project } from '@/types/portfolio/resume.types';
 
 export function getResumeSeoData(): Promise<ISeoData> {
   return promisify(resumeSeoData);
 }
 
-export function getResumeData(): Promise<IResumeData> {
+export function getResumeData(): Promise<ResumeData> {
   return promisify(resumeMainData);
 }
 
-export function getProjectData(): Promise<IProject> {
+export function getProjectData(): Promise<Project> {
   return promisify(projectSectionData);
 }

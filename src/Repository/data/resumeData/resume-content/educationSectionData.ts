@@ -1,37 +1,37 @@
-import { IEducation } from '@/types/portfolio/resume.types';
+import { Education } from '@/types/portfolio/resume.types';
 
-export const educationSectionData: IEducation = {
-  Title: 'Education',
-  Diploma: [
+export const educationSectionData: Education = {
+  title: 'Education',
+  diploma: [
     {
-      Title: 'Specialized Master Degree in Software Engineering for the Cloud',
-      Institution: 'University Ibn Tofail',
+      title: 'Specialized Master Degree in Software Engineering for the Cloud',
+      institution: 'University Ibn Tofail',
       city: 'Kénitra',
-      Country: 'Morocco',
-      Date: '2021 - 2022',
+      country: 'Morocco',
+      date: '2021 - 2022',
     },
     {
-      Title:
+      title:
         'Bachelor of Fundamental Studies in Mathematical and Computer Sciences',
-      Institution: 'University Ibn Tofail',
+      institution: 'University Ibn Tofail',
       city: 'Kénitra',
-      Country: 'Morocco',
-      Date: '2019 - 2020',
+      country: 'Morocco',
+      date: '2019 - 2020',
     },
     {
-      Title:
+      title:
         'Diploma of General University Studies (DEUG) in Mathematics and Computer Science',
-      Institution: 'University Ibn Tofail',
+      institution: 'University Ibn Tofail',
       city: 'Kénitra',
-      Country: 'Morocco',
-      Date: '2018 - 2019',
+      country: 'Morocco',
+      date: '2018 - 2019',
     },
-    {
-      Title: 'Baccalaureate in Mathematics and Computer Science',
-      Institution: "Les Amis de l'école",
-      city: 'Moroni',
-      Country: 'Comoros',
-      Date: '2016 - 2017',
-    },
+    // {
+    //   title: 'Baccalaureate in Mathematics and Computer Science',
+    //   institution: "Les Amis de l'école",
+    //   city: 'Moroni',
+    //   country: 'Comoros',
+    //   date: '2016 - 2017',
+    // },
   ],
 };

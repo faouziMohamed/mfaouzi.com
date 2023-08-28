@@ -3,10 +3,10 @@ import { TbExternalLink } from 'react-icons/tb';
 
 import UnStyledLink from '@/components/links/UnStyledLink';
 
-import { IProjectDetail } from '@/types/portfolio/resume.types';
+import { ProjectDetail } from '@/types/portfolio/resume.types';
 
 interface IProjectSectionProps {
-  project: IProjectDetail;
+  project: ProjectDetail;
 }
 
 export default function ProjectSection({ project }: IProjectSectionProps) {
@@ -14,35 +14,36 @@ export default function ProjectSection({ project }: IProjectSectionProps) {
     <Box className='border-b pb-2 last:border-0'>
       <Box className='flex flex-wrap items-center gap-1'>
         <h4 className='inline text-sm font-bold'>
-          {project.Name}
-          {project.SrcLink && (
+          {project.name}
+          {project.srcLink && (
             <UnStyledLink
-              href={project.SrcLink}
-              aria-label={`Link to project's ${project.Name} website or repository`}
+              href={project.srcLink}
+              aria-label={`Link to project's ${project.name} website or repository`}
             >
               <IconButton
                 size='small'
                 className='dark:text-gray-100'
-                aria-label={`Click to open ${project.Name} website or repository`}
+                aria-label={`Click to open ${project.name} website or repository`}
               >
                 <TbExternalLink />
               </IconButton>
             </UnStyledLink>
           )}
-          {project.Summary && ', '}
+          {project.summary && ', '}
         </h4>
         <Typography variant='body2' className='inline text-sm'>
-          {project.Summary}
+          {project.summary}
         </Typography>
       </Box>
       <Typography variant='body2' className='text-sm'>
-        {project.StartDate} {' - '}{' '}
-        {project.EndDate !== '-1' ? project.EndDate : 'Present'}
+        {project.startDate}
+        {!!project.endDate && ' - '}{' '}
+        {project.endDate !== '-1' ? project.endDate : 'Present'}
       </Typography>
-      <h5 className='text-sm'>{project.Description}</h5>
+      <h5 className='text-sm'>{project.description}</h5>
       <Typography variant='body2' className='text-sm'>
         <span className='font-bold'>Technologies used: </span>
-        {project.Technologies.join(' | ')}
+        {project.technologies.join(' | ')}
       </Typography>
     </Box>
   );

@@ -1,22 +1,16 @@
 import { Box, Stack, Typography } from '@mui/material';
 import { IconType } from 'react-icons';
-import {
-  FaBriefcase,
-  FaCertificate,
-  FaFolderOpen,
-  FaGraduationCap,
-} from 'react-icons/fa';
+import { FaBriefcase, FaFolderOpen, FaGraduationCap } from 'react-icons/fa';
 import { RiContactsFill } from 'react-icons/ri';
 
 import AppSeoTheme from '@/components/AppSeoTheme';
 import ResumeLayout from '@/components/layout/resume/ResumeLayout';
-import CertificationsSection from '@/components/resume/certificationsSection';
-import DiplomaSection from '@/components/resume/diplomaSection';
-import ExperienceSection from '@/components/resume/experienceSection';
-import ProjectSection from '@/components/resume/projectSection';
+import DiplomaSection from '@/components/resume/DiplomaSection';
+import ExperienceSection from '@/components/resume/ExperienceSection';
+import ProjectSection from '@/components/resume/ProjectSection';
 import SectionTitle from '@/components/resume/SectionTitle';
 import SkillsAndSoftSkillsSections from '@/components/resume/SkillsAndSoftSkillsSections';
-import UserAvatar from '@/components/resume/userAvatar';
+import UserAvatar from '@/components/resume/UserAvatar';
 import UserInformation from '@/components/resume/UserInformation';
 
 import resumeMainData from '@/Repository/data/resumeData/resumeMainData';
@@ -24,18 +18,17 @@ import resumeMainData from '@/Repository/data/resumeData/resumeMainData';
 import DevStereotype from '~/images/dev/dev-stereotype.svg';
 
 import {
-  ICertification,
-  IEducation,
-  IProfessionalExperience,
-  IProfile,
-  IProject,
+  Education,
+  ProfessionalExperience,
+  Profile,
+  Project,
 } from '@/types/portfolio/resume.types';
 
 export default function HomePage() {
-  const { Profile, Project, Certification } = resumeMainData;
-  const { Education: education, ProfessionalExperience } = resumeMainData;
-  const { UserInformation: userInformation } = resumeMainData;
-  const { SkillsAndAbilities } = resumeMainData;
+  const { profile, project } = resumeMainData;
+  const { education, professionalExperience } = resumeMainData;
+  const { userInformation } = resumeMainData;
+  const { skillsAndAbilities } = resumeMainData;
   return (
     <ResumeLayout>
       <AppSeoTheme />
@@ -44,21 +37,55 @@ export default function HomePage() {
         <Box className='relative flex flex-col gap-8 bg-transparent sm:flex-row sm:gap-1'>
           <Box className='flex flex-col gap-6 bg-gray-800 p-2 py-8 text-white dark:bg-dark-r-400 md:w-full md:max-w-md'>
             <Box className='flex flex-col items-center gap-4 pt-16 sm:flex-col sm:justify-between md:flex-col'>
-              <UserAvatar avatar={userInformation.Avatar} />
+              <UserAvatar avatar={userInformation.avatar} />
               <UserInformation data={userInformation} />
             </Box>
-            <SkillsAndSoftSkillsSections skills={SkillsAndAbilities} />
+            <SkillsAndSoftSkillsSections skills={skillsAndAbilities} />
           </Box>
           <ResumeSections
-            profile={Profile}
+            profile={profile}
             education={education}
-            certifications={Certification}
-            experiences={ProfessionalExperience}
-            projects={Project}
+            experiences={professionalExperience}
+            projects={project}
           />
         </Box>
       </div>
     </ResumeLayout>
+  );
+}
+
+function ResumeSections(props: {
+  profile: Profile;
+  education: Education;
+  experiences: ProfessionalExperience;
+  projects: Project;
+}) {
+  const { profile, education, experiences, projects } = props;
+  return (
+    <Stack className='gap-4 px-3 sm:py-16'>
+      <Stack className='gap-4' component='section'>
+        <ResumeSectionTitle title={profile.title} Icon={RiContactsFill} />
+        <Typography variant='body1' sx={{ fontSize: '0.85rem' }}>
+          {profile.description}
+        </Typography>
+      </Stack>
+      {/* Experiences */}
+      <Stack sx={{ gap: '1rem' }} component='section'>
+        <ResumeSectionTitle title={experiences.title} Icon={FaBriefcase} />
+        {experiences.experiences.map((experience) => (
+          <ExperienceSection experience={experience} key={experience.title} />
+        ))}
+      </Stack>
+      {/* Projects */}
+      <Stack className='gap-2' component='section'>
+        <ResumeSectionTitle title={projects.Title} Icon={FaFolderOpen} />
+        {projects.ProjectDetails.map((project) => (
+          <ProjectSection key={project.name} project={project} />
+        ))}
+      </Stack>
+      {/* Educations */}
+      <EducationSection education={education} />
+    </Stack>
   );
 }
 
@@ -73,53 +100,13 @@ function ResumeSectionTitle(props: { title: string; Icon: IconType }) {
   );
 }
 
-function Education({ education }: { education: IEducation }) {
+function EducationSection({ education }: { education: Education }) {
   return (
     <Stack className='gap-4' component='section'>
-      <ResumeSectionTitle title={education.Title} Icon={FaGraduationCap} />
-      {education.Diploma.map((diploma) => (
-        <DiplomaSection key={diploma.Title} diploma={diploma} />
+      <ResumeSectionTitle title={education.title} Icon={FaGraduationCap} />
+      {education.diploma.map((diploma) => (
+        <DiplomaSection key={diploma.title} diploma={diploma} />
       ))}
-    </Stack>
-  );
-}
-
-function ResumeSections(props: {
-  profile: IProfile;
-  education: IEducation;
-  certifications: ICertification;
-  experiences: IProfessionalExperience;
-  projects: IProject;
-}) {
-  const { profile, education, certifications, experiences, projects } = props;
-  return (
-    <Stack className='gap-4 px-3 sm:py-16'>
-      <Stack className='gap-4' component='section'>
-        <ResumeSectionTitle title={profile.Title} Icon={RiContactsFill} />
-        <Typography variant='body1'>{profile.Description}</Typography>
-      </Stack>
-      <Education education={education} />
-      <Stack className='gap-4' component='section'>
-        <ResumeSectionTitle title={certifications.Title} Icon={FaCertificate} />
-        {certifications.Certificates.map((certification) => (
-          <CertificationsSection
-            key={certification.Title}
-            certification={certification}
-          />
-        ))}
-      </Stack>
-      <Stack className='gap-4' component='section'>
-        <ResumeSectionTitle title={experiences.Title} Icon={FaBriefcase} />
-        {experiences.Experiences.map((experience) => (
-          <ExperienceSection experience={experience} key={experience.Title} />
-        ))}
-      </Stack>
-      <Stack className='gap-2' component='section'>
-        <ResumeSectionTitle title={projects.Title} Icon={FaFolderOpen} />
-        {projects.ProjectDetails.map((project) => (
-          <ProjectSection key={project.Name} project={project} />
-        ))}
-      </Stack>
     </Stack>
   );
 }
