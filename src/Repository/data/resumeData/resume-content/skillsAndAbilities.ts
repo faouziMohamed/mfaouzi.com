@@ -35,7 +35,7 @@ export const skillsAndAbilities: SkillsAndAbilities = {
     icon: GiWorld,
     subsections: {
       french: ['Native'],
-      english: ['Fluent'],
+      english: ['Advanced'],
       arabic: ['Fluent'],
     },
   },
