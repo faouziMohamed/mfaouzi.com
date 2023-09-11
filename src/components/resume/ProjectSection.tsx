@@ -15,9 +15,9 @@ export default function ProjectSection({ project }: IProjectSectionProps) {
       <Box className='flex flex-wrap items-center gap-1'>
         <h4 className='inline text-sm font-bold'>
           {project.name}
-          {project.srcLink && (
+          {(project.liveLink || project.srcLink) && (
             <UnStyledLink
-              href={project.srcLink}
+              href={project.liveLink || project.srcLink!}
               aria-label={`Link to project's ${project.name} website or repository`}
             >
               <IconButton
