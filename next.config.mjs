@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 
-import { createSecureHeaders } from 'next-secure-headers';
+import {createSecureHeaders} from 'next-secure-headers';
 
 const options = {
   weekday: 'long',
@@ -23,10 +23,22 @@ const config = {
   },
 
   images: {
-    domains: [
-      'avatars.githubusercontent.com',
-      'res.cloudinary.com',
-      'lh3.googleusercontent.com',
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'avatars.githubusercontent.com',
+        pathname: '**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        pathname: '**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'lh3.googleusercontent.com',
+        pathname: '**',
+      },
     ],
   },
 
