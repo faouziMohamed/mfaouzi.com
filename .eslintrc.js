@@ -23,7 +23,7 @@ module.exports = {
     'next/core-web-vitals',
     'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
-    'next/core-web-vitals',
+    // 'next/core-web-vitals',
     'plugin:promise/recommended',
     'plugin:prettier/recommended',
     'prettier',
@@ -125,10 +125,10 @@ module.exports = {
       'warn',
       { props: 'never', children: 'never' },
     ],
-    'jsx-a11y/no-noninteractive-tabindex': [
-      'error',
-      { tags: ['div'], roles: ['tabpanel'] },
-    ],
+    // 'jsx-a11y/no-noninteractive-tabindex': [
+    //   'error',
+    //   { tags: ['div'], roles: ['tabpanel'] },
+    // ],
 
     // #region  //*=========== Unused Import ===========
     // '@typescript-eslint/no-unused-vars': 'off',
