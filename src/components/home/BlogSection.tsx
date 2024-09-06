@@ -50,7 +50,7 @@ export default function BlogSection() {
             />
           )}
         />
-        <Typography className='grow basis-1/3 text-center text-base'>
+        <Typography className='pt-8 grow basis-1/3 text-center text-base'>
           I&apos;ll soon be launching a blog where I&apos;ll share my
           experiences and insights in software development, from coding tips to
           personal reflections. Stay tuned for updates on the release date!

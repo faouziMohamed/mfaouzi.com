@@ -1,4 +1,5 @@
 import { Box, Box as Section, Typography } from '@mui/material';
+import Link from 'next/link';
 
 import { RESUME_PAGE, RESUME_PDF_LINK } from '@/lib/client-route.contant';
 
@@ -33,14 +34,24 @@ export default function AboutMeSection({
       />
       <Box className='flex flex-col gap-4 text-justify leading-6'>
         <Typography variant='body1' className='font-[300] '>
-          I&apos;m a software engineer 👨‍💻 with expertise in ReactJs, Angular,
-          DotNet Core, Java, and MERN Stack. My passion is building software
-          that solves problems and creates engaging user experiences.
+          I&apos;m a software engineer 👨‍💻 with expertise in frontend/backend
+          development. I Build software that solves problems, creates engaging
+          user experiences and I use my devops skills to deploy and maintain the
+          applications.
         </Typography>
         <Typography variant='body1' className='font-[300]'>
-          I work at Keystone as a software developer. I&apos;m interested in
-          collaborating on projects related to web design, cloud, and
-          virtualization, so feel free to reach out to me.
+          I work at{' '}
+          <Link
+            href='https://kartalys.io'
+            className='font-bold text-primary-500 underline'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            Kartalys
+          </Link>{' '}
+          as a software developer. I&apos;m interested in collaborating on
+          projects related to web design, cloud, and virtualization, so feel
+          free to reach out to me.
         </Typography>
       </Box>
       <Box className='flex w-full items-center justify-center gap-4'>

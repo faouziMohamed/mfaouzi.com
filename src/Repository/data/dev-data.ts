@@ -2,7 +2,8 @@ const devData = {
   avatar:
     'https://res.cloudinary.com/mfaouzi/image/upload/v1678704417/mfaouzi.com/me.jpg',
   fullName: 'Faouzi Mohamed',
-  skills: ['Software Engineer', 'Full-stack Web Developer'],
+  // and DevOps wizzard
+  skills: ['Software Engineer', 'Full-stack Web Developer', 'DevOps wizzard'],
   socials: {
     facebook: {
       url: 'https://www.facebook.com/faouzi.mohamed.97',

@@ -9,11 +9,10 @@ export const userInformation: UserContactsAndProfileData = {
   about: {
     firstName: 'Faouzoudine',
     lastName: 'Mohamed Faouzi',
-    profession:
-      'Software Developer | Fullstack developer (Spring Boot/ReactJs/Angular)',
+    profession: 'Fullstack developer | DevOps Engineer | Tech Enthusiast',
   },
   location: {
-    city: 'Salé',
+    city: 'Rabat',
     country: 'Morocco',
     type: 'location',
   },

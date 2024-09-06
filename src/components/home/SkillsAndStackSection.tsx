@@ -6,35 +6,35 @@ import SVGBlob from '@/components/home/SVGBlob';
 import CsharpIcon from '~/icons/csharp.svg';
 import DockerIcon from '~/icons/docker.svg';
 import FigmaIcon from '~/icons/figma.svg';
-import GitIcon from '~/icons/git.svg';
-import JsIcon from '~/icons/javascript.svg';
+import Java from '~/icons/java.svg';
 import MaterialUiIcon from '~/icons/material-ui.svg';
-import MongoDbIcon from '~/icons/mongodb.svg';
 import MysqlIcon from '~/icons/mysql.svg';
 import NextJsIcon from '~/icons/nextjs.svg';
+import Nginx from '~/icons/nginx.svg';
 import NodeJsIcon from '~/icons/nodejs.svg';
-import ReactJsIcon from '~/icons/reactjs.svg';
 import SkillsBlob from '~/icons/skills-blob.svg';
+import SpringBoot from '~/icons/spring-boot.svg';
 import TailwindCssIcon from '~/icons/tailwindcss.svg';
+import Traefik from '~/icons/traefik.svg';
 import TypescriptIcon from '~/icons/typescript.svg';
 
 import { SVGImageData } from '@/types/portfolio/portfolio.types';
 
 // #region SkillsArray
 const skillsTools: { name: string; Icon: SVGImageData }[] = [
-  { name: 'Javascript', Icon: JsIcon },
-  { name: 'Git', Icon: GitIcon },
+  { name: 'Nginx', Icon: Nginx },
+  { name: 'Docker', Icon: DockerIcon },
+  { name: 'Traefik', Icon: Traefik },
   { name: 'Node.js', Icon: NodeJsIcon },
-  { name: 'React.js', Icon: ReactJsIcon },
   { name: 'Typescript', Icon: TypescriptIcon },
+  { name: 'Java', Icon: Java },
   { name: 'C Sharp', Icon: CsharpIcon },
   { name: 'Next.js', Icon: NextJsIcon },
-  { name: 'MongoDB', Icon: MongoDbIcon },
+  { name: 'Spring Boot', Icon: SpringBoot },
   { name: 'MySQL', Icon: MysqlIcon },
   { name: 'Material-UI', Icon: MaterialUiIcon },
   { name: 'Tailwind CSS', Icon: TailwindCssIcon },
   { name: 'Figma', Icon: FigmaIcon },
-  { name: 'Docker', Icon: DockerIcon },
 ];
 
 interface SkillsSectionProps {
