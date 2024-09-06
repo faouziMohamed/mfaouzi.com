@@ -64,22 +64,24 @@ function AddNewCommentTextField({
       size={isReply ? 'small' : 'medium'}
       value={value}
       onChange={(e) => setValue(e.target.value)}
-      InputProps={{
-        endAdornment: (
-          <InputAdornment position='end'>
-            <Button
-              onClick={() => {
-                const content = value.trim();
-                setValue('');
-                void saveComment(user, content, parentId);
-              }}
-              disabled={!value}
-              className='py-1.5 disabled:cursor-not-allowed  disabled:opacity-50'
-            >
-              {isReply ? 'Reply' : 'Sign'}
-            </Button>
-          </InputAdornment>
-        ),
+      slotProps={{
+        input: {
+          endAdornment: (
+            <InputAdornment position='end'>
+              <Button
+                onClick={() => {
+                  const content = value.trim();
+                  setValue('');
+                  void saveComment(user, content, parentId);
+                }}
+                disabled={!value}
+                className='py-1.5 disabled:cursor-not-allowed  disabled:opacity-50'
+              >
+                {isReply ? 'Reply' : 'Sign'}
+              </Button>
+            </InputAdornment>
+          ),
+        },
       }}
     />
   );

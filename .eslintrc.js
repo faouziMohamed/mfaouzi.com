@@ -23,7 +23,6 @@ module.exports = {
     'next/core-web-vitals',
     'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
-    // 'next/core-web-vitals',
     'plugin:promise/recommended',
     'plugin:prettier/recommended',
     'prettier',

@@ -47,6 +47,7 @@ export default function ProjectSection(props: IProjectProps) {
               width='669'
               height='176'
               className='h-44 rounded-lg object-cover'
+              unoptimized
             />
           </div>
           <Typography className='min-w-[20rem] basis-1/2 pb-4 text-center text-[0.98rem] font-[400] md:max-w-none md:text-justify '>

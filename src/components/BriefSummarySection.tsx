@@ -28,6 +28,7 @@ export default function BriefSummarySection() {
           alt='Ghost developer'
           width='250'
           height='250'
+          unoptimized
         />
       </div>
       <div className='flex flex-col gap-4 text-center'>
