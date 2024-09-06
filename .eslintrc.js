@@ -124,24 +124,10 @@ module.exports = {
       'warn',
       { props: 'never', children: 'never' },
     ],
-    // 'jsx-a11y/no-noninteractive-tabindex': [
-    //   'error',
-    //   { tags: ['div'], roles: ['tabpanel'] },
-    // ],
-
-    // #region  //*=========== Unused Import ===========
-    // '@typescript-eslint/no-unused-vars': 'off',
-    // 'unused-imports/no-unused-imports': 'warn',
-    // 'unused-imports/no-unused-vars': [
-    //   'warn',
-    //   {
-    //     vars: 'all',
-    //     varsIgnorePattern: '^_',
-    //     args: 'after-used',
-    //     argsIgnorePattern: '^_',
-    //   },
-    // ],
-    // #endregion  //*======== Unused Import ===========
+    'jsx-a11y/no-noninteractive-tabindex': [
+      'error',
+      { tags: ['div'], roles: ['tabpanel'] },
+    ],
   },
   ignorePatterns: [
     'node_modules/',
